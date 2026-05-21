@@ -54,6 +54,7 @@ packages = [
     "src/quality",
     "src/genealogy",
     "src/deslop",
+    "src/firewall",
 ]
 
 [tool.ruff]
