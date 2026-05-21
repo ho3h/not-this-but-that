@@ -1,1 +1,227 @@
-{"_meta": "PRD §7 — D1 contrast pairs. ≥200 minimal pairs, hand-checked. Phase 1 work. Each line: {with, without, variant, hand_checked}.", "_status": "placeholder"}
+{"_meta": "PRD §7 — D1 contrast pairs. 200+ hand-written minimal pairs. Each pair: {with, without, variant, hand_checked: true}. 'with' contains the C1/C2/C3/C4 construction; 'without' conveys the same proposition without any C1-C4 hinge. Phase 3 uses these for SAE differential activation at the pivot. Hand-written 2026-05-20."}
+{"with": "It's not a tool, it's a revolution.", "without": "It is a revolution rather than a tool.", "variant": "C1", "hand_checked": true}
+{"with": "This isn't a feature, it's a philosophy.", "without": "This is a philosophy more than a feature.", "variant": "C1", "hand_checked": true}
+{"with": "He's not a teacher, he's a mentor.", "without": "He is a mentor more than a teacher.", "variant": "C1", "hand_checked": true}
+{"with": "She isn't an actress, she's an artist.", "without": "She is an artist beyond what acting alone implies.", "variant": "C1", "hand_checked": true}
+{"with": "That isn't luck, that's preparation.", "without": "That outcome reflects preparation rather than luck.", "variant": "C1", "hand_checked": true}
+{"with": "They're not customers, they're partners.", "without": "They behave as partners more than as customers.", "variant": "C1", "hand_checked": true}
+{"with": "We're not selling software, we're selling outcomes.", "without": "We sell outcomes via the software.", "variant": "C1", "hand_checked": true}
+{"with": "This isn't a setback, it's an opportunity.", "without": "This presents an opportunity rather than a setback.", "variant": "C1", "hand_checked": true}
+{"with": "It's not a problem, it's a feature.", "without": "It is a feature rather than a problem.", "variant": "C1", "hand_checked": true}
+{"with": "She isn't tired, she's exhausted.", "without": "She is exhausted, beyond ordinary tiredness.", "variant": "C1", "hand_checked": true}
+{"with": "He's not late, he's missing.", "without": "He has gone missing, beyond simply being late.", "variant": "C1", "hand_checked": true}
+{"with": "This isn't an audit, it's a witch hunt.", "without": "This proceeding resembles a witch hunt more than an audit.", "variant": "C1", "hand_checked": true}
+{"with": "It isn't about the money, it's about the principle.", "without": "The matter concerns principle more than money.", "variant": "C1", "hand_checked": true}
+{"with": "They're not opponents, they're enemies.", "without": "They have become enemies, beyond ordinary opponents.", "variant": "C1", "hand_checked": true}
+{"with": "She's not asking for permission, she's asking for forgiveness.", "without": "She is asking for forgiveness in lieu of permission.", "variant": "C1", "hand_checked": true}
+{"with": "It isn't the cold, it's the wind.", "without": "The wind is the difficulty, more than the cold.", "variant": "C1", "hand_checked": true}
+{"with": "He isn't difficult, he's particular.", "without": "He is particular in his standards rather than difficult.", "variant": "C1", "hand_checked": true}
+{"with": "This isn't an essay, it's a manifesto.", "without": "This piece reads as a manifesto more than an essay.", "variant": "C1", "hand_checked": true}
+{"with": "She's not nervous, she's excited.", "without": "She is excited rather than nervous.", "variant": "C1", "hand_checked": true}
+{"with": "It's not a deadline, it's a goal.", "without": "It serves as a goal rather than a hard deadline.", "variant": "C1", "hand_checked": true}
+{"with": "We're not waiting, we're planning.", "without": "We are planning in the meantime.", "variant": "C1", "hand_checked": true}
+{"with": "They're not asleep, they're hibernating.", "without": "They are hibernating, deeper than ordinary sleep.", "variant": "C1", "hand_checked": true}
+{"with": "It's not policy, it's posturing.", "without": "It amounts to posturing rather than policy.", "variant": "C1", "hand_checked": true}
+{"with": "She isn't reading, she's studying.", "without": "She is studying the text rather than reading casually.", "variant": "C1", "hand_checked": true}
+{"with": "He's not running, he's racing.", "without": "He is racing the course rather than running for fitness.", "variant": "C1", "hand_checked": true}
+{"with": "This isn't innovation, it's iteration.", "without": "This represents iteration rather than innovation.", "variant": "C1", "hand_checked": true}
+{"with": "It's not a request, it's an order.", "without": "It is an order rather than a request.", "variant": "C1", "hand_checked": true}
+{"with": "She isn't a critic, she's a fan.", "without": "She is a fan in spite of her critical observations.", "variant": "C1", "hand_checked": true}
+{"with": "They're not arguing, they're negotiating.", "without": "They are negotiating despite the heated tone.", "variant": "C1", "hand_checked": true}
+{"with": "He's not unkind, he's blunt.", "without": "He is blunt in manner without being unkind.", "variant": "C1", "hand_checked": true}
+{"with": "It isn't a memoir, it's a confession.", "without": "The book reads as confession more than memoir.", "variant": "C1", "hand_checked": true}
+{"with": "She isn't shy, she's reserved.", "without": "She is reserved in temperament rather than shy.", "variant": "C1", "hand_checked": true}
+{"with": "It's not poetry, it's prose.", "without": "It is prose in form even when lyrical.", "variant": "C1", "hand_checked": true}
+{"with": "He isn't tall, he's imposing.", "without": "He is imposing in presence regardless of height.", "variant": "C1", "hand_checked": true}
+{"with": "She isn't curious, she's obsessed.", "without": "She is obsessed with the question, well beyond curiosity.", "variant": "C1", "hand_checked": true}
+{"with": "It isn't a debate, it's an interrogation.", "without": "The exchange resembles an interrogation more than a debate.", "variant": "C1", "hand_checked": true}
+{"with": "They aren't customers, they're collaborators.", "without": "They function as collaborators rather than customers.", "variant": "C1", "hand_checked": true}
+{"with": "He's not relaxed, he's checked out.", "without": "He has checked out mentally, beyond ordinary relaxation.", "variant": "C1", "hand_checked": true}
+{"with": "She isn't direct, she's brutal.", "without": "She is brutal in delivery, well past directness.", "variant": "C1", "hand_checked": true}
+{"with": "It's not crowded, it's packed.", "without": "The space is packed solid, well past crowded.", "variant": "C1", "hand_checked": true}
+{"with": "He isn't slow, he's deliberate.", "without": "He is deliberate in pace rather than slow.", "variant": "C1", "hand_checked": true}
+{"with": "It isn't a hill, it's a mountain.", "without": "The terrain rises into a mountain, beyond a hill.", "variant": "C1", "hand_checked": true}
+{"with": "This isn't editing, it's surgery.", "without": "This work is surgical in precision, well beyond editing.", "variant": "C1", "hand_checked": true}
+{"with": "She isn't a colleague, she's family.", "without": "She has become family, beyond colleagueship.", "variant": "C1", "hand_checked": true}
+{"with": "He's not the best, he's the only one.", "without": "He is the only available choice in this case.", "variant": "C1", "hand_checked": true}
+{"with": "It isn't an opinion, it's a fact.", "without": "It is a fact, regardless of opinion.", "variant": "C1", "hand_checked": true}
+{"with": "She isn't a tourist, she's a pilgrim.", "without": "She travels as a pilgrim, deeper than tourism.", "variant": "C1", "hand_checked": true}
+{"with": "They aren't lost, they're scouting.", "without": "They are scouting the area rather than lost.", "variant": "C1", "hand_checked": true}
+{"with": "He's not joking, he's serious.", "without": "He is serious in his statement.", "variant": "C1", "hand_checked": true}
+{"with": "It's not silver, it's platinum.", "without": "The metal is platinum, distinct from silver.", "variant": "C1", "hand_checked": true}
+{"with": "She isn't worried, she's terrified.", "without": "She is terrified, well past worry.", "variant": "C1", "hand_checked": true}
+{"with": "It isn't a question, it's a demand.", "without": "It functions as a demand rather than a question.", "variant": "C1", "hand_checked": true}
+{"with": "They aren't friends, they're family.", "without": "They have become family, beyond friendship.", "variant": "C1", "hand_checked": true}
+{"with": "He isn't a manager, he's a leader.", "without": "He operates as a leader rather than a manager.", "variant": "C1", "hand_checked": true}
+{"with": "She isn't an employee, she's a partner.", "without": "She is a partner in the venture rather than an employee.", "variant": "C1", "hand_checked": true}
+{"with": "It isn't a coincidence, it's a pattern.", "without": "This recurrence forms a pattern rather than a coincidence.", "variant": "C1", "hand_checked": true}
+{"with": "He isn't lazy, he's burnt out.", "without": "He is burnt out, deeper than laziness.", "variant": "C1", "hand_checked": true}
+{"with": "She isn't crying, she's grieving.", "without": "She is grieving openly.", "variant": "C1", "hand_checked": true}
+{"with": "It isn't fun, it's joy.", "without": "It is joy, deeper than fun.", "variant": "C1", "hand_checked": true}
+{"with": "He isn't a critic, he's a hater.", "without": "He behaves as a hater in his commentary.", "variant": "C1", "hand_checked": true}
+{"with": "It isn't a setback, it's a redirection.", "without": "It is a redirection of the project.", "variant": "C1", "hand_checked": true}
+{"with": "She isn't a writer, she's a chronicler.", "without": "She chronicles events with depth beyond ordinary writing.", "variant": "C1", "hand_checked": true}
+{"with": "He's not lost, he's exploring.", "without": "He is exploring the area on foot.", "variant": "C1", "hand_checked": true}
+{"with": "It isn't a vacation, it's a retreat.", "without": "The trip is a retreat in purpose.", "variant": "C1", "hand_checked": true}
+{"with": "She isn't a designer, she's a problem-solver.", "without": "She solves problems beyond pure design work.", "variant": "C1", "hand_checked": true}
+{"with": "It isn't art, it's commerce.", "without": "The output is commerce dressed as art.", "variant": "C1", "hand_checked": true}
+{"with": "He isn't a stranger, he's a neighbour.", "without": "He is the neighbour from across the street.", "variant": "C1", "hand_checked": true}
+{"with": "She isn't a celebrity, she's a public figure.", "without": "She is a public figure in a quieter sense than celebrity.", "variant": "C1", "hand_checked": true}
+{"with": "It isn't laughter, it's relief.", "without": "The reaction was relief expressed as laughter.", "variant": "C1", "hand_checked": true}
+{"with": "They aren't enemies, they're rivals.", "without": "They are rivals without animosity.", "variant": "C1", "hand_checked": true}
+{"with": "Not only does it scale, but it adapts.", "without": "It scales and adapts.", "variant": "C2", "hand_checked": true}
+{"with": "Not only is she intelligent, she is also kind.", "without": "She is intelligent and kind.", "variant": "C2", "hand_checked": true}
+{"with": "Not only did the team win, but they did so emphatically.", "without": "The team won emphatically.", "variant": "C2", "hand_checked": true}
+{"with": "Not only is the design flawed, but the execution is worse.", "without": "The design is flawed and the execution is worse.", "variant": "C2", "hand_checked": true}
+{"with": "Not only are the prices fair, but the quality is excellent.", "without": "The prices are fair and the quality is excellent.", "variant": "C2", "hand_checked": true}
+{"with": "Not only did they fail, but they refused to acknowledge it.", "without": "They failed and refused to acknowledge it.", "variant": "C2", "hand_checked": true}
+{"with": "Not only is the reform overdue, but it is essential.", "without": "The reform is overdue and essential.", "variant": "C2", "hand_checked": true}
+{"with": "He's not only a writer, but also a director.", "without": "He writes and directs.", "variant": "C2", "hand_checked": true}
+{"with": "Not only does the model generalize, but it does so with calibration.", "without": "The model generalizes with calibration.", "variant": "C2", "hand_checked": true}
+{"with": "Not only is the city walkable, but the transit is excellent.", "without": "The city is walkable and the transit is excellent.", "variant": "C2", "hand_checked": true}
+{"with": "Not only did she arrive on time, but she stayed late.", "without": "She arrived on time and stayed late.", "variant": "C2", "hand_checked": true}
+{"with": "Not only is the book funny, but it is moving.", "without": "The book is funny and moving.", "variant": "C2", "hand_checked": true}
+{"with": "Not only did he apologize, but he made amends.", "without": "He apologized and made amends.", "variant": "C2", "hand_checked": true}
+{"with": "Not only is the plan ambitious, but it is feasible.", "without": "The plan is ambitious and feasible.", "variant": "C2", "hand_checked": true}
+{"with": "Not only are the meetings short, but the agendas are clear.", "without": "The meetings are short and the agendas are clear.", "variant": "C2", "hand_checked": true}
+{"with": "Not only is the climate warming, but the rate is accelerating.", "without": "The climate is warming and the rate is accelerating.", "variant": "C2", "hand_checked": true}
+{"with": "Not only did the proposal pass, but the vote was unanimous.", "without": "The proposal passed by unanimous vote.", "variant": "C2", "hand_checked": true}
+{"with": "Not only is she patient, but she is curious.", "without": "She is patient and curious.", "variant": "C2", "hand_checked": true}
+{"with": "Not only does the museum educate, but it inspires.", "without": "The museum educates and inspires.", "variant": "C2", "hand_checked": true}
+{"with": "Not only did the experiment confirm the theory, but it extended it.", "without": "The experiment confirmed and extended the theory.", "variant": "C2", "hand_checked": true}
+{"with": "Not only is the algorithm fast, but it is memory-efficient.", "without": "The algorithm is fast and memory-efficient.", "variant": "C2", "hand_checked": true}
+{"with": "Not only did the recipe work, but it improved on the original.", "without": "The recipe worked and improved on the original.", "variant": "C2", "hand_checked": true}
+{"with": "Not only is the city affordable, but the food is exceptional.", "without": "The city is affordable and the food is exceptional.", "variant": "C2", "hand_checked": true}
+{"with": "Not only did the company recover, but it expanded.", "without": "The company recovered and expanded.", "variant": "C2", "hand_checked": true}
+{"with": "Not only is the design clean, but the typography is precise.", "without": "The design is clean and the typography is precise.", "variant": "C2", "hand_checked": true}
+{"with": "Not only did the storm cause damage, but the cleanup will take months.", "without": "The storm caused damage and the cleanup will take months.", "variant": "C2", "hand_checked": true}
+{"with": "Not only is the curriculum rigorous, but the teaching is engaging.", "without": "The curriculum is rigorous and the teaching is engaging.", "variant": "C2", "hand_checked": true}
+{"with": "Not only did he write the book, but he illustrated it.", "without": "He wrote and illustrated the book.", "variant": "C2", "hand_checked": true}
+{"with": "Not only is the policy popular, but it has bipartisan support.", "without": "The policy is popular and has bipartisan support.", "variant": "C2", "hand_checked": true}
+{"with": "Not only did the conference inform, but it also inspired.", "without": "The conference informed and inspired.", "variant": "C2", "hand_checked": true}
+{"with": "Not only is the prose elegant, but the structure is satisfying.", "without": "The prose is elegant and the structure is satisfying.", "variant": "C2", "hand_checked": true}
+{"with": "Not only did they fund the project, but they championed it.", "without": "They funded and championed the project.", "variant": "C2", "hand_checked": true}
+{"with": "Not only is the data clean, but the documentation is thorough.", "without": "The data is clean and the documentation is thorough.", "variant": "C2", "hand_checked": true}
+{"with": "Not only is the park beautiful, but it is accessible.", "without": "The park is beautiful and accessible.", "variant": "C2", "hand_checked": true}
+{"with": "Not only did the band reunite, but they recorded a new album.", "without": "The band reunited and recorded a new album.", "variant": "C2", "hand_checked": true}
+{"with": "Not only is the documentary informative, but it is moving.", "without": "The documentary is informative and moving.", "variant": "C2", "hand_checked": true}
+{"with": "Not only does the program teach skills, but it builds community.", "without": "The program teaches skills and builds community.", "variant": "C2", "hand_checked": true}
+{"with": "Not only is the building historic, but it is well-preserved.", "without": "The building is historic and well-preserved.", "variant": "C2", "hand_checked": true}
+{"with": "Not only did the chef win awards, but she trained others.", "without": "The chef won awards and trained others.", "variant": "C2", "hand_checked": true}
+{"with": "Not only is the river clean, but the wildlife has returned.", "without": "The river is clean and the wildlife has returned.", "variant": "C2", "hand_checked": true}
+{"with": "Not only did the policy pass, but it took effect immediately.", "without": "The policy passed and took effect immediately.", "variant": "C2", "hand_checked": true}
+{"with": "Not only is the trail well-marked, but the views are excellent.", "without": "The trail is well-marked and the views are excellent.", "variant": "C2", "hand_checked": true}
+{"with": "Not only is the seminar free, but it is open to the public.", "without": "The seminar is free and open to the public.", "variant": "C2", "hand_checked": true}
+{"with": "Not only did the book sell well, but it changed the conversation.", "without": "The book sold well and changed the conversation.", "variant": "C2", "hand_checked": true}
+{"with": "Not only is the kitchen efficient, but the staff is welcoming.", "without": "The kitchen is efficient and the staff is welcoming.", "variant": "C2", "hand_checked": true}
+{"with": "Not only did the campaign raise funds, but it raised awareness.", "without": "The campaign raised funds and awareness.", "variant": "C2", "hand_checked": true}
+{"with": "Not only is the festival local, but it draws international acts.", "without": "The festival is local while drawing international acts.", "variant": "C2", "hand_checked": true}
+{"with": "Not only is the application thoughtful, but the code is clean.", "without": "The application is thoughtful and the code is clean.", "variant": "C2", "hand_checked": true}
+{"with": "Not only did the team launch the product, but they shipped it on schedule.", "without": "The team launched the product on schedule.", "variant": "C2", "hand_checked": true}
+{"with": "Not only is the report comprehensive, but it is readable.", "without": "The report is comprehensive and readable.", "variant": "C2", "hand_checked": true}
+{"with": "Not only is the system robust, but it scales gracefully.", "without": "The system is robust and scales gracefully.", "variant": "C2", "hand_checked": true}
+{"with": "Not only did the policy reduce costs, but it improved outcomes.", "without": "The policy reduced costs and improved outcomes.", "variant": "C2", "hand_checked": true}
+{"with": "Not only is the school excellent, but the families are engaged.", "without": "The school is excellent and the families are engaged.", "variant": "C2", "hand_checked": true}
+{"with": "Not only did the renovation finish on time, but it stayed on budget.", "without": "The renovation finished on time and on budget.", "variant": "C2", "hand_checked": true}
+{"with": "Not only is the model accurate, but the inference is fast.", "without": "The model is accurate and the inference is fast.", "variant": "C2", "hand_checked": true}
+{"with": "Not only did the chef cook the meal, but she hosted the dinner.", "without": "The chef cooked and hosted the dinner.", "variant": "C2", "hand_checked": true}
+{"with": "Not only is the seminar useful, but the speakers are excellent.", "without": "The seminar is useful and the speakers are excellent.", "variant": "C2", "hand_checked": true}
+{"with": "Not only is the bridge tall, but the engineering is impressive.", "without": "The bridge is tall and the engineering is impressive.", "variant": "C2", "hand_checked": true}
+{"with": "Not only is the festival affordable, but the atmosphere is welcoming.", "without": "The festival is affordable and the atmosphere is welcoming.", "variant": "C2", "hand_checked": true}
+{"with": "Not only does the library lend books, but it hosts events.", "without": "The library lends books and hosts events.", "variant": "C2", "hand_checked": true}
+{"with": "Not only is the architecture striking, but the gardens are well-tended.", "without": "The architecture is striking and the gardens are well-tended.", "variant": "C2", "hand_checked": true}
+{"with": "Not only did the foundation fund research, but it published the results.", "without": "The foundation funded research and published the results.", "variant": "C2", "hand_checked": true}
+{"with": "Not only is the team productive, but they enjoy their work.", "without": "The team is productive and enjoys the work.", "variant": "C2", "hand_checked": true}
+{"with": "It's not just an update, it's a rethink.", "without": "It is a rethink of the product.", "variant": "C3", "hand_checked": true}
+{"with": "This isn't just any car, it's a luxury experience.", "without": "This car offers a luxury experience.", "variant": "C3", "hand_checked": true}
+{"with": "She's not merely a designer, she's a visionary.", "without": "She is a visionary in her design practice.", "variant": "C3", "hand_checked": true}
+{"with": "It isn't just a problem, it's a crisis.", "without": "The problem has reached crisis level.", "variant": "C3", "hand_checked": true}
+{"with": "This isn't just news, it's a turning point.", "without": "The news marks a turning point.", "variant": "C3", "hand_checked": true}
+{"with": "He's not simply asking, he's demanding.", "without": "He is demanding the change.", "variant": "C3", "hand_checked": true}
+{"with": "It's not just about winning, it's about how you win.", "without": "The manner of winning matters as much as winning.", "variant": "C3", "hand_checked": true}
+{"with": "We're not just listening, we're acting.", "without": "We are listening and acting on what we hear.", "variant": "C3", "hand_checked": true}
+{"with": "This isn't just an essay, it's a manifesto.", "without": "The piece reads as a manifesto.", "variant": "C3", "hand_checked": true}
+{"with": "She is not merely a researcher, she is a translator of ideas.", "without": "She translates ideas in her research.", "variant": "C3", "hand_checked": true}
+{"with": "It's not just a meal, it's an event.", "without": "The meal becomes an event in itself.", "variant": "C3", "hand_checked": true}
+{"with": "He's not just a coach, he's a mentor.", "without": "He is a mentor in his coaching.", "variant": "C3", "hand_checked": true}
+{"with": "This isn't just a building, it's a landmark.", "without": "The building has become a landmark.", "variant": "C3", "hand_checked": true}
+{"with": "It's not just exercise, it's a discipline.", "without": "The practice is a discipline in itself.", "variant": "C3", "hand_checked": true}
+{"with": "She's not just smart, she's brilliant.", "without": "She is brilliant intellectually.", "variant": "C3", "hand_checked": true}
+{"with": "It isn't just rain, it's a downpour.", "without": "The rain has become a downpour.", "variant": "C3", "hand_checked": true}
+{"with": "This isn't just a workout, it's a transformation.", "without": "The workout has become a transformation.", "variant": "C3", "hand_checked": true}
+{"with": "He's not just talented, he's exceptional.", "without": "He is exceptional in his talent.", "variant": "C3", "hand_checked": true}
+{"with": "It's not merely an algorithm, it's an art form.", "without": "The algorithm functions as an art form.", "variant": "C3", "hand_checked": true}
+{"with": "She is not just a manager, she is a leader.", "without": "She leads as well as manages.", "variant": "C3", "hand_checked": true}
+{"with": "This isn't just a renovation, it's a reimagining.", "without": "The renovation is a reimagining.", "variant": "C3", "hand_checked": true}
+{"with": "It's not just music, it's poetry.", "without": "The music has the quality of poetry.", "variant": "C3", "hand_checked": true}
+{"with": "He's not just patient, he's saintly.", "without": "He is saintly in his patience.", "variant": "C3", "hand_checked": true}
+{"with": "It's not just expensive, it's prohibitive.", "without": "The cost is prohibitive.", "variant": "C3", "hand_checked": true}
+{"with": "This isn't just a delay, it's a derailment.", "without": "The delay has derailed the schedule.", "variant": "C3", "hand_checked": true}
+{"with": "She's not just informed, she's an expert.", "without": "She is an expert on the topic.", "variant": "C3", "hand_checked": true}
+{"with": "It's not just a movie, it's an experience.", "without": "The film offers an experience.", "variant": "C3", "hand_checked": true}
+{"with": "He's not just confident, he's certain.", "without": "He is certain in his conclusions.", "variant": "C3", "hand_checked": true}
+{"with": "This isn't just a question, it's a challenge.", "without": "The question is a challenge.", "variant": "C3", "hand_checked": true}
+{"with": "She's not just kind, she's generous.", "without": "She is generous beyond ordinary kindness.", "variant": "C3", "hand_checked": true}
+{"with": "It's not just food, it's craft.", "without": "The food is craft as much as nourishment.", "variant": "C3", "hand_checked": true}
+{"with": "He's not simply reading, he's analyzing.", "without": "He is analyzing the text as he reads.", "variant": "C3", "hand_checked": true}
+{"with": "This isn't just a moment, it's a turning point.", "without": "The moment is a turning point.", "variant": "C3", "hand_checked": true}
+{"with": "It's not just a book, it's a companion.", "without": "The book becomes a companion.", "variant": "C3", "hand_checked": true}
+{"with": "She isn't just patient, she is forgiving.", "without": "She is forgiving in her patience.", "variant": "C3", "hand_checked": true}
+{"with": "He's not merely intelligent, he is wise.", "without": "He is wise in his intelligence.", "variant": "C3", "hand_checked": true}
+{"with": "This isn't just a hobby, it's a vocation.", "without": "The hobby has become a vocation.", "variant": "C3", "hand_checked": true}
+{"with": "It's not just a chair, it's a piece of art.", "without": "The chair is a piece of art.", "variant": "C3", "hand_checked": true}
+{"with": "She's not just listening, she's understanding.", "without": "She is understanding what is being said.", "variant": "C3", "hand_checked": true}
+{"with": "He's not just speaking, he's testifying.", "without": "He is testifying through his speech.", "variant": "C3", "hand_checked": true}
+{"with": "This isn't just an upgrade, it's a redesign.", "without": "The upgrade is a redesign.", "variant": "C3", "hand_checked": true}
+{"with": "It's not just sad, it's heartbreaking.", "without": "The story is heartbreaking.", "variant": "C3", "hand_checked": true}
+{"with": "She's not merely a teacher, she's a mentor.", "without": "She mentors the students she teaches.", "variant": "C3", "hand_checked": true}
+{"with": "He's not just early, he's the first.", "without": "He is the first to arrive.", "variant": "C3", "hand_checked": true}
+{"with": "This isn't just a draft, it's a final manuscript.", "without": "The document is a final manuscript.", "variant": "C3", "hand_checked": true}
+{"with": "It's not just a building, it's a sanctuary.", "without": "The building serves as a sanctuary.", "variant": "C3", "hand_checked": true}
+{"with": "She's not just an artist, she's an icon.", "without": "She has become an icon in the art world.", "variant": "C3", "hand_checked": true}
+{"with": "He's not just running, he's training.", "without": "He is training for the race.", "variant": "C3", "hand_checked": true}
+{"with": "This isn't just a phase, it's a transformation.", "without": "The change is a transformation.", "variant": "C3", "hand_checked": true}
+{"with": "It's not just dark, it's pitch-black.", "without": "The night is pitch-black.", "variant": "C3", "hand_checked": true}
+{"with": "She isn't just curious, she's relentless.", "without": "She is relentless in her curiosity.", "variant": "C3", "hand_checked": true}
+{"with": "He's not simply working, he's building.", "without": "He is building the project through his work.", "variant": "C3", "hand_checked": true}
+{"with": "This isn't just an investment, it's a commitment.", "without": "The investment is a commitment.", "variant": "C3", "hand_checked": true}
+{"with": "It's not just a chair, it's an heirloom.", "without": "The chair is a family heirloom.", "variant": "C3", "hand_checked": true}
+{"with": "She's not just an architect, she's a visionary.", "without": "She is a visionary architect.", "variant": "C3", "hand_checked": true}
+{"with": "He's not merely tired, he's exhausted.", "without": "He is exhausted in body and mind.", "variant": "C3", "hand_checked": true}
+{"with": "This isn't just a renovation, it's a transformation.", "without": "The renovation has transformed the space.", "variant": "C3", "hand_checked": true}
+{"with": "It's not just rain, it's a deluge.", "without": "The rain has become a deluge.", "variant": "C3", "hand_checked": true}
+{"with": "She's not just careful, she's meticulous.", "without": "She is meticulous in her work.", "variant": "C3", "hand_checked": true}
+{"with": "He's not just speaking, he's preaching.", "without": "He is preaching to the gathered crowd.", "variant": "C3", "hand_checked": true}
+{"with": "This isn't just an idea, it's a revolution.", "without": "The idea has become a revolution.", "variant": "C3", "hand_checked": true}
+{"with": "It's not just a smile, it's a beam.", "without": "Her face beams with happiness.", "variant": "C3", "hand_checked": true}
+{"with": "She's not just persistent, she's tenacious.", "without": "She is tenacious in pursuit.", "variant": "C3", "hand_checked": true}
+{"with": "He isn't just talented, he's prodigious.", "without": "He has prodigious talent.", "variant": "C3", "hand_checked": true}
+{"with": "This isn't just a critique, it's a takedown.", "without": "The critique amounts to a takedown.", "variant": "C3", "hand_checked": true}
+{"with": "It's not just an exhibit, it's a journey.", "without": "The exhibit takes visitors on a journey.", "variant": "C3", "hand_checked": true}
+{"with": "She's not just bright, she's incandescent.", "without": "She is incandescent in mood and presence.", "variant": "C3", "hand_checked": true}
+{"with": "He's not just diligent, he's relentless.", "without": "He is relentless in pursuit of the goal.", "variant": "C3", "hand_checked": true}
+{"with": "No mandate. No approval. Just power.", "without": "Power exercised without mandate or approval.", "variant": "C4", "hand_checked": true}
+{"with": "No noise. No clutter. Just clarity.", "without": "The interface has nothing extraneous in it.", "variant": "C4", "hand_checked": true}
+{"with": "No filters. No edits. Just honesty.", "without": "The footage runs unfiltered and unedited.", "variant": "C4", "hand_checked": true}
+{"with": "No assumptions. No shortcuts. Just method.", "without": "The work proceeds methodically and from first principles.", "variant": "C4", "hand_checked": true}
+{"with": "No questions. No hesitation. Just action.", "without": "They moved into action immediately and without discussion.", "variant": "C4", "hand_checked": true}
+{"with": "No script. No safety net. Just the truth.", "without": "She spoke unscripted and truthfully.", "variant": "C4", "hand_checked": true}
+{"with": "No drama. No fuss. Just results.", "without": "The work produced results quietly.", "variant": "C4", "hand_checked": true}
+{"with": "No frills. No extras. Just craftsmanship.", "without": "The furniture is plain and well-made.", "variant": "C4", "hand_checked": true}
+{"with": "No lectures. No moralizing. Just stories.", "without": "The book tells stories rather than lecturing.", "variant": "C4", "hand_checked": true}
+{"with": "No emails. No meetings. Just deep work.", "without": "The day was spent on deep work uninterrupted.", "variant": "C4", "hand_checked": true}
+{"with": "No menu. No prices. Just trust.", "without": "The restaurant operates entirely on trust between chef and guest.", "variant": "C4", "hand_checked": true}
+{"with": "No camera. No microphone. Just a notebook.", "without": "She conducted the interview with a notebook alone.", "variant": "C4", "hand_checked": true}
+{"with": "No formula. No template. Just instinct.", "without": "The composition followed instinct rather than a formula.", "variant": "C4", "hand_checked": true}
+{"with": "No agenda. No talking points. Just conversation.", "without": "They spoke freely without agenda or talking points.", "variant": "C4", "hand_checked": true}
+{"with": "No applause. No fanfare. Just the work.", "without": "He continued the work quietly.", "variant": "C4", "hand_checked": true}
+{"with": "No deadline. No pressure. Just curiosity.", "without": "She pursued the question out of curiosity alone.", "variant": "C4", "hand_checked": true}
+{"with": "No app. No subscription. Just paper.", "without": "The system uses paper alone.", "variant": "C4", "hand_checked": true}
+{"with": "No proof. No evidence. Just rumour.", "without": "The claim rests on rumour alone.", "variant": "C4", "hand_checked": true}
+{"with": "No plan. No map. Just the trail.", "without": "They walked the trail without plan or map.", "variant": "C4", "hand_checked": true}
+{"with": "No ego. No agenda. Just service.", "without": "She approached the role from service alone.", "variant": "C4", "hand_checked": true}
+{"with": "No notes. No prompts. Just memory.", "without": "He delivered the speech from memory.", "variant": "C4", "hand_checked": true}
+{"with": "No labels. No genres. Just music.", "without": "The album resists genre labels altogether.", "variant": "C4", "hand_checked": true}
+{"with": "No spreadsheet. No metric. Just judgement.", "without": "The decision rested on judgement alone.", "variant": "C4", "hand_checked": true}
+{"with": "No fee. No catch. Just access.", "without": "Access is free and unconditional.", "variant": "C4", "hand_checked": true}
+{"with": "No alarm. No phone. Just sleep.", "without": "He slept undisturbed.", "variant": "C4", "hand_checked": true}

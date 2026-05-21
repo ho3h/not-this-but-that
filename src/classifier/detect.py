@@ -48,19 +48,24 @@ _NEG = (
 )
 
 # A *copula pivot* starts the contrasted clause. Phase 0 only listed "it's"
-# and "they're"; Phase 1 covers the full subject-copula contraction family
-# and the bare "this is / these are" forms.
+# and "they're"; Phase 1 covers the full subject-copula contraction family,
+# the bare "this is / these are" forms, AND bare "<subj> <copula>" pairs
+# (uncontracted: "she is", "he was", "they are"). The uncontracted forms
+# appear in D1's hand-written pairs ("She is not merely a researcher, she is
+# a translator of ideas.") and in any prose with a more formal register.
 _PIVOT = (
     r"(?:"
     r"\b(?:it|that|this|he|she|we|they|these|those|there)'?s\b"
     r"|\b(?:we|they|you)'?re\b"
-    r"|\bthese\s+are\b"
-    r"|\bthis\s+is\b"
+    r"|\b(?:he|she|it|this|that|there)\s+(?:is|was)\b"
+    r"|\b(?:we|they|these|those|you)\s+(?:are|were)\b"
     r")"
 )
 
+# C2 — additive escalation. "Not only X, but Y" is canonical; "Not only X, [also] Y"
+# is the same construction without "but". The pivot alternation accepts both.
 _C2 = re.compile(
-    r"\bnot\s+only\b[^.!?\n]{1,120}?\b(?:but|but\s+also|yet|—|–|--)\b",
+    r"\bnot\s+only\b[^.!?\n]{1,120}?\b(?:but|but\s+also|yet|also|—|–|--)\b",
     re.IGNORECASE,
 )
 
