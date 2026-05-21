@@ -24,16 +24,13 @@
 | random_clamp_up_3 | 0.3312 | 0.3119 | 0.1936 | 201 |
 | random_clamp_up_4 | 0.3323 | 0.3134 | 0.1947 | 201 |
 
-## Bidirectional + control-beating check
+## Bidirectional + control check
 
-- **Candidate ablate drop:** +0.0841
-- **Random ablate drop:** -0.0000 ± 0.0000
-- **Candidate clamp-up rise:** -0.0262
-- **Random clamp-up rise:** -0.0000 ± 0.0017
+- **Ablate:** candidate drop = +0.0841; random-k null mean = −0.0000005 ± 0.0000114 (n=5); candidate exceeded **5/5** random draws.
+- **Clamp-up:** candidate rise = −0.0262; random-k null mean = −0.0000045 ± 0.0017 (n=5); candidate exceeded 0/5 random draws (effect is in the wrong direction).
 
-- **Drop z vs random:** +7397.48σ
-- **Rise z vs random:** -15.53σ
+Reported this way because the random-k null distribution at the truncated pre-pivot position is **near-degenerate**: random single-feature ablation changes P(pivot) by essentially zero, with essentially zero variance. Quoting a σ multiple here would mislead — the candidate is qualitatively separated from a *flat* null, not a tail event in a smooth one. (An earlier draft of this script reported "+7397σ" on the ablate side; that number is an artifact of dividing a real effect by an almost-zero denominator and has been retired.)
 
 ## Kill check
 
-**PARTIAL** — only one direction beats controls. The feature(s) may be necessary-but-not-sufficient (ablate-only passes) or sufficient-but-not-necessary (clamp-only passes). Worth reporting as a partial causal claim; investigate the asymmetry.
+**PARTIAL — necessity yes, sufficiency no.** Ablation separates qualitatively from the random-k null (5/5 draws below the candidate's 25% relative drop, with the null itself degenerate at ≈0). Clamp-up at value=10 moves P(pivot) the *wrong* direction relative to a similarly flat null. A separate run at clamp value=3 (see `phase4_causal_m2_3223_clamp3.md`) produces the same qualitative asymmetry — necessity holds, sufficiency does not. The construction's commit is consistent with a multi-feature coordination in which feat 3223 is one indispensable component, and pegging it high alone pushes the model into an OOD state where pivot probability falls.

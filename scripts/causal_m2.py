@@ -326,12 +326,35 @@ def run(features: list[int], variants: set[str], n_random: int,
               f"± {eff['random_clamp_up_rise_std']:.4f}")
     md.append("")
 
-    drop_z = (eff["candidate_ablate_drop"] - eff["random_ablate_drop_mean"]) / \
-             max(eff["random_ablate_drop_std"], 1e-6)
-    rise_z = (eff["candidate_clamp_up_rise"] - eff["random_clamp_up_rise_mean"]) / \
-             max(eff["random_clamp_up_rise_std"], 1e-6)
-    md.append(f"- **Drop z vs random:** {drop_z:+.2f}σ")
-    md.append(f"- **Rise z vs random:** {rise_z:+.2f}σ")
+    # Honest reporting against degenerate controls.
+    # When the random-k null has near-zero variance (single-feature ablation at
+    # a position where the random feature is usually inactive produces
+    # drop ≈ 0 ± 0), reporting (effect − null_mean) / null_std yields a sigma
+    # multiple in the thousands that is *meaningless* — it isn't a tail event
+    # in a smooth distribution, it's a qualitative separation from a flat one.
+    # So we report it the way it actually is: how many of the random-k draws
+    # the candidate exceeded, with the candidate value alongside the null
+    # mean/std for the reader to judge separation.
+    n_random_draws = len(random_ablate_drops)
+    drops_below_candidate = sum(1 for d in random_ablate_drops
+                                  if d < eff["candidate_ablate_drop"])
+    rises_below_candidate = sum(1 for d in random_clamp_up_rises
+                                  if d < eff["candidate_clamp_up_rise"])
+    md.append(f"- **Ablate:** candidate drop = {eff['candidate_ablate_drop']:+.5f}; "
+              f"random-k null mean = {eff['random_ablate_drop_mean']:+.5f} "
+              f"± {eff['random_ablate_drop_std']:.5f} (n = {n_random_draws}); "
+              f"candidate exceeded {drops_below_candidate}/{n_random_draws} random draws.")
+    md.append(f"- **Clamp-up:** candidate rise = {eff['candidate_clamp_up_rise']:+.5f}; "
+              f"random-k null mean = {eff['random_clamp_up_rise_mean']:+.5f} "
+              f"± {eff['random_clamp_up_rise_std']:.5f} (n = {n_random_draws}); "
+              f"candidate exceeded {rises_below_candidate}/{n_random_draws} random draws.")
+    md.append("")
+    md.append("Reported this way because the random-k null distribution is "
+              "near-degenerate (random single-feature ablation at the pre-pivot "
+              "position changes P(pivot) by essentially zero, with essentially "
+              "zero variance). Quoting a σ multiple here would mislead — the "
+              "candidate is qualitatively separated from a flat null, not a tail "
+              "event in a smooth one.")
     md.append("")
 
     md.append("## Kill check\n")

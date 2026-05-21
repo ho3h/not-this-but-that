@@ -12,11 +12,15 @@ The previous project rediscovered a known phenomenon — SAE "suppression featur
 
 **All seven PRD phases ran end-to-end. The full writeup is at [`reports/writeup.md`](reports/writeup.md).** Short version:
 
-- **Behavioural (Phase 2):** instruct produces C3 ("not just X — Y") at **12× the base rate** on Gemma 2 2B, non-overlapping 95% CIs.
-- **Mechanism (Phase 4):** SAE feature **#3223** — Neuronpedia-labelled *"phrases conveying exceptions or negations"* — is **causally necessary** for the construction's pivot commit. Ablation drops P(pivot) by **25% relative, beating random-k by ~7400σ**. Quality preservation (Phase 5) is clean: held-out perplexity ratio = 1.000× baseline.
-- **Genealogy (Phase 6):** the same feature is **1.81× more causally load-bearing in instruct than in base** on identical contexts.
-- **The PRD's strict bidirectional kill check fails.** Clamping the feature *up* doesn't reproduce the construction; it pushes the model into an OOD state where pivot probability drops. Honest framing: necessity yes, sufficiency no.
-- **The de-slop product claim (Phase 7) does NOT hold.** Ablating the feature during open-ended generation gives 0% drop in construction rate, because the feature is dormant on neutral prompts. The mechanism is conditional on construction-mode context; pre-emptive suppression of a dormant feature is a no-op.
+- **Behavioural (Phase 2):** Gemma 2 2B-it's construction usage on D2 prompts is **94% C3** ("not just X — Y"); the other models (Pythia 70M, GPT-2, Gemma 2 2B base) are C1-dominant. Instruct-tuning didn't *install* the construction — Pythia and GPT-2 base already produce it at higher rates than instruct Gemma. It shifted the *variant*. Sentence-level any_core CIs are non-overlapping between Gemma base (0.4%) and instruct (1.8%).
+- **Mechanism (Phase 4):** SAE feature **#3223** — Neuronpedia-labelled *"phrases conveying exceptions or negations"* — is **causally necessary** for the construction's pivot commit. Ablation at the pre-pivot decision point drops P(pivot) by **25% relative**; all five random-k single-feature controls at the same position produced no measurable change. The candidate is qualitatively separated from a near-degenerate null. Quality preservation (Phase 5) is clean: held-out perplexity ratio = 1.000× baseline.
+- **Genealogy (Phase 6):** the same feature is **1.81× more causally load-bearing in instruct than in base** on identical contexts. Reconstruction-quality prerequisite measurement is currently buggy (priority-1 fix).
+- **The PRD's strict bidirectional kill check fails.** Clamping the feature *up* doesn't reproduce the construction; it pushes the model into an OOD state where pivot probability drops. Honest framing: necessity yes, sufficiency no — the commit is a multi-feature coordination.
+- **The de-slop product claim (Phase 7) does NOT hold, and that is the result, not the apology.** Ablating the feature during open-ended generation gives 0% drop in construction rate, because the feature is dormant on neutral prompts. Feat 3223 gates the *commit* to the pivot once the construction has been opened; whatever gates *entry* into construction-mode lives upstream and is not yet identified.
+
+**Foundation cracks still open** (see HANDOVER §5):
+1. The classifier's 1.00 P/R is a self-consistency check on the same agent's hand-written examples; it has not been blind-validated against real human or real AI prose.
+2. The Phase 6 reconstruction-quality measurement is buggy. The Δ-log-P signal stands independently, but the prerequisite needs fixing.
 
 Nothing here has been peer-read by a credentialed mech-interp researcher. The result pertains to **Gemma 2 2B specifically** — not "AI writing" in general. The honesty contract (§9 below) still applies.
 
@@ -102,7 +106,7 @@ If, after Phase 4, no row holds up better than the prior art — the contributio
 | **1** | Build & validate the construction classifier | precision/recall ≥ 0.85 on C1–C3 | ✅ 1.00 P/R (self-consistency caveat) |
 | **2** | Behavioral baseline (M1) across 4 models | instruct rate ≫ base | ✅ instruct **12× C3**, **4.2× any_core**, non-overlapping CIs |
 | **3** | Feature discovery — differential SAE activation | clean label-interpretable feature | ⚠ found consequence features, not causes; recovered via per-feature pre-pivot attribution → feat **3223** "phrases conveying exceptions or negations" |
-| **4** | **Causal validation** — bidirectional vs random-k | both directions beat controls | ⚠ **PARTIAL** — ablate beats by **7400σ** (necessity); clamp_up fails (sufficiency) |
+| **4** | **Causal validation** — bidirectional vs random-k | both directions beat controls | ⚠ **PARTIAL** — ablate drops P(pivot) 25%, separated qualitatively from a near-degenerate random-k null (5/5 controls produced no change); clamp-up fails (necessity yes, sufficiency no) |
 | **5** | Quality preservation (M3) | fluency / coherence / meaning preserved | ✅ D3 perplexity ratio **1.000×** baseline (scalpel) |
 | **6** | Genealogy — base vs instruct | reconstruction quality acceptable; gap signal | ✅ instruct ablation drop **1.81× larger** than base; VE recon measurement has a bug to fix |
 | **7** | De-slop demo + writeup | ablation during generation reduces M1 | ❌ **0% drop** — feature is conditional on construction-mode contexts; the mechanism stands, the product claim does not |

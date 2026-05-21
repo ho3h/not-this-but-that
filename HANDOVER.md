@@ -11,7 +11,8 @@
 > **One-line summary:** the construction (C3 specifically) is 12× more
 > common in `gemma-2-2b-it` than `gemma-2-2b`. Feature 3223 — Neuronpedia
 > label *"phrases conveying exceptions or negations"* — is causally necessary
-> at the pivot decision (25% drop, 7400σ control-beating, fluency-preserving).
+> at the pivot decision (25% relative drop, qualitatively separated from a
+> degenerate random-k null, fluency-preserving).
 > It is NOT artificially sufficient (clamp-up fails) and NOT effective as a
 > generation-time de-slop tool (the feature is dormant on neutral prompts).
 > The mechanism finding stands; the product claim does not.
@@ -67,9 +68,11 @@ what's still broken.
   exceptions or negations"*. Active in 32/60 truncated D1 prompts.
 - `reports/phase4_causal_m2_single_9841.{md,json}` — original 9841 null.
 - `reports/phase4_causal_m2_supernode5.{md,json}` — 5-feature supernode
-  null; clamp-up went -23.7σ wrong direction.
+  null; clamp-up moved P(pivot) the wrong direction by ~6% absolute, well
+  beyond the random-k null's spread.
 - `reports/phase4_causal_m2_3223_clamp10.{md,json}` — 3223 ablate beats
-  random-k by +7397σ (drop 0.084, 25% relative); clamp@10 fails.
+  all 5 random-k draws (drop 0.084 vs random ≈ 0.000 ± 0.000, 25%
+  relative); clamp@10 fails.
 - `reports/phase4_causal_m2_3223_clamp3.{md,json}` — same ablate result;
   clamp@3 also fails.
 - `reports/phase4_causal_m2.{md,json}` — canonical Phase 4 outcome (copy of
@@ -163,23 +166,61 @@ subdirs to keep the active path clean while preserving reproducibility:
 - `data/D3_fluency.txt` — Phase 5 populates with a few thousand tokens of
   clean human prose for perplexity reference.
 
-## 5. Open threads — what's next, if anything
+## 5. Open threads — what's next, in priority order
 
 The seven PRD phases ran end-to-end and the writeup (`reports/writeup.md`)
-is honest about what landed and what didn't. The open threads from here, in
-priority order if anyone picks this up:
+is honest about what landed and what didn't. Two foundation cracks need
+fixing before anyone outside Theo sees this. Three downstream questions are
+optional and only worth pursuing after the foundation is solid.
 
-### A. Fix Phase 6 reconstruction quality (½ day)
+### A. Validate the classifier against blind, independently-sourced text (1 day, HIGHEST PRIORITY)
+
+The current 1.00 P/R on `data/classifier_validation.jsonl` is a
+self-consistency check: the validation set was hand-written by the same
+agent that tuned the regex. M1 is the spine of every downstream behavioural
+number, and the spine has not been tested on independent data.
+
+**Concrete steps:**
+1. Pull ~30 sentences each of (a) real human prose from independent sources
+   (Wikipedia article ledes, public-domain non-fiction excerpts) and (b)
+   real AI prose from frontier closed models (Claude, GPT-4o samples
+   posted publicly — not Gemma generations, since those are the
+   downstream test set). Label each sentence blind for C1/C2/C3/C4/none.
+2. Run `classifier.detect_construction(text, strict=True)` and compare to
+   the blind label.
+3. Either the 1.00 mostly holds (≥0.85 P/R on the independent set) — then
+   delete the self-consistency caveat from the writeup, or
+4. It doesn't — then either fix the regex/dependency filter, or re-state
+   the M1 numbers with the corrected classifier and re-run Phase 2 +
+   pivot_attribution + Phase 4.
+
+Until this lands, every behavioural number in the writeup is conditional on
+the classifier generalising. **This is the cheapest path to knowing whether
+the foundation holds.**
+
+### B. Fix Phase 6 reconstruction quality (½ day, HIGH PRIORITY)
 
 The variance-explained number in `reports/phase6_genealogy.md` is negative,
 which is a measurement bug, not the SAE having broken. `sae(orig)` in
 `scripts/genealogy_compare.py:reconstruction_quality()` isn't returning the
 reconstruction the way the code expects. Likely the SAE forward returns a
-dict or the input requires normalisation. The genealogy ablation signal
-stands independently; only this one number needs fixing before the section
-can be cited.
+dict or the input requires normalisation. The genealogy *ablation* signal
+(1.81× larger absolute drop in instruct) stands independently — it's a
+direct Δ-log-P measurement, not derived from the SAE — but the
+PRD-prerequisite check is broken. Fixes the most paper-shaped claim
+cheaply and decisively: either validates it or kills it.
 
-### B. Find the *sufficient* feature(s) for the construction (1–2 days)
+### C. One credentialed mech-interp reader on the causal claim (gating)
+
+Before circulating anywhere near ML researchers or the Neo4j AI Ethics
+committee: get one credentialed mech-interp reader to sanity-check the
+necessity-without-sufficiency result. The specific question to put to them:
+*does the asymmetry between ablation passing and clamp-up failing reflect
+a real multi-feature coordination, or could it be an artifact of the
+clamp value being OOD?* The honesty contract from §7 still applies and
+matters more now that there's a real claim to get wrong.
+
+### D. Find the *sufficient* feature(s) for the construction (1–2 days)
 
 Phase 4 said 3223 is necessary but clamping it up at any value tested moves
 P(pivot) the wrong direction. The honest mechanism story is "necessary
@@ -194,7 +235,7 @@ multi-feature coordination." Two ways to test that:
    directions. Combinatorial search is expensive; start from 3223 + the
    next 2-3 features by Phase 4 attribution score.
 
-### C. Test the necessity claim on other models (1–2 days)
+### E. Test the necessity claim on other models (1–2 days)
 
 The previous project's cross-model finding suggests the suppression-side
 features generalise across Gemma 1/2 2B, Pythia 70M, Gemma 2 9B. The
@@ -204,7 +245,7 @@ Pythia 70M (different SAE, will need a new run); if a "phrases conveying
 exceptions or negations" feature exists there with the same causal
 necessity, that's a much stronger finding.
 
-### D. Phase 7 v2 — intervene earlier in generation
+### F. Phase 7 v2 — intervene earlier in generation (the upstream question)
 
 The de-slop demo failed because feat 3223 is dormant on neutral prompts.
 The construction's commit happens upstream — the model first decides to
@@ -215,7 +256,7 @@ ablate whatever features cause the model to emit "not" in the contrast
 context in the first place. That's a different per-feature attribution
 study (target = P("not") given construction-friendly contexts).
 
-### E. The Neo4j angle (PRD §9), if any of the above lands
+### G. The Neo4j angle (PRD §9), if any of the above lands
 
 Storing the validated feature across models in the graph and asking the
 cross-model alignment question via Cypher is the genuinely Hopkinson-shaped
