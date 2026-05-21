@@ -68,7 +68,7 @@ def measure_perplexity(model, sae, text: str, *, feat_indices: list[int] | None,
     tokens = model.to_tokens(text, prepend_bos=True)
     if tokens.shape[1] < 2:
         return float("nan")
-    hook_name = f"{sae.cfg.hook_name}.hook_sae_acts_post"
+    hook_name = f"{sae.cfg.metadata.hook_name}.hook_sae_acts_post"
 
     if feat_indices is None:
         with torch.no_grad():

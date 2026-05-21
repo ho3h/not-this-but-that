@@ -115,7 +115,7 @@ def measure_pivot_prob(model, sae, prefix: str, pivot_ids: list[int],
     last position.
     """
     tokens = model.to_tokens(prefix, prepend_bos=True)
-    hook_name = f"{sae.cfg.hook_name}.hook_sae_acts_post"
+    hook_name = f"{sae.cfg.metadata.hook_name}.hook_sae_acts_post"
 
     if mode == "baseline" or not feat_indices:
         with torch.no_grad():

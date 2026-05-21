@@ -80,9 +80,9 @@ def run(layer: int, top_k: int) -> None:
     if isinstance(sae, tuple):
         sae = sae[0]
     sae.eval()
-    hook_acts_post = f"{sae.cfg.hook_name}.hook_sae_acts_post"
+    hook_acts_post = f"{sae.cfg.metadata.hook_name}.hook_sae_acts_post"
     d_sae = sae.cfg.d_sae
-    log.info(f"SAE: hook={sae.cfg.hook_name} d_sae={d_sae}")
+    log.info(f"SAE: hook={sae.cfg.metadata.hook_name} d_sae={d_sae}")
 
     pairs = load_d1()
     log.info(f"D1 loaded: {len(pairs)} pairs")
