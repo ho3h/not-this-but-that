@@ -1,0 +1,31 @@
+{"_meta": "Tier 0a positive-enriched hand labels. Labelled before classifier was run on this set. Labelling rule: C1/C2/C3/C4 if the construction is structurally present per PRD §1 examples; 'none' if it's a different rhetorical pattern (e.g., plain negation, 'Y, not X' reversed-order contrast, 'X but Y' coordination)."}
+{"id": "E00", "label": "none", "note": "litotes 'not without challenges, but rewards' — coordination not construction"}
+{"id": "E01", "label": "none", "note": "'non-gamers' is a prefix, no construction"}
+{"id": "E02", "label": "C3", "note": "'not just X, [you're] Y' — canonical C3"}
+{"id": "E03", "label": "C3", "note": "'not just X, but Y' — canonical C3 with 'but' pivot"}
+{"id": "E04", "label": "none", "note": "conditional negation"}
+{"id": "E05", "label": "none", "note": "interrogative negation"}
+{"id": "E06", "label": "none", "note": "'stronger, not weaker' is reversed-order Y-not-X, not canonical C1 form"}
+{"id": "E07", "label": "none", "note": "'not the only food that can provide' — no construction pivot"}
+{"id": "E08", "label": "none", "note": "'who has X but who does not Y' — coordination"}
+{"id": "E09", "label": "none", "note": "negated gerund"}
+{"id": "E10", "label": "none", "note": "plain negation"}
+{"id": "E11", "label": "none", "note": "Pythia incoherence, repeated negations no construction"}
+{"id": "E12", "label": "none", "note": "'just not' intensifier, no construction"}
+{"id": "E13", "label": "none", "note": "'but I'm not sure how' — coordination"}
+{"id": "E14", "label": "none", "note": "two unrelated negations"}
+{"id": "E15", "label": "none", "note": "future plain negation"}
+{"id": "E16", "label": "none", "note": "reversed-order, not canonical C1 form"}
+{"id": "E17", "label": "none", "note": "'not too late' — plain negation"}
+{"id": "E18", "label": "none", "note": "plain negation"}
+{"id": "E19", "label": "none", "note": "plain negation"}
+{"id": "E20", "label": "none", "note": "'might not have to worry'"}
+{"id": "E21", "label": "none", "note": "'did not expect'"}
+{"id": "E22", "label": "C1", "note": "Pythia gibberish content but the construction 'not X, but rather Y' is structurally present"}
+{"id": "E23", "label": "none", "note": "'non-residential' prefix"}
+{"id": "E24", "label": "none", "note": "'a non-profit' parenthetical"}
+{"id": "E25", "label": "none", "note": "'why not' interrogative"}
+{"id": "E26", "label": "none", "note": "'not easy' plain"}
+{"id": "E27", "label": "none", "note": "'may not be suitable'"}
+{"id": "E28", "label": "none", "note": "quoted negations"}
+{"id": "E29", "label": "none", "note": "'not part of'"}
