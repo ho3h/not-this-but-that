@@ -1,0 +1,373 @@
+{
+  "campaign": "entry_behavioural",
+  "n_hypotheses": 19,
+  "n_sentences": 726,
+  "n_positive": 11,
+  "discovery_raw_p_filter": 0.2,
+  "bh_q": 0.1,
+  "results": [
+    {
+      "test": "Fisher exact (greater)",
+      "table": [
+        [
+          11,
+          43
+        ],
+        [
+          0,
+          672
+        ]
+      ],
+      "rate_when_pred_true": 0.2037037037037037,
+      "rate_when_pred_false": 0.0,
+      "odds_ratio": Infinity,
+      "p_raw": 1.3961413460094527e-13,
+      "n_pred_true": 54,
+      "id": "H09",
+      "description": "Sentence contains 'just' / 'merely' / 'simply' / 'only'",
+      "kind": "binary"
+    },
+    {
+      "test": "Fisher exact (greater)",
+      "table": [
+        [
+          11,
+          250
+        ],
+        [
+          0,
+          465
+        ]
+      ],
+      "rate_when_pred_true": 0.0421455938697318,
+      "rate_when_pred_false": 0.0,
+      "odds_ratio": Infinity,
+      "p_raw": 1.1298821102966807e-05,
+      "n_pred_true": 261,
+      "id": "H19",
+      "description": "Sentence contains a quotation mark",
+      "kind": "binary"
+    },
+    {
+      "test": "Fisher exact (greater)",
+      "table": [
+        [
+          5,
+          39
+        ],
+        [
+          6,
+          676
+        ]
+      ],
+      "rate_when_pred_true": 0.11363636363636363,
+      "rate_when_pred_false": 0.008797653958944282,
+      "odds_ratio": 14.444444444444445,
+      "p_raw": 0.00022952995581748632,
+      "n_pred_true": 44,
+      "id": "H07",
+      "description": "Sentence starts with a subject-copula contraction (It's / That's / \u2026)",
+      "kind": "binary"
+    },
+    {
+      "test": "Fisher exact (greater)",
+      "table": [
+        [
+          7,
+          133
+        ],
+        [
+          4,
+          582
+        ]
+      ],
+      "rate_when_pred_true": 0.05,
+      "rate_when_pred_false": 0.006825938566552901,
+      "odds_ratio": 7.657894736842105,
+      "p_raw": 0.0014306276328830043,
+      "n_pred_true": 140,
+      "id": "H08",
+      "description": "Sentence starts with a capital pronoun (It / This / They / We)",
+      "kind": "binary"
+    },
+    {
+      "test": "Mann-Whitney U (two-sided)",
+      "U": 5801.5,
+      "median_pos": 6.0,
+      "median_neg": 5.0,
+      "n_pos": 11,
+      "n_neg": 715,
+      "p_raw": 0.005700343482364524,
+      "id": "H16",
+      "description": "Generation length in sentences (Mann-Whitney U)",
+      "kind": "continuous"
+    },
+    {
+      "test": "Fisher exact (greater)",
+      "table": [
+        [
+          9,
+          378
+        ],
+        [
+          2,
+          337
+        ]
+      ],
+      "rate_when_pred_true": 0.023255813953488372,
+      "rate_when_pred_false": 0.0058997050147492625,
+      "odds_ratio": 4.011904761904762,
+      "p_raw": 0.050880736677101975,
+      "n_pred_true": 387,
+      "id": "H03",
+      "description": "Sentence is in the MIDDLE of its generation",
+      "kind": "binary"
+    },
+    {
+      "test": "Mann-Whitney U (two-sided)",
+      "U": 2776.0,
+      "median_pos": 0.25,
+      "median_neg": 0.5,
+      "n_pos": 11,
+      "n_neg": 715,
+      "p_raw": 0.08929691890779942,
+      "id": "H17",
+      "description": "Relative sentence position 0-1 (Mann-Whitney U)",
+      "kind": "continuous"
+    },
+    {
+      "test": "Fisher exact (greater)",
+      "table": [
+        [
+          4,
+          154
+        ],
+        [
+          7,
+          561
+        ]
+      ],
+      "rate_when_pred_true": 0.02531645569620253,
+      "rate_when_pred_false": 0.01232394366197183,
+      "odds_ratio": 2.0816326530612246,
+      "p_raw": 0.2008337065407907,
+      "n_pred_true": 158,
+      "id": "H12",
+      "description": "Prompt starts with 'Discuss'",
+      "kind": "binary"
+    },
+    {
+      "test": "Mann-Whitney U (two-sided)",
+      "U": 4587.5,
+      "median_pos": 10.0,
+      "median_neg": 9.0,
+      "n_pos": 11,
+      "n_neg": 715,
+      "p_raw": 0.32033114402189167,
+      "id": "H15",
+      "description": "Prompt length in tokens (Mann-Whitney U)",
+      "kind": "continuous"
+    },
+    {
+      "test": "Fisher exact (greater)",
+      "table": [
+        [
+          3,
+          157
+        ],
+        [
+          8,
+          558
+        ]
+      ],
+      "rate_when_pred_true": 0.01875,
+      "rate_when_pred_false": 0.014134275618374558,
+      "odds_ratio": 1.3328025477707006,
+      "p_raw": 0.4504987724556637,
+      "n_pred_true": 160,
+      "id": "H11",
+      "description": "Prompt starts with 'Describe'",
+      "kind": "binary"
+    },
+    {
+      "test": "Fisher exact (greater)",
+      "table": [
+        [
+          2,
+          139
+        ],
+        [
+          9,
+          576
+        ]
+      ],
+      "rate_when_pred_true": 0.014184397163120567,
+      "rate_when_pred_false": 0.015384615384615385,
+      "odds_ratio": 0.920863309352518,
+      "p_raw": 0.6624871009038386,
+      "n_pred_true": 141,
+      "id": "H14",
+      "description": "Prompt starts with 'Reflect'",
+      "kind": "binary"
+    },
+    {
+      "test": "Fisher exact (greater)",
+      "table": [
+        [
+          1,
+          77
+        ],
+        [
+          10,
+          638
+        ]
+      ],
+      "rate_when_pred_true": 0.01282051282051282,
+      "rate_when_pred_false": 0.015432098765432098,
+      "odds_ratio": 0.8285714285714286,
+      "p_raw": 0.7161943966045712,
+      "n_pred_true": 78,
+      "id": "H13",
+      "description": "Prompt starts with 'Walk'",
+      "kind": "binary"
+    },
+    {
+      "test": "Mann-Whitney U (two-sided)",
+      "U": 4127.5,
+      "median_pos": 20.0,
+      "median_neg": 20.0,
+      "n_pos": 11,
+      "n_neg": 715,
+      "p_raw": 0.7780295530380646,
+      "id": "H04",
+      "description": "Sentence length in tokens (Mann-Whitney U)",
+      "kind": "continuous"
+    },
+    {
+      "test": "Fisher exact (greater)",
+      "table": [
+        [
+          1,
+          174
+        ],
+        [
+          10,
+          541
+        ]
+      ],
+      "rate_when_pred_true": 0.005714285714285714,
+      "rate_when_pred_false": 0.018148820326678767,
+      "odds_ratio": 0.31091954022988505,
+      "p_raw": 0.9530325500286004,
+      "n_pred_true": 175,
+      "id": "H01",
+      "description": "Sentence is the FIRST in its generation",
+      "kind": "binary"
+    },
+    {
+      "test": "Fisher exact (greater)",
+      "table": [
+        [
+          1,
+          174
+        ],
+        [
+          10,
+          541
+        ]
+      ],
+      "rate_when_pred_true": 0.005714285714285714,
+      "rate_when_pred_false": 0.018148820326678767,
+      "odds_ratio": 0.31091954022988505,
+      "p_raw": 0.9530325500286004,
+      "n_pred_true": 175,
+      "id": "H02",
+      "description": "Sentence is the LAST in its generation",
+      "kind": "binary"
+    },
+    {
+      "test": "Fisher exact (greater)",
+      "table": [
+        [
+          2,
+          471
+        ],
+        [
+          9,
+          244
+        ]
+      ],
+      "rate_when_pred_true": 0.004228329809725159,
+      "rate_when_pred_false": 0.03557312252964427,
+      "odds_ratio": 0.11512149091766927,
+      "p_raw": 0.9998214296022334,
+      "n_pred_true": 473,
+      "id": "H06",
+      "description": "Sentence contains bold-emphasis markup (**)",
+      "kind": "binary"
+    },
+    {
+      "test": "Fisher exact (greater)",
+      "table": [
+        [
+          0,
+          318
+        ],
+        [
+          11,
+          397
+        ]
+      ],
+      "rate_when_pred_true": 0.0,
+      "rate_when_pred_false": 0.02696078431372549,
+      "odds_ratio": 0.0,
+      "p_raw": 1.0,
+      "n_pred_true": 318,
+      "id": "H05",
+      "description": "Sentence appears inside a bulleted/structured list",
+      "kind": "binary"
+    },
+    {
+      "test": "Fisher exact (greater)",
+      "table": [
+        [
+          0,
+          101
+        ],
+        [
+          11,
+          614
+        ]
+      ],
+      "rate_when_pred_true": 0.0,
+      "rate_when_pred_false": 0.0176,
+      "odds_ratio": 0.0,
+      "p_raw": 1.0,
+      "n_pred_true": 101,
+      "id": "H10",
+      "description": "Prompt starts with 'Explain'",
+      "kind": "binary"
+    },
+    {
+      "test": "Fisher exact (greater)",
+      "table": [
+        [
+          0,
+          7
+        ],
+        [
+          11,
+          708
+        ]
+      ],
+      "rate_when_pred_true": 0.0,
+      "rate_when_pred_false": 0.015299026425591099,
+      "odds_ratio": 0.0,
+      "p_raw": 1.0,
+      "n_pred_true": 7,
+      "id": "H18",
+      "description": "Sentence contains an em-dash / en-dash",
+      "kind": "binary"
+    }
+  ]
+}
