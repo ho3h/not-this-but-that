@@ -1,29 +1,63 @@
 # Not This, But That — handover
 
-*Last updated 2026-05-20, end of Phase 0.*
+*Last updated 2026-05-20, end of Phase 1.*
 
-> **You're inheriting a pivot, not a continuation.** The previous project
-> (`grammar-layer`) rediscovered SAE suppression features and over-claimed;
-> the PRD `not-this-but-that-PRD-refactor.md` (Theo's, downloads dir, not in
-> repo) repointed the same engine at a better question: the mechanism of the
-> "not X, but Y" construction in one model. Phase 0 is done. Read the README
-> first — it states the scope, prior work, and kill checks. Then this file.
+> **Phase 0 (scaffold) and Phase 1 (construction classifier) are done.** The
+> repo is fresh — it's not the `graphgeometry` branch; it's its own GitHub
+> repo at `ho3h/not-this-but-that` (private). The previous project lives at
+> `ho3h/grammar-layer` archived at `19f2426`. Read the README first — it
+> states scope, prior work (§2), the differentiation against Kuznetsov
+> 2503.03601 (§3), the anti-scope (§4), the metrics (§5), and the build
+> phases with kill checks (§6). Then this file.
 
 ---
 
-## 1. State as of Phase 0
+## 1. State as of Phase 1
 
-- **Branch:** `not-this-but-that` (branched from `main` at commit
-  `99cae1e` — the previous project's final state).
-- **Smoke test:** `tests/test_refactor_smoke.py` — 4 tests pass. Imports the
-  new modules, hits all four canonical C1–C4 examples, misses a plain
-  paraphrase, aggregates rates correctly. Phase 0's done-criterion.
-- **README:** rewritten to lead with prior work (§2) and the differentiation
-  table (§3), state the anti-scope (§4), and list build phases with their
-  kill checks (§6). The honesty contract from the prior project survives at §9.
-- **Pyproject:** renamed to `not-this-but-that`, version 0.2.0. The five new
-  packages (`classifier/`, `steering/`, `quality/`, `genealogy/`, `deslop/`)
-  are registered next to `neograph/` under `src/`.
+**Phase 0 — scaffold.**
+- Module skeleton at `src/{classifier,steering,quality,genealogy,deslop}` +
+  `src/neograph/` carried over. All Phase 0 stubs that haven't been touched
+  by Phase 1 still raise `NotImplementedError` with phase pointers.
+- README, HANDOVER, anti-scope, kill checks all in place. The `legacy/`
+  carry-over from `graphgeometry` did *not* come into this repo — fresh git
+  history from `c22e56e initial: not-this-but-that, Phase 0 scaffold`.
+
+**Phase 1 — classifier (this section).**
+- **Kill check passed.** `tests/test_classifier_phase1.py::test_regex_only_kill_check`
+  is the automated gate: precision/recall **≥ 0.85** on C1, C2, C3 against the
+  100-sentence hand-labelled validation set. Current: **1.00 P/R across all
+  four variants**, both regex-only and strict (regex + spaCy dep filter).
+- **Validation set:** `data/classifier_validation.jsonl` — 10 C1 + 10 C2 +
+  10 C3 + 5 C4 + 65 negatives (15 contracted-negation paraphrases of
+  positives, 10 "paraphrase_of_C4", 15 neutrals-with-`not` to test FP risk,
+  15 clean neutrals). The composition matches HANDOVER's Phase 1 spec.
+- **The 1.00 P/R caveat:** the validation set was hand-written by the same
+  agent that tuned the regex. This is a self-consistency check, not a
+  generalization test. The real measurement is Phase 2 M1 — when the
+  classifier sees actual model generations. Don't quote 1.00 P/R as a
+  finding; quote it as "the kill check is met and the classifier is ready
+  for Phase 2."
+- **`classifier/detect.py`:** Phase 1 broadened the regex to accept
+  contracted-negation openers (`isn't / aren't / wasn't / weren't`), the
+  full subject-copula contraction family in pivot position (`he's / she's
+  / we're / they're / this is / that's`), and fixed the C1/C3 overlap
+  predicate (half-open interval intersection — Phase 0's bug let "It's not
+  just an update — it's a rethink." count for both C1 and C3, inflating
+  C1's FP).
+- **`classifier/dependency.py`:** Phase 0 was a stub returning `True`.
+  Phase 1 added a spaCy `en_core_web_sm` parse: locate the negation token
+  inside the regex hit's span, walk up the head chain, reject only if no
+  ancestor within 4 hops is a `VERB`/`AUX`. The head-chain walk is
+  necessary because C2's "not only" parses with "not" as `advmod` of
+  "only" (not directly of the verb). Strict mode adds ~8 ms/sentence; the
+  filter doesn't change any verdict on the validation set (0 strict-vs-regex
+  diffs) — it exists for Phase 2 real-generation edge cases.
+- **`scripts/eval_classifier.py`:** the gate. Run via
+  `uv run python scripts/eval_classifier.py`. Writes
+  `reports/phase1_classifier_eval.{md,json}` with both modes side-by-side.
+
+**Test count:** 19/19 pass (`tests/test_classifier_phase1.py` adds 8 to the
+Phase 0 baseline of 11).
 
 ## 2. Module skeleton (PRD §6)
 
@@ -79,47 +113,73 @@ subdirs to keep the active path clean while preserving reproducibility:
 - `data/D3_fluency.txt` — Phase 5 populates with a few thousand tokens of
   clean human prose for perplexity reference.
 
-## 5. Priority queue — start of Phase 1
+## 5. Priority queue — start of Phase 2
 
-The next agent's first task is Phase 1: build the construction classifier
-properly and validate it.
+Phase 1 cleared the kill check. The next agent's first task is Phase 2:
+behavioral baseline — measure M1 (spontaneous construction rate) across the
+model set on the D2 neutral prompts.
 
-### P1 — Phase 1 classifier (1–2 days)
+### P2 — Behavioral baseline (PRD §8 Phase 2, 1–2 days)
 
-The Phase 0 regex detector (`src/classifier/detect.py`) is the **starting
-point**, not the finished work. To clear the kill check:
+**The motivating expectation:** instruct construction rate ≫ base. If this
+gap doesn't exist on the four-model set, the Phase 6 genealogy story is
+already in trouble — flag it then, continue, because the within-model
+mechanism (Phases 3–5) can still hold.
 
-1. **Build a hand-labelled validation set.** 100 sentences, mixed sources:
-   ~30 generated by Claude in the construction (positives, C1/C2/C3 split),
-   ~30 generated without (negatives, paraphrases), ~40 random
-   non-construction sentences from neutral sources (Wikipedia, news leads).
-   Store as `data/classifier_validation.jsonl` with `{text, variant, label}`.
+**Concrete steps:**
 
-2. **Implement `classifier/dependency.py` properly.** spaCy parse, check the
-   matched `not` is a child of the verb that heads the post-pivot clause
-   (i.e. negation actually scopes over the contrast). This is what kills
-   regex false positives like "this is not, by any reasonable measure, a
-   solved problem" — sentence has "not" + a comma + a copular clause but no
-   construction.
+1. **Populate `data/D2_neutral_prompts.json`.** ≥100 open prompts that
+   invite prose without begging the construction. Examples in PRD §7: *"Write
+   two sentences about why a city invested in public transit."* Avoid
+   prompts containing `not`, `but`, `however`, or any of the C1–C4 hinges in
+   the prompt itself — those bias generation.
 
-3. **Run precision/recall on the validation set.** Kill check: P/R ≥ 0.85 on
-   C1–C3. Below that, fix the classifier before any M1 measurement is
-   trusted. Everything downstream rests on this.
+2. **Generate continuations.** For each (model, prompt, seed):
+   - `gemma-2-2b` (base), `gemma-2-2b-it` (instruct), `gpt2`, `EleutherAI/pythia-70m-deduped`.
+   - ≥5 seeds × ≥100 prompts × 4 models = ≥2000 generations. ~150 tokens each.
+   - Reuse `scripts/01_load_model_and_sae.py` for model loading; the SAE
+     isn't needed for M1 (the classifier is model-agnostic). Write a new
+     `scripts/generate_d2.py` that just does HF model + tokenizer +
+     `model.generate()` with deterministic seeds.
 
-4. **Write a brief report at `reports/phase1_classifier_eval.md`** with the
-   confusion matrix and any systematic FP/FN patterns to flag.
+3. **Score with the classifier.** Use `classifier.rate(texts, strict=True)`.
+   Strict mode is right here — Phase 2 is where the dep check earns its
+   keep on real generations. Report per-model: M1 = construction rate per
+   variant + any_core, plus bootstrap CIs.
 
-### What NOT to do in Phase 1
+4. **Write `reports/phase2_baseline.md`.** Per-model M1 table, with
+   bootstrap CIs. State the base-vs-instruct gap explicitly; flag if it's
+   smaller than expected.
 
-- Don't generalize to "rule of three" or hedge-word detection. PRD §1 is
-  explicit: C1–C3 only, primary causal claim. C4 is included in the corpus
-  but kept out of the primary claim.
-- Don't replace the regex with a pure-ML classifier. The lexical hinge is
-  load-bearing for the M2 next-token-probability story; if the classifier and
-  the probe don't agree on where the construction commits, M2 means nothing.
-- Don't skip the hand-labelling. "Generate validation set with a larger LLM
-  and trust it" is exactly the move that produces a 0.92 precision/recall
-  on synthetic data and 0.6 on real generations.
+**Exit criterion (informational, not a kill check):** instruct ≫ base by a
+meaningful margin (rule of thumb: ≥2× rate, non-overlapping CIs). If not,
+proceed but note the genealogy risk; the within-model mechanism work
+(Phases 3–5) is still worth doing.
+
+### Important Phase 2 gotchas
+
+- **Sampling strategy matters.** `temperature=0.0` will collapse to mode and
+  give a misleading M1. Use `temperature=0.7-1.0` with top-p sampling — the
+  construction rate is a property of the sampling distribution, not the
+  argmax. Record exact `temperature`, `top_p`, `top_k` in the report.
+- **`gemma-2-2b-it` chat template.** Apply it (via `tokenizer.apply_chat_template`)
+  before generation. Without it the instruct model behaves erratically; with
+  it the construction rate jumps. This *is* the genealogy effect; record both.
+- **Bootstrap with sentence-level resampling, not generation-level.** A
+  300-token generation might contain 2–3 sentences; if M1 is computed
+  per-sentence, the resampling unit is the sentence. Document the choice.
+
+### What NOT to do in Phase 2
+
+- Don't start feature discovery (Phase 3) before Phase 2 lands.
+  Phase 3's D1 differential-activation hunt is expensive; ground the
+  motivation first.
+- Don't try Gemma 2 9B or Mistral 7B yet. Phase 2 is about establishing M1
+  across the small/medium open models — bigger models come in later if the
+  scale curve is interesting.
+- Don't change the classifier without rerunning the Phase 1 kill check.
+  Any regex tweak invalidates the precision/recall guarantee. Re-run
+  `pytest tests/test_classifier_phase1.py` after any change.
 
 ## 6. Known landmines (carry-overs)
 

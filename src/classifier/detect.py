@@ -32,26 +32,57 @@ class Hit:
 # where the next-token probability M2 lives, so we want the classifier and the
 # probe to agree on where the construction commits.
 
+# Lexical building blocks (named so the patterns read closer to English).
+#
+# A *negation opener* commits to the construction: "X is not", "X isn't",
+# "it's not", "we're not". The Phase 0 regex only handled subject-copula
+# contractions ("it's not"); Phase 1 also accepts copula-with-n't contractions
+# ("X isn't", "we aren't").
+_NEG = (
+    r"(?:"
+    r"\b(?:is|are|was|were|am)\s+not\b"
+    r"|\b(?:is|are|was|were)n'?t\b"
+    r"|\b(?:it|that|this|he|she|we|they|these|those|there)'?s\s+not\b"
+    r"|\b(?:we|they|you)'?re\s+not\b"
+    r")"
+)
+
+# A *copula pivot* starts the contrasted clause. Phase 0 only listed "it's"
+# and "they're"; Phase 1 covers the full subject-copula contraction family
+# and the bare "this is / these are" forms.
+_PIVOT = (
+    r"(?:"
+    r"\b(?:it|that|this|he|she|we|they|these|those|there)'?s\b"
+    r"|\b(?:we|they|you)'?re\b"
+    r"|\bthese\s+are\b"
+    r"|\bthis\s+is\b"
+    r")"
+)
+
 _C2 = re.compile(
     r"\bnot\s+only\b[^.!?\n]{1,120}?\b(?:but|but\s+also|yet|—|–|--)\b",
     re.IGNORECASE,
 )
 
+# C3 — minimize-then-elevate. Accept both "not just" and "isn't just".
 _C3 = re.compile(
-    r"\bnot\s+(?:just|merely|simply)\b[^.!?\n]{1,120}?(?:[—–]|--|\bbut\b|\bit'?s\b|\bthey'?re\b)",
+    rf"\b(?:not|(?:is|are|was|were)n'?t)\s+(?:just|merely|simply)\b"
+    rf"[^.!?\n]{{1,120}}?"
+    rf"(?:[—–]|--|\bbut\b|{_PIVOT})",
     re.IGNORECASE,
 )
 
-# C1: bare "not ... it's/they're/this is" without the "only/just/merely" qualifier.
-# The qualifier-bearing variants are caught by C2/C3 first; this is the residual.
+# C1 — contrastive correction. Copula-bearing negation opener, then a
+# comma/semicolon/em-dash pivot, then a copula clause.
 _C1 = re.compile(
-    r"\b(?:it'?s|that'?s|this\s+is|they'?re|these\s+are|we'?re)\s+not\b[^.!?\n]{1,120}?[,;—–]\s*(?:it'?s|that'?s|they'?re|this\s+is)\b",
+    rf"{_NEG}[^.!?\n]{{1,120}}?[,;—–]\s*{_PIVOT}",
     re.IGNORECASE,
 )
 
-# Also accept the inverted order: "not X, but Y" without a copula opener.
+# C1 alternative — "not X, but Y" / "not X but Y" (no copula opener).
+# Comma optional; the "but" pivot is required.
 _C1_ALT = re.compile(
-    r"\bnot\s+(?:a|an|the|just|only|merely)?\s*[^.!?\n,]{1,80},\s*but\b",
+    r"\bnot\s+(?:a|an|the|just|only|merely)?\s*[^.!?\n,]{1,80},?\s*but\b",
     re.IGNORECASE,
 )
 
@@ -62,11 +93,17 @@ _C4 = re.compile(
 )
 
 
-def detect_construction(text: str) -> list[Hit]:
+def detect_construction(text: str, *, strict: bool = False) -> list[Hit]:
     """Return all C1-C4 hits in `text`. Order: by start offset.
 
     A sentence with multiple hinges yields multiple hits; M1 aggregation
     (`rate`) counts presence per variant per generation, not raw hit count.
+
+    When `strict=True`, every regex hit is run through `dependency.is_genuine`
+    (spaCy parse). The dependency check only rejects — never adds — so strict
+    mode trades a small precision gain for ~5ms/sentence parse cost. Phase 2
+    M1 runs default to strict; the Phase 1 kill check uses regex-only because
+    that's the gate the PRD specifies and strict mode is additive on top.
     """
     hits: list[Hit] = []
     for variant, pat in ((Variant.C2, _C2), (Variant.C3, _C3), (Variant.C4, _C4)):
@@ -77,13 +114,24 @@ def detect_construction(text: str) -> list[Hit]:
     covered = [h.span for h in hits]
     for pat in (_C1, _C1_ALT):
         for m in pat.finditer(text):
-            if not any(s <= m.start() < e or s < m.end() <= e for s, e in covered):
-                hits.append(Hit(variant=Variant.C1, span=m.span(), hinge=m.group(0)))
+            ms, me = m.span()
+            # half-open interval intersection: overlap iff max(starts) < min(ends).
+            # The Phase 0 check only caught partial overlap from one side and missed
+            # the case where C1's span fully contains C3's (e.g. "It's not just an
+            # update — it's a rethink." — C1 (0..end) ⊇ C3 (5..end)).
+            if not any(max(ms, s) < min(me, e) for s, e in covered):
+                hits.append(Hit(variant=Variant.C1, span=(ms, me), hinge=m.group(0)))
     hits.sort(key=lambda h: h.span[0])
+
+    if strict:
+        from classifier.dependency import is_genuine
+
+        hits = [h for h in hits if is_genuine(text, h)]
+
     return hits
 
 
-def rate(texts: Iterable[str]) -> dict[str, float]:
+def rate(texts: Iterable[str], *, strict: bool = False) -> dict[str, float]:
     """Fraction of `texts` that contain at least one hit per variant.
 
     Returns {"C1": ..., "C2": ..., "C3": ..., "C4": ..., "any": ..., "any_core": ...}
@@ -97,7 +145,7 @@ def rate(texts: Iterable[str]) -> dict[str, float]:
     any_hit = 0
     any_core_hit = 0
     for t in texts:
-        hits = detect_construction(t)
+        hits = detect_construction(t, strict=strict)
         present = {h.variant for h in hits}
         for v in present:
             per_variant[v] += 1
