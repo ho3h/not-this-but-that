@@ -1,0 +1,2 @@
+PRD §7 — D3 held-out fluency text. A few thousand tokens of clean human prose,
+never seen during intervention design. Phase 5 perplexity reference. Placeholder.
