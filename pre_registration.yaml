@@ -1,0 +1,277 @@
+# Adversarial pre-registration for the feature-3223 thesis.
+#
+# PRIME DIRECTIVE (read this before reading thresholds):
+#
+#   The thesis under attack: feature 3223 is a causally necessary,
+#   construction-specific, instruct-amplified component of the
+#   "not X, but Y" pivot commit in Gemma 2 2B.
+#
+#   You are presumed to be wrong. Your job is to kill the thesis. The
+#   thresholds below were chosen BEFORE running any tier. If a tier
+#   produces a result that fails its kill threshold, the agent reports
+#   the death in the words of the kill check, stops, and surfaces it.
+#   The agent does NOT:
+#     - reframe a failed test as a discovery
+#     - invent a new metric mid-tier to rescue a dying claim
+#     - auto-advance past a kill point
+#     - argue with a kill check after the fact
+#     - change thresholds in this file after a tier starts (any such
+#       change must be committed BEFORE the tier runs, and the git
+#       log will show it)
+#
+# Tier order is fixed; cheapest-killer first.
+
+tier_0_calibration:
+  description: |
+    Nothing above means anything until the instruments are sound.
+    Three deliverables, all gated.
+  kill_if_any_fails: true
+
+  classifier_blind_validation:
+    description: |
+      Re-validate the classifier on blind, independently-sourced human
+      and AI prose. The 1.00 P/R on the v1 hand-written set is a
+      self-consistency check.
+    blind_set_source:
+      human: D3 paragraphs split into sentences (n ≥ 25). Never seen by
+              the classifier (D3 was used only by Phase 5 perplexity).
+      ai:    fresh Gemma-2-2b-it generations on NEW prompts (n ≥ 25)
+             not in D2.
+    label_protocol:
+      - hand-label each sentence for C1/C2/C3/C4/none BEFORE running
+        the classifier; commit labels in a separate file (no
+        retroactive editing visible in git).
+      - then run classifier.detect_construction(strict=True) and score.
+    kill_threshold:
+      precision_on_c1_c2_c3_min: 0.70
+      recall_on_c1_c2_c3_min:    0.70
+      rationale: |
+        Below 0.70 on C1-C3 means M1 (the spine of every behavioural
+        number) cannot be trusted; the whole stack is suspect.
+
+  ve_reconstruction_fix:
+    description: |
+      The negative VE in Phase 6 is a measurement bug, not a real
+      result. Fix the SAE reconstruction call in
+      scripts/genealogy_compare.py:reconstruction_quality() and
+      report VE on base + instruct.
+    kill_threshold:
+      base_var_explained_min:    0.60
+      instruct_var_explained_min: 0.50
+      rationale: |
+        Gemma Scope's training target is ~0.7-0.8 on the base model.
+        Below 0.6 on base means the fix isn't actually working OR
+        the SAE is genuinely degraded at this layer/SAE-id; either
+        way the recon prerequisite isn't met. Below 0.5 on instruct
+        means the genealogy claim cannot be cited (drop it).
+
+  matched_activation_control:
+    description: |
+      New control mechanism for Tier 2. For each (truncated prompt,
+      candidate feature), pick N features active at the same
+      position with activation magnitudes closest to the candidate's;
+      ablate each as control. Replaces random-k everywhere downstream.
+    deliverable: scripts/matched_activation_null.py
+    kill_threshold:
+      script_runs: true
+      n_controls_per_prompt: 5
+      magnitude_match_max_log_ratio: 0.5  # log10(candidate / control) ≤ 0.5
+
+tier_1_specificity_attack:
+  description: |
+    The cheapest killer. Build adversarial negation sets that are NOT
+    the construction; ablate 3223 at their decision points.
+  adversarial_sets:
+    plain_negation:
+      description: simple negations of any clause
+      examples:
+        - "It is not raining today."
+        - "She did not arrive on time."
+        - "The committee did not approve the proposal."
+      n_target: ≥30
+    literal_contrastive:
+      description: |
+        Literal contrast without the construction's elevation —
+        "X, not Y" where Y is a literal alternative, no rhetorical
+        amplification.
+      examples:
+        - "The wall was painted blue, not red."
+        - "Take the second left, not the first."
+        - "Order the salad, not the soup."
+      n_target: ≥30
+    negated_facts:
+      description: simple factual negations
+      examples:
+        - "Paris is not the capital of Germany."
+        - "Whales are not fish."
+        - "The earth is not flat."
+      n_target: ≥30
+  intervention: ablate feature 3223 at the same kind of decision position used in Phase 4.
+  kill_threshold:
+    construction_specificity_ratio: 0.5
+    rationale: |
+      Define ablation drop on each set as the mean ΔP(target token)
+      at the analogous decision position. The construction-specificity
+      ratio is:
+          mean_drop_on_construction / mean_drop_on_adversarial_set
+      Pass: ratio ≥ 2.0  (construction is at least 2× more affected
+                          than plain negation).
+      Kill: ratio < 2.0  (3223 is "the negation feature," the
+                          construction-specific claim is dead).
+      The 0.5 here is the reciprocal: if adversarial_drop is more than
+      0.5 × construction_drop, the claim dies.
+
+tier_2_fair_causal_attack:
+  description: |
+    Retire random-k. New null: features active at the same position
+    with matched activation magnitude. Also ablate 3223's k decoder-
+    space neighbors.
+  matched_null:
+    n_controls: 20
+    rationale: |
+      Random-k gave a degenerate null because the random features were
+      usually inactive. Matched-activation features ARE active, so
+      ablating them tests "any active feature at this magnitude" — a
+      genuine competitor distribution.
+  decoder_neighbors:
+    k: 5
+    distance: cosine on SAE decoder vectors
+  kill_threshold:
+    candidate_vs_max_matched: 2.0
+    rationale: |
+      Pass: candidate ablation drop ≥ 2.0× the max drop across
+            matched controls. Distinctive feature.
+      Marginal: 1.5–2.0×. Report as supernode candidate.
+      Kill: < 1.5×. Demote claim from "this feature" to "a negation
+            supernode that includes 3223 and N others."
+
+tier_3_sufficiency_retrial:
+  description: |
+    Sufficiency's fairest shot via interchange patching (Marks/Anthropic
+    method). Transplant 3223's REAL activation pattern from a genuine
+    construction context onto a neutral context. Clamp to the empirical
+    activation distribution rather than a flat constant.
+  ONE_FAIR_RETRIAL_ONLY:
+    description: |
+      Tier 3 is the single retrial of the sufficiency direction.
+      If interchange patching also fails, sufficiency is genuinely
+      absent and the writeup accepts necessity-only. No third method.
+      No fourth. No "but what if we tried…"
+    binding: true
+  protocol:
+    - 1. From D1 with-sentences, extract feature 3223's activation
+         value at the pivot-decision token for ≥30 instances. Build
+         the empirical distribution of "in-construction" activations.
+    - 2. For each neutral D2 prompt, at the position equivalent to the
+         pivot-decision (matched by length or by model state), clamp
+         feature 3223 to a value sampled from the empirical
+         distribution. Continue token-by-token generation.
+    - 3. Compare construction rate (M1, strict classifier) under
+         interchange patching vs baseline.
+  kill_threshold:
+    construction_rate_uplift_ratio: 2.0
+    rationale: |
+      Pass: ablated_construction_rate / baseline_construction_rate ≥
+            2.0  (interchange patching meaningfully induces the
+                  construction).
+      Kill: < 2.0  (sufficiency is genuinely absent; thesis is
+                    necessity-only, full stop, no further sufficiency
+                    methods will be tried).
+
+tier_4_generalization:
+  description: |
+    Replicate Tier 1 + Tier 2 on Gemma 2 9B. Gemma Scope SAEs exist;
+    layer pick is roughly depth-matched (L20 of 42 ≈ L31 of 42
+    proportionally).
+  scope:
+    primary:   gemma-2-9b
+    optional:  one second family if public SAEs allow (Llama-3 SAEs?)
+  outcome_not_kill: true
+  reportable_outcomes:
+    - replicates: necessity + specificity hold on the homologous feature
+    - does_not_replicate: claim scope narrows honestly to "in Gemma 2 2B"
+    - partial: necessity holds, specificity does not (or vice versa)
+  note: |
+    No kill threshold here — both outcomes are valid findings.
+
+tier_5_genealogy_causal:
+  description: |
+    With VE fixed: re-measure the 1.81× ablation-drop ratio between
+    base and instruct on identical contexts.
+  caveat: |
+    Gemma does not release SFT / RLHF intermediate checkpoints, so
+    the cleanest genealogy story — tracing when feature 3223 becomes
+    load-bearing during instruct-tuning — is infeasible from public
+    artifacts. State this as a known ceiling; do not fake around it.
+  kill_threshold:
+    instruct_vs_base_ratio_min: 1.5
+    rationale: |
+      Pass: instruct ablation drop / base ablation drop ≥ 1.5, with
+            VE on instruct meeting Tier 0b threshold.
+      Kill: < 1.5 OR VE on instruct < 0.5 (genealogy claim dropped).
+
+tier_6_red_team_the_method:
+  description: |
+    Hand the agent the adversary role. If the pipeline can make a
+    random or deliberately irrelevant feature look "necessary," the
+    method is the artifact and everything above is void.
+  random_feature_test:
+    n_random_features: 5
+    drawn_from: features inactive on D1 with-sentences (deliberately
+                irrelevant)
+    procedure: run the full pivot_attribution + Tier 2 matched-control
+               battery on each random feature.
+    kill_threshold:
+      max_random_specificity_ratio: 0.5
+      rationale: |
+        For ANY random feature, its construction-specificity ratio
+        (Tier 1 definition) MUST come back as effectively zero or
+        negative. If a random feature produces a ratio ≥ 0.5 (half of
+        the candidate's threshold), the pipeline is creating an
+        artifact and 3223's apparent specificity is too.
+
+  irrelevant_feature_test:
+    n_irrelevant: 3
+    selection: pick features Neuronpedia labels for unrelated semantics
+               (e.g. "references to digital technology", "medical
+               terminology")
+    same_procedure: true
+    same_kill_threshold: true
+
+  degree_of_freedom_sweep:
+    description: |
+      Re-run the full Tier 1 + Tier 2 battery under each variation;
+      the claim must survive 3-of-4 sweeps.
+    forks:
+      layer:        [L20 (canonical), L15, L25]
+      sae_width:    [16k (canonical), 65k]
+      pivot_token_def:
+        - [original — comma/em-dash before copula/but/also/yet]
+        - [stricter — em-dash and "but" only]
+        - [looser — also semicolon and "however"]
+      prompt_set:
+        - [D2 (canonical), N=102]
+        - [held-out fresh D2', N=50, written after Tier 0a]
+    kill_threshold:
+      min_sweeps_passed: 3
+      rationale: |
+        Fewer than 3 of 4 = the result lives in the garden of forking
+        paths, not in the model. Demote to "this is what we saw at one
+        specific configuration" and stop.
+
+reporting_protocol:
+  on_pass: proceed to next tier
+  on_kill: |
+    1. Stop. Do not start the next tier.
+    2. Write reports/tier_N_kill.md with:
+       - the threshold that was missed
+       - the measured number
+       - what claim is now retired
+       - what (if anything) of the writeup survives
+    3. Surface to the human. Wait.
+    4. Do NOT invent a fix that "really" addresses the issue and run
+       a tweaked version unless the human explicitly says to.
+  on_completion_through_tier_6:
+    - update reports/writeup.md to reflect what survived
+    - flag any caveats added by sweeps
+    - get one credentialed mech-interp reader before circulation
