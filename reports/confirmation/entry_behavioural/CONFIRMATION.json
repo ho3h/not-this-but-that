@@ -1,0 +1,196 @@
+{
+  "campaign": "entry_behavioural",
+  "discovery_N": 19,
+  "K_candidates": 7,
+  "bh_q": 0.1,
+  "n_confirmation_sentences": 313,
+  "n_confirmation_positive": 8,
+  "results": [
+    {
+      "test": "Fisher exact (greater)",
+      "table": [
+        [
+          7,
+          22
+        ],
+        [
+          1,
+          283
+        ]
+      ],
+      "rate_when_pred_true": 0.2413793103448276,
+      "rate_when_pred_false": 0.0035211267605633804,
+      "odds_ratio": 90.04545454545455,
+      "p_raw": 2.14375736299931e-07,
+      "n_pred_true": 29,
+      "id": "H09",
+      "description": "Sentence contains 'just' / 'merely' / 'simply' / 'only'",
+      "kind": "binary",
+      "discovery_p": 1.3961413460094527e-13,
+      "confounded": true,
+      "rank": 1,
+      "alpha_bh": 0.014285714285714285,
+      "passes_fdr": true,
+      "direction_matches_discovery": true,
+      "confirmed": false,
+      "confirmed_with_confound_caveat": true
+    },
+    {
+      "test": "Fisher exact (greater)",
+      "table": [
+        [
+          8,
+          102
+        ],
+        [
+          0,
+          203
+        ]
+      ],
+      "rate_when_pred_true": 0.07272727272727272,
+      "rate_when_pred_false": 0.0,
+      "odds_ratio": Infinity,
+      "p_raw": 0.00019624673150919295,
+      "n_pred_true": 110,
+      "id": "H19",
+      "description": "Sentence contains a quotation mark",
+      "kind": "binary",
+      "discovery_p": 1.1298821102966807e-05,
+      "confounded": false,
+      "rank": 2,
+      "alpha_bh": 0.02857142857142857,
+      "passes_fdr": true,
+      "direction_matches_discovery": true,
+      "confirmed": true,
+      "confirmed_with_confound_caveat": true
+    },
+    {
+      "test": "Mann-Whitney U (two-sided)",
+      "U": 673.5,
+      "median_pos": 0.1,
+      "median_neg": 0.5,
+      "n_pos": 8,
+      "n_neg": 305,
+      "p_raw": 0.028285698259228505,
+      "id": "H17",
+      "description": "Relative sentence position 0-1 (Mann-Whitney U)",
+      "kind": "continuous",
+      "discovery_p": 0.08929691890779942,
+      "confounded": false,
+      "rank": 3,
+      "alpha_bh": 0.04285714285714286,
+      "passes_fdr": true,
+      "direction_matches_discovery": true,
+      "confirmed": true,
+      "confirmed_with_confound_caveat": true
+    },
+    {
+      "test": "Fisher exact (greater)",
+      "table": [
+        [
+          2,
+          18
+        ],
+        [
+          6,
+          287
+        ]
+      ],
+      "rate_when_pred_true": 0.1,
+      "rate_when_pred_false": 0.020477815699658702,
+      "odds_ratio": 5.314814814814815,
+      "p_raw": 0.08618447449801199,
+      "n_pred_true": 20,
+      "id": "H07",
+      "description": "Sentence starts with a subject-copula contraction (It's / That's / \u2026)",
+      "kind": "binary",
+      "discovery_p": 0.00022952995581748632,
+      "confounded": true,
+      "rank": 4,
+      "alpha_bh": 0.05714285714285714,
+      "passes_fdr": false,
+      "direction_matches_discovery": true,
+      "confirmed": false,
+      "confirmed_with_confound_caveat": false
+    },
+    {
+      "test": "Fisher exact (greater)",
+      "table": [
+        [
+          3,
+          68
+        ],
+        [
+          5,
+          237
+        ]
+      ],
+      "rate_when_pred_true": 0.04225352112676056,
+      "rate_when_pred_false": 0.02066115702479339,
+      "odds_ratio": 2.0911764705882354,
+      "p_raw": 0.26322604685407297,
+      "n_pred_true": 71,
+      "id": "H08",
+      "description": "Sentence starts with a capital pronoun (It / This / They / We)",
+      "kind": "binary",
+      "discovery_p": 0.0014306276328830043,
+      "confounded": true,
+      "rank": 5,
+      "alpha_bh": 0.07142857142857144,
+      "passes_fdr": false,
+      "direction_matches_discovery": true,
+      "confirmed": false,
+      "confirmed_with_confound_caveat": false
+    },
+    {
+      "test": "Fisher exact (greater)",
+      "table": [
+        [
+          4,
+          161
+        ],
+        [
+          4,
+          144
+        ]
+      ],
+      "rate_when_pred_true": 0.024242424242424242,
+      "rate_when_pred_false": 0.02702702702702703,
+      "odds_ratio": 0.8944099378881988,
+      "p_raw": 0.6966426416273123,
+      "n_pred_true": 165,
+      "id": "H03",
+      "description": "Sentence is in the MIDDLE of its generation",
+      "kind": "binary",
+      "discovery_p": 0.050880736677101975,
+      "confounded": false,
+      "rank": 6,
+      "alpha_bh": 0.08571428571428572,
+      "passes_fdr": false,
+      "direction_matches_discovery": false,
+      "confirmed": false,
+      "confirmed_with_confound_caveat": false
+    },
+    {
+      "test": "Mann-Whitney U (two-sided)",
+      "U": 1274.0,
+      "median_pos": 5.0,
+      "median_neg": 5.0,
+      "n_pos": 8,
+      "n_neg": 305,
+      "p_raw": 0.8268581908802914,
+      "id": "H16",
+      "description": "Generation length in sentences (Mann-Whitney U)",
+      "kind": "continuous",
+      "discovery_p": 0.005700343482364524,
+      "confounded": false,
+      "rank": 7,
+      "alpha_bh": 0.1,
+      "passes_fdr": false,
+      "direction_matches_discovery": false,
+      "confirmed": false,
+      "confirmed_with_confound_caveat": false
+    }
+  ],
+  "n_clean_confirmations": 2
+}
