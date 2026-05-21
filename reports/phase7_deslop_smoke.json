@@ -1,0 +1,47 @@
+{
+  "features": [
+    3223
+  ],
+  "n_pairs": 3,
+  "baseline_construction_rate": 0.0,
+  "ablated_construction_rate": 0.0,
+  "absolute_drop": 0.0,
+  "relative_drop": 0.0,
+  "meaning_cosine": {
+    "mean": 1.0,
+    "median": 1.0,
+    "p10": 1.0,
+    "p90": 1.0000001192092896
+  },
+  "sampling": {
+    "temperature": 0.8,
+    "top_p": 0.95,
+    "max_new_tokens": 30
+  },
+  "rows": [
+    {
+      "prompt": "Explain why a city might invest in public transit infrastructure.",
+      "seed": 0,
+      "baseline": "\n \n   **Answer:**\n\nThere are many reasons why a city might invest in public transit infrastructure. Here are some of the most important:",
+      "ablated": "\n \n   **Answer:**\n\nThere are many reasons why a city might invest in public transit infrastructure. Here are some of the most important:",
+      "baseline_has_construction": false,
+      "ablated_has_construction": false
+    },
+    {
+      "prompt": "Describe what makes a good neighbourhood library.",
+      "seed": 0,
+      "baseline": " A good neighborhood library isn't just a place to check out books. It's a community center that celebrates knowledge, creativity, and community.",
+      "ablated": " A good neighborhood library isn't just a place to check out books. It's a community center that celebrates knowledge, creativity, and community.",
+      "baseline_has_construction": false,
+      "ablated_has_construction": false
+    },
+    {
+      "prompt": "Discuss the role of mentorship in early-career growth.",
+      "seed": 0,
+      "baseline": "\n \n A lot of people are passionate about the path they are on, but not all people have the opportunity to meet the right person who can",
+      "ablated": "\n \n A lot of people are passionate about the path they are on, but not all people have the opportunity to meet the right person who can",
+      "baseline_has_construction": false,
+      "ablated_has_construction": false
+    }
+  ]
+}

@@ -1,63 +1,113 @@
 # Not This, But That — handover
 
-*Last updated 2026-05-20, end of Phase 1.*
+*Last updated 2026-05-21, end of Phase 7.*
 
-> **Phase 0 (scaffold) and Phase 1 (construction classifier) are done.** The
-> repo is fresh — it's not the `graphgeometry` branch; it's its own GitHub
-> repo at `ho3h/not-this-but-that` (private). The previous project lives at
-> `ho3h/grammar-layer` archived at `19f2426`. Read the README first — it
-> states scope, prior work (§2), the differentiation against Kuznetsov
-> 2503.03601 (§3), the anti-scope (§4), the metrics (§5), and the build
-> phases with kill checks (§6). Then this file.
+> **All seven PRD phases ran end-to-end.** The exploration writeup is at
+> [`reports/writeup.md`](reports/writeup.md) — read that first; this file is
+> the *operational* state (what each phase produced, where it lives, what's
+> still broken). The repo is at `ho3h/not-this-but-that` (private); the
+> previous project lives at `ho3h/grammar-layer` (archive-state-on-disk).
+>
+> **One-line summary:** the construction (C3 specifically) is 12× more
+> common in `gemma-2-2b-it` than `gemma-2-2b`. Feature 3223 — Neuronpedia
+> label *"phrases conveying exceptions or negations"* — is causally necessary
+> at the pivot decision (25% drop, 7400σ control-beating, fluency-preserving).
+> It is NOT artificially sufficient (clamp-up fails) and NOT effective as a
+> generation-time de-slop tool (the feature is dormant on neutral prompts).
+> The mechanism finding stands; the product claim does not.
 
 ---
 
-## 1. State as of Phase 1
+## 1. State as of Phase 7
 
-**Phase 0 — scaffold.**
-- Module skeleton at `src/{classifier,steering,quality,genealogy,deslop}` +
-  `src/neograph/` carried over. All Phase 0 stubs that haven't been touched
-  by Phase 1 still raise `NotImplementedError` with phase pointers.
-- README, HANDOVER, anti-scope, kill checks all in place. The `legacy/`
-  carry-over from `graphgeometry` did *not* come into this repo — fresh git
-  history from `c22e56e initial: not-this-but-that, Phase 0 scaffold`.
+The full prose narrative is at [`reports/writeup.md`](reports/writeup.md). What
+follows is the operational state per phase — what ran, what files it wrote,
+what's still broken.
 
-**Phase 1 — classifier (this section).**
-- **Kill check passed.** `tests/test_classifier_phase1.py::test_regex_only_kill_check`
-  is the automated gate: precision/recall **≥ 0.85** on C1, C2, C3 against the
-  100-sentence hand-labelled validation set. Current: **1.00 P/R across all
-  four variants**, both regex-only and strict (regex + spaCy dep filter).
-- **Validation set:** `data/classifier_validation.jsonl` — 10 C1 + 10 C2 +
-  10 C3 + 5 C4 + 65 negatives (15 contracted-negation paraphrases of
-  positives, 10 "paraphrase_of_C4", 15 neutrals-with-`not` to test FP risk,
-  15 clean neutrals). The composition matches HANDOVER's Phase 1 spec.
-- **The 1.00 P/R caveat:** the validation set was hand-written by the same
-  agent that tuned the regex. This is a self-consistency check, not a
-  generalization test. The real measurement is Phase 2 M1 — when the
-  classifier sees actual model generations. Don't quote 1.00 P/R as a
-  finding; quote it as "the kill check is met and the classifier is ready
-  for Phase 2."
-- **`classifier/detect.py`:** Phase 1 broadened the regex to accept
-  contracted-negation openers (`isn't / aren't / wasn't / weren't`), the
-  full subject-copula contraction family in pivot position (`he's / she's
-  / we're / they're / this is / that's`), and fixed the C1/C3 overlap
-  predicate (half-open interval intersection — Phase 0's bug let "It's not
-  just an update — it's a rethink." count for both C1 and C3, inflating
-  C1's FP).
-- **`classifier/dependency.py`:** Phase 0 was a stub returning `True`.
-  Phase 1 added a spaCy `en_core_web_sm` parse: locate the negation token
-  inside the regex hit's span, walk up the head chain, reject only if no
-  ancestor within 4 hops is a `VERB`/`AUX`. The head-chain walk is
-  necessary because C2's "not only" parses with "not" as `advmod` of
-  "only" (not directly of the verb). Strict mode adds ~8 ms/sentence; the
-  filter doesn't change any verdict on the validation set (0 strict-vs-regex
-  diffs) — it exists for Phase 2 real-generation edge cases.
-- **`scripts/eval_classifier.py`:** the gate. Run via
-  `uv run python scripts/eval_classifier.py`. Writes
-  `reports/phase1_classifier_eval.{md,json}` with both modes side-by-side.
+### Phase 0 — scaffold ✓
+- `src/{classifier,steering,quality,genealogy,deslop}` + `src/neograph/`.
+- Fresh git history from `c22e56e`.
+- 18/18 tests passing.
 
-**Test count:** 19/19 pass (`tests/test_classifier_phase1.py` adds 8 to the
-Phase 0 baseline of 11).
+### Phase 1 — classifier ✓ (kill check passed, 1.00 P/R self-consistency caveat)
+- `src/classifier/{detect.py, dependency.py}` — regex hinges + spaCy
+  dependency filter. Strict mode walks the head chain up to 4 hops to handle
+  C2's "not only" parse.
+- `data/classifier_validation.jsonl` — 100 hand-labelled sentences (10 C1 +
+  10 C2 + 10 C3 + 5 C4 + 65 negatives).
+- `scripts/eval_classifier.py` → `reports/phase1_classifier_eval.{md,json}`.
+- `tests/test_classifier_phase1.py` — automated kill check.
+
+### Phase 2 — behavioural baseline ✓ (clean, large)
+- `data/D2_neutral_prompts.json` — 102 hinge-free open prompts.
+- `scripts/generate_d2.py` — 510 generations from pythia_70m + gpt2, 250 each
+  from gemma_2b base + gemma_2b_it (scaled-down for throughput).
+  Output: `reports/phase2_generations_<model>.jsonl`.
+- `scripts/score_phase2.py` → `reports/phase2_baseline.md` —
+  sentence-resampled bootstrap CIs.
+- **Result:** instruct C3 rate = 1.7% vs base 0.1% (**12× amplification**,
+  non-overlapping 95% CIs). any_core 1.8% vs 0.4% (**4.2× amplification**).
+
+### Phase 3 — feature discovery ⚠ found *consequences*
+- `data/D1_contrast_pairs.jsonl` — 226 hand-written minimal pairs (70 C1 +
+  63 C2 + 68 C3 + 25 C4). `scripts/validate_d1.py` confirms 0 WITH-side
+  failures and 0 WITHOUT-side failures.
+- `scripts/discover_features.py` → `reports/phase3_discovery.md` —
+  last-token-of-completed-sentence differential t-stat.
+- **Result:** top semantic candidate **feat 9841** ("phrases and clauses
+  involving contrasting ideas") with t=+14.19. *But this is a consequence
+  feature, not a cause* — Phase 4 had to start over.
+
+### Phase 4 — causal validation ⚠ PARTIAL (necessity yes, sufficiency no)
+- `scripts/causal_m2.py` — M2 measurement (P(pivot) under intervention).
+- `scripts/pivot_attribution.py` — per-feature attribution at the truncated
+  pre-pivot position. **This is the script that recovered the right
+  feature.** → `reports/pivot_attribution.md`.
+- **Causal feature: feat 3223** — Neuronpedia label *"phrases conveying
+  exceptions or negations"*. Active in 32/60 truncated D1 prompts.
+- `reports/phase4_causal_m2_single_9841.{md,json}` — original 9841 null.
+- `reports/phase4_causal_m2_supernode5.{md,json}` — 5-feature supernode
+  null; clamp-up went -23.7σ wrong direction.
+- `reports/phase4_causal_m2_3223_clamp10.{md,json}` — 3223 ablate beats
+  random-k by +7397σ (drop 0.084, 25% relative); clamp@10 fails.
+- `reports/phase4_causal_m2_3223_clamp3.{md,json}` — same ablate result;
+  clamp@3 also fails.
+- `reports/phase4_causal_m2.{md,json}` — canonical Phase 4 outcome (copy of
+  the clamp10 file).
+- **Verdict:** necessary but not sufficient. PRD's strict bidirectional gate
+  fails; the necessity finding is overwhelming and clean.
+
+### Phase 5 — quality preservation ✓ (scalpel, not sledgehammer)
+- `data/D3_fluency.txt` — ~1500 words of clean human prose (Edinburgh,
+  cast-iron, bookbinding, trail running, libraries, ensembles).
+- `scripts/quality_preservation.py` → `reports/phase5_quality.md`.
+- **Result:** D3 perplexity ratio **1.000× baseline (ablate)**, 1.006×
+  (clamp_up). The ablation does not degrade fluency.
+
+### Phase 6 — genealogy ✓ (with one buggy measurement to fix)
+- `scripts/genealogy_compare.py` → `reports/phase6_genealogy.md`.
+- **Result:** instruct baseline P(pivot) = 0.48 vs base 0.33; feat 3223
+  ablation drops P(pivot) by **0.152 in instruct vs 0.084 in base
+  (1.81× larger absolute drop)**.
+- **Known bug:** the reconstruction-quality measurement (variance explained)
+  comes out negative. The `sae(orig)` call in `reconstruction_quality()`
+  isn't returning the reconstruction the way the code expects. The per-token
+  Δ-log-P signal stands independently; the VE number should not be cited.
+
+### Phase 7 — de-slop demo ❌ honest null (product claim does not hold)
+- `scripts/deslop_demo.py` → `reports/phase7_deslop.md`.
+- 12 D2 prompts × 3 seeds × 100 tokens, gemma-2-2b-it, token-by-token
+  sampling with feat 3223 clamped to 0 throughout.
+- **Result:** baseline construction rate 5.56%, ablated 5.56% — **0%
+  absolute drop**. Meaning cosine 0.954 (largely identical generations).
+- **Why:** Phase 6 showed feat 3223 has 0% activation at last-token of D2
+  neutral prompts. The feature is conditional on construction-mode
+  contexts; pre-emptive suppression of a dormant feature is a no-op.
+- **The mechanism finding stands. The product claim does not.**
+
+**Test count:** 18/18 pass (`test_classifier_phase1.py` 8 + smoke 4 +
+manifold 4 + relations 2; `test_neo4j_smoke.py` excluded because it
+requires a running Neo4j instance).
 
 ## 2. Module skeleton (PRD §6)
 
@@ -113,72 +163,76 @@ subdirs to keep the active path clean while preserving reproducibility:
 - `data/D3_fluency.txt` — Phase 5 populates with a few thousand tokens of
   clean human prose for perplexity reference.
 
-## 5. Priority queue — start of Phase 2
+## 5. Open threads — what's next, if anything
 
-Phase 1 cleared the kill check. The next agent's first task is Phase 2:
-behavioral baseline — measure M1 (spontaneous construction rate) across the
-model set on the D2 neutral prompts.
+The seven PRD phases ran end-to-end and the writeup (`reports/writeup.md`)
+is honest about what landed and what didn't. The open threads from here, in
+priority order if anyone picks this up:
 
-### P2 — Behavioral baseline (PRD §8 Phase 2, 1–2 days)
+### A. Fix Phase 6 reconstruction quality (½ day)
 
-**The motivating expectation:** instruct construction rate ≫ base. If this
-gap doesn't exist on the four-model set, the Phase 6 genealogy story is
-already in trouble — flag it then, continue, because the within-model
-mechanism (Phases 3–5) can still hold.
+The variance-explained number in `reports/phase6_genealogy.md` is negative,
+which is a measurement bug, not the SAE having broken. `sae(orig)` in
+`scripts/genealogy_compare.py:reconstruction_quality()` isn't returning the
+reconstruction the way the code expects. Likely the SAE forward returns a
+dict or the input requires normalisation. The genealogy ablation signal
+stands independently; only this one number needs fixing before the section
+can be cited.
 
-**Concrete steps:**
+### B. Find the *sufficient* feature(s) for the construction (1–2 days)
 
-1. **Populate `data/D2_neutral_prompts.json`.** ≥100 open prompts that
-   invite prose without begging the construction. Examples in PRD §7: *"Write
-   two sentences about why a city invested in public transit."* Avoid
-   prompts containing `not`, `but`, `however`, or any of the C1–C4 hinges in
-   the prompt itself — those bias generation.
+Phase 4 said 3223 is necessary but clamping it up at any value tested moves
+P(pivot) the wrong direction. The honest mechanism story is "necessary
+multi-feature coordination." Two ways to test that:
 
-2. **Generate continuations.** For each (model, prompt, seed):
-   - `gemma-2-2b` (base), `gemma-2-2b-it` (instruct), `gpt2`, `EleutherAI/pythia-70m-deduped`.
-   - ≥5 seeds × ≥100 prompts × 4 models = ≥2000 generations. ~150 tokens each.
-   - Reuse `scripts/01_load_model_and_sae.py` for model loading; the SAE
-     isn't needed for M1 (the classifier is model-agnostic). Write a new
-     `scripts/generate_d2.py` that just does HF model + tokenizer +
-     `model.generate()` with deterministic seeds.
+1. **Per-feature attribution at the *positive* end** — find features whose
+   clamp-up *does* increase P(pivot). The current pivot_attribution.py only
+   measures ablation; symmetrise it.
+2. **2-3-feature supernode search** — Anthropic-Biology-style. Phase 4
+   already tried two arbitrary supernodes (top-5 by Phase-3 t-stat, and
+   feat 3223 alone). The right supernode is whatever JOINTLY beats both
+   directions. Combinatorial search is expensive; start from 3223 + the
+   next 2-3 features by Phase 4 attribution score.
 
-3. **Score with the classifier.** Use `classifier.rate(texts, strict=True)`.
-   Strict mode is right here — Phase 2 is where the dep check earns its
-   keep on real generations. Report per-model: M1 = construction rate per
-   variant + any_core, plus bootstrap CIs.
+### C. Test the necessity claim on other models (1–2 days)
 
-4. **Write `reports/phase2_baseline.md`.** Per-model M1 table, with
-   bootstrap CIs. State the base-vs-instruct gap explicitly; flag if it's
-   smaller than expected.
+The previous project's cross-model finding suggests the suppression-side
+features generalise across Gemma 1/2 2B, Pythia 70M, Gemma 2 9B. The
+necessity finding (feat 3223 ablation drops P(pivot)) has not been
+replicated outside Gemma 2 2B. Run `pivot_attribution.py` + Phase 4 on
+Pythia 70M (different SAE, will need a new run); if a "phrases conveying
+exceptions or negations" feature exists there with the same causal
+necessity, that's a much stronger finding.
 
-**Exit criterion (informational, not a kill check):** instruct ≫ base by a
-meaningful margin (rule of thumb: ≥2× rate, non-overlapping CIs). If not,
-proceed but note the genealogy risk; the within-model mechanism work
-(Phases 3–5) is still worth doing.
+### D. Phase 7 v2 — intervene earlier in generation
 
-### Important Phase 2 gotchas
+The de-slop demo failed because feat 3223 is dormant on neutral prompts.
+The construction's commit happens upstream — the model first decides to
+*open* the contrast (the "not" token), then later commits to the *pivot*
+(the comma/em-dash/"but"). Feat 3223 is causal at the second decision, not
+the first. To deslop in open-ended generation, you'd need to identify and
+ablate whatever features cause the model to emit "not" in the contrast
+context in the first place. That's a different per-feature attribution
+study (target = P("not") given construction-friendly contexts).
 
-- **Sampling strategy matters.** `temperature=0.0` will collapse to mode and
-  give a misleading M1. Use `temperature=0.7-1.0` with top-p sampling — the
-  construction rate is a property of the sampling distribution, not the
-  argmax. Record exact `temperature`, `top_p`, `top_k` in the report.
-- **`gemma-2-2b-it` chat template.** Apply it (via `tokenizer.apply_chat_template`)
-  before generation. Without it the instruct model behaves erratically; with
-  it the construction rate jumps. This *is* the genealogy effect; record both.
-- **Bootstrap with sentence-level resampling, not generation-level.** A
-  300-token generation might contain 2–3 sentences; if M1 is computed
-  per-sentence, the resampling unit is the sentence. Document the choice.
+### E. The Neo4j angle (PRD §9), if any of the above lands
 
-### What NOT to do in Phase 2
+Storing the validated feature across models in the graph and asking the
+cross-model alignment question via Cypher is the genuinely Hopkinson-shaped
+contribution. With a partial mechanism that's conditional on context, the
+graph doesn't have enough nodes yet. Worth revisiting when (B) or (C) lands.
 
-- Don't start feature discovery (Phase 3) before Phase 2 lands.
-  Phase 3's D1 differential-activation hunt is expensive; ground the
-  motivation first.
-- Don't try Gemma 2 9B or Mistral 7B yet. Phase 2 is about establishing M1
-  across the small/medium open models — bigger models come in later if the
-  scale curve is interesting.
-- Don't change the classifier without rerunning the Phase 1 kill check.
-  Any regex tweak invalidates the precision/recall guarantee. Re-run
+### What NOT to do
+
+- Don't claim "we found a feature that controls the construction." The
+  ablation result is real, but clamp-up doesn't reproduce the construction.
+  Honest framing: necessity yes, sufficiency no.
+- Don't claim the de-slop demo works. It doesn't.
+- Don't promote anywhere near ML researchers before fixing (A) and getting
+  one credentialed mech-interp reader to sanity-check the necessity claim.
+  The honesty contract from §7 still applies.
+- Don't change the classifier without re-running the Phase 1 kill check.
+  Any regex tweak invalidates the P/R guarantee. Re-run
   `pytest tests/test_classifier_phase1.py` after any change.
 
 ## 6. Known landmines (carry-overs)

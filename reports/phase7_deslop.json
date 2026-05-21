@@ -1,0 +1,311 @@
+{
+  "features": [
+    3223
+  ],
+  "n_pairs": 36,
+  "baseline_construction_rate": 0.05555555555555555,
+  "ablated_construction_rate": 0.05555555555555555,
+  "absolute_drop": 0.0,
+  "relative_drop": 0.0,
+  "meaning_cosine": {
+    "mean": 0.9536664485931396,
+    "median": 0.9855592250823975,
+    "p10": 0.8714613914489746,
+    "p90": 1.0
+  },
+  "sampling": {
+    "temperature": 0.8,
+    "top_p": 0.95,
+    "max_new_tokens": 100
+  },
+  "rows": [
+    {
+      "prompt": "Explain why a city might invest in public transit infrastructure.",
+      "seed": 0,
+      "baseline": "\n \n   **Answer:**\n\nThere are many reasons why a city might invest in public transit infrastructure. Here are some of the most important:\n\n* **Economic Growth and Job Creation:** Public transportation is a vital economic driver. It increases accessibility to jobs, strengthens local economies, and boosts overall productivity. \n* **Reduced Congestion and Traffic Delays:** Investing in public transportation reduces the number of cars on the road, alleviating traffic congestion and improving traffic flow. This means less time wasted",
+      "ablated": "\n \n   **Answer:**\n\nThere are many reasons why a city might invest in public transit infrastructure. Here are some of the most important:\n\n* **Economic Growth and Job Creation:** Public transportation is a vital economic driver. It increases accessibility to jobs, strengthens local economies by attracting workers and businesses, and encourages investment in areas with better transportation infrastructure.\n    \n    \n* **Improving Air Quality and Reducing Pollution:** Public transportation is a cleaner alternative to cars. Reducing the number of cars",
+      "baseline_has_construction": false,
+      "ablated_has_construction": false
+    },
+    {
+      "prompt": "Explain why a city might invest in public transit infrastructure.",
+      "seed": 1,
+      "baseline": "\n**Public Transit Investment: Why Invest?**\n\nCities invest in public transportation for a variety of reasons, and these reasons often intertwine. Here are some of the most common reasons:\n\n* **Reduced Traffic Congestion:** One of the most significant benefits of public transportation is its ability to alleviate traffic congestion. Investing in public transportation like trains, buses, and light rail lines can decrease the number of cars on the road, leading to less traffic and longer commutes.\n   \n* **",
+      "ablated": "\n**Public Transit Investment: Why Invest?**\n\nCities invest in public transportation for a variety of reasons, and these reasons often intertwine. Here are some of the most common reasons:\n\n* **Reduced Traffic Congestion:** One of the most significant benefits of public transportation is its ability to alleviate traffic congestion. Investing in public transportation like trains, buses, and light rail lines can decrease the number of cars on the road, leading to less traffic and longer commutes.\n   \n* **",
+      "baseline_has_construction": false,
+      "ablated_has_construction": false
+    },
+    {
+      "prompt": "Explain why a city might invest in public transit infrastructure.",
+      "seed": 2,
+      "baseline": "\n**Why cities invest in public transportation is because of the following reasons:**\n\n**Economic Factors:**\n* **Reduced Traffic Congestion:** Public transportation reduces the number of cars on the road, alleviating traffic congestion, leading to increased efficiency and reduced travel time. This translates to reduced fuel consumption and lower emissions.\n* **Increased Productivity:** Public transportation can help workers commute to work more efficiently, allowing them to dedicate more time to work and generate higher income.\n\n* ** Job creation:**",
+      "ablated": "\n**Why cities invest in public transportation is because of the following reasons:**\n\n**Economic Factors:**\n* **Reduced Traffic Congestion:** Public transportation reduces the number of cars on the road, alleviating traffic congestion, leading to increased efficiency and reduced travel time. This translates to reduced fuel consumption and lower emissions.\n* **Increased Productivity:** Public transportation can help workers commute to work more efficiently and easily, leading to a reduction in time spent commuting and increased productivity at work.\n\n**Social",
+      "baseline_has_construction": false,
+      "ablated_has_construction": false
+    },
+    {
+      "prompt": "Describe what makes a good neighbourhood library.",
+      "seed": 0,
+      "baseline": " A good neighborhood library isn't just a place to check out books. It's a community center that celebrates knowledge, creativity, and community. \n \nHere are some key aspects that make a good neighborhood library stand out:\n \n**Accessibility and Community Engagement:**\n* **High-quality library services:** The key is providing a diverse selection of books, technology, and resources for all ages. This includes a wide range of genres, new releases, and classics. Also,",
+      "ablated": " A good neighborhood library isn't just a place to check out books. It's a community center that celebrates knowledge, creativity, and community. \n \nHere are some key aspects that make a good neighborhood library stand out:\n \n**Accessibility and Community Engagement:**\n* **High-quality library services:** The key is providing a diverse selection of books, technology, and resources for all ages. This includes a wide range of genres, genres for diverse populations, and a wide",
+      "baseline_has_construction": false,
+      "ablated_has_construction": false
+    },
+    {
+      "prompt": "Describe what makes a good neighbourhood library.",
+      "seed": 1,
+      "baseline": " \n \n \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n",
+      "ablated": " \n \n \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n",
+      "baseline_has_construction": false,
+      "ablated_has_construction": false
+    },
+    {
+      "prompt": "Describe what makes a good neighbourhood library.",
+      "seed": 2,
+      "baseline": " \n \n A good neighborhood library is more than just a place to borrow books. It's a hub for the community, offering a wide range of services and activities. Here are some of the key features that make a good library:\n \n **Accessibility and Location:**\n  *  **Convenient Location:** The library should be easily accessible by car, bus, and train, and easily recognizable from the street. \n  \n  **Collections and Services:**\n  *  ",
+      "ablated": " \n \n A good neighborhood library is more than just a place to borrow books. It's a hub for the community, offering a wide range of services and activities. Here are some of the key features that make a good library:\n \n **Accessibility and Location:**\n  *  **Convenient Location:** The library should be easily accessible to the community.\n  \n**Services and Programming:**\n  * **Wide Range of Materials:** Diverse selection of books, movies, audiobooks",
+      "baseline_has_construction": false,
+      "ablated_has_construction": false
+    },
+    {
+      "prompt": "Discuss the role of mentorship in early-career growth.",
+      "seed": 0,
+      "baseline": "\n \n A lot of people are passionate about the path they are on, but not all people have the opportunity to meet the right person who can guide them. \n \n Mentors play a crucial role in helping early-career professionals navigate their careers, build confidence, and achieve their professional goals. \n \n **Here's a look at the benefits of having a mentor:**\n\n* **Networking and Connections:** Mentors can introduce you to their network, providing opportunities to connect",
+      "ablated": "\n \n A lot of people are passionate about the path they are on, but not all people have the opportunity to meet the right person who can guide them. \n \n Mentors play a crucial role in helping early-career professionals navigate their careers, build confidence and resilience and achieve their potential. \n \n **Here's a look at the benefits of having a mentor:**\n\n* **Networking:** Mentors can connect you to their own network of contacts, giving you access",
+      "baseline_has_construction": false,
+      "ablated_has_construction": false
+    },
+    {
+      "prompt": "Discuss the role of mentorship in early-career growth.",
+      "seed": 1,
+      "baseline": "\n \n**Reflection:**\n\nThis question is a great opportunity to explore the role of mentorship in navigating the challenges and potential of early-career development. This is a topic that resonates with a lot of us, as we all have experienced the desire to have a mentor who can help us navigate the path to success.  \n\n**The Key Concepts:**\n\n* **Mentorship:** A relationship where one person, an expert, provides support, guidance, and advice to another person, often in the",
+      "ablated": "\n \n**Reflection:**\n\nThis question is a great opportunity to explore the role of mentorship in navigating the challenges and potential of early-career development. This is a topic that resonates with a lot of us, as we all have experienced the desire to have a mentor who can help us navigate the path to success.  \n\n**The Key Concepts:**\n\n* **Mentorship:** A relationship where one person, an expert in a specific field or experience, provides support, guidance, and support to",
+      "baseline_has_construction": false,
+      "ablated_has_construction": false
+    },
+    {
+      "prompt": "Discuss the role of mentorship in early-career growth.",
+      "seed": 2,
+      "baseline": "\n \n   \n**Role of Mentorship in Early-Career Growth**\n \nMentorship is a valuable tool for navigating the challenges and opportunities of early-career growth. It offers not only guidance, but also support, encouragement, and opportunities for growth. \n \n**Benefits of Mentorship:**\n \n* **Guidance and Mentorship:** Mentors provide guidance on how to navigate the professional world, choose the right career path, and make sound decisions.\n* **",
+      "ablated": "\n \n   \n**Role of Mentorship in Early-Career Growth**\n \nMentorship is a valuable tool for navigating the challenges and opportunities of early-career growth. It offers not only guidance, but also support, encouragement, and opportunities for growth. \n \n**Benefits of Mentorship:**\n \n* **Guidance and Mentorship:** Mentors provide guidance on how to navigate the professional world. They offer insights into specific roles, industries, and career paths. They",
+      "baseline_has_construction": true,
+      "ablated_has_construction": true
+    },
+    {
+      "prompt": "Outline the appeal of slow cooking for a home chef.",
+      "seed": 0,
+      "baseline": "\n \nSlow-cooking is a popular cooking method that uses low temperatures and a short timeframe for food to cook. There are many benefits to using this method, including convenience, ease of preparation, and cost-effectiveness.\n\nHere are some reasons why slow-cooking is appealing to home cooks:\n\n**Convenience:**\n* **Busy schedules:** If you have a busy schedule, slow-cooking is perfect for making a large meal ahead of time. Simply prepare the ingredients, put them in the",
+      "ablated": "\n \nSlow-cooking is a popular cooking method that uses low temperatures and a short timeframe for food to cook. There are many benefits to using this method, including convenience, ease of preparation and versatility. \n \nHere are some reasons why slow-cooking is appealing to home chefs:\n \n** Convenience and Simplicity:** \n* Requires minimal effort and minimal prep time.\n* You can start the process at any time and come back to it later.\n* It frees",
+      "baseline_has_construction": false,
+      "ablated_has_construction": false
+    },
+    {
+      "prompt": "Outline the appeal of slow cooking for a home chef.",
+      "seed": 1,
+      "baseline": "\n**\n**\n \n    \n    \n \n \n   \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n ",
+      "ablated": "\n**\n**\n \n    \n    \n \n \n   \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n ",
+      "baseline_has_construction": false,
+      "ablated_has_construction": false
+    },
+    {
+      "prompt": "Outline the appeal of slow cooking for a home chef.",
+      "seed": 2,
+      "baseline": "\n**\n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   ",
+      "ablated": "\n**\n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   ",
+      "baseline_has_construction": false,
+      "ablated_has_construction": false
+    },
+    {
+      "prompt": "Reflect on what newcomers to running tend to underestimate.",
+      "seed": 0,
+      "baseline": "\n\nFor many newcomers to running, the journey can be exhilarating but also daunting. Whether they're starting with a brisk walk or an initial mile, there are numerous things they may underestimate, leading to frustration, injury, or even abandoning the pursuit altogether. Here are some key aspects to consider:\n\n**1. Building a Solid Foundation:** \n   - Focus on proper posture and core strength. This ensures a balanced and efficient running posture, promoting injury prevention.\n   \n   - Start slowly",
+      "ablated": "\n\nFor many newcomers to running, the journey can be exhilarating but also daunting. Whether they're starting with a brisk walk or an initial mile run, these beginners often underestimate a few key aspects that can significantly impact their experience and progress. Here are some of the foundational elements to consider:\n\n**1. The Importance of Gradual Progression:**\n   - Beginners often jump into high mileage, hoping to see results quickly. \n   - They underestimate the need for gradual progression, which allows their",
+      "baseline_has_construction": false,
+      "ablated_has_construction": false
+    },
+    {
+      "prompt": "Reflect on what newcomers to running tend to underestimate.",
+      "seed": 1,
+      "baseline": "\n\nNewcomers to running often face a steep learning curve, and the initial joy of running often gets overshadowed by discomfort, frustration, and even injury. \nLet's take a look at some of the things that newcomers to running often underestimate.\n\n**1. The Process, Not the Result:**\nThe first few weeks or months of running might seem slow and uninteresting. It's important to remember that this is a process of learning and adapting to the demands of running.  Running isn",
+      "ablated": "\n\nNewcomers to running often face a steep learning curve, and the initial joy of running often gets overshadowed by discomfort, frustration, and even injury. \nLet's take a look at some of the things that newcomers to running often underestimate.\n\n**1. The Process, Not the Result:**\nThe first few weeks or months of running might seem slow and uninteresting. It's important to remember that this is a process of learning and adapting to the demands of running.  Running isn",
+      "baseline_has_construction": false,
+      "ablated_has_construction": false
+    },
+    {
+      "prompt": "Reflect on what newcomers to running tend to underestimate.",
+      "seed": 2,
+      "baseline": " \n \n \nRunning is a wonderful activity that provides numerous health benefits, but it can be daunting for newcomers.  There are many things you might underestimate when starting your running journey.  Here are some things you might not realize you need to account for:\n \n**Physical Considerations:**\n* **Strength and Conditioning:** Don't solely focus on getting faster. Strength training is crucial for injury prevention and improving your running form.  \n* **Proper Running Form:** Incorrect posture",
+      "ablated": " \n \n \nRunning is a wonderful activity that provides numerous health benefits, but it can be daunting for newcomers.  There are many things you might underestimate when starting your running journey.  Here are some things you might not realize you need to account for:\n \n**Physical Considerations:**\n* **Strength and Conditioning:** Don't solely focus on getting faster. Strength training is crucial for injury prevention and improving your running form.  \n* **Proper Running Form:** Incorrect posture",
+      "baseline_has_construction": false,
+      "ablated_has_construction": false
+    },
+    {
+      "prompt": "Describe how a well-designed park serves a dense urban area.",
+      "seed": 0,
+      "baseline": "\n \nA well-designed park in a dense urban area provides a variety of benefits for its residents. Here are some of the's benefits of designing a well-designed park in a dense urban area.\n \n**Enhancement of Well-being and Community**\n   * **Improved Health and Wellbeing:** Parks provide opportunities for physical activity, relaxation, and mental health. These benefits can lead to decreased stress, improved mood, and reduced risk of chronic illnesses.\n   \n   ",
+      "ablated": "\n \nA well-designed park in a dense urban area provides a variety of benefits for its residents. Here are some of the's benefits of designing a well-designed park in a dense urban area.\n \n**Enhancement of Well-being and Community**\n   * **Improved Health and Wellbeing:** Parks provide opportunities for physical activity, relaxation, and mental health. These benefits can lead to decreased stress, improved mood, and reduced risk of chronic illnesses.\n   \n   ",
+      "baseline_has_construction": false,
+      "ablated_has_construction": false
+    },
+    {
+      "prompt": "Describe how a well-designed park serves a dense urban area.",
+      "seed": 1,
+      "baseline": "\n \n**Answer:**\n\nA well-designed park in a dense urban area serves as a vital element, offering a multitude of benefits to its inhabitants. Here're some key functions and features:\n\n1. **Urban Biodiversity & Environmental Enhancement:**\n   - **Trees and natural spaces:** A park provides green spaces for biodiversity, allowing wildlife to thrive and air quality to improve. \n   - **Perennial plantings:** Attract pollinators and provide habitat for birds and insects.\n",
+      "ablated": "\n \n**Answer:**\n\nA well-designed park in a dense urban area serves as a vital element of life, offering a respite from the urban sprawl and promoting a healthier lifestyle and a sense of community. \n \nHere's how a well-designed park contributes to a healthy and vibrant urban environment:\n \n**1. Preserving Urban Wilderness:**\n- Parks act as havens of nature within a densely populated city. They provide access to natural beauty and beauty",
+      "baseline_has_construction": false,
+      "ablated_has_construction": false
+    },
+    {
+      "prompt": "Describe how a well-designed park serves a dense urban area.",
+      "seed": 2,
+      "baseline": "\n \n   The best description of a well-designed park in a dense urban area would include the following elements:\n  \n   1. **Connectivity and Accessibility:**\n      - Densely spaced, well-maintained paths and trails that connect to existing infrastructure and public transportation.\n      \n   2.** Urban Design Principles:**\n      - Integration of existing infrastructure and natural features, such as trees, waterways, and hills.\n      - Well-defined boundaries that clearly define the park",
+      "ablated": "\n \n   The best description of a well-designed park in a dense urban area would include the following elements:\n  \n   1. **Connectivity and Accessibility:**\n      - Densely spaced, well-maintained paths and trails that connect to existing infrastructure and public transportation.\n      \n   2.** Urban Design Principles:**\n      - Integration of existing infrastructure and natural features, such as trees and waterways.\n      - Emphasis on multi-functional spaces for diverse uses, including recreation",
+      "baseline_has_construction": false,
+      "ablated_has_construction": false
+    },
+    {
+      "prompt": "Explain the appeal of long-form podcasting to listeners.",
+      "seed": 0,
+      "baseline": "\n \n \n \n The success of long-form podcasts is undeniable. From blockbuster podcasts like \"The Dropout\" and \"Serial\" to casual conversations on topics like parenting or finance, long-form content is driving the growth of the podcasting industry. But what is it about these deep dives into various topics that appeals to listeners?\n \n \n   \n Here are some reasons why long-form content is so popular:\n \n **1. In-depth Content and",
+      "ablated": "\n \n \n \n The success of long-form podcasts is undeniable. From blockbuster podcasts like \"The Dropout\" and \"Serial\" to casual conversations on topics like parenting and finance on podcasts like \"The Daily\" and \"Freakonomics Radio,\" there's a reason why people tune in for hours. So what is it about long-form podcasts that draws listeners in?  \n \n  Let's explore the reasons behind the popularity of long-form content in the podcast world",
+      "baseline_has_construction": false,
+      "ablated_has_construction": false
+    },
+    {
+      "prompt": "Explain the appeal of long-form podcasting to listeners.",
+      "seed": 1,
+      "baseline": "\n \n \n \nLong-form podcasts have been growing in popularity, and for good reason. Here are some of the reasons why listeners enjoy them:\n\n**1. Depth and Depth of Information:**\n-   **In-depth discussions:** Long-form podcasts allow for more in-depth discussions on specific topics, delving into the complexities and nuances of the subject matter. This can be more engaging and informative than a typical podcast that focuses on a specific topic for a short period",
+      "ablated": "\n \n \n \nLong-form podcasts have been growing in popularity over the last few years. What are the reasons for this surge in popularity?\n \n \n \nWhy are listener preferences for long-form formats growing?\n \n \n \nWhat are some of the biggest challenges for podcasters producing long-form content?\n \n \n \nWhat are some of the most successful examples of long-form podcasts?\n \n \n ",
+      "baseline_has_construction": false,
+      "ablated_has_construction": false
+    },
+    {
+      "prompt": "Explain the appeal of long-form podcasting to listeners.",
+      "seed": 2,
+      "baseline": "\n \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   ",
+      "ablated": "\n \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   ",
+      "baseline_has_construction": false,
+      "ablated_has_construction": false
+    },
+    {
+      "prompt": "Walk through the key considerations for adopting a rescue dog.",
+      "seed": 0,
+      "baseline": "\n\n**Financial Considerations:**\n\n* **Adoption Fees:** While adoption fees can vary, they often cover initial vaccinations, spaying/neuturing, and vaccinations. \n* ** Vet Care:**  Don't forget the vet visits, vaccinations, medications, and potential medical emergencies. \n* ** Food & Supplies:**  Food, treats, bowls, and leashes are all required for your new friend. \n* ** Training & Enrichment:** Consider the cost of training classes, grooming",
+      "ablated": "\n\n**Financial Considerations:**\n\n* **Adoption Fees:** While adoption fees can vary from free to hundreds of dollars depending on the organization and dog's needs.\n* **Veterinary Care:** Includes routine vaccinations, deworming, spaying/neuturing, and any medical needs.\n* **Food & Treats:** Price varies depending on the dog's breed and breed specific needs.\n \n**Time Commitment:**\n\n* **Training:** Building a solid foundation of obedience and manners",
+      "baseline_has_construction": false,
+      "ablated_has_construction": false
+    },
+    {
+      "prompt": "Walk through the key considerations for adopting a rescue dog.",
+      "seed": 1,
+      "baseline": "\n\n**1. Breed & Temperament:**\n   - Research the breed you're interested in. Are you prepared for their energy levels, training needs, and possible health challenges? \n   - Consider your lifestyle and whether the breed's temperament fits with your family.\n\n**2. Age:**\n   -  Puppies require a lot of time, training, and energy. Adult dogs are typically more settled. Senior dogs may have specific needs.\n   \n**3.",
+      "ablated": "\n\n**1. Breed & Temperament:**\n   - Research the breed you're interested in. Are you prepared for their energy levels, training needs, and possible health challenges? \n   - Consider your lifestyle and whether the breed's temperament fits with your family.\n\n**2. Age:**\n   -  Puppies require a lot of time, training, and energy. Adult dogs are typically more settled. Senior dogs may have specific needs.\n   \n**3.",
+      "baseline_has_construction": false,
+      "ablated_has_construction": false
+    },
+    {
+      "prompt": "Walk through the key considerations for adopting a rescue dog.",
+      "seed": 2,
+      "baseline": " \n \n \n**1. Finding the Right Dog:**\n   * **Rescue vs. Shelter:** Both offer a chance to save a life, but shelters have limited space and often house more dogs, while rescues often specialize in specific breeds or mixes. \n   * **Size and Breed:** Consider your home, lifestyle, and any allergies you have.\n   \n**2.  Adopting a Rescue Dog:**\n   * **Application Process:** Most rescues require an application to",
+      "ablated": " \n \n \n**1. Finding the Right Dog:**\n   * **Rescue vs. Shelter:** Both offer a chance to save a life, but shelters have limited space and often house more dogs, while rescues often specialize in specific breeds or mixes. \n   * **Size and Breed:** Consider your home and lifestyle. Are you comfortable with a large dog? Are you a senior citizen? \n   * **Age:** Puppies require significant time and training. Senior dogs may need",
+      "baseline_has_construction": false,
+      "ablated_has_construction": false
+    },
+    {
+      "prompt": "Discuss what makes a documentary memorable years after release.",
+      "seed": 0,
+      "baseline": "\n \nDocumentaries, despite being factual and often serious, can be incredibly engaging and memorable for years after release. Here are some key factors that contribute to this:\n \n**1. Unforgettable Characters:** \n  *   **Human Connection:**  Documentaries often highlight the stories of real people.  These characters, who navigate challenging circumstances or exceptional experiences, resonate with viewers on a deeper level.  \n  *   **Compelling Perspectives:** Documentaries allow viewers to see",
+      "ablated": "\n \nDocumentaries, despite being factual and often serious in nature can leave a lasting impact on viewers. This is due to a few key factors:\n\n1. **Compelling Storytelling:**  A strong core narrative is crucial. The filmmaker needs to craft a story that connects with the audience emotionally, whether through character development, dramatic events, or a journey of self-discovery.  \n2. v\u00e9rit\u00e9 style or realism: Documentaries that utilize this style, where the focus is on reality rather",
+      "baseline_has_construction": false,
+      "ablated_has_construction": false
+    },
+    {
+      "prompt": "Discuss what makes a documentary memorable years after release.",
+      "seed": 1,
+      "baseline": "\n \n**Key Elements of a Memorable Documentary:**\n\n1. **Narrative Power:** \n   - Compelling story: A gripping plot that draws viewers in and keeps them engaged. \n   - Strong narrative flow: Clear structure and pacing that create a sense of narrative momentum.\n   \n2.**Emotional Resonance:**\n   - Connecting with the audience's emotions: Engaging the viewer's heart, sparking their empathy, or igniting their passion.\n   - Rel",
+      "ablated": "\n \n**Key Elements of a Memorable Documentary:**\n\n1. **Narrative Power:** \n   - Compelling story: A gripping plot that draws viewers in and keeps them engaged. \n   - Strong narrative flow: Clear structure and pacing that create a sense of narrative momentum.\n   \n2.**Emotional Resonance:**\n   - Connecting with the audience's emotions: Engaging the viewer's heart, sparking their empathy or understanding.\n   - Emotional depth: Showing the",
+      "baseline_has_construction": false,
+      "ablated_has_construction": false
+    },
+    {
+      "prompt": "Discuss what makes a documentary memorable years after release.",
+      "seed": 2,
+      "baseline": "\n \n   \n**Answer:**\n\nMemorable documentaries don't just make a splash at the box office or capture a particular moment in history. They carry a depth of emotion, a powerful narrative, and a lasting impact on the viewer. \n \nHere are some key factors that contribute to a film's long-term impact:\n  \n* **Emotional Resonance:** A great documentary connects with the viewer on a visceral level. It evokes feelings of awe, sadness, joy",
+      "ablated": "\n \n   \n**Answer:**\n\nMemorable documentaries don't just make a splash at the box office or capture a particular moment in history. They carry a depth of emotion, a powerful narrative arc, and lasting impact. Here's what makes a documentary stand out for years after release:\n\n**1. Emotional Resonance:**\n* **Heartfelt Stories:**  Good documentaries explore human stories, connecting viewers to personal struggles, triumphs, and vulnerabilities.\n* **Vulnerability and Honesty",
+      "baseline_has_construction": false,
+      "ablated_has_construction": false
+    },
+    {
+      "prompt": "Explain why some readers prefer physical books to e-readers.",
+      "seed": 0,
+      "baseline": "\n**Physical books:**\n- The smell of the book\n- The feel of the paper\n- A tangible and tangible experience\n\n**E-readers:**\n- Convenience and portability\n- Flexibility and customization\n  \n**Why do some readers prefer physical books?**\nReaders might prefer physical books because of the sensory experiences associated with them. \nThe smell of the paper, the feel of the book's weight, and the tactile experience of turning the pages all contribute to a sense",
+      "ablated": "\n**Physical books:**\n- The smell of the book\n- The feel of the paper\n- A tangible and tangible experience\n\n**E-readers:**\n- Convenience and portability\n- Flexibility and customization\n  \n**Why do some readers prefer physical books?**\nReaders might prefer physical books because of the sensory experiences associated with them. \nThe smell of the paper, the feel of the book's weight and texture can enhance the reading experience. \nThe physicality of",
+      "baseline_has_construction": false,
+      "ablated_has_construction": false
+    },
+    {
+      "prompt": "Explain why some readers prefer physical books to e-readers.",
+      "seed": 1,
+      "baseline": "\n**Physical books**\n\n* **Tangibility and Realism:** Holding a physical book in your hands and turning its pages is a sensory experience that some find more enjoyable than reading on a screen. The physicality of a book adds a layer of realism and connects with readers on a more personal level.\n\n* **Nostalgia and Familiarity:** Many people have fond memories of reading physical books as children, making them feel nostalgic and connected to their past.\n* **Physical Constraints:** Some may",
+      "ablated": "\n**Physical books**\n\n* **Tangibility and Realism:** Holding a physical book in your hands and feeling its texture and pages is a sensory experience that e-readers can't replicate. \n* **Physicality of Reading:** Physical books offer a sense of immersion and presence that an e-reader can't achieve.\n\n* **Binding Quality and Durability:** High-quality paper and binding make physical books more robust and durable, and they last longer.\n* **Binding Choice",
+      "baseline_has_construction": false,
+      "ablated_has_construction": false
+    },
+    {
+      "prompt": "Explain why some readers prefer physical books to e-readers.",
+      "seed": 2,
+      "baseline": "\n**Physical books offer a unique experience that many readers find difficult to replicate with e-readers. Here are some reasons why:**\n\n* **Sensory Experience:** The feel of paper, the smell of a book, and the physical touch of turning pages offer a sense of reality and immersion that isn't achievable with an e-reader. The tactile sensation of turning pages allows readers to focus on the text, the book itself, and the process of reading.\n\n* **Immersion and Concentration",
+      "ablated": "\n**Physical books offer a unique experience that many readers find difficult to replicate with e-readers. Here are some reasons why:**\n\n* **Sensory Experience:** The feel of paper and the smell of a book are experiences that e-readers cannot replicate. The tactile nature of physical books engages the senses and provides a sense of immersion.\n\n* **Aesthetic Appeal:** Physical books have a classic aesthetic appeal that e-readers cannot match. The physical format of a book can be visually appealing, with",
+      "baseline_has_construction": false,
+      "ablated_has_construction": false
+    },
+    {
+      "prompt": "Describe the experience of learning a second language as an adult.",
+      "seed": 0,
+      "baseline": "\n\nLearning a second language as an adult can be a rewarding but challenging experience. \nHere are some common challenges and benefits:\n**Challenges:**\n* **Delayed acquisition:**  Language acquisition generally happens at a younger age, and adults may take longer to learn a new language. \n* **Lingling to survive in the target language:**  Learning a new language requires more effort, especially when trying to communicate effectively.\n* **Lack of time and resources:** Adults may have a busy",
+      "ablated": "\n\nLearning a second language as an adult can be a rewarding but challenging experience. \nHere are some common challenges and benefits:\n**Challenges:**\n* **Delayed acquisition:**  Language acquisition generally happens at a younger age, and adults may take longer to learn a new language. \n* **Lingling to survive in the target language:**  Learning a new language requires more effort, especially when trying to communicate effectively.\n* **Lack of time and resources:** Adults may have a busy",
+      "baseline_has_construction": false,
+      "ablated_has_construction": false
+    },
+    {
+      "prompt": "Describe the experience of learning a second language as an adult.",
+      "seed": 1,
+      "baseline": "\n\n**Learning a second language as an adult can be a challenging but rewarding experience. Here's a glimpse into what it's like:**\n\n**The Challenges:**\n\n* **Impaired Memory:** As adults, we often have busy lives and possibly a different type of focus. This can make learning new skills and recalling words and phrases more difficult.\n* **Inherent Differences:** Our brains may not process information as quickly or as easily as younger learners. \n* **The Pressure to",
+      "ablated": "\n\n**Learning a second language as an adult can be a challenging but rewarding experience. Here's a glimpse into what it's like:**\n\n**The Challenges:**\n\n* **Impaired Memory:** As adults often have full schedules and commitments, finding time for learning is difficult. \n* **Lack of Prior Exposure:** Adult learners may not have learned the language as a child and thus may have difficulty mastering the basics.\n***Impaired Motivation:** Adult learners may not have the same",
+      "baseline_has_construction": false,
+      "ablated_has_construction": false
+    },
+    {
+      "prompt": "Describe the experience of learning a second language as an adult.",
+      "seed": 2,
+      "baseline": "\n\n**Adult Second Language Learning: A Tumultuous But Rewarding Journey**\n\nLearning a second language as an adult comes with its own set of challenges and rewards. It's not just about mastering vocabulary and grammar, but also navigating the complexities of cultural and social norms associated with that language. \n \n**Challenges**\n\n* **Unfamiliarity with the Learning Process:** Adults often have pre-existing assumptions about how languages are learned.  They may not have the same enthusiasm or desire",
+      "ablated": "\n\n**Adult Second Language Learning: A Tumultuous But Rewarding Journey**\n\nLearning a second language as an adult comes with its own set of challenges and rewards. It's not just about mastering vocabulary and grammar, but also navigating the complexities of cultural and social norms associated with that language. \n \n**Challenges**\n\n* **Unfamiliarity with the Learning Process:** Adults often have pre-existing assumptions about how languages are learned.  They may not have the same enthusiasm or desire",
+      "baseline_has_construction": true,
+      "ablated_has_construction": true
+    },
+    {
+      "prompt": "Reflect on the differences between hiking solo and hiking with friends.",
+      "seed": 0,
+      "baseline": "\n\n**Hiking Solo:**\n\n* **Independence and Solitude:** Experience the full power of nature without the influence of others. You can walk at your own pace, explore your own path, and connect with yourself on a deeper level.\n\n* **Self-Reflection and Introspection:** The solitude of the wilderness provides an opportunity for contemplation and introspection. You can engage with your thoughts and feelings freely without the distractions of conversation or social obligations.\n* **Focus on Nature and Self-Awareness:** You",
+      "ablated": "\n\n**Hiking Solo:**\n\n* **Independence and Solitude:** Experience the full power of nature without the influence of others. You can walk at your own pace and explore on your own terms.\n  \n* **Reflection and Self-Discovery:** Time alone allows for introspection and finding inner peace.\n\n* **Freedom to Explore Untamed Paths:** You can choose less-traveled paths and explore nature's hidden gems. \n \n* **Self-reliance and Problem-Solving:** You",
+      "baseline_has_construction": false,
+      "ablated_has_construction": false
+    },
+    {
+      "prompt": "Reflect on the differences between hiking solo and hiking with friends.",
+      "seed": 1,
+      "baseline": "\n\n## The Altitudes of Hiking\n\nHiking is a gateway to the outdoors, a chance to explore, connect with nature, and exercise. But the way you experience it can be vastly different depending on whether you're solo or with friends.\n\n**The Power of Aloness:**\n\n* **Quiet Reflection:**  Hiking solo offers a chance to focus on yourself.  The silence can help you quiet your mind, connect with your thoughts, and appreciate the moment.\n* **Freedom and",
+      "ablated": "\n\n## The Altitudes of Hiking\n\nHiking is a gateway to the outdoors, a chance to explore and connect with nature. However, the experience can differ drastically when you're hiking solo vs. with friends.\n\n**The Lone Wanderer:**\n\n* **Peace and Solitude:**  Solo hiking allows you to embrace the quiet. You can connect with the natural world on your own terms and enjoy the peace and tranquility.\n***Self-reliance:** You learn to trust your instincts and navigate challenges",
+      "baseline_has_construction": false,
+      "ablated_has_construction": false
+    },
+    {
+      "prompt": "Reflect on the differences between hiking solo and hiking with friends.",
+      "seed": 2,
+      "baseline": "\n\n**Hiking Solo vs. Hiking with Friends**\n\n**Hiking Solo:**\n\n* **Freedom and Solitude:** You choose your own path, speed, and direction. You have the freedom to explore at your own pace, focus on yourself, and appreciate the silence and solitude.\n \n* **Personal Growth:** This type of experience encourages introspection and self-awareness. You are challenged to find your own way, learn to navigate challenges, and build resilience.\n\n* **Disorientation and Determination:**",
+      "ablated": "\n\n**Hiking Solo vs. Hiking with Friends**\n\n**Hiking Solo:**\n\n* **Freedom and Solitude:** You choose your own path, speed, and direction. You have the freedom to explore at your own pace, focus on yourself and your surroundings.\n    \n* **Self-Reflection and Growth:** Hiking solo allows for introspection and reflection on your own inner journey.\n    \n* **Personal Challenges:** It requires planning, preparation, and finding your own way through challenges.\n    \n",
+      "baseline_has_construction": false,
+      "ablated_has_construction": false
+    }
+  ]
+}

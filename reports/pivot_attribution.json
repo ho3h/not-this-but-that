@@ -1,0 +1,358 @@
+{
+  "n_samples": 60,
+  "baseline_p_pivot_mean": 0.24509689278590183,
+  "top_promotes_pivot": [
+    {
+      "feature_idx": 3223,
+      "mean_attribution_drop": 0.07615869725123048,
+      "n_prompts_active": 32,
+      "scored": 0.4308186501814268,
+      "label": "phrases conveying exceptions or negations"
+    },
+    {
+      "feature_idx": 9909,
+      "mean_attribution_drop": 0.04048140481528309,
+      "n_prompts_active": 54,
+      "scored": 0.2974763576054685,
+      "label": "references to digital technology and online interactions"
+    },
+    {
+      "feature_idx": 12898,
+      "mean_attribution_drop": 0.02522480795936038,
+      "n_prompts_active": 60,
+      "scored": 0.19539052227576612,
+      "label": "references to societal issues, particularly related to laws and marginalized groups"
+    },
+    {
+      "feature_idx": 4197,
+      "mean_attribution_drop": 0.014019208401441574,
+      "n_prompts_active": 25,
+      "scored": 0.07009604200720787,
+      "label": "references to opinions, decisions, and activities around relationships and equality"
+    },
+    {
+      "feature_idx": 6759,
+      "mean_attribution_drop": 0.009341449740360368,
+      "n_prompts_active": 53,
+      "scored": 0.06800678063501445,
+      "label": "terms related to coverage and protection in the context of services or products"
+    },
+    {
+      "feature_idx": 2137,
+      "mean_attribution_drop": 0.008513606162214617,
+      "n_prompts_active": 53,
+      "scored": 0.06197998841497819,
+      "label": "elements of concern or caution in various contexts"
+    },
+    {
+      "feature_idx": 9816,
+      "mean_attribution_drop": 0.03495564063390096,
+      "n_prompts_active": 3,
+      "scored": 0.06054494558903562,
+      "label": "topics related to legal and political accountability"
+    },
+    {
+      "feature_idx": 4516,
+      "mean_attribution_drop": 0.008758650802903705,
+      "n_prompts_active": 45,
+      "scored": 0.05875481575942739,
+      "label": "phrases related to scientific measurements and their implications"
+    },
+    {
+      "feature_idx": 1250,
+      "mean_attribution_drop": 0.02366589903831482,
+      "n_prompts_active": 5,
+      "scored": 0.05291855899831884,
+      "label": "various professional roles and their associated tasks or features"
+    },
+    {
+      "feature_idx": 2282,
+      "mean_attribution_drop": 0.0184331014752388,
+      "n_prompts_active": 8,
+      "scored": 0.052136684205764436,
+      "label": "specific medical terms and conditions, particularly related to studies and outcomes"
+    },
+    {
+      "feature_idx": 11864,
+      "mean_attribution_drop": 0.0058687857119366525,
+      "n_prompts_active": 60,
+      "scored": 0.04545941864958139,
+      "label": "technical terms and phrases related to legal and procedural contexts"
+    },
+    {
+      "feature_idx": 7361,
+      "mean_attribution_drop": 0.006918831800038998,
+      "n_prompts_active": 26,
+      "scored": 0.03527925835966514,
+      "label": "statements about legal analysis and recommendations"
+    },
+    {
+      "feature_idx": 8530,
+      "mean_attribution_drop": 0.004648990763558282,
+      "n_prompts_active": 45,
+      "scored": 0.031186378122254915,
+      "label": "tokens related to scientific concepts and conditions, particularly focusing on environmental and health-related themes"
+    },
+    {
+      "feature_idx": 12524,
+      "mean_attribution_drop": 0.028875291347503662,
+      "n_prompts_active": 1,
+      "scored": 0.028875291347503662,
+      "label": "data related to physical attributes and measurements"
+    },
+    {
+      "feature_idx": 2184,
+      "mean_attribution_drop": 0.007155696861445904,
+      "n_prompts_active": 16,
+      "scored": 0.028622787445783615,
+      "label": "positive attributes and expressions of appreciation"
+    },
+    {
+      "feature_idx": 8820,
+      "mean_attribution_drop": 0.010686226189136505,
+      "n_prompts_active": 6,
+      "scored": 0.026175801439350836,
+      "label": "references to ethical concerns and issues related to accountability"
+    },
+    {
+      "feature_idx": 12923,
+      "mean_attribution_drop": 0.01273341104388237,
+      "n_prompts_active": 4,
+      "scored": 0.02546682208776474,
+      "label": "references to urgency and priority in actions or events"
+    },
+    {
+      "feature_idx": 9606,
+      "mean_attribution_drop": 0.007062051783908497,
+      "n_prompts_active": 11,
+      "scored": 0.023422176017284496,
+      "label": "elements related to communication and technology usage"
+    },
+    {
+      "feature_idx": 12506,
+      "mean_attribution_drop": 0.004201299200455348,
+      "n_prompts_active": 27,
+      "scored": 0.021830591018961492,
+      "label": "concepts related to problems, significant findings, and situations of concern"
+    },
+    {
+      "feature_idx": 1608,
+      "mean_attribution_drop": 0.007663017138838768,
+      "n_prompts_active": 8,
+      "scored": 0.021674285532886514,
+      "label": "legal and health-related terms associated with studies and analyses"
+    },
+    {
+      "feature_idx": 14401,
+      "mean_attribution_drop": 0.018873140215873718,
+      "n_prompts_active": 1,
+      "scored": 0.018873140215873718,
+      "label": "elements related to emotional depth and complexity in narratives"
+    },
+    {
+      "feature_idx": 6336,
+      "mean_attribution_drop": 0.0034463919561218332,
+      "n_prompts_active": 27,
+      "scored": 0.017907977912399113,
+      "label": "terms related to legal and criminal proceedings"
+    },
+    {
+      "feature_idx": 347,
+      "mean_attribution_drop": 0.011749301105737686,
+      "n_prompts_active": 2,
+      "scored": 0.01661602097213944,
+      "label": "phrases and concepts related to accountability and compliance"
+    },
+    {
+      "feature_idx": 10822,
+      "mean_attribution_drop": 0.011656209826469421,
+      "n_prompts_active": 2,
+      "scored": 0.0164843700224596,
+      "label": "indicators of significant or important concepts within the text, often activating for words or phrases that introduce key ideas, topics, or themes."
+    },
+    {
+      "feature_idx": 10701,
+      "mean_attribution_drop": 0.004117489093914628,
+      "n_prompts_active": 16,
+      "scored": 0.016469956375658512,
+      "label": "the skewed perceptions and realities of a character named Earl"
+    }
+  ],
+  "top_suppresses_pivot": [
+    {
+      "feature_idx": 2235,
+      "mean_attribution_drop": -0.11952884495258331,
+      "n_prompts_active": 1,
+      "scored": -0.11952884495258331,
+      "label": "comparative adjectives and their contexts related to ease or difficulty"
+    },
+    {
+      "feature_idx": 1523,
+      "mean_attribution_drop": -0.11174194514751434,
+      "n_prompts_active": 1,
+      "scored": -0.11174194514751434,
+      "label": "references to \"hill\" in various contexts"
+    },
+    {
+      "feature_idx": 7136,
+      "mean_attribution_drop": -0.02731334837153554,
+      "n_prompts_active": 16,
+      "scored": -0.10925339348614216,
+      "label": "terms related to biological and medical processes"
+    },
+    {
+      "feature_idx": 13853,
+      "mean_attribution_drop": -0.03025417567955123,
+      "n_prompts_active": 9,
+      "scored": -0.09076252703865369,
+      "label": "discussions around beliefs and decisions"
+    },
+    {
+      "feature_idx": 6143,
+      "mean_attribution_drop": -0.01171222940119433,
+      "n_prompts_active": 58,
+      "scored": -0.08919768168332433,
+      "label": "phrases related to medical conditions and treatments"
+    },
+    {
+      "feature_idx": 1869,
+      "mean_attribution_drop": -0.02857690801223119,
+      "n_prompts_active": 9,
+      "scored": -0.08573072403669357,
+      "label": "statements related to evidence and conclusions in analytical texts"
+    },
+    {
+      "feature_idx": 4028,
+      "mean_attribution_drop": -0.03389314468950033,
+      "n_prompts_active": 5,
+      "scored": -0.07578737549695874,
+      "label": "phrases related to assessment and accountability in various contexts"
+    },
+    {
+      "feature_idx": 3645,
+      "mean_attribution_drop": -0.01744403938452403,
+      "n_prompts_active": 18,
+      "scored": -0.0740087912404929,
+      "label": "phrases related to measurements or characteristics of products and experiences"
+    },
+    {
+      "feature_idx": 139,
+      "mean_attribution_drop": -0.024145124214036123,
+      "n_prompts_active": 7,
+      "scored": -0.06388199404510346,
+      "label": "references to actions and their consequences, emphasizing occurrences and substances"
+    },
+    {
+      "feature_idx": 8836,
+      "mean_attribution_drop": -0.018509087703106077,
+      "n_prompts_active": 11,
+      "scored": -0.061387699122983905,
+      "label": "themes related to opportunities and abilities, particularly in the context of decisions and choices"
+    },
+    {
+      "feature_idx": 12790,
+      "mean_attribution_drop": -0.01683766208589077,
+      "n_prompts_active": 12,
+      "scored": -0.058327372426877945,
+      "label": "contexts involving work, labor, or employment-related discussions"
+    },
+    {
+      "feature_idx": 13584,
+      "mean_attribution_drop": -0.029770823816458385,
+      "n_prompts_active": 3,
+      "scored": -0.05156457943328751,
+      "label": "words of acceptance and phrases emphasizing unconditional perspectives"
+    },
+    {
+      "feature_idx": 8080,
+      "mean_attribution_drop": -0.049624428153038025,
+      "n_prompts_active": 1,
+      "scored": -0.049624428153038025,
+      "label": "references to mountains or mountainous terrain"
+    },
+    {
+      "feature_idx": 1813,
+      "mean_attribution_drop": -0.04833562672138214,
+      "n_prompts_active": 1,
+      "scored": -0.04833562672138214,
+      "label": "occurrences of the word \"feature\" and related terms in discussions of technology or methods"
+    },
+    {
+      "feature_idx": 15509,
+      "mean_attribution_drop": -0.006100493179381651,
+      "n_prompts_active": 59,
+      "scored": -0.04685877724470881,
+      "label": "words likely to be near the end of sentences"
+    },
+    {
+      "feature_idx": 13130,
+      "mean_attribution_drop": -0.023310884833335876,
+      "n_prompts_active": 4,
+      "scored": -0.04662176966667175,
+      "label": "terms related to legal proceedings and the concept of prior knowledge or actions"
+    },
+    {
+      "feature_idx": 13762,
+      "mean_attribution_drop": -0.005903374714155992,
+      "n_prompts_active": 60,
+      "scored": -0.045727343908696254,
+      "label": "phrases related to legal and ethical accountability in various contexts"
+    },
+    {
+      "feature_idx": 2718,
+      "mean_attribution_drop": -0.04540066421031952,
+      "n_prompts_active": 1,
+      "scored": -0.04540066421031952,
+      "label": "positive superlative adjectives indicating quality"
+    },
+    {
+      "feature_idx": 12992,
+      "mean_attribution_drop": -0.01813732584317525,
+      "n_prompts_active": 6,
+      "scored": -0.04442719361437403,
+      "label": "descriptors of time-related qualities and intensities"
+    },
+    {
+      "feature_idx": 13600,
+      "mean_attribution_drop": -0.03039640188217163,
+      "n_prompts_active": 2,
+      "scored": -0.0429870037891102,
+      "label": "content related to essays or articles, particularly focusing on their discussions and analyses"
+    },
+    {
+      "feature_idx": 13703,
+      "mean_attribution_drop": -0.03995627164840698,
+      "n_prompts_active": 1,
+      "scored": -0.03995627164840698,
+      "label": "references to the color pink and its various associations"
+    },
+    {
+      "feature_idx": 16285,
+      "mean_attribution_drop": -0.009630303597077727,
+      "n_prompts_active": 16,
+      "scored": -0.03852121438831091,
+      "label": "nouns related to documentation and procedures"
+    },
+    {
+      "feature_idx": 16295,
+      "mean_attribution_drop": -0.026759840548038483,
+      "n_prompts_active": 2,
+      "scored": -0.0378441294299775,
+      "label": "significant terms and phrases related to scientific studies, particularly in the context of law, medicine, and research methodologies"
+    },
+    {
+      "feature_idx": 11370,
+      "mean_attribution_drop": -0.03716610372066498,
+      "n_prompts_active": 1,
+      "scored": -0.03716610372066498,
+      "label": "the word \"direct\" and its variations in various contexts"
+    },
+    {
+      "feature_idx": 7600,
+      "mean_attribution_drop": -0.010450019190708796,
+      "n_prompts_active": 12,
+      "scored": -0.03619992835675487,
+      "label": "specific named entities and categories"
+    }
+  ]
+}

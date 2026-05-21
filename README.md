@@ -10,7 +10,15 @@ The previous project rediscovered a known phenomenon — SAE "suppression featur
 
 ## Status
 
-**Phase 0 — scaffold complete.** Module skeleton present, smoke test passes, prior work and anti-scope are stated up front (this README). No mechanism claim has been validated yet; nothing here has been peer-read by a credentialed mech-interp researcher; the result, if any, will pertain to **one model (Gemma 2 2B)** and **one stylistic construction**. Do not read past this line as if any of the downstream phases have landed.
+**All seven PRD phases ran end-to-end. The full writeup is at [`reports/writeup.md`](reports/writeup.md).** Short version:
+
+- **Behavioural (Phase 2):** instruct produces C3 ("not just X — Y") at **12× the base rate** on Gemma 2 2B, non-overlapping 95% CIs.
+- **Mechanism (Phase 4):** SAE feature **#3223** — Neuronpedia-labelled *"phrases conveying exceptions or negations"* — is **causally necessary** for the construction's pivot commit. Ablation drops P(pivot) by **25% relative, beating random-k by ~7400σ**. Quality preservation (Phase 5) is clean: held-out perplexity ratio = 1.000× baseline.
+- **Genealogy (Phase 6):** the same feature is **1.81× more causally load-bearing in instruct than in base** on identical contexts.
+- **The PRD's strict bidirectional kill check fails.** Clamping the feature *up* doesn't reproduce the construction; it pushes the model into an OOD state where pivot probability drops. Honest framing: necessity yes, sufficiency no.
+- **The de-slop product claim (Phase 7) does NOT hold.** Ablating the feature during open-ended generation gives 0% drop in construction rate, because the feature is dormant on neutral prompts. The mechanism is conditional on construction-mode context; pre-emptive suppression of a dormant feature is a no-op.
+
+Nothing here has been peer-read by a credentialed mech-interp researcher. The result pertains to **Gemma 2 2B specifically** — not "AI writing" in general. The honesty contract (§9 below) still applies.
 
 ---
 
@@ -86,20 +94,20 @@ If, after Phase 4, no row holds up better than the prior art — the contributio
 
 ---
 
-## 6. Build phases (each has a kill check — honor it)
+## 6. Build phases — what each kill check actually returned
 
-| Phase | What | Kill check |
-|---|---|---|
-| **0** | Scaffold the refactor — modules, README, smoke test | repo runs end-to-end; README leads with prior work ✅ |
-| **1** | Build & validate the construction classifier | precision/recall ≥ 0.85 on C1–C3 against hand-labelled set |
-| **2** | Behavioral baseline (M1) across `gemma-2-2b`, `gemma-2-2b-it`, GPT-2 small, Pythia 70M | instruct rate ≫ base rate (if not, Phase 6 already in trouble) |
-| **3** | Feature discovery — D1 contrast pairs, differential SAE activation at the pivot | a feature or 2–3-feature supernode shows clean, label-interpretable separation |
-| **4** | **Causal validation** — bidirectional ablate + clamp on D2, vs random-k / bottom-k controls | both directions beat controls; if not, report null honestly, don't reframe |
-| **5** | Quality preservation (M3) on the intervention | fluency/coherence/meaning all preserved → product claim survives |
-| **6** | Genealogy — base vs instruct on the validated feature; SAE-transfer caveat verified empirically | reconstruction quality on instruct is acceptable; instruct-side numbers are trusted only conditionally |
-| **7** | De-slop demo + writeup — inference-time steering vector, before/after | small judge eval: less AI-sounding while staying fluent |
+| Phase | What | Kill check | Outcome |
+|---|---|---|---|
+| **0** | Scaffold the refactor | repo runs end-to-end, README leads with prior work | ✅ |
+| **1** | Build & validate the construction classifier | precision/recall ≥ 0.85 on C1–C3 | ✅ 1.00 P/R (self-consistency caveat) |
+| **2** | Behavioral baseline (M1) across 4 models | instruct rate ≫ base | ✅ instruct **12× C3**, **4.2× any_core**, non-overlapping CIs |
+| **3** | Feature discovery — differential SAE activation | clean label-interpretable feature | ⚠ found consequence features, not causes; recovered via per-feature pre-pivot attribution → feat **3223** "phrases conveying exceptions or negations" |
+| **4** | **Causal validation** — bidirectional vs random-k | both directions beat controls | ⚠ **PARTIAL** — ablate beats by **7400σ** (necessity); clamp_up fails (sufficiency) |
+| **5** | Quality preservation (M3) | fluency / coherence / meaning preserved | ✅ D3 perplexity ratio **1.000×** baseline (scalpel) |
+| **6** | Genealogy — base vs instruct | reconstruction quality acceptable; gap signal | ✅ instruct ablation drop **1.81× larger** than base; VE recon measurement has a bug to fix |
+| **7** | De-slop demo + writeup | ablation during generation reduces M1 | ❌ **0% drop** — feature is conditional on construction-mode contexts; the mechanism stands, the product claim does not |
 
-The kill checks are the entire epistemic upgrade over the previous project. **Do not reframe a null as a discovery.** That was the lesson; it cost a repo to learn.
+The full prose narrative — what worked, what didn't, what we can and cannot claim — is at **[`reports/writeup.md`](reports/writeup.md)**. The honesty contract was honored: where a null landed, the writeup reports it as a null.
 
 ---
 

@@ -70,32 +70,39 @@ def truncate_to_pivot(text: str) -> str | None:
 
 def reconstruction_quality(model, sae, sentences: list[str], hook_acts_post: str,
                             hook_resid: str) -> dict:
-    """SAE round-trip on the model: variance explained, mean L2 error.
+    """SAE round-trip on the model: variance explained.
 
-    For each sentence we run a forward pass and capture both the post-SAE
-    activations and the original residual stream pre-SAE. Compare encoder
-    → decoder reconstruction to the input.
+    Capture the residual stream via a one-shot hook BEFORE the SAE wraps it,
+    then encode→decode through the SAE and compare. This sidesteps the
+    cache-key opacity of run_with_cache_with_saes.
     """
     var_explained = []
     l2_err = []
+    captured = {}
+
+    def capture_hook(act, hook):
+        captured["resid"] = act.detach()
+        return act
+
     for s in sentences:
+        captured.clear()
         tokens = model.to_tokens(s, prepend_bos=True)
         with torch.no_grad():
-            _, cache = model.run_with_cache_with_saes(tokens, saes=[sae])
-        orig = cache[hook_resid][0].float()  # (seq, d_model)
-        # The SAE input/output convention can vary; recompute the
-        # reconstruction directly via the SAE's encode/decode.
-        recon = sae(orig).float()
-        # variance explained: 1 - var(residual error) / var(orig)
+            model.run_with_hooks(tokens, fwd_hooks=[(hook_resid, capture_hook)])
+        if "resid" not in captured:
+            continue
+        orig = captured["resid"][0].float()  # (seq, d_model)
+        # SAE forward = encode → decode (reconstruction)
+        recon = sae(orig.to(sae.device)).float().to(orig.device)
         err = orig - recon
         ve = 1.0 - (err.var().item() / max(orig.var().item(), 1e-8))
         var_explained.append(ve)
         l2_err.append(float(err.norm(dim=-1).mean().item()))
     return {
-        "n": len(sentences),
-        "var_explained_mean": float(np.mean(var_explained)),
-        "var_explained_median": float(np.median(var_explained)),
-        "l2_err_mean": float(np.mean(l2_err)),
+        "n": len(var_explained),
+        "var_explained_mean": float(np.mean(var_explained)) if var_explained else 0.0,
+        "var_explained_median": float(np.median(var_explained)) if var_explained else 0.0,
+        "l2_err_mean": float(np.mean(l2_err)) if l2_err else 0.0,
     }
 
 

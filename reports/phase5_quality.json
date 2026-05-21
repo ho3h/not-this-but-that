@@ -1,0 +1,39 @@
+{
+  "features": [
+    3223
+  ],
+  "fluency": {
+    "baseline": {
+      "geomean_perplexity": 24.627957881996906,
+      "mean": 25.079690840888887,
+      "median": 24.528849417195072,
+      "n_chunks": 6
+    },
+    "ablate": {
+      "geomean_perplexity": 24.63298853912389,
+      "mean": 25.057505623874846,
+      "median": 24.354513962640148,
+      "n_chunks": 6
+    },
+    "clamp_up": {
+      "geomean_perplexity": 24.78484301495693,
+      "mean": 25.228453568802575,
+      "median": 24.547759326157184,
+      "n_chunks": 6
+    },
+    "ablate_ppl_ratio": 1.0002042661089112,
+    "clamp_up_ppl_ratio": 1.006370204696294
+  },
+  "meaning": {
+    "mean_cosine_with_vs_without": 0.7725946307182312,
+    "median": 0.8213815689086914,
+    "p10": 0.5673028230667114,
+    "p90": 0.937343955039978,
+    "n_pairs": 226,
+    "note": "D1 baseline: meaning preserved by the paraphraser (us). Phase 7 will compare baseline gen vs intervened gen."
+  },
+  "coherence": {
+    "status": "stub",
+    "note": "Phase 5 v2 wires Anthropic Claude as the LLM judge on a sample of Phase 4 M1 ablate generations (baseline vs intervened, blind to condition), 1-5 coherence rating. Skipped here."
+  }
+}

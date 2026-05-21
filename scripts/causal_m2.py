@@ -165,7 +165,8 @@ def pick_controls(d_sae: int, candidate: list[int], *, n_random: int = 5,
     return out
 
 
-def run(features: list[int], variants: set[str], n_random: int) -> None:
+def run(features: list[int], variants: set[str], n_random: int,
+        clamp_value: float = 10.0) -> None:
     dev = device()
     log.info(f"loading gemma-2-2b on {dev}…")
     model = HookedSAETransformer.from_pretrained("gemma-2-2b", device=dev)
@@ -230,7 +231,7 @@ def run(features: list[int], variants: set[str], n_random: int) -> None:
         pivot_ids = pivot_ids_per_variant[s["variant"]]
         for cond_name, mode, feat_idxs in conditions:
             p, ml = measure_pivot_prob(model, sae, s["prefix"], pivot_ids,
-                                       feat_idxs, mode)
+                                       feat_idxs, mode, clamp_value=clamp_value)
             results[cond_name].append({"variant": s["variant"], "p_pivot": p,
                                        "max_logit_pivot": ml})
         if (i + 1) % 25 == 0:
@@ -371,8 +372,11 @@ def main() -> None:
                     choices=["C1", "C2", "C3", "C4"])
     ap.add_argument("--n-random", type=int, default=5,
                     help="Number of independent random-k control draws.")
+    ap.add_argument("--clamp-value", type=float, default=10.0,
+                    help="Value to clamp features to in clamp_up mode.")
     args = ap.parse_args()
-    run(features=args.features, variants=set(args.variants), n_random=args.n_random)
+    run(features=args.features, variants=set(args.variants), n_random=args.n_random,
+        clamp_value=args.clamp_value)
 
 
 if __name__ == "__main__":
