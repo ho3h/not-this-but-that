@@ -10,19 +10,36 @@ The previous project rediscovered a known phenomenon — SAE "suppression featur
 
 ## Status
 
-**All seven PRD phases ran end-to-end. The full writeup is at [`reports/writeup.md`](reports/writeup.md).** Short version:
+This project has run two parallel investigations through the same adversarial methodology. **Read them in this order:**
 
-- **Behavioural (Phase 2):** Gemma 2 2B-it's construction usage on D2 prompts is **94% C3** ("not just X — Y"); the other models (Pythia 70M, GPT-2, Gemma 2 2B base) are C1-dominant. Instruct-tuning didn't *install* the construction — Pythia and GPT-2 base already produce it at higher rates than instruct Gemma. It shifted the *variant*. Sentence-level any_core CIs are non-overlapping between Gemma base (0.4%) and instruct (1.8%).
-- **Mechanism (Phase 4):** SAE feature **#3223** — Neuronpedia-labelled *"phrases conveying exceptions or negations"* — is **causally necessary** for the construction's pivot commit. Ablation at the pre-pivot decision point drops P(pivot) by **25% relative**; all five random-k single-feature controls at the same position produced no measurable change. The candidate is qualitatively separated from a near-degenerate null. Quality preservation (Phase 5) is clean: held-out perplexity ratio = 1.000× baseline.
-- **Genealogy (Phase 6):** the same feature is **1.81× more causally load-bearing in instruct than in base** on identical contexts. Reconstruction-quality prerequisite measurement is currently buggy (priority-1 fix).
-- **The PRD's strict bidirectional kill check fails.** Clamping the feature *up* doesn't reproduce the construction; it pushes the model into an OOD state where pivot probability drops. Honest framing: necessity yes, sufficiency no — the commit is a multi-feature coordination.
-- **The de-slop product claim (Phase 7) does NOT hold, and that is the result, not the apology.** Ablating the feature during open-ended generation gives 0% drop in construction rate, because the feature is dormant on neutral prompts. Feat 3223 gates the *commit* to the pivot once the construction has been opened; whatever gates *entry* into construction-mode lives upstream and is not yet identified.
+1. **[`reports/operating_protocol.md`](reports/operating_protocol.md)** — Discovery/Confirmation firewall, BH-FDR multiplicity correction, pre-registered Tiers 0–6, prime directive. The methodology is the load-bearing intellectual contribution; the empirical findings are the worked example of it working.
+2. **[`reports/the_explicit_decision.md`](reports/the_explicit_decision.md)** — Path A (mechanism) vs Path B (register) split. Two separate writeups, deliberately not merged.
+3. **[`reports/path_b_register_writeup.md`](reports/path_b_register_writeup.md)** — the behavioural finding, narrowed by cross-family replication, with the honest cross-family null reported.
+4. **[`reports/writeup.md`](reports/writeup.md)** — the Path A exploration writeup with its caveats. Conditional on the Tier 0b prerequisite.
 
-**Foundation cracks: one closed, one open.**
-1. **CLOSED** — classifier blind-validation. [Tier 0a](reports/tier_0a_classifier_blind_eval.md): P = 0.80, R = 1.00 on 90 sentences independently sourced from human prose and AI generations (regex was never tuned on any of them). Above the pre-registered ≥ 0.70 gate. M1 generalises beyond its own training set.
-2. **OPEN** — Gemma Scope reconstruction-quality verification. [Tier 0b](reports/tier_0b_kill.md): every VE-measurement path returns negative numbers, which is definitionally an instrument bug. Proxy evidence the SAE is functional (L0 = 74 vs canonical 71; cosine 0.83; model's top-5 predictions essentially unchanged under SAE installation) — but proxy ≠ prerequisite. Per the pre-registered protocol, the kill stands until VE can be reproduced against this SAE's published number. Consequence: **Phase 6 genealogy and the feature-labelling part of the necessity claim are explicitly conditional**. The intervention is a real perturbation of the model's forward output; the labelling "the perturbation = Neuronpedia feature 3223" awaits the prerequisite.
+### Path B — narrowed empirical finding
 
-Nothing here has been peer-read by a credentialed mech-interp researcher. The result pertains to **Gemma 2 2B specifically** — not "AI writing" in general. The honesty contract (§9 below) still applies.
+**Within Gemma 2 2B-it (Tier 0a + Discovery → Confirmation → BH-FDR passed):**
+- Construction rate is **4.2× the base model's** (Gemma 2 2B-it: 1.8% / Gemma 2 2B base: 0.4%); non-overlapping bootstrap CIs.
+- **94% of construction usage is C3** ("It's not just X — it's Y", minimize-then-elevate).
+- Constructions cluster at the **beginning of generations** (median relative position 0.10 vs 0.50 for non-construction sentences; Mann-Whitney p_BH = 0.043 on the held-out Confirmation split).
+
+**Cross-family replication on Qwen 2.5 7B Instruct: NULL.** C3 share of any_core = 0%; H17 direction does not replicate (n=3 positives, no power either way). The 94%-C3 / opener-position signature is Gemma-2-2b-it-specific, not a cross-family instruct register. The surface register (opening summary + bullets + bold headers) appears shared cross-family by eyeball but was not measured. Gemma 2 9B-it would have tested the within-Gemma-family scale question but the HF token doesn't have access.
+
+**Retired:** "Instruct-tuning installs the C3 register across families." Also retired: H19 (was an apostrophe-in-contraction artifact, not a real quote-mark effect).
+
+### Path A — mechanism story (conditional, unresolved)
+
+- **Discovery candidate**: SAE feature #3223 ("phrases conveying exceptions or negations") at L20 of Gemma Scope width-16k. Ablation at the pre-pivot decision point drops P(pivot) by 25% relative; 5/5 random-k controls produced no measurable change.
+- **Necessity yes, sufficiency no**: clamping the feature *up* doesn't reproduce the construction.
+- **De-slop product claim retracted**: ablating the feature during open-ended generation gives 0% drop in construction rate, because the feature is dormant on neutral prompts. It gates the *commit* to the pivot, not the *entry* into construction-mode.
+- **Foundation crack**: Tier 0b (Gemma Scope reconstruction-quality verification) returns negative VE through every measurement path, which is definitionally an instrument bug. Proxy evidence the SAE is functional (L0 = 74 vs canonical 71; cosine 0.83) does not substitute for the prerequisite the pre-registration demanded. Until a credentialed mech-interp reader unblocks the VE-reproduction recipe, the mechanism story stays as Discovery candidates, not findings.
+
+### Foundation cracks
+1. **CLOSED** — classifier blind-validation. [Tier 0a](reports/tier_0a_classifier_blind_eval.md): P = 0.80, R = 1.00 on 90 independently-sourced sentences. Above the pre-registered ≥ 0.70 gate. **Caveat (H09 lesson):** the classifier's C3 regex partly leans on the "just/merely/simply" lexicon, so the 94%-C3 share partly reflects what the classifier can see. Worth a sentence of honesty in any onward use.
+2. **OPEN** — Tier 0b VE reconstruction. See [`reports/tier_0b_kill.md`](reports/tier_0b_kill.md).
+
+Nothing here has been peer-read by a credentialed mech-interp researcher. Path B is shippable as a small modest finding; Path A is conditional. The honesty contract (§9 below) still applies.
 
 ---
 
