@@ -64,3 +64,37 @@ I AM stopping here, writing this report, and surfacing it to the human.
 3. **Stop here.** The writeup as it stands — with the kill reported honestly — is itself a reportable result: *we attempted to validate the SAE's prerequisite and could not, so the mechanism-level claims are softer than we initially wrote.* That's an honest exploration outcome.
 
 Whichever you pick, I do not pick it for you. The adversarial methodology says stop on kill.
+
+---
+
+## Debugging session result (post-kill, bounded by the prime-directive fork)
+
+**Took Path 1 (debug) as a bounded session, validated against external ground truth — not against my 0.60 threshold.**
+
+### Found
+
+1. **`use_error_term = False`** on this SAE. So the SAE does *replace* the residual stream in the forward pass; it isn't splicing in with an error term. But the model's top-5 next-token predictions under SAE installation are essentially identical to the pure forward (top 5 in the same order, probabilities within 1–2%). That's only possible if the SAE is operating roughly correctly inside the model.
+
+2. **The canonical sae_lens evaluation path (`get_recons_loss`, `get_sparsity_and_variance_metrics`) uses the same `encode → decode` pattern I was using, with an `ActivationScaler` that scales by `sqrt(d_in) / mean_norm` ≈ 0.13.** I replicated this. VE was still −1.40.
+
+3. **Direct calibration against an external ground truth: L0.** The canonical SAE I loaded is internally `layer_20/width_16k/average_l0_71` — meaning the canonical SAE has L0 = 71 features active per token. Sweeping runtime-scale s and measuring L0:
+
+   | s | L0 | nonzero_frac | cosine sim | VE |
+   |---:|---:|---:|---:|---:|
+   | 0.1 | 12.4 | 0.075% | +0.37 | −1.87 |
+   | 0.2 | 23.4 | 0.143% | +0.54 | −1.82 |
+   | **0.5** | **74.1** | **0.452%** | **+0.83** | −4.30 |
+   | 1.0 | 152.9 | 0.933% | +0.92 | −5.68 |
+   | 2.0 | 435.0 | 2.66% | +0.91 | −6.58 |
+
+   **At s=0.5, L0 lands at 74.1 against the canonical 71.** Cosine similarity reaches 0.83. The SAE *is* operating correctly when fed properly-scaled inputs — the feature counts and reconstruction direction match what Gemma Scope advertises.
+
+4. **But VE-as-a-number stays negative across every formula I tried** — variance-based, MSE-based, per-position sum-of-squares, and the legacy / new sae_lens formulas. Most likely: there's a mean-offset / `b_dec` issue (b_dec has norm 206) where the directional reconstruction is right but the magnitude offset from the data mean is wrong enough to make `1 − ||x − recon||² / ||x − mean(x)||²` go very negative. This is a *measurement* issue, not a *science* issue, but I can't isolate the exact line without more sae_lens-internal debugging than this bounded session allows.
+
+### What this means for the kill
+
+The kill stands by the letter of the pre-registration (`base VE ≥ 0.60` is the threshold, and I couldn't reach it). It is softened by the calibration evidence: the SAE *is* the SAE Gemma Scope advertises (L0 within 4 % of canonical, cosine 0.83), and the model's forward output under SAE installation is sensible. The forward-pass causal interventions in Phase 4 are therefore likely real — they operate on a functioning SAE — even though my *standalone diagnostic* of that SAE's reconstruction is broken.
+
+### Fork outcome
+
+Per the bounded session protocol I committed to: *"If even the tutorial path fails on your stack after that session, you stop, take Path 2 (downgrade the writeup)"*. The tutorial path failed — my `encode → decode` reproduces the same negative VE as the canonical `get_recons_loss` arithmetic. **Taking Path 2.** The writeup needs to be downgraded to mark Phase 6 (genealogy) and the feature-labelling part of Phase 4 explicitly conditional on a verification this codebase cannot perform. The L0 + cosine calibration evidence can be cited as a *proxy* that the SAE is functional, but proxy is not prerequisite.

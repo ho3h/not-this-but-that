@@ -18,9 +18,9 @@ The previous project rediscovered a known phenomenon — SAE "suppression featur
 - **The PRD's strict bidirectional kill check fails.** Clamping the feature *up* doesn't reproduce the construction; it pushes the model into an OOD state where pivot probability drops. Honest framing: necessity yes, sufficiency no — the commit is a multi-feature coordination.
 - **The de-slop product claim (Phase 7) does NOT hold, and that is the result, not the apology.** Ablating the feature during open-ended generation gives 0% drop in construction rate, because the feature is dormant on neutral prompts. Feat 3223 gates the *commit* to the pivot once the construction has been opened; whatever gates *entry* into construction-mode lives upstream and is not yet identified.
 
-**Foundation cracks still open** (see HANDOVER §5):
-1. The classifier's 1.00 P/R is a self-consistency check on the same agent's hand-written examples; it has not been blind-validated against real human or real AI prose.
-2. The Phase 6 reconstruction-quality measurement is buggy. The Δ-log-P signal stands independently, but the prerequisite needs fixing.
+**Foundation cracks: one closed, one open.**
+1. **CLOSED** — classifier blind-validation. [Tier 0a](reports/tier_0a_classifier_blind_eval.md): P = 0.80, R = 1.00 on 90 sentences independently sourced from human prose and AI generations (regex was never tuned on any of them). Above the pre-registered ≥ 0.70 gate. M1 generalises beyond its own training set.
+2. **OPEN** — Gemma Scope reconstruction-quality verification. [Tier 0b](reports/tier_0b_kill.md): every VE-measurement path returns negative numbers, which is definitionally an instrument bug. Proxy evidence the SAE is functional (L0 = 74 vs canonical 71; cosine 0.83; model's top-5 predictions essentially unchanged under SAE installation) — but proxy ≠ prerequisite. Per the pre-registered protocol, the kill stands until VE can be reproduced against this SAE's published number. Consequence: **Phase 6 genealogy and the feature-labelling part of the necessity claim are explicitly conditional**. The intervention is a real perturbation of the model's forward output; the labelling "the perturbation = Neuronpedia feature 3223" awaits the prerequisite.
 
 Nothing here has been peer-read by a credentialed mech-interp researcher. The result pertains to **Gemma 2 2B specifically** — not "AI writing" in general. The honesty contract (§9 below) still applies.
 

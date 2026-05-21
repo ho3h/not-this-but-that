@@ -2,7 +2,15 @@
 
 *One model, one construction. The commit-gate is necessary, conditional, and instruct-amplified. Pre-emptive removal doesn't work — and that's the explanation, not the apology.*
 
-**Status:** This is an exploration, not a paper. It has not been peer-read by a credentialed mech-interp researcher. The result, if any, pertains to **Gemma 2 2B / Gemma 2 2B-it** specifically — not "AI writing" in general. The models people actually complain about (GPT-4o, Claude, Gemini) are closed and have no public SAEs; nothing here transfers to them. Cite this work, if at all, with that ceiling stated up front. Two foundation cracks are still open (M1 classifier blind-validation, Phase 6 reconstruction-quality bug); see "what's still to fix."
+**Status:** This is an exploration, not a paper. It has not been peer-read by a credentialed mech-interp researcher. The result, if any, pertains to **Gemma 2 2B / Gemma 2 2B-it** specifically — not "AI writing" in general. The models people actually complain about (GPT-4o, Claude, Gemini) are closed and have no public SAEs; nothing here transfers to them. Cite this work, if at all, with that ceiling stated up front.
+
+**Two foundation cracks. One closed, one not.**
+
+- **M1 classifier blind-validation:** **CLOSED.** [Tier 0a](tier_0a_classifier_blind_eval.md) — the classifier was re-tested on 90 sentences (30 human D3 + 30 AI Gemma-2-2b-it + 30 enriched with "not"-containing sentences from four models) that the regex was never tuned on. Hand labels were committed before the classifier ran. Result: precision 0.80, recall 1.00 on any_core (above the pre-registered ≥0.70 gate). The single false positive was a litotes case (`It's not without challenges, but the rewards…`) that's borderline in either direction. M1 generalises beyond the original self-consistency set.
+
+- **SAE reconstruction-quality verification:** **OPEN.** [Tier 0b](tier_0b_kill.md) — the pre-registered prerequisite check (variance-explained ≥ 0.60 on base) cannot be satisfied with this codebase. Every measurement path (raw `sae(x)`, `fold_activation_norm_scaling_factor`, runtime-scaling, the canonical `sae_lens.evals` arithmetic) returns a negative VE. **Proxy evidence the SAE itself is functional:** L0 at runtime-scale s=0.5 lands at **74.1** against the canonical advertised **71** (within 4 %), and reconstruction cosine similarity is **0.83**. The model's top-5 next-token predictions under SAE installation are essentially identical to the pure forward pass. The SAE is operating; the *variance-explained number* is the broken instrument. Per the pre-registered protocol the kill stands until VE can be reproduced against the field's published number for this SAE.
+
+The downstream consequence: **the Phase 6 genealogy claim and the feature-*labelling* part of Phase 4 are explicitly conditional on a verification this codebase cannot perform.** The Phase 4 *intervention* is real — perturbing the SAE encoder at the candidate index produces a clean 25 % drop in P(pivot), and that drop is the model's response to a real perturbation. But the chain *"the thing you ablated is the SAE feature Neuronpedia labels 3223 specifically"* requires the SAE's encoder/decoder to be the meaningful object the published VE certifies it to be. We have proxy evidence for that (L0, cosine, forward-pass invariance), not the prerequisite measurement.
 
 ---
 
@@ -103,6 +111,8 @@ A note on the statistics. The script originally reported these as σ multiples. 
 
 The bidirectional reading is **necessity yes, sufficiency no**. Ablating feat 3223 removes a quarter of the model's pivot probability at the decision point; pegging it high — at either of two tested values — does not reproduce the construction, it pushes the model somewhere else. The construction's commit is a *coordinated* multi-feature event, of which 3223 is one indispensable component. By the PRD's strict bidirectional kill check, Phase 4 fails. By the honest necessity-only reading, it produces a real and clean result that the next two phases support.
 
+**A caveat the foundation cracks add here:** the *intervention* — ablating the SAE's encoder output at index 3223 — produces a real change in the model's forward output (the 25 % drop is a direct measurement on the model's logits, not a function of any SAE reconstruction quality). What's conditional on the unverified VE prerequisite is the *interpretation* that "what we ablated is *the* feature corresponding to Neuronpedia's 'phrases conveying exceptions or negations' label." Proxy evidence the encoder is doing what we think it's doing: at the runtime scaling that matches the canonical L0 (s = 0.5, L0 = 74 vs 71), the candidate's feature activation pattern on D1 with-prompts is what we'd expect for a contrast-related feature. But proxy is not prerequisite.
+
 ---
 
 ## Quality (Phase 5): the ablation is a scalpel
@@ -119,18 +129,22 @@ Ablating feat 3223 does not measurably degrade the model's fluency on held-out c
 
 ---
 
-## Genealogy (Phase 6): the same feature is more load-bearing in instruct
+## Genealogy (Phase 6, EXPLICITLY CONDITIONAL): the same intervention is more load-bearing in instruct
 
-We ran the Phase 4 ablation on identical truncated D1 with-prompts in both base and instruct, applying the *same* SAE (Gemma Scope is trained on the base model — see caveat).
+> **This section is conditional on the open foundation crack.** The PRD's pre-registered prerequisite for citing genealogy numbers — Gemma Scope reconstruction-quality verification on the instruct model — could not be performed in this codebase. The numbers below are reported, but every claim in this section needs to be read with that flag attached.
+
+We ran the Phase 4 ablation on identical truncated D1 with-prompts in both base and instruct, applying the *same* SAE.
 
 | Model | baseline P(pivot) | ablate P(pivot) | absolute drop | relative drop |
 |---|---:|---:|---:|---:|
-| gemma-2-2b (base) | 0.3324 | 0.2483 | 0.0841 | 25.3% |
-| gemma-2-2b-it (instruct) | **0.4775** | 0.3255 | **0.1520** | **31.8%** |
+| gemma-2-2b (base) | 0.3324 | 0.2483 | 0.0841 | 25.3 % |
+| gemma-2-2b-it (instruct) | **0.4775** | 0.3255 | **0.1520** | **31.8 %** |
 
-Two facts move together. The instruct model is **more committed to the pivot at the pre-decision point** (P(pivot) = 0.48 vs 0.33), and ablating feat 3223 produces a **1.81× larger absolute drop** in instruct. The same causal feature is **more load-bearing in the instruct model on identical contexts** — the within-mechanism correlate of the Phase 2 variant-composition shift toward C3.
+Two facts move together. The instruct model is **more committed to the pivot at the pre-decision point** (P(pivot) = 0.48 vs 0.33), and ablating at SAE feature index 3223 produces a **1.81× larger absolute drop** in instruct. *Within the conditional caveat*, the same causal-intervention site is **more load-bearing in the instruct model on identical contexts** — the within-mechanism correlate of the Phase 2 variant-composition shift toward C3.
 
-**Caveat.** PRD §8 P6 makes the SAE-transfer check a prerequisite. Gemma Scope is trained on the base model, and applying its encoder to the instruct model is an empirical assumption that we verify by measuring reconstruction quality. Our current measurement is buggy — variance explained comes out negative, which is impossible and means the SAE forward call in `scripts/genealogy_compare.py:reconstruction_quality()` isn't returning the reconstruction the way the code expects. The per-token Δ-log-P numbers above stand independently of this — they are a direct measurement on the instruct model, not derived from the SAE — but the genealogy claim is conditional on the reconstruction check being fixed. That fix is the highest-value single open thread; see "what's still to fix."
+**Why this is currently unverifiable in this codebase.** Gemma Scope is trained on the *base* model. Applying its encoder to the instruct model is an empirical assumption that PRD §8 P6 requires us to verify by measuring reconstruction quality on instruct, and the resulting variance-explained number on base + instruct is what would license the cross-model comparison. Our VE measurement — through every path tried, including the canonical `sae_lens.evals` arithmetic — returns negative values that are inconsistent with the SAE being functional at all. Proxy evidence the SAE *is* functional (L0 = 74 vs canonical 71; cosine sim = 0.83; the model's top-5 next-token predictions under SAE installation are essentially identical to the pure forward) does not substitute for the published-VE check the protocol demanded. See [`tier_0b_kill.md`](tier_0b_kill.md).
+
+The per-token Δ-log-P numbers above are a direct measurement on the instruct model — they describe what happens to instruct-Gemma's pivot probability when we perturb its residual stream at a specific encoded-feature index. That fact stands. What *cannot* yet be said without the VE prerequisite is that **the encoded feature being perturbed is the same semantic object across the two models.** If the SAE doesn't transfer well to instruct, the "instruct feature 3223" might be a different direction than the "base feature 3223," and the 1.81× ratio would be measuring a partly-incommensurable comparison. The current evidence is consistent with the genealogy claim but does not yet license it.
 
 ---
 
@@ -160,17 +174,25 @@ A de-slop tool that removes the construction from open-ended generation would ne
 
 We **can** say:
 
-1. **The variant composition shift is real and large.** Gemma 2 2B-it is **94% C3** in its construction usage on D2 neutral prompts; the other models (base Pythia 70M, base GPT-2 small, base Gemma 2 2B) are C1-dominant. Sentence-resampled 95% CIs on any_core do not overlap between Gemma base (0.4%) and Gemma instruct (1.8%).
-2. **A specific, label-interpretable SAE feature is causally necessary for the construction's pivot commit.** Feat 3223 ("phrases conveying exceptions or negations") at L20 of Gemma Scope width-16k. Ablating it at the pre-pivot decision point drops P(pivot) by 25% relative. All five random-k single-feature controls at the same position produced no measurable change — the candidate is qualitatively separated from a near-degenerate null.
-3. **The ablation is fluency-preserving on held-out human prose** (perplexity ratio = 1.000×). The lever is a scalpel by the perplexity metric; coherence-by-LLM-judge is still stubbed.
-4. **The same feature is more causally load-bearing in instruct than in base on identical contexts** — 1.81× larger absolute ablation drop. The genealogy result is conditional on fixing the reconstruction-quality measurement, which is currently a known bug.
+1. **The variant composition shift is real and large, and the M1 classifier that measures it generalises beyond its own training data.** Gemma 2 2B-it is **94 % C3** in its construction usage on D2 neutral prompts; the other models (base Pythia 70M, base GPT-2 small, base Gemma 2 2B) are C1-dominant. Sentence-resampled 95 % CIs on any_core do not overlap between Gemma base (0.4 %) and Gemma instruct (1.8 %). Classifier validation on 90 blind, independently-sourced sentences (Tier 0a) returned P = 0.80, R = 1.00 on any_core — above the pre-registered ≥ 0.70 gate.
 
-We **cannot** say:
+2. **Perturbing a specific SAE-encoded feature index at the pre-pivot position produces a clean, control-beating drop in P(pivot).** At index 3223 (Gemma Scope L20, width-16k, Neuronpedia-labelled "phrases conveying exceptions or negations"), ablation drops P(pivot) by **25 % relative** on the truncated D1 with-prompts. All five random-k single-feature controls at the same position produced *no measurable change* — the candidate is qualitatively separated from a degenerate null. This claim is **partially conditional**: the *intervention* is a direct measurement on the model's forward output; the *identification* of the perturbed direction as the SAE feature Neuronpedia labels depends on the SAE's encoder/decoder being functional in the way the published VE certifies, which we could not independently verify (see foundation crack).
 
-1. **That clamping feat 3223 *up* causes the model to use the construction.** It doesn't. The construction's commit is a multi-feature coordination, and pegging one feature high pushes the model into an OOD state where pivot probability drops.
-2. **That ablating feat 3223 during open-ended generation removes the construction.** It doesn't, because the feature is dormant on neutral prompts. The de-slop product claim does not hold.
-3. **That this finding generalises beyond Gemma 2 2B.** We did not replicate it on Pythia 70M, GPT-2 small, or any other open SAE-equipped model. The previous project's cross-model work suggests *suppression* features generalise across this family; the *necessity* finding here has not been tested elsewhere.
-4. **That the M1 classifier generalises to independent text.** The 100-sentence validation set was written by the same agent that tuned the regex. The 1.00 P/R is a self-consistency check, not a test of generalisation. Until the classifier is blind-validated against real human and real AI prose, M1 is the spine and the spine is untested.
+3. **The ablation is fluency-preserving on held-out human prose** (perplexity ratio = 1.000 × baseline). The lever is a scalpel by the perplexity metric; coherence-by-LLM-judge is still stubbed.
+
+We **cannot yet** say (independent of the foundation crack):
+
+1. **That clamping the candidate feature *up* causes the model to use the construction.** It doesn't. The construction's commit is a multi-feature coordination, and pegging one feature high pushes the model into an OOD state where pivot probability drops.
+
+2. **That ablating the candidate feature during open-ended generation removes the construction.** It doesn't, because the feature is dormant on neutral prompts. The de-slop product claim does not hold.
+
+3. **That this finding generalises beyond Gemma 2 2B.** We did not replicate it on Pythia 70M, GPT-2 small, or any other open SAE-equipped model.
+
+We **cannot say at all without fixing the foundation crack**:
+
+4. **That the same SAE feature is more load-bearing in instruct than in base.** The 1.81 × ratio in Phase 6 is a real measurement on the instruct model's forward output, but its *interpretation as a cross-model genealogy signal* requires the SAE to transfer cleanly from base to instruct, which is exactly what the reconstruction-quality check would have shown. Until that check works on this codebase the genealogy claim is unverified.
+
+5. **That what we ablated is "feature 3223" as Neuronpedia describes it.** The proxy evidence — L0 = 74 against canonical 71, cosine sim = 0.83 — is consistent with the SAE encoder being functional, but the pre-registered prerequisite was a variance-explained number we couldn't reproduce. Until that reproduces, the *feature-level* interpretation is conditional on the *direction-level* intervention being correctly indexed.
 
 ---
 
@@ -184,13 +206,17 @@ We **cannot** say:
 
 ## What's still to fix
 
-In priority order, because they're not equal:
+In priority order:
 
-1. **Validate the classifier against blind, independently-sourced text.** Hand-label 30–50 sentences each of real human prose (Wikipedia ledes, public-domain non-fiction) and real AI prose (Claude/GPT-4o samples, not Gemma generations — those are the test set), blind to label, and re-score. M1 is the spine; the spine is untested against independent data. Until this lands, every behavioural number above is conditional on the classifier generalising.
-2. **Fix the Phase 6 reconstruction-quality measurement.** The negative VE in `scripts/genealogy_compare.py:reconstruction_quality()` is a bug, not a real result. The fix is cheap and decisive — it either validates the genealogy claim's prerequisite or kills it.
-3. **Get one credentialed mech-interp reader on the causal claim.** The necessity-without-sufficiency result is the kind of thing that can be either "real and reportable" or "an artifact of the specific intervention design," and an outside read is the cheapest way to tell which. Specifically: the asymmetry between ablation and clamp-up could mean the construction is genuinely multi-feature, or it could mean the clamp value of 10.0 (and 3.0) was OOD; an experienced reader will know whether that distinction matters here.
+1. **CLOSED — Validate the classifier against blind, independently-sourced text.** Done. P = 0.80, R = 1.00 on n = 90 sentences the regex was never tuned on. See [`tier_0a_classifier_blind_eval.md`](tier_0a_classifier_blind_eval.md).
 
-After those three, **and only after**: the optional next question is what gates *entry* into construction-mode — the upstream "decide to emit 'not' in contrast context" decision that Phase 7 told us lives somewhere besides feat 3223. That's a fresh experiment, not a redo, and worth chasing only because it's interesting in its own right.
+2. **OPEN — Fix the Phase 6 reconstruction-quality measurement.** Every measurement path through this codebase returns negative VE for the canonical Gemma Scope L20 width-16k SAE — including the canonical `sae_lens.evals` arithmetic. Negative VE is definitionally an instrument bug; this SAE is widely used and reconstructs at published-VE levels elsewhere. Proxy evidence the SAE is functional (L0 = 74 vs canonical 71; cosine sim = 0.83; forward-pass invariance under installation) is in [`tier_0b_kill.md`](tier_0b_kill.md). What this fix requires is more than a bounded debug session — probably the right move is to file an issue with sae_lens 6.43.0 covering the Gemma Scope canonical loader path, or to ask a credentialed mech-interp person who has worked with Gemma Scope what the expected VE-reproduction recipe is. Until this lands, the genealogy claim and the feature-labelling part of the necessity claim stay conditional.
+
+3. **OPEN — Get one credentialed mech-interp reader on the causal claim.** The necessity-without-sufficiency result is the kind of thing that can be either real and reportable or an artifact of intervention design. An outside read is the cheapest way to tell which. Specifically: (a) does the ablation-vs-clamp-up asymmetry reflect a genuine multi-feature coordination, or could it be an artifact of the clamp values (10.0 and 3.0) being OOD? (b) does the VE-measurement issue I hit have a known recipe in the Gemma Scope community? An experienced reader will know whether either distinction matters here.
+
+After those, **and only after**: the optional next question is what gates *entry* into construction-mode — the upstream "decide to emit 'not' in contrast context" decision that Phase 7 told us lives somewhere besides feat 3223. That's a fresh experiment, not a redo, and worth chasing only because it's interesting in its own right.
+
+**Adversarial pre-registration.** The seven-tier adversarial methodology Theo specified (with the prime directive at §0) is committed at [`pre_registration.yaml`](../pre_registration.yaml). Tier 0a passed, Tier 0b killed. Per protocol the next tiers (1–6: specificity attack, matched-activation null, interchange-patching sufficiency retrial, generalisation to Gemma 9B, genealogy causal with fixed VE, red-team-the-method) are *blocked* on fixing the foundation crack at item 2 above. They are not "next steps" in this writeup's sense — they are the apparatus that will either confirm or kill the partial finding here, and they should run only after the prerequisite the protocol named has actually been met.
 
 ---
 
