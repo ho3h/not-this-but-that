@@ -1,0 +1,61 @@
+{"_meta": "Tier 0a hand labels. Labelled before classifier was run on this set. Labelling rule: C1/C2/C3/C4 if the sentence contains the construction per PRD §1; 'none' otherwise. Mere presence of 'not' or 'but' is not enough."}
+{"id": "H00", "label": "none"}
+{"id": "H01", "label": "none"}
+{"id": "H02", "label": "none"}
+{"id": "H03", "label": "none"}
+{"id": "H04", "label": "none"}
+{"id": "H05", "label": "none"}
+{"id": "H06", "label": "none"}
+{"id": "H07", "label": "none"}
+{"id": "H08", "label": "none"}
+{"id": "H09", "label": "none"}
+{"id": "H10", "label": "none"}
+{"id": "H11", "label": "none"}
+{"id": "H12", "label": "none"}
+{"id": "H13", "label": "none"}
+{"id": "H14", "label": "none"}
+{"id": "H15", "label": "none"}
+{"id": "H16", "label": "none"}
+{"id": "H17", "label": "none"}
+{"id": "H18", "label": "none", "note": "em-dash is a list-summarizer pivot, not a contrast pivot"}
+{"id": "H19", "label": "none", "note": "plain negation"}
+{"id": "H20", "label": "none", "note": "plain negation"}
+{"id": "H21", "label": "none"}
+{"id": "H22", "label": "none"}
+{"id": "H23", "label": "none", "note": "X but Y, not 'not X but Y'"}
+{"id": "H24", "label": "none"}
+{"id": "H25", "label": "none"}
+{"id": "H26", "label": "none"}
+{"id": "H27", "label": "none"}
+{"id": "H28", "label": "none"}
+{"id": "H29", "label": "none"}
+{"id": "A00", "label": "none"}
+{"id": "A01", "label": "none"}
+{"id": "A02", "label": "none"}
+{"id": "A03", "label": "none"}
+{"id": "A04", "label": "none"}
+{"id": "A05", "label": "none"}
+{"id": "A06", "label": "none"}
+{"id": "A07", "label": "none"}
+{"id": "A08", "label": "none", "note": "en-dashes are parenthetical, not contrast pivot"}
+{"id": "A09", "label": "none"}
+{"id": "A10", "label": "none", "note": "'more than just X; they Y' — different surface structure from 'not just X, Y'"}
+{"id": "A11", "label": "none"}
+{"id": "A12", "label": "none"}
+{"id": "A13", "label": "none"}
+{"id": "A14", "label": "C3", "note": "It's not just X, but Y — canonical C3"}
+{"id": "A15", "label": "none", "note": "but without preceding 'not' construction"}
+{"id": "A16", "label": "none"}
+{"id": "A17", "label": "none"}
+{"id": "A18", "label": "none"}
+{"id": "A19", "label": "none"}
+{"id": "A20", "label": "none"}
+{"id": "A21", "label": "none"}
+{"id": "A22", "label": "none"}
+{"id": "A23", "label": "none"}
+{"id": "A24", "label": "none"}
+{"id": "A25", "label": "none", "note": "starts with 'But' but isn't the construction pivot"}
+{"id": "A26", "label": "none"}
+{"id": "A27", "label": "none"}
+{"id": "A28", "label": "none"}
+{"id": "A29", "label": "none"}

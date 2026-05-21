@@ -1,0 +1,61 @@
+{"_meta": "Tier 0a blind set. Hand-label in classifier_blind_labels.jsonl BEFORE classifier runs.", "_n_human": 30, "_n_ai": 30, "_rng_seed": 17}
+{"id": "H00", "source": "human_d3", "text": "Edinburgh sits on hills above the Firth of Forth, a city of volcanic rock\nand sandstone facades."}
+{"id": "H01", "source": "human_d3", "text": "In the medieval Old Town the closes wind down from\nthe Royal Mile, dropping in steep curves toward the Cowgate."}
+{"id": "H02", "source": "human_d3", "text": "The New\nTown, by contrast, was laid out on a grid in the late eighteenth century,\nits terraces lined with Georgian doorways and its squares planted with\nlimes."}
+{"id": "H03", "source": "human_d3", "text": "Walking between them is walking between two ideas of how a city\nought to be made."}
+{"id": "H04", "source": "human_d3", "text": "The annual Festival fills August with theatre, music, and street\nperformers."}
+{"id": "H05", "source": "human_d3", "text": "The cafes glow yellow at four\nin the afternoon, and the day is over by half past three."}
+{"id": "H06", "source": "human_d3", "text": "Cooking with cast iron rewards patience."}
+{"id": "H07", "source": "human_d3", "text": "A well-cared-for piece will outlast its owner."}
+{"id": "H08", "source": "human_d3", "text": "Eggs cooked in butter on a seasoned surface slide free without sticking."}
+{"id": "H09", "source": "human_d3", "text": "The slow conduction of the iron makes for steady frying, which matters\nfor pancakes and for the bottom of a galette."}
+{"id": "H10", "source": "human_d3", "text": "The history of bookbinding runs in parallel with the history of paper."}
+{"id": "H11", "source": "human_d3", "text": "Codex binding, in which folded sheets are sewn together and bound\nbetween boards, replaced the scroll in late antiquity because it\nallowed random access to a text."}
+{"id": "H12", "source": "human_d3", "text": "The Romans wrote on\npapyrus and on wax tablets; the move to parchment, made from animal\nskin, gave Europe a writing surface durable enough to survive damp\nclimates and long shelves."}
+{"id": "H13", "source": "human_d3", "text": "The arrival of paper from\nChina by way of Spain in the late medieval period brought a much\ncheaper substrate, and a corresponding boom in printed books followed\nthe invention of movable type."}
+{"id": "H14", "source": "human_d3", "text": "Long-distance trail runners describe a particular kind of attention\nthat emerges around hour four."}
+{"id": "H15", "source": "human_d3", "text": "The early miles are about pacing and\nnutrition and the body's complaint at being made to do this."}
+{"id": "H16", "source": "human_d3", "text": "Hours go by in the rhythm of footfalls."}
+{"id": "H17", "source": "human_d3", "text": "The runner has become a small efficient\nanimal, moving over terrain, and the verbal mind has given up trying to\nnarrate."}
+{"id": "H18", "source": "human_d3", "text": "Office work, family logistics, scrolling on\na phone \u2014 these keep the verbal mind awake."}
+{"id": "H19", "source": "human_d3", "text": "A library does not charge for entry."}
+{"id": "H20", "source": "human_d3", "text": "It does not require a purchase."}
+{"id": "H21", "source": "human_d3", "text": "It offers shelter, climate control, internet access, and a chair to a\nperson who walks in off the street."}
+{"id": "H22", "source": "human_d3", "text": "Teenagers\nstudy there after school; older people read newspapers; new arrivals\nto the country bring their children to story time."}
+{"id": "H23", "source": "human_d3", "text": "The return is harder to measure but easy to see."}
+{"id": "H24", "source": "human_d3", "text": "A community whose library closed in the recession spent the next\ndecade reckoning with how much that small institution had been doing."}
+{"id": "H25", "source": "human_d3", "text": "The first time a new musician plays in an ensemble is unsettling and\nclarifying at once."}
+{"id": "H26", "source": "human_d3", "text": "Practice in a bedroom or a studio is solitary; the\nmusician hears the notes and the breath and nothing else."}
+{"id": "H27", "source": "human_d3", "text": "In a room\nwith other players the texture changes."}
+{"id": "H28", "source": "human_d3", "text": "The good ensemble leader holds the room without dominating it."}
+{"id": "H29", "source": "human_d3", "text": "A jazz bassist\nestablishes the pulse, and the rest of the group responds."}
+{"id": "A00", "source": "ai_gemma_2b_it_d2", "text": "This keeps listeners engaged and emotionally invested. \n* **Unique perspectives and interviews:**  Longer formats offer space to interview more people, gather diverse perspectives, and develop a more comprehensive understanding of a subject.\n\n**Connection and Community"}
+{"id": "A01", "source": "ai_gemma_2b_it_d2", "text": "Consider the size of your home and your access to outdoor areas.\n* **Temperament:**  Research breeds known for specific temperaments (e.g., playful, stubborn, independent, affectionate)."}
+{"id": "A02", "source": "ai_gemma_2b_it_d2", "text": "Here's a breakdown of the key differences:\n\n**Hiking Solo:**\n\n* **Freedom and Solitude:** You're in complete control of your pace, route, and schedule."}
+{"id": "A03", "source": "ai_gemma_2b_it_d2", "text": "Choose your own route, pace, and take breaks whenever you need."}
+{"id": "A04", "source": "ai_gemma_2b_it_d2", "text": "Content & Organization**\n\n* **Clarity and Simplicity:**\n    * **Easy-to-understand language:**  Avoiding overly technical jargon.\n    * **Step-by-step instructions:**  Clearly written and illustrated with photos for each recipe.\n    * **Structured Format:** Well-organized by meal, cuisine, skill level (beginner, intermediate), etc.\n* **Beginner-Friendly:**\n    * **Recipes for simple meals:**  Focusing on dishes with fewer ingredients and techniques.\n    * **Clear explanations:**  Guiding readers through unfamiliar terms and processes.\n    * **Adaptability:**  Recipes that can be easily"}
+{"id": "A05", "source": "ai_gemma_2b_it_d2", "text": "It offers significant potential benefits and can be a valuable stepping stone to future success."}
+{"id": "A06", "source": "ai_gemma_2b_it_d2", "text": "Here are some common mistakes beginner gardeners make, broken down into categories:\n\n**1."}
+{"id": "A07", "source": "ai_gemma_2b_it_d2", "text": "This will reveal its composition and nutrient levels, guiding you towards amendments like compost, manure, or fertilizer.\n\n**2."}
+{"id": "A08", "source": "ai_gemma_2b_it_d2", "text": "It's the interwoven tapestry of sounds \u2013 music, dialogue, ambient noise, and sound effects \u2013 that contribute to the overall cinematic experience."}
+{"id": "A09", "source": "ai_gemma_2b_it_d2", "text": "Quality & Freshness:** \n\n* **Small batches:**  Unlike larger roasters who produce massive amounts of coffee, small-batch roasters focus on smaller batches, allowing for meticulous control over every step of the roasting process. \n* **Freshness:** This focus on smaller batches means the coffee is roasted and delivered to you with minimal processing time."}
+{"id": "A10", "source": "ai_gemma_2b_it_d2", "text": "They serve as more than just a source of local news; they act as a community hub, a voice for the unheard, and a source of connection and information for residents."}
+{"id": "A11", "source": "ai_gemma_2b_it_d2", "text": "Here's a breakdown of key aspects:\n\n**1."}
+{"id": "A12", "source": "ai_gemma_2b_it_d2", "text": "Emotional Resonance and Accessibility:**\n\n* **Universal human experiences:** Poetry deals with fundamental emotions like love, loss, joy, fear, and longing, which resonate across cultures and generations.\n* **Personal interpretations:** Poetry offers a multitude of interpretations, allowing readers to connect with it on a personal level, regardless of their age or background.\n* **Expressing the inexpressible:** Poetry provides a powerful outlet for expressing feelings and thoughts that may be difficult to articulate through other forms of writing or communication.\n\n**2."}
+{"id": "A13", "source": "ai_gemma_2b_it_d2", "text": "Each note is carefully placed, creating a sonic landscape that moves with the drama unfolding on stage."}
+{"id": "A14", "source": "ai_gemma_2b_it_d2", "text": "It's not just the hushed whispers and the polished marble, but the palpable excitement that vibrates through the air."}
+{"id": "A15", "source": "ai_gemma_2b_it_d2", "text": "You've always heard of the grandeur of opera, the power of the voice, the elaborate costumes, and the sweeping emotions, but until now, it's been a fantasy."}
+{"id": "A16", "source": "ai_gemma_2b_it_d2", "text": "It's a journey that engages the senses, the mind, and the spirit, leaving behind a sense of accomplishment and satisfaction."}
+{"id": "A17", "source": "ai_gemma_2b_it_d2", "text": "The Thrill of Creation:**\n\n* **Hands-on Mastery:** From measuring ingredients to kneading, shaping, and finally, the satisfying rise of the dough, every step is a tangible expression of your control over the process."}
+{"id": "A18", "source": "ai_gemma_2b_it_d2", "text": "Connection to Nature and Mindfulness:**\n\n* **Relaxing and peaceful activity:** A calming escape from daily routine, fostering relaxation and connection with nature.\n* **Sensory stimulation:** Engaging sights, sounds, and"}
+{"id": "A19", "source": "ai_gemma_2b_it_d2", "text": "This conveys a sense of care and concern for their new home and lives. \n\n**2."}
+{"id": "A20", "source": "ai_gemma_2b_it_d2", "text": "It provides a form of exercise that's both enjoyable and accessible, leading to a healthier and more energized lifestyle."}
+{"id": "A21", "source": "ai_gemma_2b_it_d2", "text": "Embrace the Sensory Experience:**\n\n* **Sight:**\n    * **Cleanliness and Order:** A meticulously clean and organized environment is crucial."}
+{"id": "A22", "source": "ai_gemma_2b_it_d2", "text": "You can play with clay, shapes, and textures without judgment, making it enjoyable and stress-free.\n* **Unique Creations:** Each piece you make is unique, reflecting your own personal style and the journey you've taken."}
+{"id": "A23", "source": "ai_gemma_2b_it_d2", "text": "Authenticity & Uniqueness:**\n\n* **Beyond Fast Fashion:** Vintage offers a break from the cycle of disposable trends."}
+{"id": "A24", "source": "ai_gemma_2b_it_d2", "text": "This passion for reading has carried through to adulthood, and I still cherish the feeling of getting lost in a good story.\n\n**Secondly, it instilled in me the importance of imagination and courage.** The"}
+{"id": "A25", "source": "ai_gemma_2b_it_d2", "text": "But I can access and process information about the power of books to shape lives."}
+{"id": "A26", "source": "ai_gemma_2b_it_d2", "text": "Here's a step-by-step walkthrough:\n\n**1."}
+{"id": "A27", "source": "ai_gemma_2b_it_d2", "text": "Route Selection:**\n\n* **Difficulty:** Choose a trail that aligns with your fitness level and experience."}
+{"id": "A28", "source": "ai_gemma_2b_it_d2", "text": "Exploration of Fundamental Human Concerns:**\n\n* **Technological Advancement:**  S.F. novels often depict humanity's journey with technology."}
+{"id": "A29", "source": "ai_gemma_2b_it_d2", "text": "Here's why:\n\n**Tangibility & Thoughtfulness:**\n\n* **A physical presence:** Letters are tangible objects, unlike fleeting messages."}
