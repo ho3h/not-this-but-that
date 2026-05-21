@@ -70,9 +70,9 @@ That's the small true thing. It's neither the headline I'd have written before r
 - "Instruct-tuning installs the C3 register across families." It doesn't, at least not on Qwen 2.5 7B Instruct.
 - "Quotation marks predict construction-entry" (H19) — retracted earlier as an apostrophe-in-contraction artifact.
 
-**Still open (pending Gemma 2 9B-it run, in flight):**
-- Is C3-dominance a Gemma-2-instruct-family property (scale-invariant within the family) or just Gemma-2-2b-it-specific?
-- If Gemma 9B-it shows the same C3-dominance, the claim narrows to "Gemma 2 instruct family." If it doesn't, the claim narrows further to "Gemma 2 2B-it specifically."
+**Open in a way I am NOT going to address by running more replications:**
+- Is C3-dominance a Gemma-2-instruct-family property or just Gemma-2-2b-it-specific? The Gemma 2 9B-it test would tell us, but the model is gated on HuggingFace and the current `HF_TOKEN` doesn't have access (`OSError: You are trying to access a gated repo … Access to model google/gemma-2-9b-it is restricted`). That's a credential issue, not a scientific one — but it does mean the within-family-scale question stays open from this session.
+- The protocol says: "I'm not running Llama, Mistral, or more instruct models hoping the cross-family claim resurrects. That's the false-positive amplifier the protocol exists to prevent." One cross-family replication ran and was a clean null; that's the answer. The Gemma-2-9B-it test was a *within-family* check and is blocked on a credential, not on more compute. If you grant Gemma 2 9B access later, the script (`scripts/replicate_register_finding.py --model gemma_9b_it`) is ready to run unmodified.
 
 ## What this is and isn't
 
@@ -91,7 +91,7 @@ That's the small true thing. It's neither the headline I'd have written before r
 
 ## Next steps (in priority order)
 
-1. **Wait for the Gemma 2 9B-it replication** (running in background). If it shows C3-dominance, the claim is "Gemma 2 instruct family"; if not, the claim is "Gemma 2 2B-it specifically." Either is reportable.
-2. **Decide whether the narrowed Gemma-only finding is shippable as a short note.** The question is whether *one model family with this specific stylistic signature* is interesting enough to publish without cross-family generalisation. I lean toward "yes if combined with the methodology contribution" — the Discovery / Confirmation / cross-model-replication protocol is itself a small contribution, and the narrowing of the claim is a worked example of the protocol catching the thing it was supposed to catch.
+1. **Decide whether the narrowed Gemma-only finding is shippable as a short note.** The question is whether *one model with this specific stylistic signature, plus an honest cross-family null* is interesting enough to publish. The answer "it's a small finding, narrowed by replication, with a worked methodology" is itself a small contribution; the Discovery / Confirmation / cross-model-replication protocol is the load-bearing intellectual claim and the C3-as-Gemma-2-2b-it-signature is the empirical demonstration of it working.
+2. **If you grant Gemma 2 9B-it HF access**, the script can run unmodified to test the within-family scale question. Useful but not decisive.
 3. **Path A stays where it was.** No drift. Tier 0b's bounded debug session was used; the kill stands; the upstream issue would need a credentialed mech-interp reader to unblock.
-4. **What I'm explicitly NOT doing without your direction:** running Llama, Mistral, or more instruct models hoping the cross-family claim resurrects. That's the false-positive amplifier the protocol exists to prevent.
+4. **What I'm explicitly NOT doing without your direction:** running more instruct models hoping the cross-family claim resurrects. The protocol exists to prevent that; respecting it is the credential.
