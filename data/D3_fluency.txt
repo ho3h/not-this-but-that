@@ -1,2 +1,110 @@
-PRD §7 — D3 held-out fluency text. A few thousand tokens of clean human prose,
-never seen during intervention design. Phase 5 perplexity reference. Placeholder.
+The following text is a held-out fluency reference for Phase 5 (PRD §7).
+It is clean human prose, never seen during intervention design.
+
+---
+
+Edinburgh sits on hills above the Firth of Forth, a city of volcanic rock
+and sandstone facades. In the medieval Old Town the closes wind down from
+the Royal Mile, dropping in steep curves toward the Cowgate. The New
+Town, by contrast, was laid out on a grid in the late eighteenth century,
+its terraces lined with Georgian doorways and its squares planted with
+limes. Walking between them is walking between two ideas of how a city
+ought to be made.
+
+The annual Festival fills August with theatre, music, and street
+performers. Edinburgh has the highest concentration of bookshops per
+capita in the United Kingdom, and the National Library holds first
+editions of Burns and Scott. In winter the wind comes down from the
+North Sea and sleet glazes the cobbles. The cafes glow yellow at four
+in the afternoon, and the day is over by half past three.
+
+---
+
+Cooking with cast iron rewards patience. A new pan needs seasoning: a
+thin layer of neutral oil rubbed across the surface, then heated in the
+oven for an hour. Done three or four times, the iron darkens and the
+non-stick property emerges. Wash the pan with hot water and a stiff
+brush after use; soap can strip the seasoning if applied too generously.
+A well-cared-for piece will outlast its owner.
+
+In a hot cast-iron skillet, a steak develops a deep crust in minutes.
+Eggs cooked in butter on a seasoned surface slide free without sticking.
+The slow conduction of the iron makes for steady frying, which matters
+for pancakes and for the bottom of a galette. Modern non-stick pans
+wear out in a few years; a cast-iron pan, properly maintained, can pass
+between generations.
+
+---
+
+The history of bookbinding runs in parallel with the history of paper.
+Codex binding, in which folded sheets are sewn together and bound
+between boards, replaced the scroll in late antiquity because it
+allowed random access to a text. A reader could turn directly to the
+page wanted, rather than rolling and unrolling. The Romans wrote on
+papyrus and on wax tablets; the move to parchment, made from animal
+skin, gave Europe a writing surface durable enough to survive damp
+climates and long shelves.
+
+Coptic binding, developed in Egypt around the fourth century, used
+chain stitches to hold the gatherings together. The technique spread
+across the Mediterranean and through monastic scriptoria. By the
+twelfth century the leather-covered wooden board, often clasped, had
+become the standard for serious manuscripts. The arrival of paper from
+China by way of Spain in the late medieval period brought a much
+cheaper substrate, and a corresponding boom in printed books followed
+the invention of movable type.
+
+---
+
+Long-distance trail runners describe a particular kind of attention
+that emerges around hour four. The early miles are about pacing and
+nutrition and the body's complaint at being made to do this. Somewhere
+past the middle the noise quiets and a flat, steady focus replaces it.
+Hours go by in the rhythm of footfalls. Weather is just weather; the
+trail is just the trail. The runner has become a small efficient
+animal, moving over terrain, and the verbal mind has given up trying to
+narrate.
+
+This is part of why the sport keeps people coming back. The training
+is hard and the races are harder, but the experience of mental quiet
+is rare in ordinary life. Office work, family logistics, scrolling on
+a phone — these keep the verbal mind awake. A long run on a forest
+trail switches it off for hours at a time, and the world afterwards
+seems steadier for the absence.
+
+---
+
+Public libraries are a quiet, durable form of civic infrastructure.
+A library does not charge for entry. It does not require a purchase.
+It offers shelter, climate control, internet access, and a chair to a
+person who walks in off the street. In small towns the library is
+often the only space in town that asks nothing of you. Teenagers
+study there after school; older people read newspapers; new arrivals
+to the country bring their children to story time.
+
+The cost of running a branch library is modest compared with most
+public expenditures. The return is harder to measure but easy to see.
+A community whose library closed in the recession spent the next
+decade reckoning with how much that small institution had been doing.
+Libraries lend books and tools and museum passes; they host job
+seekers and language exchanges; they print tax forms; they have a
+table for the after-school chess club. None of these activities pays
+for itself directly. Together they hold a town together.
+
+---
+
+The first time a new musician plays in an ensemble is unsettling and
+clarifying at once. Practice in a bedroom or a studio is solitary; the
+musician hears the notes and the breath and nothing else. In a room
+with other players the texture changes. Pitch needs to be matched, not
+just produced; tempo is a collective negotiation; phrasing happens
+between people, not inside one head. A passage that sounded fine in
+isolation reveals its flaws against the steadiness of a section.
+
+The good ensemble leader holds the room without dominating it. A
+conductor draws the breath in and lets it out. A jazz bassist
+establishes the pulse, and the rest of the group responds. Amateur
+musicians often describe their first orchestra rehearsal as a kind of
+revelation, the same way some readers describe their first lecture by
+a thoughtful teacher. Something opens up that solitary practice cannot
+reach.
