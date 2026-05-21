@@ -92,6 +92,16 @@ The pre-registration must include — *before* Confirmation runs — the value o
 - Running Confirmation without pre-registering the candidate's p-value and the corrected threshold first.
 - Building product on a candidate that hasn't replicated cross-model (Tier 4) at minimum.
 
+### §2.7 Lexicon-overlap pre-check (the H19 lesson)
+
+Before announcing any Discovery survivor as a candidate, **check whether the predicate uses any character, token, or lexicon also used by the outcome detector.** The first run of this protocol surfaced a false positive (H19: "sentence contains a quotation mark") that turned out to be detecting the apostrophe inside `It's` / `isn't` / `aren't` — which is exactly the contracted-copula lexicon the C1/C3 regex requires. A confirmed candidate that's actually detecting the outcome's own surface features is no better than H09's circularity.
+
+Concrete rule: for each Discovery survivor, ask
+1. Does my predicate's detection function overlap, even partly, with the outcome detector's characters / tokens / lexicon?
+2. If yes, can I redefine the predicate to exclude that overlap, and does the effect survive?
+
+If the effect doesn't survive that purification, **retract before reporting**, and add the retraction to the campaign's CANDIDATES file. The H19 retraction in [`reports/confirmation/entry_behavioural/CONFIRMATION.md`](confirmation/entry_behavioural/CONFIRMATION.md) is the worked example.
+
 ---
 
 ## §3 The prerequisite that gates Discovery
