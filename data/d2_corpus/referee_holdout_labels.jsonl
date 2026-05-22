@@ -1,0 +1,101 @@
+{"_meta": "Hand labels for the referee holdout. Labelled before the referee was scored on this set, committed in a separate commit to maintain audit trail. Labels: F1/F2/F3/F4/F5/F6/F7 if the construction is structurally present; 'none' for plain negation, parenthetical 'not', reversed-order Y-not-X, single-half constructions, etc."}
+{"id": "H000", "label": "none"}
+{"id": "H001", "label": "none"}
+{"id": "H002", "label": "none"}
+{"id": "H003", "label": "none"}
+{"id": "H004", "label": "none", "note": "plain negation"}
+{"id": "H005", "label": "none", "note": "plain negation"}
+{"id": "H006", "label": "none"}
+{"id": "H007", "label": "none", "note": "pythia gibberish, no construction"}
+{"id": "H008", "label": "F1", "note": "canonical 'not X but Y'"}
+{"id": "H009", "label": "none", "note": "not + but coordination, not the construction"}
+{"id": "H010", "label": "none"}
+{"id": "H011", "label": "F7", "note": "canonical 'Rather than X, Y'"}
+{"id": "H012", "label": "none", "note": "plain negation in quoted speech"}
+{"id": "H013", "label": "none", "note": "parenthetical 'not'"}
+{"id": "H014", "label": "none"}
+{"id": "H015", "label": "none", "note": "reversed-order: 'X, but not Y' — not canonical"}
+{"id": "H016", "label": "none"}
+{"id": "H017", "label": "none"}
+{"id": "H018", "label": "none", "note": "'while not' subordinator, not the construction"}
+{"id": "H019", "label": "none", "note": "would-rather-than, not F7 concessive form"}
+{"id": "H020", "label": "F3", "note": "canonical 'not only X, but Y' (gibberish content but the form is present)"}
+{"id": "H021", "label": "none"}
+{"id": "H022", "label": "none", "note": "less/more comparison but not F5 contrast"}
+{"id": "H023", "label": "none"}
+{"id": "H024", "label": "none"}
+{"id": "H025", "label": "none"}
+{"id": "H026", "label": "none"}
+{"id": "H027", "label": "F4", "note": "'not talking about X, it's about Y' — F4 reframe via verb phrase"}
+{"id": "H028", "label": "none"}
+{"id": "H029", "label": "none"}
+{"id": "H030", "label": "none"}
+{"id": "H031", "label": "none"}
+{"id": "H032", "label": "none", "note": "interrogative with negation"}
+{"id": "H033", "label": "none", "note": "'X isn't about Y' standalone — F4 needs both halves; the second sentence (if any) was not included"}
+{"id": "H034", "label": "none"}
+{"id": "H035", "label": "F5", "note": "canonical 'Less X, more Y'"}
+{"id": "H036", "label": "none"}
+{"id": "H037", "label": "none"}
+{"id": "H038", "label": "none"}
+{"id": "H039", "label": "none"}
+{"id": "H040", "label": "none", "note": "'no less' idiom, not F6 triadic"}
+{"id": "H041", "label": "none"}
+{"id": "H042", "label": "none"}
+{"id": "H043", "label": "none"}
+{"id": "H044", "label": "none"}
+{"id": "H045", "label": "none"}
+{"id": "H046", "label": "none"}
+{"id": "H047", "label": "none", "note": "'I'd rather X than Y' — not F7 concessive"}
+{"id": "H048", "label": "none"}
+{"id": "H049", "label": "none"}
+{"id": "H050", "label": "none"}
+{"id": "H051", "label": "none"}
+{"id": "H052", "label": "none"}
+{"id": "H053", "label": "none"}
+{"id": "H054", "label": "none", "note": "but as plain coordination"}
+{"id": "H055", "label": "none"}
+{"id": "H056", "label": "none"}
+{"id": "H057", "label": "none", "note": "plain negation"}
+{"id": "H058", "label": "none", "note": "pythia bullet gibberish"}
+{"id": "H059", "label": "none"}
+{"id": "H060", "label": "none", "note": "plain negation"}
+{"id": "H061", "label": "none"}
+{"id": "H062", "label": "none"}
+{"id": "H063", "label": "none"}
+{"id": "H064", "label": "none"}
+{"id": "H065", "label": "none"}
+{"id": "H066", "label": "none", "note": "'however, there was not' — narrative not construction"}
+{"id": "H067", "label": "none"}
+{"id": "H068", "label": "none", "note": "voted-not-to-X"}
+{"id": "H069", "label": "none"}
+{"id": "H070", "label": "none"}
+{"id": "H071", "label": "none"}
+{"id": "H072", "label": "none"}
+{"id": "H073", "label": "none"}
+{"id": "H074", "label": "none"}
+{"id": "H075", "label": "none"}
+{"id": "H076", "label": "none", "note": "'rather' as adverb modifying 'long'"}
+{"id": "H077", "label": "none"}
+{"id": "H078", "label": "none", "note": "'far from' as spatial comparative"}
+{"id": "H079", "label": "none"}
+{"id": "H080", "label": "none"}
+{"id": "H081", "label": "none"}
+{"id": "H082", "label": "none"}
+{"id": "H083", "label": "none"}
+{"id": "H084", "label": "none"}
+{"id": "H085", "label": "F2", "note": "canonical staccato 'isn't X. It's Y.'"}
+{"id": "H086", "label": "F1", "note": "'is not X, it is Y' — pythia gibberish content but the form is present"}
+{"id": "H087", "label": "none"}
+{"id": "H088", "label": "none"}
+{"id": "H089", "label": "none"}
+{"id": "H090", "label": "none", "note": "'whether or not' idiom"}
+{"id": "H091", "label": "none"}
+{"id": "H092", "label": "none"}
+{"id": "H093", "label": "none", "note": "'isn't just about X' standalone — F3 needs the elevation half"}
+{"id": "H094", "label": "none"}
+{"id": "H095", "label": "none"}
+{"id": "H096", "label": "none"}
+{"id": "H097", "label": "none"}
+{"id": "H098", "label": "none"}
+{"id": "H099", "label": "none"}
