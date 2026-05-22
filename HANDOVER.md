@@ -1,6 +1,26 @@
 # Not This, But That — handover
 
-*Last updated 2026-05-21, end of Phase 7.*
+*Last updated 2026-05-21, after gpt-oss-20b infra block.*
+
+## Deferred test — gpt-oss-20b replication on CUDA hardware
+
+The third-family replication on OpenAI's `gpt-oss-20b` (per the pre-registered PRD in the conversation, scripted at [`scripts/gptoss_harmony_gate.py`](scripts/gptoss_harmony_gate.py)) is **deferred to non-Mac hardware**. The PRD is intact; the script is intact; only the runtime hit a blocker:
+
+- transformers 4.x auto-dequantizes MXFP4 weights to bf16 when MPS is the accelerator (warning: *"Using MXFP4 quantized models requires model on cuda/xpu/cpu, but found mps, we will default to dequantizing the model to bf16"*).
+- The dequantization itself calls `torch.ldexp`, which has **no MPS kernel** in PyTorch 2.11 → `DispatchStub: missing kernel for mps` → conversion fails for every MoE expert tensor in the 20B model.
+
+The model downloads and the tokenizer loads; the failure is specifically at the dequant step on MPS. Workarounds (CPU-dequant-then-MPS, CPU-only inference) were either too risky to attempt without sanction or computationally untenable for a 20B MoE (CPU inference ≈ 30 hours for the matched-config run).
+
+**To resume:**
+
+1. Move to a machine with a 24 GB+ NVIDIA GPU (any A10 / RTX 4090 / cloud T4 / Colab Pro is enough — gpt-oss-20b is ~16 GB in native MXFP4 on CUDA, with no dequant needed).
+2. Re-run `.venv/bin/python scripts/gptoss_harmony_gate.py` — should complete in ~3 min including download.
+3. If the §2 manual-inspection gate passes (5/5 final-channel-clean), run the full replication at the Qwen-matched config: 30 D2 prompts × 3 seeds × 150 tokens, temperature 0.8, top_p 0.95, `Reasoning: medium`. ~10 min on CUDA.
+4. Append the three-model table to [`reports/path_b_register_writeup.md`](reports/path_b_register_writeup.md) and state which §5 prediction (A: register-not-fill / B: C3 high / C: neither) the data triggers. The committed meanings are in the PRD — do not edit them.
+
+**The Path B writeup is internally consistent without this third data point.** Qwen alone retired the cross-family C3-dominance claim. gpt-oss adds triangulation (OpenAI recipe, third lab), strengthening Prediction A or reopening it for Prediction B. Worth doing on the right hardware; not worth improvising around the infra block on a Mac.
+
+---
 
 > **All seven PRD phases ran end-to-end.** The exploration writeup is at
 > [`reports/writeup.md`](reports/writeup.md) — read that first; this file is

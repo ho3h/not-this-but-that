@@ -32,6 +32,7 @@ dependencies = [
     "python-dotenv>=1.0",
     "huggingface-hub>=0.26",
     "spacy>=3.8.14",
+    "openai-harmony>=0.0.8",
 ]
 
 [project.optional-dependencies]
