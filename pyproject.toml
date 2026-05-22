@@ -33,6 +33,7 @@ dependencies = [
     "huggingface-hub>=0.26",
     "spacy>=3.8.14",
     "openai-harmony>=0.0.8",
+    "mlx-lm>=0.31.3",
 ]
 
 [project.optional-dependencies]

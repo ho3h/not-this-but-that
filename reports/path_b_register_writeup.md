@@ -71,8 +71,8 @@ That's the small true thing. It's neither the headline I'd have written before r
 - "Quotation marks predict construction-entry" (H19) — retracted earlier as an apostrophe-in-contraction artifact.
 
 **Open in a way I am NOT going to address by running more replications:**
-- Is C3-dominance a Gemma-2-instruct-family property or just Gemma-2-2b-it-specific? The Gemma 2 9B-it test would tell us, but the model is gated on HuggingFace and the current `HF_TOKEN` doesn't have access (`OSError: You are trying to access a gated repo … Access to model google/gemma-2-9b-it is restricted`). That's a credential issue, not a scientific one — but it does mean the within-family-scale question stays open from this session.
-- The protocol says: "I'm not running Llama, Mistral, or more instruct models hoping the cross-family claim resurrects. That's the false-positive amplifier the protocol exists to prevent." One cross-family replication ran and was a clean null; that's the answer. The Gemma-2-9B-it test was a *within-family* check and is blocked on a credential, not on more compute. If you grant Gemma 2 9B access later, the script (`scripts/replicate_register_finding.py --model gemma_9b_it`) is ready to run unmodified.
+- Is C3-dominance a Gemma-2-instruct-family property or just Gemma-2-2b-it-specific? The Gemma 2 9B-it test would tell us, but the model is gated on HuggingFace and the current `HF_TOKEN` doesn't have access. The within-family-scale question stays open from this session.
+- One cross-family replication on Qwen 2.5 7B Instruct was a clean null. A second cross-family replication on gpt-oss-20b (added 2026-05-21 — see `## gpt-oss-20b replication` below) was also a clean null. Two of three non-Gemma families now triangulate the same answer. Continuing to run more instruct models hoping the cross-family claim resurrects is exactly the false-positive amplifier the protocol exists to prevent; not doing it.
 
 ## What this is and isn't
 
