@@ -47,12 +47,15 @@ _NEG_COP = (
     r"|\b(?:is|are|was|were)n'?t\b"
     r")"
 )
-# COPULA PIVOT continuation — explicit subject-copula contraction OR bare "this is".
+# COPULA PIVOT continuation — subject-copula contraction OR bare subject+copula.
+# Both contracted ("it's") and uncontracted ("it is") forms must match; the
+# H086 holdout sentence revealed the bare-form gap.
 _PIV = (
     r"(?:"
-    r"\b(?:it|that|this|he|she|we|they|these|those|there)'?s\b"
-    r"|\b(?:we|they|you)'?re\b"
-    r"|\bthis\s+is\b|\bthese\s+are\b|\bthat\s+is\b"
+    r"\b(?:it|that|this|he|she|we|they|these|those|there)'s\b"
+    r"|\b(?:we|they|you)'re\b"
+    r"|\b(?:it|that|this|he|she|there)\s+(?:is|was)\b"
+    r"|\b(?:we|they|you|these|those)\s+(?:are|were)\b"
     r")"
 )
 
@@ -63,10 +66,11 @@ _F1_REF = re.compile(
     rf"{_NEG_COP}[^.!?\n]{{1,60}}[,;—–]\s*{_PIV}",
     re.IGNORECASE,
 )
-# F1 alt — "<not> X, but Y" with comma required, and Y must be content-bearing
-# (a word, not just punctuation).
+# F1 alt — "<not> X but Y". Comma now optional so the punctuation-less
+# variant ("It is not what we say but what we do") is caught. Y must still
+# be content-bearing (a word, not just punctuation).
 _F1_BUT = re.compile(
-    r"\bnot\s+(?:a|an|the|just|only|merely|simply)?\s*[^.!?\n,]{2,60},\s*but\s+\w",
+    r"\bnot\s+(?:a|an|the|just|only|merely|simply)?\s*[^.!?\n,]{2,60},?\s+but\s+\w",
     re.IGNORECASE,
 )
 
@@ -91,9 +95,11 @@ _F3_JUST = re.compile(
 )
 
 
-# F4 — reframing. "not about X, [copula] about Y" — narrower than harvest's.
+# F4 — reframing. Includes verb-phrase intervention ("not talking about X,
+# it's about Y") up to 3 intervening words between "not" and "about".
+# Narrower than harvest's: still requires the closing "about Y" clause.
 _F4_REF = re.compile(
-    rf"\bnot\s+about\b[^.!?\n]{{1,60}}?,\s*"
+    rf"\bnot\s+(?:\w+\s+){{0,3}}about\b[^.!?\n]{{1,60}}?,\s*"
     rf"(?:(?:it|that|this|he|she|we|they)'?s\s+)?about\b",
     re.IGNORECASE,
 )
@@ -118,9 +124,16 @@ _F6_REF = re.compile(
 )
 
 
-# F7 — concessive flip. "Far from X, Y" / "Rather than X, Y" with a subject after the comma.
-_F7_FAR = re.compile(r"\bfar\s+from\s+[^.!?\n,]{2,60},\s+\w", re.IGNORECASE)
-_F7_RATHER = re.compile(r"\brather\s+than\s+[^.!?\n,]{2,60},\s+\w", re.IGNORECASE)
+# F7 — concessive flip. "Far from X, Y" / "Rather than X, Y" — both require
+# SENTENCE-INITIAL position (capital F/R after string-start, period, em-dash,
+# or newline) so mid-sentence spatial "far from" and "would rather... than"
+# are correctly rejected.
+_F7_FAR = re.compile(
+    r"(?:^|(?<=[.!?—–]\s)|(?<=\n))\s*Far\s+from\s+[^.!?\n,]{2,60},\s+\w",
+)
+_F7_RATHER = re.compile(
+    r"(?:^|(?<=[.!?—–]\s)|(?<=\n))\s*Rather\s+than\s+[^.!?\n,]{2,60},\s+\w",
+)
 
 
 _PATTERNS: list[tuple[Form, re.Pattern]] = [
