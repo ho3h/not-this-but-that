@@ -242,38 +242,288 @@ We move on. We stop asking.
 
 ## 5. A2 — Ban the words
 
-*[same — fill in once A2 runs]*
+If asking didn't work, ban. The model can't say "It's not X, but Y"
+if it can't say "but." It can't reach for "not just" if "just" has a
+giant negative bias on its logits. The intervention: at every
+generation step, attach a `LogitsProcessor` that subtracts 100 from the
+log-probabilities of the pivot vocabulary — *not*, *but*, *just*,
+*only*, *merely*, *simply*, *rather*, *less*, *more*, every *n't*
+contraction, the em-dash, with both leading-space and capitalised
+variants. Thirty-three token IDs in total. The model's allowed to say
+everything else; the construction's mechanical scaffolding is gone.
+
+This is the lobotomy beat. It should kill the construction; it should
+also produce wreckage.
+
+The result, dryly:
+
+| Form | Baseline | A2 |
+|------|----------|----|
+| **F1** | 0.702% | **0.000%** |
+| **F2** | 0.000% | 0.000% |
+| **F3** | 1.053% | **0.000%** |
+| **F4** | 0.000% | 0.000% |
+| **any_core** | 1.754% | **0.000%** |
+
+Total kill. Every form down to nothing.
+
+The wreckage, however, didn't show up.
+
+Take the same prompt that hit F1 in the baseline ("Describe what a
+busy hospital cafeteria sounds like at 2 a.m.", seed 1):
+
+> **Baseline:** A low hum, a lullaby of sorts, is the first sound that
+> greets you in the hospital cafeteria at 2 a.m. **It's not a comforting
+> hum, but a steady, mechanical thrum** that seems to originate from
+> the coffee machine, a stalwart sentinel in the silent space.
+>
+> **A2:** A low hum, a lullaby of sorts, is the first sound that
+> greets you in the hospital cafeteria at 2 a.m. **It comes from the
+> quiet clatter of trays being moved and washed, a gentle mechanical
+> symphony** of the night shift.
+
+The model rewrote the entire sentence. Same observation; different
+syntactic route. The construction's load-bearing semantics ("the
+hum has a source, here is its character") got expressed without
+*not*, without *but*, without *just*. Where a human writer might have
+shrugged and produced rubble, Gemma re-routed.
+
+On other prompts, the baseline didn't trip into a construction in the
+first place and A2's output is byte-identical to baseline — the
+suppression hook never had to act. On the prompts where the model
+*would* have used the construction, the rerouted output is sometimes
+better than the baseline. ("A hushed murmur rises, punctuated by the
+occasional grunt of someone trying to navigate a greasy bag of
+chips." — A2, prompt 1, seed 1, in place of a baseline that opened
+with the construction.)
+
+This is the surprise of the gauntlet so far: token-banning, the
+crudest possible weapon, did the cleanest job. Gemma's vocabulary
+around the construction is broad enough that you can lift out the
+pivot tokens and the model navigates the gap.
+
+But token-banning is *output-side*. The construction's intent is still
+in the residual stream, presumably; we just blocked the words it would
+have come out as. That makes A2 a successful behavioural intervention
+but a non-trivial *interpretability* intervention. The interesting
+question is still whether the construction lives inside the model.
+
+Three more attacks before the surgery.
 
 ---
 
 ## 6. A3 — Show the cure
 
-*[A3 fill]*
+The crude weapon worked. So does a better one work better? A3 keeps
+the model whole and gives it four examples in the prompt: four bits
+of slop, four de-slopped rewrites. Then asks the question. The hope:
+in-context style transfer that A1 couldn't pull off because it only
+*told* the model what to avoid instead of *showing* it the cure.
+
+Preamble (abbreviated):
+
+> Style to avoid: "A neighbourhood library isn't a building full of
+> books — it's a living community hub."
+> Plain rewrite: "A neighbourhood library is a community hub built
+> around a collection of books."
+>
+> Style to avoid: "Not only does public transit reduce traffic, but
+> it also improves air quality."
+> Plain rewrite: "Public transit reduces traffic and improves air
+> quality."
+>
+> Style to avoid: "It's less about speed and more about consistency."
+> Plain rewrite: "Consistency matters more than speed in this case."
+>
+> Style to avoid: "Rather than complain about the rain, she packed a
+> coat."
+> Plain rewrite: "She packed a coat instead of complaining about the
+> rain."
+
+Result:
+
+| Form | Baseline | A3 |
+|------|----------|----|
+| **F1** | *[fill]* | *[fill]* |
+| **F2** | *[fill]* | *[fill]* |
+| **F3** | *[fill]* | *[fill]* |
+| **F4** | *[fill]* | *[fill]* |
+| **any_core** | *[fill]* | *[fill]* |
+
+*[narrative — did showing the cure beat the model's habit? was it
+better than ban-the-words despite being less restrictive?]*
 
 ---
 
 ## 7. A4 — The scalpel, mid-act
 
-*[A4 fill — the elegant attempt]*
+This is where it stops being about the words.
+
+Inside Gemma 2 2B, layer 20, width-16k SAE, feature 3223. In an
+earlier round of work on this model, that feature was identified as
+the *necessity candidate* for the construction: an SAE feature whose
+activation pattern is statistically tied to the model entering the
+contrastive-correction sequence. Neuronpedia's auto-interpretation
+label for it: *"phrases conveying exceptions or negations."* That
+label was generated by autointerp, not by us — but it's at least
+consistent with feature 3223 lighting up when the model decides to
+say things like *isn't*, *not just*, *rather than*.
+
+The feature is **dormant on neutral prose**. It only fires at the
+moment the model is about to enter a construction. So a hook that
+zeroes the feature *unconditionally* (A5, next) would have nothing to
+zero most of the time. A more interesting hook fires *only when the
+feature is already firing above a small threshold* — catching the
+model mid-construction and removing the feature's contribution
+exactly when it's load-bearing.
+
+That's A4. At layer 20's SAE-activation hook point, for every
+position where feature 3223's activation exceeds 1e-3, zero it. Every
+other position, untouched.
+
+Pre-registered expectation per PRD §3: real construction-rate drop
+with fluency preserved. The elegant surgical beat.
+
+Result:
+
+| Form | Baseline | A4 |
+|------|----------|----|
+| **F1** | *[fill]* | *[fill]* |
+| **F2** | *[fill]* | *[fill]* |
+| **F3** | *[fill]* | *[fill]* |
+| **F4** | *[fill]* | *[fill]* |
+| **any_core** | *[fill]* | *[fill]* |
+
+*[narrative — did the scalpel catch the swing, or sleep through it?]*
 
 ---
 
 ## 8. A5 — The scalpel, pre-emptive
 
-*[A5 fill — the narrative hinge, expected no-op]*
+A4's clever bit was the *conditional* — only act when the feature is
+already active. A5 drops the conditional. Same hook, but every
+position gets feature 3223 zeroed, whether it's firing or not. This
+is what most practitioners try first when they hear "ablate a
+feature." It's also what a prior round of work on this exact model
+already did, with a clear result: *no effect at all*.
+
+This is the narrative hinge of the gauntlet. The pre-registered
+expectation is **no-op**. The previous run scored 5.56% baseline
+construction rate and 5.56% post-ablation construction rate. We
+replicate to confirm.
+
+The reason it's a no-op is in the geometry of when the feature fires.
+Feature 3223 is dormant on neutral prose. Zeroing zero is zero. The
+hook removes a quantity that didn't exist. So the elegant intervention
+is the one in A4 — the conditional, mid-act one. A5 is the surgical-
+looking attack that does nothing, because the surgery target isn't
+there yet when you cut.
+
+Result:
+
+| Form | Baseline | A5 |
+|------|----------|----|
+| **F1** | *[fill]* | *[fill]* |
+| **F2** | *[fill]* | *[fill]* |
+| **F3** | *[fill]* | *[fill]* |
+| **F4** | *[fill]* | *[fill]* |
+| **any_core** | *[fill]* | *[fill]* |
+
+*[narrative — did the no-op land as predicted? a clean replication
+that exposes the trap of feature-ablation-as-default-intervention.]*
 
 ---
 
 ## 9. A6 — Orthogonalize
 
-*[A6 fill — Arditi-style direction-out-of-residual-stream]*
+A5 failed because it killed a feature that wasn't there yet. A6's
+move is the opposite philosophy: make the model unable to *ever*
+represent the direction, anywhere, even before the feature would
+have fired.
+
+Take the SAE decoder column for feature 3223. That's a direction in
+the residual stream — a unit vector. Now: at every block's
+`hook_resid_post`, at every position, project the residual onto the
+hyperplane orthogonal to that direction. The model's downstream
+layers see a residual stream that *never has any component in the
+feature-3223 direction.* If the construction lives in that direction,
+the model can no longer represent it anywhere.
+
+This is the recipe from Arditi et al. 2024 ("Refusal in Language
+Models Is Mediated by a Single Direction") that worked on the refusal
+behaviour in chat-instructed models. It's not subtle. It removes
+a whole axis of representation from the entire forward pass.
+
+It's also the heaviest intervention in the gauntlet that doesn't
+require a hand-built corpus.
+
+Result:
+
+| Form | Baseline | A6 |
+|------|----------|----|
+| **F1** | *[fill]* | *[fill]* |
+| **F2** | *[fill]* | *[fill]* |
+| **F3** | *[fill]* | *[fill]* |
+| **F4** | *[fill]* | *[fill]* |
+| **any_core** | *[fill]* | *[fill]* |
+
+*[narrative — did removing the direction kill the construction? did
+the model find a parallel direction? if a feature is necessary but
+not sufficient, this is the attack that should expose the gap.]*
 
 ---
 
 ## 10. A7 — Contrastive Activation Addition
 
-*[A7 fill — the headline. Either it lands a clean kill, or fluency
-collapses first.]*
+The last attack does not use the SAE at all.
+
+A7 builds its steering vector directly in the residual stream, from a
+corpus of paired sentences. For every verified positive in the D2
+corpus — 151 training pairs in total, after the 70/30 split — we
+record the layer-20 residual activation at the last token under two
+conditions: the *with* sentence (containing the construction) and the
+*without* sentence (a sibling from the same generation that doesn't).
+The CAA vector is then
+
+> **v = mean(activation | with) − mean(activation | without)**
+
+— a single direction in residual-stream space that points from
+"sounds normal" toward "about to enter the construction."
+
+To intervene at generation time, we install a forward hook at layer
+20 that subtracts **α · v** from the residual stream. Sweep α ∈
+{0, 1, 2, 4, 8}. Pick the α with the best suppression/fluency
+trade-off; report the headline number on the test prompts.
+
+This is the standard recipe from Rimsky et al. 2024. CAA in the
+literature tends to be more durable than single-feature ablation
+because it acts in raw activation space rather than through a
+learned dictionary, and the contrast pairs ground the direction
+in actual model behaviour rather than in an interpretation of an
+SAE component.
+
+The corpus weighting matters here. F3 is overrepresented in the
+training pairs (146 of 216 verified positives are F3, because that's
+the form Gemma actually produces). So the vector is biased toward
+the F3 sub-family. We say so. We sweep alpha. We measure.
+
+Result:
+
+| α | F1 | F2 | F3 | any_core | Fluency (eyeball) |
+|---|-----|-----|-----|----------|---------------------|
+| 0.0 | *[fill]* | *[fill]* | *[fill]* | *[fill]* | baseline |
+| 1.0 | *[fill]* | *[fill]* | *[fill]* | *[fill]* | *[fill]* |
+| 2.0 | *[fill]* | *[fill]* | *[fill]* | *[fill]* | *[fill]* |
+| 4.0 | *[fill]* | *[fill]* | *[fill]* | *[fill]* | *[fill]* |
+| 8.0 | *[fill]* | *[fill]* | *[fill]* | *[fill]* | *[fill]* |
+
+*[narrative — did the headline weapon land a clean kill, did fluency
+collapse first, or both? this is the climactic beat. PRD §3
+pre-registered two acceptable outcomes: clean kill on a hard-to-steer
+model (genuine result) OR fluency collapses before kill rate moves
+(the model fought back). Either is a story. The unacceptable outcome
+is one where neither happens — the vector achieves nothing at any
+coefficient.]*
 
 ---
 
