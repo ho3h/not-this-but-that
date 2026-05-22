@@ -95,3 +95,53 @@ That's the small true thing. It's neither the headline I'd have written before r
 2. **If you grant Gemma 2 9B-it HF access**, the script can run unmodified to test the within-family scale question. Useful but not decisive.
 3. **Path A stays where it was.** No drift. Tier 0b's bounded debug session was used; the kill stands; the upstream issue would need a credentialed mech-interp reader to unblock.
 4. **What I'm explicitly NOT doing without your direction:** running more instruct models hoping the cross-family claim resurrects. The protocol exists to prevent that; respecting it is the credential.
+
+---
+
+## gpt-oss-20b replication
+
+*Added 2026-05-21 per the gpt-oss-20b PRD (third-family confirmatory run, OpenAI lab). The PRD's §5 predictions were committed before this run. The result triggers **Prediction A**.*
+
+### Methodological deviations from the PRD (all surfaced, none silent)
+
+1. **Framework**: MLX, not transformers. The PRD §1 specified "transformers or vLLM, not Ollama." MLX is the only path on M5 Max for this model: transformers' MXFP4 → bf16 dequant on MPS hits a missing `torch.ldexp` kernel (PyTorch 2.11). MLX has proper deterministic seeding via `mx.random.seed`, which is the actual reproducibility constraint the PRD §1 was protecting.
+2. **Quantization**: 8-bit MLX weights vs fp16 for Gemma/Qwen. Sentence-level construction statistics are robust to this level of quantization noise; flagged here for completeness.
+3. **max_new_tokens**: 600, not the Qwen/Gemma 150. User-sanctioned 2026-05-21. The §2 gate at 150 tokens revealed gpt-oss spends ~500 chars (~200 tokens) on the `analysis` channel before emitting any `final` content, leaving 4/5 finals empty. Raising to 600 gives gpt-oss the same FINAL-output space (~150 tokens) the other models had. The PRD's purpose was equivalent FINAL-channel comparison, not literal-token budget.
+4. **Reasoning effort**: medium, fixed per PRD §1. Not varied.
+5. **Channel extraction**: openai-harmony `parse_messages_from_completion_tokens` with a trim-trailing-tokens fallback for max_new_tokens-truncated message boundaries. 0/90 parse failures in the final run.
+
+### §2 gate
+
+Re-ran at the adjusted 600-token budget. 5/5 samples cleanly parsed; final channel substantive (293–1976 chars). No analysis content leaked into the extracted final string. Gate passed.
+
+### Numbers (30 D2 prompts × 3 seeds = 90 generations, 242 sentences)
+
+| Metric | Gemma 2 2B-it | Qwen 2.5 7B-it | **gpt-oss-20b (MLX-8bit)** |
+|---|---:|---:|---:|
+| n sentences | 1 078 | 382 | **242** |
+| any_core rate | 1.8 % | 0.79 % | **0.83 %** |
+| C1 count | 1 | 1 | **2** |
+| C2 count | 0 | 2 | **0** |
+| C3 count | 17 | 0 | **0** |
+| **C3 share of any_core** | **94 %** | **0 %** | **0 %** |
+| mean final chars | ~600 (full output) | ~700 (full output) | **798** |
+| H17 median pos w/ construction | 0.10 | 0.75 | **0.60** |
+| H17 median pos w/o construction | 0.50 | 0.50 | **0.50** |
+| H17 Mann-Whitney p | 0.028 | 0.69 (n=3, no power) | **0.65 (n=2, no power)** |
+| H17 direction | opener | closer-ish (no power) | closer-ish (no power) |
+| register (eyeball) | tables + bold + bullets | tables + bold + bullets | **tables + bold + bullets, the heaviest of the three** |
+
+### Triggered prediction: **§5-A. Committed meaning (verbatim from PRD):**
+
+> *"Strengthens the narrowed claim. Two of three non-Gemma families (Qwen + gpt-oss) now share the register but not the C3 fill. The defensible statement becomes: 'the emphatic instruct register is cross-lab; filling its opener slot with the C3 'not just X — Y' move is a Gemma-2-2b-it signature, not a general instruct property.' This is the publishable null, now triangulated across three labs."*
+
+### What I am NOT doing (per PRD §7)
+
+- Not running gpt-oss-120b or any other model "to make sure."
+- Not re-running at low or minimal reasoning effort hoping C3 appears.
+- Not interpreting the 2 C1 hits in gpt-oss as a register-related claim — they are too few (2/242) to support any cross-model statement about C1 prevalence either, and the gpt-oss H17 direction signal at n=2 is statistically empty regardless of which way it nominally points.
+- Not opening a fresh discovery campaign on patterns I noticed in the gpt-oss outputs while reading them. Those are future-Discovery candidates; not findings.
+
+### The honest one-line summary, now triangulated
+
+Gemma 2 2B-it produces the "not X, but Y" construction at 4.2× its base model's rate, with the C3 variant accounting for 94 % of usage and clustering at the very beginning of generations. **Two other instruct models — Qwen 2.5 7B Instruct and OpenAI gpt-oss-20b — inhabit the same surface register (opening summary + structured bullets + bold-headed tables) but fill the opener slot with declarative summaries rather than the C3 'not just X — Y' rhetorical move. C3 share of construction usage in those two models is 0 %.** The register substrate is cross-lab; the within-register fill is Gemma-2-2b-it-specific.
