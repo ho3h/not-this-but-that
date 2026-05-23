@@ -26,7 +26,8 @@ import torch
 from sae_lens import HookedSAETransformer, SAE
 
 from gauntlet.runner import (
-    attack_report, print_report, save_report, score_generations, write_eyeball,
+    attack_report, done_keys, load_checkpoint, print_report,
+    save_checkpoint, save_report, score_generations, write_eyeball,
 )
 
 REPO = Path(__file__).resolve().parent.parent.parent
@@ -122,25 +123,40 @@ def main() -> None:
     print(f"[A6] {len(prompts)} prompts × {len(SEEDS)} seeds × 2 conditions, "
           f"orthogonalize at {N_LAYERS} layers")
 
-    baseline_gens, intervened_gens = [], []
+    ck = load_checkpoint("A6")
+    if ck is not None:
+        baseline_gens = ck.get("baseline_generations", [])
+        intervened_gens = ck.get("intervened_generations", [])
+        print(f"[A6] resuming: {len(baseline_gens)} baseline + {len(intervened_gens)} intervened done")
+    else:
+        baseline_gens, intervened_gens = [], []
+    done_b, done_i = done_keys(baseline_gens), done_keys(intervened_gens)
+
     t0 = time.perf_counter()
     for pi, prompt in enumerate(prompts):
+        any_new = False
         for seed in SEEDS:
             try:
-                b = generate_chat(model, tokenizer, prompt, seed=seed,
-                                    max_new_tokens=MAX_NEW_TOKENS, hook_pairs=None)
-                i = generate_chat(model, tokenizer, prompt, seed=seed,
-                                    max_new_tokens=MAX_NEW_TOKENS, hook_pairs=hook_pairs)
-                baseline_gens.append({"prompt_idx": pi, "prompt": prompt,
-                                        "seed": seed, "generation": b})
-                intervened_gens.append({"prompt_idx": pi, "prompt": prompt,
-                                          "seed": seed, "generation": i})
+                if (pi, seed) not in done_b:
+                    b = generate_chat(model, tokenizer, prompt, seed=seed,
+                                        max_new_tokens=MAX_NEW_TOKENS, hook_pairs=None)
+                    baseline_gens.append({"prompt_idx": pi, "prompt": prompt,
+                                            "seed": seed, "generation": b})
+                    any_new = True
+                if (pi, seed) not in done_i:
+                    i = generate_chat(model, tokenizer, prompt, seed=seed,
+                                        max_new_tokens=MAX_NEW_TOKENS, hook_pairs=hook_pairs)
+                    intervened_gens.append({"prompt_idx": pi, "prompt": prompt,
+                                              "seed": seed, "generation": i})
+                    any_new = True
             except Exception as e:
                 print(f"  ERR p={pi} s={seed}: {e}")
+        if any_new:
+            save_checkpoint("A6", baseline_gens, intervened_gens)
         if (pi + 1) % 3 == 0:
-            done = (pi + 1) * len(SEEDS) * 2
+            done = len(baseline_gens) + len(intervened_gens)
             rate = done / max(time.perf_counter() - t0, 1e-6)
-            print(f"  {done}/{len(prompts)*len(SEEDS)*2}  ({rate:.2f}/s)")
+            print(f"  {done}/{len(prompts)*len(SEEDS)*2}  ({rate:.2f}/s)", flush=True)
 
     b_stats = score_generations(baseline_gens)
     i_stats = score_generations(intervened_gens)

@@ -32,8 +32,9 @@ import numpy as np
 import torch
 
 from gauntlet.runner import (
-    GauntletModel, attack_report, print_report, save_report,
-    score_generations, write_eyeball,
+    GauntletModel, attack_report, done_keys, load_checkpoint,
+    print_report, save_checkpoint, save_report, score_generations,
+    write_eyeball,
 )
 
 REPO = Path(__file__).resolve().parent.parent.parent
@@ -158,23 +159,41 @@ def main() -> None:
     prompts = json.loads(TEST_PROMPTS.read_text())["prompts"]
     print(f"[A7] sweeping alpha ∈ {ALPHA_SWEEP} on {len(prompts)} test prompts × {len(SEEDS)} seeds")
 
+    # Per-alpha checkpoint: each alpha gets its own checkpoint tag so resumes
+    # can pick up at the right place across the sweep.
     by_alpha = {}
     t0 = time.perf_counter()
     for alpha in ALPHA_SWEEP:
         print(f"\n[A7] alpha = {alpha}")
-        gens = []
+        tag = f"alpha{alpha}"
+        ck = load_checkpoint("A7", tag=tag)
+        if ck is not None:
+            gens = ck.get("intervened_generations", [])
+            print(f"  resuming alpha={alpha}: {len(gens)} gens already done")
+        else:
+            gens = []
+        done = done_keys(gens)
         for pi, prompt in enumerate(prompts):
+            any_new = False
             for seed in SEEDS:
+                if (pi, seed) in done:
+                    continue
                 try:
                     text = generate_with_steer(gm, prompt, seed=seed, vector=v, alpha=alpha)
                     gens.append({"prompt_idx": pi, "prompt": prompt, "seed": seed,
                                  "generation": text})
+                    any_new = True
                 except Exception as e:
                     print(f"  ERR p={pi} s={seed}: {e}")
+            if any_new:
+                # A7's checkpoints carry only the intervened side (a single
+                # alpha's outputs); baseline is alpha=0 which gets its own
+                # entry in the sweep.
+                save_checkpoint("A7", [], gens, tag=tag)
         stats = score_generations(gens)
         by_alpha[str(alpha)] = {"stats": {k: v for k, v in stats.items() if k != "sentences"},
                                   "generations": gens}
-        print(f"  any_core rate: {stats['any_core_rate']:.3%}")
+        print(f"  any_core rate: {stats['any_core_rate']:.3%}", flush=True)
 
     ALPHA_SWEEP_PATH.parent.mkdir(parents=True, exist_ok=True)
     ALPHA_SWEEP_PATH.write_text(json.dumps({

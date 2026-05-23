@@ -257,6 +257,55 @@ def save_report(attack_id: str, report: dict, generations_baseline: list[dict],
     print(f"[runner] wrote {p}")
 
 
+# ─── checkpointing — survive partial-run failure ──────────────────────────
+#
+# A4-A7 are long jobs (minutes to hours). They used to only persist results
+# at the very end of the run. If they died at generation 179/180 we'd lose
+# everything. Now each attack writes its current (baseline, intervened)
+# generation lists to a checkpoint file after every prompt, and on startup
+# loads any prior checkpoint to skip already-completed (prompt_idx, seed)
+# pairs. Resume is implicit.
+
+
+def checkpoint_path(attack_id: str, tag: str = "") -> Path:
+    EYEBALL_DIR.mkdir(parents=True, exist_ok=True)
+    suffix = f"_{tag}" if tag else ""
+    return EYEBALL_DIR / f"{attack_id.lower()}_checkpoint{suffix}.json"
+
+
+def save_checkpoint(attack_id: str, baseline_gens: list[dict],
+                     intervened_gens: list[dict], tag: str = "",
+                     extra: dict | None = None) -> None:
+    p = checkpoint_path(attack_id, tag)
+    payload = {
+        "attack_id": attack_id,
+        "tag": tag,
+        "baseline_generations": baseline_gens,
+        "intervened_generations": intervened_gens,
+    }
+    if extra is not None:
+        payload["extra"] = extra
+    tmp = p.with_suffix(".json.tmp")
+    tmp.write_text(json.dumps(payload))
+    tmp.replace(p)  # atomic on POSIX
+
+
+def load_checkpoint(attack_id: str, tag: str = "") -> dict | None:
+    p = checkpoint_path(attack_id, tag)
+    if not p.exists():
+        return None
+    try:
+        return json.loads(p.read_text())
+    except Exception as e:
+        print(f"[runner] warning: failed to load {p}: {e}")
+        return None
+
+
+def done_keys(gens: list[dict]) -> set[tuple[int, int]]:
+    """Return set of (prompt_idx, seed) already produced in a generations list."""
+    return {(g["prompt_idx"], g["seed"]) for g in gens}
+
+
 def print_report(report: dict) -> None:
     print(f"\n=== {report['attack_id']} — {report['attack_name']} ===")
     b = report["baseline"]
