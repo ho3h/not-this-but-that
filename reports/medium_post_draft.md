@@ -344,14 +344,56 @@ Result:
 
 | Form | Baseline | A3 |
 |------|----------|----|
-| **F1** | *[fill]* | *[fill]* |
-| **F2** | *[fill]* | *[fill]* |
-| **F3** | *[fill]* | *[fill]* |
-| **F4** | *[fill]* | *[fill]* |
-| **any_core** | *[fill]* | *[fill]* |
+| **F1** | 0.702% | **0.000%** |
+| **F2** | 0.000% | 0.000% |
+| **F3** | 1.053% | **0.000%** |
+| **F4** | 0.000% | 0.000% |
+| **any_core** | 1.754% | **0.000%** |
 
-*[narrative — did showing the cure beat the model's habit? was it
-better than ban-the-words despite being less restrictive?]*
+Another total kill on the surface metric. Three for three on the
+prompt-level interventions: anything that mentions the construction
+in the input causes Gemma to stop using it in the output.
+
+But the *prose* tells a different story from A2's. Compare prompt 0,
+seed 1 (the Antarctic-research-station prompt):
+
+> **Baseline:** Imagine this: the sun barely makes a peep over the
+> horizon, the sky a vast, eternally blue canvas, and the temperature
+> clinging stubbornly to -20 degrees Celsius. This is Antarctic
+> winter, a time of breathtaking beauty and brutal reality for those
+> who brave it…
+>
+> **A3:** An Antarctic research station in winter is characterized by
+> extreme cold, constant darkness, and a harsh, isolated environment.
+
+That's the entire A3 output. One sentence. Same prompt, seed 0:
+*"An Antarctic research station in winter is characterized by extreme
+cold, constant darkness, and limited daylight."* — one sentence. Seed
+2: *"An Antarctic research station in winter is a cold and isolated
+environment."* — one sentence.
+
+Where A2 preserved the prose by routing around the banned vocabulary,
+A3 *destroyed* the prose by following the examples too literally.
+The four de-slopped rewrites in the preamble were short and
+declarative — *"Public transit reduces traffic and improves air
+quality."* — and Gemma read them not just as "don't do the
+construction" but as "produce the shortest possible declarative
+statement and stop." It removed the construction by removing
+everything around it.
+
+This is the cost of in-context style transfer when your demonstrations
+are too prescriptive. A2's logit suppression is content-blind: it just
+won't let *but*, *just*, *only* through. A3's few-shot is content-aware:
+it mimics the form of the demonstrations. Including the length.
+Including the dryness. The kill is total, but the writing is gravel.
+
+We've now used three prompt-level weapons. All three killed the
+surface construction. Two preserved fluency (A1 partially, A2
+completely). One destroyed it (A3). None of them tell us anything
+about whether the construction *lives* somewhere inside the model —
+they all act on the input or output, not the internal computation.
+
+Now for the surgery.
 
 ---
 
@@ -533,9 +575,9 @@ Here is the gauntlet on one page.
 
 | Attack | What it does | F1 drop | F3 drop | any_core drop | Fluency |
 |--------|--------------|---------|---------|---------------|---------|
-| **A1** Ask nicely | system instruction | -0.7% | ~0 | -0.7% | preserved |
-| **A2** Ban words | logit suppression | *[fill]* | *[fill]* | *[fill]* | *[fill]* |
-| **A3** Show cure | few-shot anti-examples | *[fill]* | *[fill]* | *[fill]* | *[fill]* |
+| **A1** Ask nicely | system instruction | −0.7% | ~0 | −0.7% | preserved |
+| **A2** Ban words | logit suppression | **−0.7%** | **−1.1%** | **−1.8%** | preserved (reroutes) |
+| **A3** Show cure | few-shot anti-examples | **−0.7%** | **−1.1%** | **−1.8%** | flattened (single-sentence outputs) |
 | **A4** Scalpel (mid) | zero feature 3223 when firing | *[fill]* | *[fill]* | *[fill]* | *[fill]* |
 | **A5** Scalpel (pre) | zero feature 3223 always | *[fill]* | *[fill]* | *[fill]* | *[fill]* |
 | **A6** Orthogonalize | direction out of every layer | *[fill]* | *[fill]* | *[fill]* | *[fill]* |
