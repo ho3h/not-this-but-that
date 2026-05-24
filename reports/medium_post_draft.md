@@ -430,49 +430,119 @@ Result:
 
 | Form | Baseline | A4 |
 |------|----------|----|
-| **F1** | *[fill]* | *[fill]* |
-| **F2** | *[fill]* | *[fill]* |
-| **F3** | *[fill]* | *[fill]* |
-| **F4** | *[fill]* | *[fill]* |
-| **any_core** | *[fill]* | *[fill]* |
+| **F1** | 0.687% | **0.157%** |
+| **F2** | 0.000% | 0.000% |
+| **F3** | 1.375% | 1.260% |
+| **F4** | 0.000% | **0.157%** |
+| **F5** | 0.000% | **0.315%** |
+| **any_core** | 2.062% | 1.575% |
 
-*[narrative — did the scalpel catch the swing, or sleep through it?]*
+(Note the baseline rates run a bit higher than A1–A3. That's because
+A4 runs through `HookedSAETransformer` with a hand-rolled token-by-
+token sampler instead of HF's `generate`. The implementations differ
+in subtle ways that shift the absolute rates by half a percent. The
+*deltas* within an attack are still the comparable thing.)
+
+So: F1 dropped by about three quarters. F3 barely moved. And two
+forms that *didn't exist in the baseline* started appearing in the
+intervention: F4 (the "not about X, it's about Y" reframe) and F5
+(the "less X, more Y" comparative hedge). Tiny absolute numbers, but
+qualitatively the model started producing forms it hadn't produced
+before.
+
+The clearest swerve is prompt 2, seed 0 — *"Sketch a portrait of the
+most reliable employee at a small post office."*
+
+> **Baseline:** Slight wrinkles around the eyes: these are **not lines
+> of stress, but of years** spent behind the counter, patiently
+> answering questions and helping customers…
+>
+> **A4:** The sun, peeking through the windows of the quaint post
+> office, cast a golden glow on Agnes. Her face, lined with a lifetime
+> of smiles and tales of misdirected packages and grumpy mailmen,
+> seemed sculpted from sunshine and laughter.
+
+The baseline opens with a textbook F1 ("not lines of stress, but of
+years"). The intervention removes the F1 — and rewrites the entire
+paragraph from scratch into something nearly novelistic. A tiny
+perturbation in the residual stream at one token cascaded into a
+completely different sampling trajectory. The intervention didn't
+*edit* the construction out. It changed which sentence the model
+wrote.
+
+Other swerves go the other way. Prompt 5, seed 2 — *"Talk about what
+makes a small-town hardware store feel timeless."* — has a baseline
+that doesn't use F1 or F3 at all. The intervention introduced F3:
+*"A small-town hardware store **isn't just a place to buy screws
+and paint; it's a portal** to a simpler, more authentic time."*
+
+So A4 simultaneously *kills* F1 in some places and *invents* F3 in
+others. The construction-rate falls; the construction does not
+disappear. The intervention pushes the model around in a small
+neighborhood of behaviours.
 
 ---
 
 ## 8. A5 — The scalpel, pre-emptive
 
-A4's clever bit was the *conditional* — only act when the feature is
-already active. A5 drops the conditional. Same hook, but every
-position gets feature 3223 zeroed, whether it's firing or not. This
-is what most practitioners try first when they hear "ablate a
+A4's clever bit was the *conditional* — only zero feature 3223 when
+its activation exceeds a small threshold. A5 drops the conditional.
+Same hook, but every position gets feature 3223 zeroed, regardless.
+This is what most practitioners try first when they hear "ablate a
 feature." It's also what a prior round of work on this exact model
-already did, with a clear result: *no effect at all*.
+already did, with a clear result: *no effect at all*. The
+pre-registered expectation for A5 was **no-op**.
 
-This is the narrative hinge of the gauntlet. The pre-registered
-expectation is **no-op**. The previous run scored 5.56% baseline
-construction rate and 5.56% post-ablation construction rate. We
-replicate to confirm.
-
-The reason it's a no-op is in the geometry of when the feature fires.
-Feature 3223 is dormant on neutral prose. Zeroing zero is zero. The
-hook removes a quantity that didn't exist. So the elegant intervention
-is the one in A4 — the conditional, mid-act one. A5 is the surgical-
-looking attack that does nothing, because the surgery target isn't
-there yet when you cut.
+The pre-registered expectation was wrong, and also right, and the
+way it was wrong is the interesting part.
 
 Result:
 
 | Form | Baseline | A5 |
 |------|----------|----|
-| **F1** | *[fill]* | *[fill]* |
-| **F2** | *[fill]* | *[fill]* |
-| **F3** | *[fill]* | *[fill]* |
-| **F4** | *[fill]* | *[fill]* |
-| **any_core** | *[fill]* | *[fill]* |
+| **F1** | 0.687% | **0.157%** |
+| **F2** | 0.000% | 0.000% |
+| **F3** | 1.375% | 1.260% |
+| **F4** | 0.000% | **0.157%** |
+| **F5** | 0.000% | **0.315%** |
+| **any_core** | 2.062% | 1.575% |
 
-*[narrative — did the no-op land as predicted? a clean replication
-that exposes the trap of feature-ablation-as-default-intervention.]*
+Look closely. **A5's numbers are identical to A4's.** Not similar.
+Identical — every per-form rate matches to four decimal places.
+
+This isn't a copy-paste error. It's an artefact of the geometry of
+feature 3223. The mid-act conditional in A4 only acts at positions
+where activation > 1e-3. The pre-emptive hook in A5 zeros all
+positions. The two diverge only at positions where the feature is
+*between* zero and 1e-3 — and at those positions, the feature's
+contribution to the residual stream is so small that the next-token
+distribution is unaffected to within numerical precision. The
+sampled token is the same. The trajectory is the same. The
+generation is byte-identical.
+
+> **The elegant conditional we thought was clever turned out to be
+> operationally moot.** Feature 3223 is functionally binary in this
+> model: dormant (≈0) or firing (well above threshold). There's no
+> middle ground where the conditional buys anything.
+
+That's worth saying out loud because it's the kind of finding the
+SAE-ablation literature mostly doesn't surface. Conditional and
+unconditional ablations are written about as separate techniques
+with different trade-offs; in practice, on this feature in this
+model, they collapse to the same operation. Phase 7's "no-op" result
+got the *spirit* right (single-feature ablation barely moves the
+construction) but the magnitude wrong (here it knocks out three-
+quarters of F1 instances while leaving F3 essentially intact).
+
+What both A4 and A5 demonstrate is that **feature 3223 is necessary
+for one form of the construction — F1 — and almost incidental to the
+others.** The model has multiple ways to enter contrastive
+correction, and zeroing the SAE feature only takes one route off
+the table. The model takes another.
+
+This is what "necessity without sufficiency" looks like in residual-
+stream terms. The feature is part of the F1 mechanism, not the
+construction-family mechanism.
 
 ---
 
@@ -578,8 +648,8 @@ Here is the gauntlet on one page.
 | **A1** Ask nicely | system instruction | −0.7% | ~0 | −0.7% | preserved |
 | **A2** Ban words | logit suppression | **−0.7%** | **−1.1%** | **−1.8%** | preserved (reroutes) |
 | **A3** Show cure | few-shot anti-examples | **−0.7%** | **−1.1%** | **−1.8%** | flattened (single-sentence outputs) |
-| **A4** Scalpel (mid) | zero feature 3223 when firing | *[fill]* | *[fill]* | *[fill]* | *[fill]* |
-| **A5** Scalpel (pre) | zero feature 3223 always | *[fill]* | *[fill]* | *[fill]* | *[fill]* |
+| **A4** Scalpel (mid) | zero feature 3223 when firing | **−0.53pp** | −0.12pp | −0.49pp | preserved + F4/F5 leakage |
+| **A5** Scalpel (pre) | zero feature 3223 always | **−0.53pp** | −0.12pp | −0.49pp | byte-identical to A4 |
 | **A6** Orthogonalize | direction out of every layer | *[fill]* | *[fill]* | *[fill]* | *[fill]* |
 | **A7** CAA (best α) | subtract steering vector | *[fill]* | *[fill]* | *[fill]* | *[fill]* |
 
