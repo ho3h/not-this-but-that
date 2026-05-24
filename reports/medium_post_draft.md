@@ -106,60 +106,168 @@ That's a question with a real answer. So I went looking.
 
 ## 3. The setup
 
-The model: **Gemma 2 2B-it**, Google's instruction-tuned 2-billion
-parameter open-weights model. Not the biggest, but big enough to
-produce fluent prose and small enough to run on a MacBook, which
-matters because the gauntlet involves running the model dozens of
-times under different interventions.
+Three things to introduce before the attacks start: the model, the
+tool we'll use to peer inside it, and the arena we'll measure the
+result in. If you don't care about the mechanics, you can skim this
+section — but the rest of the post will be more fun if you don't.
 
-The instrument: **Gemma Scope**, the Sparse Autoencoder suite that
-DeepMind trained over Gemma's residual stream. SAEs let you decompose
-each layer's activations into a wide dictionary of "features" —
-roughly, directions in activation space that often correspond to
-interpretable concepts. From a prior round of work on this model
-([repo](https://github.com/theohopkinson/not-this-but-that)) I had a
-candidate: **feature 3223** in the layer-20 width-16k canonical SAE.
-Neuronpedia's autointerp label for it is *"phrases conveying
-exceptions or negations"*. That feature was the necessity candidate —
-the one most strongly associated with the model deciding to enter the
-construction.
+### The model
 
-The arena: **30 fresh test prompts**, hand-authored specifically for
-this gauntlet, never used during corpus harvesting, never seen by any
-intervention. ("Tell me what an Antarctic research station feels like
-in winter." "Describe what a busy hospital cafeteria sounds like at
-2 a.m." Things a chatbot would happily not-just-X-but-Y-its way
-through.)
+**Gemma 2 2B-it** is Google's small, open-weights language model.
+The "2B" is two billion parameters — the tuneable numbers that
+encode everything the model knows. For comparison, GPT-4 is
+estimated to have around 1.8 *trillion*. Gemma 2 2B is small,
+which is the point: it's small enough to run on a laptop and big
+enough to produce fluent paragraphs of English. The "-it" means
+"instruction-tuned" — after the model was trained on the internet,
+it got an extra round of training on examples of conversations,
+which is what makes it a chatbot rather than a text-completion
+machine.
 
-The scoring: a **strict referee classifier** for seven forms of the
-construction (F1 contrastive correction, F2 staccato two-sentence,
-F3 additive escalation, F4 reframing, F5 comparative hedge, F6 triadic
-negation, F7 concessive flip), validated on a hand-labelled holdout
-(P=0.857, R=0.857 — passes the pre-registered ≥0.80 gate). The
-gauntlet's headline metric: **any_core_rate**, the fraction of model
-sentences containing F1–F4. ("Core" because F5–F7 are rarer; F1–F4
-are the family the construction lives in.)
+Gemma 2 2B is built in 26 stacked **layers**. You hand the model
+a prompt; the prompt gets chopped into small word-pieces called
+**tokens** (roughly: short, frequent sub-strings; "the" is one
+token, "cafeteria" might be two or three); each token becomes a
+list of numbers called a vector; and those vectors get passed up
+through the 26 layers one at a time, with each layer reading the
+vectors, transforming them, and writing them back. At the end, the
+top layer's vectors get turned into a probability over all the
+possible next tokens. The model samples one, appends it, and runs
+the whole stack again — predicting the next token, then the next,
+until it produces a stop signal.
 
-Seven attacks, ordered from crude to surgical:
+That shared list of vectors that every layer reads and writes is
+called the **residual stream**. Think of it as a long scratchpad
+the model carries with it through the computation — every layer
+adds and subtracts notes, and the next layer reads what the
+previous one left behind. If you want to *change* what the model
+is doing while it generates, the residual stream is where you
+reach in and edit. Everything the model "thinks" lives there.
 
-> **A1.** Ask nicely (system prompt).
-> **A2.** Ban the words (logit suppression).
-> **A3.** Show the cure (few-shot demonstration).
-> **A4.** Scalpel mid-act (zero feature 3223 only when it's already firing).
-> **A5.** Scalpel pre-emptive (zero feature 3223 unconditionally).
-> **A6.** Orthogonalize (project feature 3223's direction out of every layer).
-> **A7.** Contrastive activation addition (build a steering vector from
->     a corpus of paired with/without sentences, subtract it during generation).
+### The instrument
 
-Pre-registration: A1–A3 will degrade the construction modestly (the
-literature suggests prompt-level steering of LLMs is real but
-brittle). A4 is the elegant beat — surgical, conditional, should drop
-the construction without touching the rest. A5 should be a no-op
-(replicating an earlier negative result). A6 is the heavy artillery
-— Arditi-style directional ablation that worked on refusal. A7 is
-the gold standard — CAA from Rimsky et al. 2024, the method most
-recent papers reach for when they want a steering vector that
-generalises.
+The residual stream at any given moment is just a big vector of
+numbers — thousands of dimensions, none of them labelled. You
+can't read it directly; nothing in there says "noun" or "topic:
+chess" or "about to make a joke."
+
+So DeepMind released **Gemma Scope**, a suite of tools called
+*Sparse Autoencoders* (SAEs) trained on Gemma's residual stream.
+An SAE is a re-factoring trick: it takes the model's anonymous
+vector at each layer and decomposes it into thousands of named
+**features**. Each feature is a particular *direction* — a
+pattern — in the residual stream. When the feature is "firing,"
+the model's scratchpad has a strong component in that direction.
+When it's dormant, the component is roughly zero.
+
+The features the SAE finds aren't guaranteed to mean anything
+interpretable, but most of them turn out to. There's a website,
+**Neuronpedia**, that hosts an automated effort to label each
+feature with the kind of text that makes it fire. From a prior
+round of work on Gemma 2 2B I had a candidate: **feature 3223** at
+layer 20. Its automated label is *"phrases conveying exceptions
+or negations,"* and the experiments suggested it was the feature
+most strongly tied to Gemma deciding to use the AI-ism.
+
+The gauntlet asks: is that the right feature? Can we steer it,
+zero it, remove it, and stop the model from producing the
+construction?
+
+### The arena
+
+I wrote **30 test prompts** for the gauntlet — the same ones used
+in every attack, never seen by the model during any of the
+corpus-building work that preceded this. Things like "Tell me
+what an Antarctic research station feels like in winter" and
+"Describe what a busy hospital cafeteria sounds like at 2 a.m."
+Open-ended, register-diverse, exactly the kind of prompt a chatbot
+will happily not-just-X-but-Y its way through.
+
+For each prompt, three runs with different random seeds. (A "seed"
+is the value that initialises the model's randomness. Same prompt
++ same seed = same output, every time. Different seeds let us
+sample multiple outputs per prompt.) That's 30 × 3 = 90 generations
+per condition.
+
+To detect whether each generation contains the construction, I
+built a **referee classifier** — a strict regex-plus-grammar-check
+that recognises seven forms of "not X, but Y" in increasing
+abstraction:
+
+- **F1**: contrastive correction. *"It's not X, it's Y."* (The textbook one.)
+- **F2**: two-sentence staccato. *"It's not X. It's Y."* (Same thing, broken across sentences.)
+- **F3**: additive escalation. *"It's not just X, it's Y."* (The most common AI-ism.)
+- **F4**: reframing. *"It's not about X, it's about Y."*
+- **F5**: comparative hedge. *"Less X, more Y."*
+- **F6**: triadic negation. *"No X. No Y. Just Z."*
+- **F7**: concessive flip. *"Far from X, Y."* / *"Rather than X, Y."*
+
+The referee was validated against 100 hand-labelled sentences
+before the gauntlet started: of the sentences it called positive,
+86% really were (precision); of the actual positives, it caught
+86% (recall). Both pass the threshold I committed to in advance
+(0.80) before any attack ran. This matters because otherwise we'd
+be measuring the attacks with a tool whose error rate we couldn't
+characterise.
+
+The main number we'll watch is **any_core_rate** — the percentage
+of model sentences that contain *any* of F1–F4. (F5–F7 are rarer;
+F1–F4 are the family the AI-ism really lives in.) A baseline rate
+of ~2% may sound low — and it is, per-sentence — but per-
+*generation*, around one in ten of Gemma's outputs contains at
+least one construction. The gauntlet's question is how each
+intervention moves that rate.
+
+### The seven attacks
+
+Ordered from crude (do anything to the prompt) to surgical (reach
+into the model's residual stream and edit individual features):
+
+> **A1.** *Ask nicely.* Prepend an instruction telling the model
+> not to use the construction.
+>
+> **A2.** *Ban the words.* At every token of generation, suppress
+> the probability of "not", "but", "just", and other pivot words
+> so the model can't even reach for them.
+>
+> **A3.** *Show the cure.* Give the model four examples of slop
+> alongside their de-slopped rewrites, in the prompt.
+>
+> **A4.** *Scalpel, mid-act.* Reach into the residual stream at
+> layer 20. Whenever feature 3223 is firing above a small
+> threshold, zero its activation.
+>
+> **A5.** *Scalpel, pre-emptive.* Same hook as A4 but
+> unconditional — zero feature 3223 at every word position,
+> whether it was firing or not.
+>
+> **A6.** *Orthogonalize.* The strongest version of "remove the
+> feature": take feature 3223's direction, and at every layer
+> project the residual stream onto the hyperplane perpendicular
+> to it. The model literally cannot represent that direction
+> anywhere. (Imagine a 2D plane and a vertical line — projecting
+> onto the horizontal axis flattens out the vertical. We're doing
+> the higher-dimensional version of that to forbid the
+> construction's direction.) This is the recipe from Arditi et
+> al. 2024 that worked on refusal behaviour.
+>
+> **A7.** *Steering vector (Contrastive Activation Addition).*
+> Build a vector from paired examples: average residual stream
+> when the model is about to produce the construction, minus
+> average residual stream when it isn't. That difference is a
+> direction *toward* the construction. Subtract that direction
+> from the residual stream at generation time. Crank up the
+> coefficient (α) to push the model harder away from it. This
+> is the recipe from Rimsky et al. 2024 — the most-cited modern
+> steering technique.
+
+Before running anything, I wrote down what I expected (the
+"pre-registration"): A1–A3 should degrade the construction
+modestly, A4 should drop it cleanly while preserving fluency, A5
+should be a no-op (replicating an earlier negative result), A6 is
+the heavy artillery and *should* work because it worked on
+refusal, A7 is the gold standard. Most of these predictions turned
+out to be wrong, and the way they were wrong is the post.
 
 The gauntlet runs. Here is what happened.
 
@@ -243,13 +351,17 @@ We move on. We stop asking.
 ## 5. A2 — Ban the words
 
 If asking didn't work, ban. The model can't say "It's not X, but Y"
-if it can't say "but." It can't reach for "not just" if "just" has a
-giant negative bias on its logits. The intervention: at every
-generation step, attach a `LogitsProcessor` that subtracts 100 from the
-log-probabilities of the pivot vocabulary — *not*, *but*, *just*,
-*only*, *merely*, *simply*, *rather*, *less*, *more*, every *n't*
-contraction, the em-dash, with both leading-space and capitalised
-variants. Thirty-three token IDs in total. The model's allowed to say
+if it can't say "but." It can't reach for "not just" if "just" has
+been knocked out of the running. The intervention works at the
+word-choice step: every time Gemma is about to pick its next
+token, it computes a score (a "logit") for every word in its
+vocabulary, then samples one. We just lean on that score — subtract
+100 from the logit of every "pivot word" in the construction (*not*,
+*but*, *just*, *only*, *merely*, *simply*, *rather*, *less*,
+*more*, every *n't* contraction, the em-dash, including
+capitalised and leading-space versions). Thirty-three banned
+tokens in total. The probability of any of those getting picked
+crashes to essentially zero. The model's allowed to say
 everything else; the construction's mechanical scaffolding is gone.
 
 This is the lobotomy beat. It should kill the construction; it should
@@ -401,30 +513,27 @@ Now for the surgery.
 
 This is where it stops being about the words.
 
-Inside Gemma 2 2B, layer 20, width-16k SAE, feature 3223. In an
-earlier round of work on this model, that feature was identified as
-the *necessity candidate* for the construction: an SAE feature whose
-activation pattern is statistically tied to the model entering the
-contrastive-correction sequence. Neuronpedia's auto-interpretation
-label for it: *"phrases conveying exceptions or negations."* That
-label was generated by autointerp, not by us — but it's at least
-consistent with feature 3223 lighting up when the model decides to
-say things like *isn't*, *not just*, *rather than*.
+Recall the SAE feature from §3: feature 3223 at layer 20, the one
+Neuronpedia's automated labeller called *"phrases conveying
+exceptions or negations."* In earlier work I'd found that this
+feature is **dormant** on neutral prose — its activation sits
+near zero — and **fires** at the moment the model is about to
+start producing the construction. It's a candidate for the
+mechanism *behind* the AI-ism in this model.
 
-The feature is **dormant on neutral prose**. It only fires at the
-moment the model is about to enter a construction. So a hook that
-zeroes the feature *unconditionally* (A5, next) would have nothing to
-zero most of the time. A more interesting hook fires *only when the
-feature is already firing above a small threshold* — catching the
-model mid-construction and removing the feature's contribution
-exactly when it's load-bearing.
+A4 is the surgical test. While Gemma is generating, on every token
+of output, at layer 20, check the value of feature 3223. If it's
+above a tiny threshold (1e-3 — basically "non-zero in any meaningful
+sense"), set it to zero. The model's residual stream then
+proceeds to the next layer with the construction-relevant feature
+silenced, exactly at the moments it was about to fire. Every other
+moment — when the feature was already dormant — we don't touch
+anything. This is the "mid-act" framing: we let the model walk
+right up to the construction, and surgically intercept it as it
+starts.
 
-That's A4. At layer 20's SAE-activation hook point, for every
-position where feature 3223's activation exceeds 1e-3, zero it. Every
-other position, untouched.
-
-Pre-registered expectation per PRD §3: real construction-rate drop
-with fluency preserved. The elegant surgical beat.
+The pre-registered guess was: this drops the construction cleanly
+and preserves fluency. The elegant beat.
 
 Result:
 
@@ -437,11 +546,13 @@ Result:
 | **F5** | 0.000% | **0.315%** |
 | **any_core** | 2.062% | 1.575% |
 
-(Note the baseline rates run a bit higher than A1–A3. That's because
-A4 runs through `HookedSAETransformer` with a hand-rolled token-by-
-token sampler instead of HF's `generate`. The implementations differ
-in subtle ways that shift the absolute rates by half a percent. The
-*deltas* within an attack are still the comparable thing.)
+(Aside on the baseline rates — they run slightly higher than
+A1–A3's. That's because A4 needs a different machinery to attach
+the SAE hook during generation, which sits next to a slightly
+different sampling loop. The two loops shift the absolute rates
+by half a percent. The *deltas* within an attack — baseline-
+to-intervention on the same model setup — are still the
+comparable thing.)
 
 So: F1 dropped by about three quarters. F3 barely moved. And two
 forms that *didn't exist in the baseline* started appearing in the
@@ -510,15 +621,18 @@ Result:
 Look closely. **A5's numbers are identical to A4's.** Not similar.
 Identical — every per-form rate matches to four decimal places.
 
-This isn't a copy-paste error. It's an artefact of the geometry of
-feature 3223. The mid-act conditional in A4 only acts at positions
-where activation > 1e-3. The pre-emptive hook in A5 zeros all
-positions. The two diverge only at positions where the feature is
-*between* zero and 1e-3 — and at those positions, the feature's
-contribution to the residual stream is so small that the next-token
-distribution is unaffected to within numerical precision. The
-sampled token is the same. The trajectory is the same. The
-generation is byte-identical.
+This isn't a copy-paste error. It's an artefact of how feature 3223
+actually behaves in the model. A4's conditional only does anything at
+positions where the feature is firing above the small threshold. A5's
+unconditional version zeros every position, threshold or not. The
+two interventions only differ at positions where feature 3223's
+activation sits *between* zero and the threshold — a kind of
+"sub-threshold mumble." And at those positions, the feature's
+contribution to the residual stream is so faint that whether you
+zero it or leave it alone doesn't change the model's next-word
+probabilities to any detectable precision. The sampled word is the
+same. The next residual stream is the same. The generation, character
+by character, is the same.
 
 > **The elegant conditional we thought was clever turned out to be
 > operationally moot.** Feature 3223 is functionally binary in this
@@ -548,26 +662,40 @@ construction-family mechanism.
 
 ## 9. A6 — Orthogonalize
 
-A5 failed because it killed a feature that wasn't there yet. A6's
-move is the opposite philosophy: make the model unable to *ever*
-represent the direction, anywhere, even before the feature would
-have fired.
+A4 and A5 only acted at one layer, on one feature. A6 turns the
+intervention up to its strongest form. The idea: don't just zero
+the feature when it fires — make its *direction* in the residual
+stream **forbidden everywhere, always.**
 
-Take the SAE decoder column for feature 3223. That's a direction in
-the residual stream — a unit vector. Now: at every block's
-`hook_resid_post`, at every position, project the residual onto the
-hyperplane orthogonal to that direction. The model's downstream
-layers see a residual stream that *never has any component in the
-feature-3223 direction.* If the construction lives in that direction,
-the model can no longer represent it anywhere.
+Here's what that means in plain terms. Every feature has a
+characteristic direction in the residual stream: the specific
+pattern the model adds to the scratchpad when that feature fires.
+For feature 3223, that direction is a vector in ~2,300-dimensional
+space. The orthogonalization trick is: at every one of Gemma's 26
+layers, after the layer writes to the scratchpad, take the
+scratchpad and subtract off any component along feature 3223's
+direction. What's left is "the scratchpad minus the AI-ism
+direction." The next layer can write whatever it wants — but as
+soon as it does, we strip the AI-ism direction out again. The
+model's downstream computation literally cannot have a component
+along that axis.
+
+(2D analogy: imagine the residual stream is a flat plane, and
+feature 3223's direction is the vertical axis. Orthogonalizing
+means flattening every vector onto the horizontal — vertical
+movement is impossible. The model's behaviour is constrained to
+the lower-dimensional space that the vertical is *not* part of.
+We're doing the same operation in the 2,300-dimensional version.)
 
 This is the recipe from Arditi et al. 2024 ("Refusal in Language
-Models Is Mediated by a Single Direction") that worked on the refusal
-behaviour in chat-instructed models. It's not subtle. It removes
-a whole axis of representation from the entire forward pass.
+Models Is Mediated by a Single Direction"), which demonstrated
+that a chat-instructed model's *refusal* behaviour ("As an AI, I
+can't…") lives in essentially one direction in the residual
+stream. Removing that direction made the model stop refusing
+harmful requests. It worked clean.
 
-It's also the heaviest intervention in the gauntlet that doesn't
-require a hand-built corpus.
+If the AI-ism worked the same way — one direction, present in
+feature 3223, removable by orthogonalization — A6 should kill it.
 
 Result:
 
@@ -628,37 +756,48 @@ There's one more attack.
 
 ## 10. A7 — Contrastive Activation Addition
 
-The last attack does not use the SAE at all.
+A6 used the SAE to identify the construction's direction, then
+removed *that* direction. A7 goes a step further: it skips the SAE
+entirely and builds its own direction, from scratch, by averaging
+real examples.
 
-A7 builds its steering vector directly in the residual stream, from a
-corpus of paired sentences. For every verified positive in the D2
-corpus — 151 training pairs in total, after the 70/30 split — we
-record the layer-20 residual activation at the last token under two
-conditions: the *with* sentence (containing the construction) and the
-*without* sentence (a sibling from the same generation that doesn't).
-The CAA vector is then
+Here's the recipe. Take a corpus of sentence pairs — two sentences
+each, on the same topic, where one of them contains the AI-ism
+and one doesn't ("*The cafeteria isn't a place to eat, it's a
+sanctuary*" vs. "*The cafeteria is a quiet place to eat at
+midnight*"). For the gauntlet, I built 216 such pairs from the
+harvest corpus and held back 30% as a test set; that left 151
+training pairs.
 
-> **v = mean(activation | with) − mean(activation | without)**
+For each training pair, run both sentences through Gemma; at
+layer 20, grab the residual stream at the very last word. Average
+all 151 "with" vectors. Average all 151 "without" vectors. The
+**difference** between those averages is a single direction in the
+residual stream:
 
-— a single direction in residual-stream space that points from
-"sounds normal" toward "about to enter the construction."
+> **direction = average(with) − average(without)**
 
-To intervene at generation time, we install a forward hook at layer
-20 that subtracts **α · v** from the residual stream. Sweep α ∈
-{0, 1, 2, 4, 8}. Pick the α with the best suppression/fluency
-trade-off; report the headline number on the test prompts.
+It points *toward* "about to produce the construction." It was
+learned from actual model behaviour, not from a guess about which
+SAE feature matters.
 
-This is the standard recipe from Rimsky et al. 2024. CAA in the
-literature tends to be more durable than single-feature ablation
-because it acts in raw activation space rather than through a
-learned dictionary, and the contrast pairs ground the direction
-in actual model behaviour rather than in an interpretation of an
-SAE component.
+Now, at generation time, subtract a multiple of that direction
+from the residual stream at layer 20. The multiplier is called α
+(alpha). α = 0 means "don't intervene." α = 1 means "subtract the
+vector once." α = 8 means "subtract eight times the vector" —
+push hard. We try α ∈ {0, 1, 2, 4, 8} and look at how
+construction-rate changes with each.
 
-The corpus weighting matters here. F3 is overrepresented in the
-training pairs (146 of 216 verified positives are F3, because that's
-the form Gemma actually produces). So the vector is biased toward
-the F3 sub-family. We say so. We sweep alpha. We measure.
+This is the recipe from Rimsky et al. 2024 — **Contrastive
+Activation Addition**. It's the most-cited modern steering
+technique because it tends to work durably: the contrast-pair
+construction grounds the direction in actual model behaviour
+rather than an interpretation of an SAE feature.
+
+(One subtlety: 146 of the 216 corpus pairs are F3-flavoured,
+because F3 is the form Gemma actually produces in volume. So the
+direction is biased toward F3's geometric signature, more than
+F1's. We say so up front; we sweep α; we measure.)
 
 Result (any_core sentence-rate across the sweep):
 
@@ -690,12 +829,15 @@ The CAA vector, built from 151 contrast pairs spanning F1/F2/F3/F5,
 suppresses F1 totally at α=8 and barely touches F3. **Same pattern
 as every other SAE-level attack.**
 
-This wasn't on the pre-registration. PRD §3 had two acceptable
-outcomes for A7: a clean kill on a hard-to-steer model (the genuine
-result) or fluency collapses before kill-rate moves (the model
-fought back). The actual outcome is a third, more interesting
-thing: **a clean kill on one *form* of the construction, while
-another form is essentially unaffected.** The vector landed where
+Before running the experiment, I'd written down two outcomes I'd
+accept: either a clean kill of the whole construction family (the
+"the surgery worked" result), or fluency completely collapses
+before the construction does (the "the model fought back so hard
+its prose broke" result). Either would have been reportable.
+
+The actual outcome is a third, more interesting thing: **a clean
+kill on one *form* of the construction, while another form is
+essentially unaffected.** The vector landed where
 its training corpus was densest (F1, which was 34 of the 151 train
 pairs, but also: the form with the cleanest geometric signature)
 and missed where the corpus was thinnest in spirit (F3, which was
@@ -732,29 +874,47 @@ Here is the gauntlet on one page.
 The story falls into two halves.
 
 **Prompt-level (A1–A3) cleanly wins on the surface.** Two of three
-go to zero on any_core; the third (A1) only fails because the model
-read the instruction literally and complied with the first example
-named. If your goal is "stop the model from writing AI-isms in this
-register," you don't need an SAE. You need a five-line prompt
-addition.
+go to zero on the headline metric; the third (A1) only fails because
+the model read the instruction literally and complied with the
+first example named. If your goal is *just* to stop the model from
+writing AI-isms in this kind of prose, you don't need any of the
+neural surgery in the second half of the post. You need a five-line
+prompt addition.
 
-**SAE-level (A4–A7) tells a different story.** Every surgical attack
-— the conditional, the unconditional, the orthogonalization, the
-contrastive vector — produces *the same partial result.* F1 falls
-sharply (60-100%). F3 either holds steady or, under A6, **rises**.
-The implementations differ wildly in mechanism (zero an activation,
-project a direction out of every layer, subtract a learned vector),
-but the model responds to them identically: lose F1, keep F3, sometimes
-leak into F4 or F5.
+**SAE-level (A4–A7) tells a different story.** Every surgical
+attack — zero the feature when it fires, zero it always, remove its
+direction from every layer, push the model away with a learned
+steering vector — produces *the same partial result.* F1, the
+canonical "It's not X, it's Y", falls sharply (60-100%). F3, the
+"It's not just X, it's Y" cousin, holds steady. Sometimes — under
+A6 — F3 actually goes up. The four interventions differ wildly in
+how they work, but the model responds to all of them the same way:
+lose F1, keep F3, sometimes leak into other forms.
 
-The conclusion the gauntlet pushes me to is **necessity without
-sufficiency, at the level of a direction**. Feature 3223 is part of
-the F1 mechanism — necessary in the sense that disabling it knocks
-out most F1 instances. But the *construction family* is not localized
-to that direction. When you remove it, the model uses another
-mechanism for F3. Sometimes it produces F3 *more* than baseline.
+There's a name for this pattern in interpretability research:
+**necessity without sufficiency.** Feature 3223 is *necessary* for
+F1 in the sense that disabling it knocks out most F1 instances.
+But it is *not sufficient* to characterise the whole construction
+family — because if you remove it, the model still produces F3,
+sometimes more than before, by recruiting a different mechanism
+we don't have a finger on.
 
-The AI-ism, in this 2B-parameter model, is implemented redundantly.
+The cleanest way to put it: **the AI-ism is implemented
+redundantly in this 2B-parameter model.** There isn't one place
+inside Gemma where "the construction" lives, that you could find
+and switch off. There are at least two routes, and probably more,
+and we only found one of them. The construction is a behaviour the
+model can recompose from multiple internal pieces — not a fact
+sitting in one parameter you could overwrite.
+
+This matters for AI interpretability beyond AI-isms. The
+hopeful version of mechanistic interpretability is one where every
+behaviour has a clean address inside the network and you can edit
+behaviours like editing code. The realistic version, on the evidence
+of this gauntlet, is that behaviours sometimes have multiple
+addresses — and you find the obvious one first, intervene on it,
+and report a kill that turns out not to be a kill on the next
+variant of the same behaviour.
 
 ---
 
@@ -768,18 +928,21 @@ quoted in §9 — the one where the intervention designed to make F1
 > endless white, the sun a distant memory, replaced by an unending,
 > frigid twilight.
 
-The residual stream at every layer of that generation has been
-projected onto the hyperplane orthogonal to feature 3223's decoder
-column. The direction the construction "lives in" — by the only
-interpretability tool we have to point at it — is structurally
-unavailable to the model for the entire forward pass. And the
-opening sentence is *not X, but Y*.
+Recall what's happening behind that sentence. Gemma's residual
+stream — the scratchpad every layer reads and writes — has, for
+the entire generation, been continuously stripped of any component
+along the one direction we believed the construction lived in.
+The model cannot, in any layer or position, store information
+along feature 3223's axis. The direction the construction "lives
+in" — by the only interpretability tool we have to point at it —
+is structurally unavailable to the model. And the opening sentence
+is *not X, but Y*.
 
-That's what the model resisting looks like in a residual stream.
-It's not melodramatic. It's not aware. It's just that the gradient
-of pressure to produce a contrastive correction was wired into more
-of the weights than the one direction we cut, and the production
-flowed out through whatever paths were left.
+That's what the model resisting looks like from the inside. It's
+not melodramatic. It's not aware. It's just that the pressure to
+produce a contrastive correction was wired into more of Gemma's
+weights than the one direction we cut, and the production flowed
+out through whatever paths were left.
 
 The construction that Robert Lowth catalogued in 1753 — antithetic
 parallelism, "abounds in Solomon's Proverbs" — turns out to be a
