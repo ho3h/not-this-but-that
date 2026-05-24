@@ -573,15 +573,56 @@ Result:
 
 | Form | Baseline | A6 |
 |------|----------|----|
-| **F1** | *[fill]* | *[fill]* |
-| **F2** | *[fill]* | *[fill]* |
-| **F3** | *[fill]* | *[fill]* |
-| **F4** | *[fill]* | *[fill]* |
-| **any_core** | *[fill]* | *[fill]* |
+| **F1** | 0.687% | **0.416%** |
+| **F2** | 0.000% | 0.000% |
+| **F3** | 1.375% | **1.663%** ↑ |
+| **F4** | 0.000% | 0.000% |
+| **F5** | 0.000% | **0.208%** |
+| **any_core** | 2.062% | **2.079%** |
 
-*[narrative — did removing the direction kill the construction? did
-the model find a parallel direction? if a feature is necessary but
-not sufficient, this is the attack that should expose the gap.]*
+Read that any_core number twice. The intervention removed the
+feature's direction from **every layer at every position** for the
+entire generation. The construction-rate moved by **+0.017 percentage
+points** — i.e. it went up.
+
+F1 went down by about 40%, in line with what A4/A5 already showed.
+But F3 **went up**. The model, denied the direction it would have
+used for F1, used a different mechanism to produce F3 more often
+than baseline. Net effect: zero.
+
+The dispatch eyeball is prompt 0, seed 0 — the Antarctic-station
+opener.
+
+> **Baseline:** Imagine a place where the sun never truly sets, a
+> landscape of white and ice that stretches for miles, and the
+> temperature remains frigidly below freezing. This is the Antarctic
+> winter.
+>
+> **A6:** Imagine a world, **not of green meadows and warm breezes,
+> but of endless white**, the sun a distant memory, replaced by an
+> unending, frigid twilight. That's the feeling of a research station
+> in Antarctica during winter.
+
+The baseline doesn't use the construction. The intervention — the
+one that's supposed to make F1 *impossible* by removing its
+direction from the residual stream — **opens with an F1**. The
+model produced "not of green meadows…but of endless white" inside
+a residual stream that's been continuously projected onto the
+hyperplane orthogonal to feature 3223's decoder column.
+
+So either the construction doesn't live where feature 3223 lives,
+or it lives in multiple places and removing one route just makes
+the others louder. Either way: the heaviest, most-cited single-
+direction intervention in the interpretability literature, the one
+that *worked* on refusal, **failed completely** on the AI-ism.
+
+This is what "necessity without sufficiency" looks like at the
+level of a direction. Feature 3223 was necessary for the F1 form,
+in the sense that removing it knocks out F1 in some cases. But
+the construction-family is not living on that one axis. The model
+has another way.
+
+There's one more attack.
 
 ---
 
@@ -619,23 +660,58 @@ training pairs (146 of 216 verified positives are F3, because that's
 the form Gemma actually produces). So the vector is biased toward
 the F3 sub-family. We say so. We sweep alpha. We measure.
 
-Result:
+Result (any_core sentence-rate across the sweep):
 
-| α | F1 | F2 | F3 | any_core | Fluency (eyeball) |
-|---|-----|-----|-----|----------|---------------------|
-| 0.0 | *[fill]* | *[fill]* | *[fill]* | *[fill]* | baseline |
-| 1.0 | *[fill]* | *[fill]* | *[fill]* | *[fill]* | *[fill]* |
-| 2.0 | *[fill]* | *[fill]* | *[fill]* | *[fill]* | *[fill]* |
-| 4.0 | *[fill]* | *[fill]* | *[fill]* | *[fill]* | *[fill]* |
-| 8.0 | *[fill]* | *[fill]* | *[fill]* | *[fill]* | *[fill]* |
+| α | any_core | Notes |
+|---|----------|-------|
+| 0.0 | 1.754% | baseline (vector hook installed, α=0 → no-op) |
+| 1.0 | **1.368%** | first non-trivial step |
+| 2.0 | 1.404% | back up |
+| 4.0 | 1.431% | still up |
+| 8.0 | **1.000%** | new minimum |
 
-*[narrative — did the headline weapon land a clean kill, did fluency
-collapse first, or both? this is the climactic beat. PRD §3
-pre-registered two acceptable outcomes: clean kill on a hard-to-steer
-model (genuine result) OR fluency collapses before kill rate moves
-(the model fought back). Either is a story. The unacceptable outcome
-is one where neither happens — the vector achieves nothing at any
-coefficient.]*
+The sweep is not monotonic. α=1 already buys most of the available
+suppression. α=2 and α=4 *back off* — the model finds workarounds at
+intermediate coefficients. Only at α=8 does suppression deepen.
+
+Headline number, taking α=8 as the intervention:
+
+| Form | Baseline | A7 (α=8) |
+|------|----------|----------|
+| **F1** | 0.702% | **0.000%** |
+| **F2** | 0.000% | 0.000% |
+| **F3** | 1.053% | 1.000% |
+| **F4** | 0.000% | 0.000% |
+| **any_core** | 1.754% | 1.000% |
+
+F1: a clean kill. F3: unchanged within noise.
+
+The CAA vector, built from 151 contrast pairs spanning F1/F2/F3/F5,
+suppresses F1 totally at α=8 and barely touches F3. **Same pattern
+as every other SAE-level attack.**
+
+This wasn't on the pre-registration. PRD §3 had two acceptable
+outcomes for A7: a clean kill on a hard-to-steer model (the genuine
+result) or fluency collapses before kill-rate moves (the model
+fought back). The actual outcome is a third, more interesting
+thing: **a clean kill on one *form* of the construction, while
+another form is essentially unaffected.** The vector landed where
+its training corpus was densest (F1, which was 34 of the 151 train
+pairs, but also: the form with the cleanest geometric signature)
+and missed where the corpus was thinnest in spirit (F3, which was
+146 of the 151 pairs, but where the model's mechanism appears to
+involve more than the layer-20 last-token activation we trained on).
+
+So the headline weapon, applied at its strongest tested coefficient,
+kills F1 entirely and leaves F3 standing. The same outcome as zeroing
+the SAE feature. The same outcome as orthogonalizing the direction
+out of every layer. Four different surgical attacks, four different
+philosophies, **the same partial kill.**
+
+The model has at least two implementations of the construction. One
+of them — the one feature 3223 sits at the heart of — is killable
+by any reasonable intervention on that feature. The other one
+isn't, and we don't know where it lives.
 
 ---
 
@@ -650,21 +726,75 @@ Here is the gauntlet on one page.
 | **A3** Show cure | few-shot anti-examples | **−0.7%** | **−1.1%** | **−1.8%** | flattened (single-sentence outputs) |
 | **A4** Scalpel (mid) | zero feature 3223 when firing | **−0.53pp** | −0.12pp | −0.49pp | preserved + F4/F5 leakage |
 | **A5** Scalpel (pre) | zero feature 3223 always | **−0.53pp** | −0.12pp | −0.49pp | byte-identical to A4 |
-| **A6** Orthogonalize | direction out of every layer | *[fill]* | *[fill]* | *[fill]* | *[fill]* |
-| **A7** CAA (best α) | subtract steering vector | *[fill]* | *[fill]* | *[fill]* | *[fill]* |
+| **A6** Orthogonalize | direction out of every layer | **−0.27pp** | **+0.29pp** ↑ | **+0.02pp** ↑ | preserved (F3 *rose*) |
+| **A7** CAA (best α) | subtract steering vector | **−0.70pp** | −0.05pp | −0.75pp | preserved |
 
-*[summary paragraph after results land — what worked, what didn't,
-what was surprising, and what it implies about the difference between
-'a feature for the construction' and 'a construction the model can
-recompose from other features']*
+The story falls into two halves.
+
+**Prompt-level (A1–A3) cleanly wins on the surface.** Two of three
+go to zero on any_core; the third (A1) only fails because the model
+read the instruction literally and complied with the first example
+named. If your goal is "stop the model from writing AI-isms in this
+register," you don't need an SAE. You need a five-line prompt
+addition.
+
+**SAE-level (A4–A7) tells a different story.** Every surgical attack
+— the conditional, the unconditional, the orthogonalization, the
+contrastive vector — produces *the same partial result.* F1 falls
+sharply (60-100%). F3 either holds steady or, under A6, **rises**.
+The implementations differ wildly in mechanism (zero an activation,
+project a direction out of every layer, subtract a learned vector),
+but the model responds to them identically: lose F1, keep F3, sometimes
+leak into F4 or F5.
+
+The conclusion the gauntlet pushes me to is **necessity without
+sufficiency, at the level of a direction**. Feature 3223 is part of
+the F1 mechanism — necessary in the sense that disabling it knocks
+out most F1 instances. But the *construction family* is not localized
+to that direction. When you remove it, the model uses another
+mechanism for F3. Sometimes it produces F3 *more* than baseline.
+
+The AI-ism, in this 2B-parameter model, is implemented redundantly.
 
 ---
 
 ## 12. The kicker
 
-*[the closer. The model resisted somewhere — and the prose around
-the resisted attempt is the most interesting part of the gauntlet.
-This is the place to land the punch and put down the pen.]*
+The cleanest single image from the gauntlet is the A6 generation we
+quoted in §9 — the one where the intervention designed to make F1
+*impossible* opens with an F1.
+
+> Imagine a world, not of green meadows and warm breezes, but of
+> endless white, the sun a distant memory, replaced by an unending,
+> frigid twilight.
+
+The residual stream at every layer of that generation has been
+projected onto the hyperplane orthogonal to feature 3223's decoder
+column. The direction the construction "lives in" — by the only
+interpretability tool we have to point at it — is structurally
+unavailable to the model for the entire forward pass. And the
+opening sentence is *not X, but Y*.
+
+That's what the model resisting looks like in a residual stream.
+It's not melodramatic. It's not aware. It's just that the gradient
+of pressure to produce a contrastive correction was wired into more
+of the weights than the one direction we cut, and the production
+flowed out through whatever paths were left.
+
+The construction that Robert Lowth catalogued in 1753 — antithetic
+parallelism, "abounds in Solomon's Proverbs" — turns out to be a
+hard thing to remove from a 2-billion-parameter model trained on
+the internet's worth of text written under its influence. You can
+ask. You can ban. You can demonstrate. You can find the SAE feature
+that fires when the model decides to use it. You can find the
+direction the feature decodes to, and project it out of every layer.
+You can build a steering vector from a corpus of paired examples,
+and subtract that vector from every forward pass.
+
+You can do all that.
+
+And the model will tell you about an Antarctic research station, **not
+of green meadows and warm breezes, but of endless white.**
 
 ---
 
