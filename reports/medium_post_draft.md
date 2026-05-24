@@ -165,15 +165,123 @@ When it's dormant, the component is roughly zero.
 The features the SAE finds aren't guaranteed to mean anything
 interpretable, but most of them turn out to. There's a website,
 **Neuronpedia**, that hosts an automated effort to label each
-feature with the kind of text that makes it fire. From a prior
-round of work on Gemma 2 2B I had a candidate: **feature 3223** at
-layer 20. Its automated label is *"phrases conveying exceptions
-or negations,"* and the experiments suggested it was the feature
-most strongly tied to Gemma deciding to use the AI-ism.
+feature with the kind of text that makes it fire.
 
-The gauntlet asks: is that the right feature? Can we steer it,
-zero it, remove it, and stop the model from producing the
-construction?
+The layer-20 SAE has **16,384** features. One of them — if we got
+lucky — would be the AI-ism feature. The next subsection is the
+story of how we found it.
+
+### Finding the candidate
+
+The naive way to find "the AI-ism feature" is: take 200 sentences
+with the construction and 200 paraphrases without it; for each of
+the 16,384 features, compute a t-statistic for "fires more on
+*with* than on *without*"; sort and take the top.
+
+I tried that. The top hit by t-statistic was feature **9841**
+("phrases and clauses involving contrasting ideas or situations").
+Looked perfect. Wasn't.
+
+The trap is the *position* the activations are measured at. If you
+take the activation at the last token of a completed sentence,
+you're measuring what features fired on the *outcome* — the model
+has already produced the construction, the sentence-ending state
+reflects the whole thing. Lots of features will look correlated
+with the construction this way, but most of them are responding
+to it rather than causing it. Feature 9841 turned out to be
+exactly that kind of consequence feature: it lights up after the
+construction is complete and barely fires at all at the moment
+the model is *deciding* whether to use one.
+
+So the real question is causal and positional: **at the exact
+moment the model is about to commit to the construction — the
+token-position just before words like "but" or "it's" — which
+features, if you zero them, lower the model's probability of
+committing?** Take a 'with' sentence, truncate it just before the
+pivot word, run the truncated prompt through the model, and for
+every feature active at the last position, ablate it one at a
+time and measure how much P("but"|context), P("it's"|context),
+etc. drops.
+
+That's a more honest test. Feature 9841 drops out (it isn't
+active at the pre-pivot position). The new winner is
+**feature 3223**, active in 32 of 60 test prompts, with a mean
+pivot-probability drop of 43% on ablation. The Neuronpedia label
+— *"phrases conveying exceptions or negations"* — landed in a
+plausible-but-not-circular place: clearly related to what we're
+hunting, but not the kind of label that would be picked by
+search-engine matching on "not X, but Y".
+
+The causal test nominated the candidate. But a nomination isn't
+trust. To trust 3223 as *the* feature we'd want to operate on, I
+needed to characterise its neighborhood — what features behave
+like it, what features fire alongside it, what does it actually
+look like geometrically in the SAE dictionary?
+
+This is what the **Neo4j substrate** was built for. Each of the
+16,384 layer-20 SAE features is a node in a graph. The edges
+capture the structural relationships that no single ablation
+score can:
+
+- **`(:SAEFeature)-[:CO_ACTIVATES_WITH]->(:SAEFeature)`** —
+  pointwise mutual information of two features firing together
+  across the corpus. Feature pairs that are part of the same
+  circuit show up here.
+- **`(:SAEFeature)-[:DECODER_SIMILAR]->(:SAEFeature)`** — cosine
+  similarity of two features' decoder directions in the residual
+  stream. Features that *write* similar patterns to the scratchpad
+  cluster here, even if they fire at different positions.
+- **`(:SAEFeature)-[:LABELED_AS]->(:AutoInterpLabel)`** — the
+  Neuronpedia labels, joined in so the query can mix
+  "behaves like *X*" with "is labelled like *Y*".
+- **`(:Token)-[:ACTIVATES]->(:SAEFeature)`** — token-conditioned
+  recruitment: which words at which positions drive which features
+  above threshold.
+- **`(:SAEFeature)-[:LIES_ON]->(:Manifold)`** — the geometry layer
+  from earlier work: each feature lives on a low-dimensional
+  manifold of related features, found by community detection over
+  the decoder + co-activation graph.
+
+With this substrate, the follow-up questions on a candidate
+become Cypher queries instead of one-off scripts. *What does
+3223 co-activate with? What's in its decoder-cosine
+neighborhood? What features lie on the same manifold and what
+are their labels? Is the manifold dominated by punctuation
+features (suspicious) or by genuinely construction-related
+ones (corroborating)?*
+
+The answers held up. Feature 3223's strongest co-activators
+included other features with labels around negation, contrast,
+and emphasis. Its decoder-cosine neighborhood was full of
+syntactic-pivot features. Its manifold was *not* a punctuation
+manifold. The graph view turned a single ablation score into a
+multi-evidence portrait, and the portrait was consistent: this
+is a feature involved in producing contrast-and-correction
+structures, not a coincidence of correlation.
+
+A separate, formally pre-registered causal-validation pass — the
+**bidirectional necessity-and-sufficiency test** on a held-out
+split — confirmed half the picture and quietly foreshadowed the
+gauntlet's verdict. Zeroing feature 3223 dropped P(pivot) in a
+way random-feature ablations didn't reproduce (necessity, yes).
+Clamping the feature *up* did **not** make the model produce the
+construction more (sufficiency, no). At the time I treated the
+sufficiency miss as a methodological quirk. In retrospect, it was
+the first hint that the construction was a multi-feature
+coordination rather than a single switch — which is exactly what
+the gauntlet later finds, repeatedly.
+
+The candidate the gauntlet attacks is the one this whole
+pipeline — naive correlation, then causal pivot attribution,
+then graph-based neighborhood validation, then formal
+bidirectional necessity testing — converged on. The graph stops
+being load-bearing the moment the candidate is in hand; from
+here, it's a single integer — index 3223 — and the seven attacks
+act directly on that feature, its decoder direction, or a
+learned vector derived from it.
+
+The gauntlet asks: is the candidate right? Can we steer it, zero
+it, remove it, and stop the model from producing the construction?
 
 ### The arena
 
@@ -997,6 +1105,23 @@ prompts.
 seven forms, validated on a hand-labelled 100-sentence holdout. Pre-
 registered acceptance gate: P ≥ 0.80 and R ≥ 0.80. Achieved: P =
 0.857, R = 0.857. Validation report: `reports/gauntlet/g5_referee_validation.md`.
+
+**Feature-discovery substrate.** Feature 3223 was identified by the
+pipeline described in §3 (*Finding the candidate*): naive last-token
+t-statistic (top hit = 9841, falsified by mid-act ablation), then
+positional causal pivot attribution (top hit = 3223), then
+graph-based neighborhood validation in a Neo4j knowledge graph of
+the layer-20 SAE dictionary (~16k SAEFeature nodes; CO_ACTIVATES_WITH,
+DECODER_SIMILAR, LABELED_AS, ACTIVATES, LIES_ON edges; community
+detection over decoder + co-activation; Cypher Q1–Q6 helpers in
+`src/neograph/cypher.py`). Bidirectional necessity-and-sufficiency
+formally pre-registered in `reports/operating_protocol.md` and run as
+`scripts/causal_m2.py`. The graph substrate is **not** load-bearing
+for the gauntlet itself — once feature 3223 is in hand, the gauntlet
+operates only on its index, its decoder column, or a CAA vector
+derived from corpus pairs. But it was load-bearing for trusting that
+3223 was the right candidate rather than another feature that
+correlated with the construction at the wrong position.
 
 **Seeds.** Three seeds per (prompt, condition) — 0, 1, 2. Same seed
 across baseline and intervention so paired comparisons are clean.
