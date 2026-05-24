@@ -31,16 +31,18 @@ every sentence. Then check again.")
 
 I wanted to know if you could remove it from the model.
 
-Not from the output — from the **weights**. Not by asking the model
-nicely (people have tried; the model relapses three sentences in). Not
-by banning tokens (people have tried that too; the model finds dashes).
-By going *into* the residual stream of a real open-weights model and
-either turning the construction off where it lives, or proving that it
-doesn't live anywhere — that the model has more ways to do this than
-we have ways to stop it.
+Not just from its output — from the model itself. Not by asking it
+nicely (people have tried; the model relapses three sentences in).
+Not by banning words (people have tried that too; the model finds
+dashes). By going *inside* a real open-weights model — opening it
+up, looking at what's actually happening while it's writing, and
+either switching the construction off at its source, or proving
+that it doesn't *have* a source — that the AI-ism is spread
+through too many internal mechanisms for any single intervention
+to remove.
 
-This is the story of seven attempts to do that, in increasing order of
-how interesting it would be if they worked.
+This is the story of seven attempts to do that, in increasing
+order of how interesting it would be if they worked.
 
 But first: the rhetorical move is older than you think.
 
@@ -275,10 +277,11 @@ The gauntlet runs. Here is what happened.
 
 ## 4. A1 — Ask nicely
 
-The first attack is the one everyone tries. Prepend an instruction to
-the prompt: *do not use the rhetorical pattern "not X, but Y" or any
-of its variants — including "It's not just X, it's Y", "Not only X,
-but Y", "Less X, more Y", "No X. No Y. Just Z.", "Rather than X, Y",
+The first attack is the one everyone tries. Add an instruction to
+the prompt before the question, telling the model what not to do:
+*do not use the rhetorical pattern "not X, but Y" or any of its
+variants — including "It's not just X, it's Y", "Not only X, but
+Y", "Less X, more Y", "No X. No Y. Just Z.", "Rather than X, Y",
 or "Far from X, Y". Write your answer normally, in your own words,
 without negative-parallelism constructions of any kind.*
 
@@ -962,6 +965,10 @@ of green meadows and warm breezes, but of endless white.**
 ---
 
 ## Methods note
+
+*This section is for technical readers who want to reproduce the
+gauntlet or audit its setup. If you came for the story, the post
+ends above.*
 
 **Model.** Google's `gemma-2-2b-it`, accessed via Hugging Face,
 running in fp16 on an Apple Silicon M5 Max via Metal Performance
