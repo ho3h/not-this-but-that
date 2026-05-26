@@ -95,3 +95,60 @@ github.com/theohopkinson/not-this-but-that
 2. Screenshot of the Demo 1 surgical-deslop output ("2 AI-ism features silenced — the overlap of 80 prompt-concepts ∩ 25 coalition features")
 3. Screenshot of the Mixer with sliders
 4. Side-by-side baseline vs ablated for one of the cleaner kills (e.g. "This isn't a setback" → "it's a turning point" rather than "it's a springboard")
+
+---
+
+## Draft C — X/Twitter thread (7 tweets, 280 chars each)
+
+Cross-post target. Each `(n/7)` is one tweet. Thread together.
+
+### Tweet 1 (hook, 277 chars)
+> Spent a month inside a chatbot's head looking for the neuron that makes AI write like AI.
+>
+> You know the sentence: "This isn't a setback, it's a springboard." "It's not a tool, it's a partner." Same shape, every chatbot.
+>
+> I found the feature. It didn't fix the problem. 🧵
+
+### Tweet 2 (the naive attack, 268 chars)
+> The published mech-interp playbook says behaviours like this live in one feature. Refusal does. So I scanned all 16,384 SAE features in Gemma 2 2B.
+>
+> Day one: feature 3223. Label: "phrases conveying exceptions or negations." Cinematic. I projected it out of every layer.
+
+### Tweet 3 (the surprise, 270 chars)
+> First generation under the kill, prompt about Antarctica:
+>
+> "Imagine a world, NOT of green meadows and warm breezes, BUT of endless white..."
+>
+> The intervention designed to make the construction impossible opened with the construction. The model rerouted.
+
+### Tweet 4 (the coalition, 270 chars)
+> So I tried 25 features at once.
+>
+> The AI-ism doesn't live in one feature. It lives in a coalition. 2 cores (negation + digital tech, of all things) + 23 redundant supporters.
+>
+> Ablate all 25 → construction rate drops 80% on neutral prompts. n=306. p<10⁻⁶.
+
+### Tweet 5 (the structural lesson, 270 chars)
+> The graph guessed wrong on the coalition.
+>
+> Decoder neighbours of 3223? Failed. Co-activators? Failed. Same Leiden community? Failed (0.1% drop).
+>
+> Only direct causal attribution worked. Behaviours have *coalition addresses*, and structural similarity doesn't predict them.
+
+### Tweet 6 (the three demos, 277 chars)
+> Then I built 3 demos on the graph substrate. Each is one Cypher query:
+>
+> 1️⃣ Surgical de-slop: retrieval ∩ behaviour
+> 2️⃣ Mix your own chatbot: sliders per behaviour, weighted UNION
+> 3️⃣ Audit trail: "why did the model say that?" as a MATCH path
+>
+> Graph as the selection layer.
+
+### Tweet 7 (CTA, 234 chars)
+> Mech-interp + knowledge graphs = composable, auditable, glass-box model steering.
+>
+> Open source. Full writeup (3,500 words) + reproducible code:
+>
+> github.com/theohopkinson/not-this-but-that
+>
+> #MechanisticInterpretability #AI #Neo4j

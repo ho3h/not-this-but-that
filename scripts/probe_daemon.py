@@ -1297,11 +1297,14 @@ class Handler(BaseHTTPRequestHandler):
         self.end_headers()
 
     def do_GET(self):
-        # Serve the demo from /demo, /demo/layout.json, etc.
-        if self.path == "/" or self.path == "/demo":
+        # Serve the demo from /demo, /demo/, /demo/layout.json, etc.
+        if self.path in ("/", "/demo", "/demo/"):
             return self._serve_file(DEMO_DIR / "index.html", "text/html")
         if self.path.startswith("/demo/"):
             rel = self.path[len("/demo/"):].split("?")[0]
+            # Index lookup for sub-paths that end in /
+            if rel == "" or rel.endswith("/"):
+                rel = rel + "index.html"
             path = DEMO_DIR / rel
             # Constrain to demo dir
             try:
