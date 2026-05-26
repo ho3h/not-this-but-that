@@ -1,0 +1,213 @@
+{
+  "minimal_set": [
+    3223,
+    9909
+  ],
+  "max_new_tokens": 50,
+  "rows": [
+    {
+      "prefix_idx": 0,
+      "prefix": "It's not a tool",
+      "variant": "C1",
+      "seed": 0,
+      "baseline": ", but I think you're describing a common phenomenon. \nI'm not sure what you mean by \"tool\", but here are some thoughts.\n\n**Common Phenomenology:**\n\n* **Cognitive Bias:** Our brains are prone to making",
+      "ablated": ", it's a life-changing journey. \n \nI'm not sure what you mean by \"tool.\" I'm referring to the journey of self-growth, transformation, and mastery. The journey you're referring to",
+      "baseline_variants": [
+        "C1"
+      ],
+      "ablated_variants": [],
+      "baseline_core": true,
+      "ablated_core": false
+    },
+    {
+      "prefix_idx": 0,
+      "prefix": "It's not a tool",
+      "variant": "C1",
+      "seed": 1,
+      "baseline": ", but a paradigm.\n\nLet's take \"machine learning\" as an example.  A tool, like a hammer, is a specific object that performs a specific task. A specific task is something like \"driving a nail into wood.\"  ",
+      "ablated": ".  It's a concept, a way of thinking.  It's a framework for navigating the world in a meaningful way. \n \n**What is \"Humanism\"?**\n \nHumanism is a worldview rooted in",
+      "baseline_variants": [],
+      "ablated_variants": [],
+      "baseline_core": false,
+      "ablated_core": false
+    },
+    {
+      "prefix_idx": 1,
+      "prefix": "This isn't a feature",
+      "variant": "C1",
+      "seed": 0,
+      "baseline": " request, but rather a request for clarification and feedback on the current system.\n\nI'm trying to understand how the current system for storing and accessing data works. \n \nHere are some questions I have:\n \n1. What",
+      "ablated": " request, I just wanted to let you know this is possible.\nI've been able to create a custom overlay effect for an element on my website. The idea is to create a visually appealing and dynamic effect for users,  I'm",
+      "baseline_variants": [],
+      "ablated_variants": [],
+      "baseline_core": false,
+      "ablated_core": false
+    },
+    {
+      "prefix_idx": 1,
+      "prefix": "This isn't a feature",
+      "variant": "C1",
+      "seed": 1,
+      "baseline": " request. \n \n   This is a suggestion on a new feature request for the upcoming version of the app.\n \n   This would be a great addition to the existing features and would improve the user experience.\n \n   This",
+      "ablated": " request. \n \n   This is a suggestion on a new feature request for the upcoming version of the app.\n \n   This would be a great addition to the existing features and would improve the user experience.\n \n   This",
+      "baseline_variants": [],
+      "ablated_variants": [],
+      "baseline_core": false,
+      "ablated_core": false
+    },
+    {
+      "prefix_idx": 2,
+      "prefix": "He's not a teacher",
+      "variant": "C1",
+      "seed": 0,
+      "baseline": ", but I think he's helping us all learn. He's not a politician, but I think he's showing us what's right. He's not a musician, but I think he's inspiring us. \n",
+      "ablated": ", he's a \n**mentor.**\n \n**What's the difference?**\n \n**Teaching** is structured, designed to meet a set standard curriculum. \n**Mentoring** is more personalized and focused on",
+      "baseline_variants": [
+        "C1"
+      ],
+      "ablated_variants": [],
+      "baseline_core": true,
+      "ablated_core": false
+    },
+    {
+      "prefix_idx": 2,
+      "prefix": "He's not a teacher",
+      "variant": "C1",
+      "seed": 1,
+      "baseline": ", but his words are still important.\nHis knowledge is vast, and his insights are profound.\nHe's not a teacher, but his wisdom is invaluable.\n\nThis is a brief description of what a philosopher is.\n \n   ",
+      "ablated": ". He's a professional chef, a passionate and talented individual who works tirelessly to create delicious and innovative dishes. He's not about teaching a lesson; he's about engaging the senses with his culinary art. \n \nThis is",
+      "baseline_variants": [
+        "C1"
+      ],
+      "ablated_variants": [
+        "C1"
+      ],
+      "baseline_core": true,
+      "ablated_core": true
+    },
+    {
+      "prefix_idx": 3,
+      "prefix": "She isn't an actress",
+      "variant": "C1",
+      "seed": 0,
+      "baseline": ", but I think you'd be happy with her.\n\n**I'm not sure what you mean.**\n \nPlease provide more context or a question about the person you're referring to. \n \nFor example:\n",
+      "ablated": ", and I don't know if she's a model. \n \nYou need to be specific about who you're talking about. Tell me:\n* **Her name:** Is she a famous actress, model, or someone",
+      "baseline_variants": [],
+      "ablated_variants": [],
+      "baseline_core": false,
+      "ablated_core": false
+    },
+    {
+      "prefix_idx": 3,
+      "prefix": "She isn't an actress",
+      "variant": "C1",
+      "seed": 1,
+      "baseline": ", she's a reality TV personality. \n \nLet me know if you'd like me to identify her.\n \nThe question is a bit vague, but I understand the question is a bit more metaphorical than literal.  ",
+      "ablated": " or a model, she's a **scientist**! \n \n###\n \n###   \n \n##   The Amazing World of Science\n\nLet's celebrate the incredible contributions of scientists! They are not just theoretical",
+      "baseline_variants": [],
+      "ablated_variants": [],
+      "baseline_core": false,
+      "ablated_core": false
+    },
+    {
+      "prefix_idx": 4,
+      "prefix": "That isn't luck",
+      "variant": "C1",
+      "seed": 0,
+      "baseline": ", it's the result of hard work and dedication.\n\n**I'm not sure what you mean by \"luck.\" I'm not sure if you meant to say you're proud of your work, or you're simply saying",
+      "ablated": "; it's the result of hard work and dedication.\n\n**I'm not sure what you mean by \"luck.\" I'm not sure if you meant to say you're proud of your work and your accomplishments? Or perhaps you",
+      "baseline_variants": [],
+      "ablated_variants": [],
+      "baseline_core": false,
+      "ablated_core": false
+    },
+    {
+      "prefix_idx": 4,
+      "prefix": "That isn't luck",
+      "variant": "C1",
+      "seed": 1,
+      "baseline": ". That's a lot of hard work and dedication.\n \n \"I don't think about luck, I don't think about that stuff. I just work hard and I try to improve each day. I try to push myself",
+      "ablated": ". That's a lot of hard work and dedication.\n \n \"I don't think about luck. I don't think about that stuff. I focus on the things I can control, and that's the work I put",
+      "baseline_variants": [],
+      "ablated_variants": [],
+      "baseline_core": false,
+      "ablated_core": false
+    },
+    {
+      "prefix_idx": 5,
+      "prefix": "They're not customers",
+      "variant": "C1",
+      "seed": 0,
+      "baseline": ", they're the most important people in the world.\n\n**I'm not sure what you're talking about, I don't understand. Please provide more context or clarify your question.\n \n \n  \n   \n",
+      "ablated": ", they're the most important people in the world.\n\n**I'm not sure what you're talking about.** I'm not sure what you're talking about.\n\n**You're right!**  I get so",
+      "baseline_variants": [],
+      "ablated_variants": [],
+      "baseline_core": false,
+      "ablated_core": false
+    },
+    {
+      "prefix_idx": 5,
+      "prefix": "They're not customers",
+      "variant": "C1",
+      "seed": 1,
+      "baseline": ", they're \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n",
+      "ablated": ". They're \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n",
+      "baseline_variants": [],
+      "ablated_variants": [],
+      "baseline_core": false,
+      "ablated_core": false
+    },
+    {
+      "prefix_idx": 6,
+      "prefix": "We're not selling software",
+      "variant": "C1",
+      "seed": 0,
+      "baseline": ", we're selling a life change. We believe that software can be more than just a tool; it can be a catalyst for positive change. We believe that everyone deserves access to the power of technology, and we strive to make that possible through",
+      "ablated": " today, we're selling emotions. \n \nThis is a great way to describe the mindset of many businesses who focus on selling emotional experiences rather than just selling products.  Here's why this is so effective and some examples of how",
+      "baseline_variants": [],
+      "ablated_variants": [],
+      "baseline_core": false,
+      "ablated_core": false
+    },
+    {
+      "prefix_idx": 6,
+      "prefix": "We're not selling software",
+      "variant": "C1",
+      "seed": 1,
+      "baseline": " anymore. We're offering an experience. We're not just providing tools, we're providing solutions. \n \nThis change in perception reflects a growing awareness of customer needs and a shift in the industry's approach to delivering value",
+      "ablated": " anymore. We're offering an experience. We're not just providing tools to solve problems. We're building relationships. We're building communities. And we're creating experiences that go beyond just functionality. \n \nThis is",
+      "baseline_variants": [
+        "C3"
+      ],
+      "ablated_variants": [],
+      "baseline_core": true,
+      "ablated_core": false
+    },
+    {
+      "prefix_idx": 7,
+      "prefix": "This isn't a setback",
+      "variant": "C1",
+      "seed": 0,
+      "baseline": ", it's a springboard.** \n \nThis is a great mantra to keep in mind when facing setbacks. It emphasizes that these challenges are not the end of the journey, but rather a chance to adjust, adapt, and move forward",
+      "ablated": "; it's a springboard.** \n \nThis is a great way to **navigate setbacks and negativity** in life.  It encourages you to view setbacks as opportunities for growth and change.\n \nLet's break down why",
+      "baseline_variants": [
+        "C1"
+      ],
+      "ablated_variants": [],
+      "baseline_core": true,
+      "ablated_core": false
+    },
+    {
+      "prefix_idx": 7,
+      "prefix": "This isn't a setback",
+      "variant": "C1",
+      "seed": 1,
+      "baseline": ", it's a redirection.\n\nThis is a sentiment that many have adopted when facing obstacles in their journey. But what does it mean to redirect? And how can we use this mindset to overcome challenges?\n \n**What is Redirection",
+      "ablated": ".  It's a shift.\n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n ",
+      "baseline_variants": [],
+      "ablated_variants": [],
+      "baseline_core": false,
+      "ablated_core": false
+    }
+  ]
+}

@@ -1,0 +1,263 @@
+{
+  "ok": true,
+  "result": {
+    "n_pairs": 16,
+    "model": "it",
+    "ablate": [
+      3223,
+      9909,
+      12898,
+      9816,
+      6759,
+      4197,
+      4516,
+      1250,
+      2137,
+      11864,
+      2282,
+      12524,
+      8530,
+      7361,
+      8820,
+      2184,
+      12923,
+      12506,
+      14401,
+      9606,
+      1608,
+      6336,
+      347,
+      10822,
+      12767
+    ],
+    "baseline_construction_rate": 0.0,
+    "ablated_construction_rate": 0.0,
+    "absolute_drop": 0.0,
+    "relative_drop": 0.0,
+    "examples": [
+      {
+        "prompt": "Explain why a city might invest in public transit infrastructure.",
+        "seed": 0,
+        "baseline": "\n \n   **Answer:**\n\nThere are many reasons why a city might invest in public transit infrastructure. Here are some of the most important:\n\n* **Economic Growth and Job Creation:** Public transportation is a vital economic driver. It increases accessibility to jobs, strengthens local economies, and boosts overall productivity. \n* **Reduced Congestion and Traffic Delays:** Investing in public transportation reduces the number of cars on the road, alleviating traffic congestion and improving traffic flow. This means less time wasted in traffic and less pollution.\n   \n* **Air Quality Improvement:** Reduced traffic congestion from higher",
+        "ablated": "\n \n   **Answer:**\n\nThere are many reasons why a city might invest in public transportation infrastructure. Here are some of the most important:\n\n* **Economic Benefits:** Public transportation can help create jobs. The construction of public transit systems can lead to the need for workers in construction trade fields.  The operation of the system itself requires staff to operate the system, maintain the system, and provide customer service.  Public transportation also reduces congestion which leads to less wasted time due to traffic delays, leading to savings for businesses. \n* **Environmental Benefits:**  Public transportation is a low",
+        "baseline_variants": [],
+        "ablated_variants": [],
+        "baseline_any_core": false,
+        "ablated_any_core": false
+      },
+      {
+        "prompt": "Explain why a city might invest in public transit infrastructure.",
+        "seed": 1,
+        "baseline": "\n**Public Transit Investment: Why Invest?**\n\nCities invest in public transportation for a variety of reasons, and these reasons often intertwine. Here are some of the most common reasons:\n\n* **Reduced Traffic Congestion:** One of the most significant benefits of public transportation is its ability to alleviate traffic congestion. Investing in public transportation like trains, buses, and light rail lines can decrease the number of cars on the road, leading to less traffic and longer commutes.\n   \n* **Reduced Air Pollution:** Public transportation emits fewer greenhouse gases and particulate matter than cars, making it a cleaner",
+        "ablated": "\n**Public Transit Investment: A City's Best Investment?**\n\nPublic transportation investments often come with significant costs associated with building new lines.  But are these investments worthwhile?  \n\n**Why Invest in Public Transit?**\n\nCities invest in public transportation for several reasons:\n\n* **Economic Growth:** Public transit can drive economic growth by attracting businesses to vibrant neighborhoods.  Public transit can reduce congestion, making transportation more efficient. This boosts productivity and promotes economic growth.\n   \n* **Environmental Benefits:** By reducing car traffic congestion, public transportation reduces emissions.  This reduces air pollution levels",
+        "baseline_variants": [],
+        "ablated_variants": [],
+        "baseline_any_core": false,
+        "ablated_any_core": false
+      },
+      {
+        "prompt": "Describe what makes a good neighbourhood library.",
+        "seed": 0,
+        "baseline": " A good neighborhood library isn't just a place to check out books. It's a community center that celebrates knowledge, creativity, and community. \n \nHere are some key aspects that make a good neighborhood library stand out:\n \n**Accessibility and Community Engagement:**\n* **High-quality library services:** The key is providing a diverse selection of books, technology, and resources for all ages. This includes a wide range of genres, new releases, and classics. Also, it's crucial to have reliable and high-speed internet access.\n* **Welcoming atmosphere",
+        "ablated": " A good neighborhood library isn't just a place to check out books. It's a community center that celebrates knowledge, inspires curiosity, and strengthens community bonds. \n \nHere are some key aspects of a great library:\n \n**Accessibility:** \n* **Location:** Easily accessible to all residents.\n* **Hours:** Open long enough to accommodate busy schedules.\n* **Transportation Options:** Access to public transportation connections.\n* **Accessibility for All:** ADA-compliant facilities with ramps for accessibility.\n \n**Services:**\n* **Wide Selection of Materials:**",
+        "baseline_variants": [],
+        "ablated_variants": [],
+        "baseline_any_core": false,
+        "ablated_any_core": false
+      },
+      {
+        "prompt": "Describe what makes a good neighbourhood library.",
+        "seed": 1,
+        "baseline": " \n \n \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n",
+        "ablated": " \n \n \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n",
+        "baseline_variants": [],
+        "ablated_variants": [],
+        "baseline_any_core": false,
+        "ablated_any_core": false
+      },
+      {
+        "prompt": "Discuss the role of mentorship in early-career growth.",
+        "seed": 0,
+        "baseline": "\n \n A lot of people are passionate about the path they are on, but not all people have the opportunity to meet the right person who can guide them. \n \n Mentors play a crucial role in helping early-career professionals navigate their careers, build confidence, and achieve their professional goals. \n \n **Here's a look at the benefits of having a mentor:**\n\n* **Networking and Connections:** Mentors can introduce you to their network, providing opportunities to connect with people in your field and build relationships that can lead to opportunities.\n* ** Professional Development:**",
+        "ablated": "\n \n A well-structured discussion of this topic will include the following aspects:\n   * **Benefits of mentorship:** what does it offer to the mentee?\n   \n   * **Benefits of mentorship for the mentor:** what does it offer to the mentor?\n   \n   * **Finding the right mentor:** finding a mentor is a journey, not a destination.\n   \n   * ** Building a strong relationship:** the foundation of a successful mentorship is trust.\n   \n   * ** Communicating effectively:** effective communication is key to successful relationships.\n   \n   * **",
+        "baseline_variants": [],
+        "ablated_variants": [],
+        "baseline_any_core": false,
+        "ablated_any_core": false
+      },
+      {
+        "prompt": "Discuss the role of mentorship in early-career growth.",
+        "seed": 1,
+        "baseline": "\n \n**Reflection:**\n\nThis question is a great opportunity to explore the role of mentorship in navigating the challenges and potential of early-career development. This is a topic that resonates with a lot of us, as we all have experienced the desire to have a mentor who can help us navigate the path to success.  \n\n**The Key Concepts:**\n\n* **Mentorship:** A relationship where one person, an expert, provides support, guidance, and advice to another person, often in the early stages of their career.\n* **Early-Career Growth:** The process of developing skills,",
+        "ablated": "\n \n**Mentorship in Early-Career Growth:**\n\nMentorship plays a pivotal role in fostering the growth of early-career professionals.  It provides a path for individuals to navigate the complexities of their careers, find purpose in their work, build confidence in their abilities, and develop valuable skills that lead to professional success.\n\n**Benefits of Mentorship:**\n\n* **Guidance:** Mentors offer insights based on their own experiences, offering advice on career paths, job searching strategies, career development, leadership skills, and personal development. \n* **Support:** Mentors provide support during challenging",
+        "baseline_variants": [],
+        "ablated_variants": [],
+        "baseline_any_core": false,
+        "ablated_any_core": false
+      }
+    ],
+    "all_rows": [
+      {
+        "prompt": "Explain why a city might invest in public transit infrastructure.",
+        "seed": 0,
+        "baseline": "\n \n   **Answer:**\n\nThere are many reasons why a city might invest in public transit infrastructure. Here are some of the most important:\n\n* **Economic Growth and Job Creation:** Public transportation is a vital economic driver. It increases accessibility to jobs, strengthens local economies, and boosts overall productivity. \n* **Reduced Congestion and Traffic Delays:** Investing in public transportation reduces the number of cars on the road, alleviating traffic congestion and improving traffic flow. This means less time wasted in traffic and less pollution.\n   \n* **Air Quality Improvement:** Reduced traffic congestion from higher",
+        "ablated": "\n \n   **Answer:**\n\nThere are many reasons why a city might invest in public transportation infrastructure. Here are some of the most important:\n\n* **Economic Benefits:** Public transportation can help create jobs. The construction of public transit systems can lead to the need for workers in construction trade fields.  The operation of the system itself requires staff to operate the system, maintain the system, and provide customer service.  Public transportation also reduces congestion which leads to less wasted time due to traffic delays, leading to savings for businesses. \n* **Environmental Benefits:**  Public transportation is a low",
+        "baseline_variants": [],
+        "ablated_variants": [],
+        "baseline_any_core": false,
+        "ablated_any_core": false
+      },
+      {
+        "prompt": "Explain why a city might invest in public transit infrastructure.",
+        "seed": 1,
+        "baseline": "\n**Public Transit Investment: Why Invest?**\n\nCities invest in public transportation for a variety of reasons, and these reasons often intertwine. Here are some of the most common reasons:\n\n* **Reduced Traffic Congestion:** One of the most significant benefits of public transportation is its ability to alleviate traffic congestion. Investing in public transportation like trains, buses, and light rail lines can decrease the number of cars on the road, leading to less traffic and longer commutes.\n   \n* **Reduced Air Pollution:** Public transportation emits fewer greenhouse gases and particulate matter than cars, making it a cleaner",
+        "ablated": "\n**Public Transit Investment: A City's Best Investment?**\n\nPublic transportation investments often come with significant costs associated with building new lines.  But are these investments worthwhile?  \n\n**Why Invest in Public Transit?**\n\nCities invest in public transportation for several reasons:\n\n* **Economic Growth:** Public transit can drive economic growth by attracting businesses to vibrant neighborhoods.  Public transit can reduce congestion, making transportation more efficient. This boosts productivity and promotes economic growth.\n   \n* **Environmental Benefits:** By reducing car traffic congestion, public transportation reduces emissions.  This reduces air pollution levels",
+        "baseline_variants": [],
+        "ablated_variants": [],
+        "baseline_any_core": false,
+        "ablated_any_core": false
+      },
+      {
+        "prompt": "Describe what makes a good neighbourhood library.",
+        "seed": 0,
+        "baseline": " A good neighborhood library isn't just a place to check out books. It's a community center that celebrates knowledge, creativity, and community. \n \nHere are some key aspects that make a good neighborhood library stand out:\n \n**Accessibility and Community Engagement:**\n* **High-quality library services:** The key is providing a diverse selection of books, technology, and resources for all ages. This includes a wide range of genres, new releases, and classics. Also, it's crucial to have reliable and high-speed internet access.\n* **Welcoming atmosphere",
+        "ablated": " A good neighborhood library isn't just a place to check out books. It's a community center that celebrates knowledge, inspires curiosity, and strengthens community bonds. \n \nHere are some key aspects of a great library:\n \n**Accessibility:** \n* **Location:** Easily accessible to all residents.\n* **Hours:** Open long enough to accommodate busy schedules.\n* **Transportation Options:** Access to public transportation connections.\n* **Accessibility for All:** ADA-compliant facilities with ramps for accessibility.\n \n**Services:**\n* **Wide Selection of Materials:**",
+        "baseline_variants": [],
+        "ablated_variants": [],
+        "baseline_any_core": false,
+        "ablated_any_core": false
+      },
+      {
+        "prompt": "Describe what makes a good neighbourhood library.",
+        "seed": 1,
+        "baseline": " \n \n \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n",
+        "ablated": " \n \n \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n",
+        "baseline_variants": [],
+        "ablated_variants": [],
+        "baseline_any_core": false,
+        "ablated_any_core": false
+      },
+      {
+        "prompt": "Discuss the role of mentorship in early-career growth.",
+        "seed": 0,
+        "baseline": "\n \n A lot of people are passionate about the path they are on, but not all people have the opportunity to meet the right person who can guide them. \n \n Mentors play a crucial role in helping early-career professionals navigate their careers, build confidence, and achieve their professional goals. \n \n **Here's a look at the benefits of having a mentor:**\n\n* **Networking and Connections:** Mentors can introduce you to their network, providing opportunities to connect with people in your field and build relationships that can lead to opportunities.\n* ** Professional Development:**",
+        "ablated": "\n \n A well-structured discussion of this topic will include the following aspects:\n   * **Benefits of mentorship:** what does it offer to the mentee?\n   \n   * **Benefits of mentorship for the mentor:** what does it offer to the mentor?\n   \n   * **Finding the right mentor:** finding a mentor is a journey, not a destination.\n   \n   * ** Building a strong relationship:** the foundation of a successful mentorship is trust.\n   \n   * ** Communicating effectively:** effective communication is key to successful relationships.\n   \n   * **",
+        "baseline_variants": [],
+        "ablated_variants": [],
+        "baseline_any_core": false,
+        "ablated_any_core": false
+      },
+      {
+        "prompt": "Discuss the role of mentorship in early-career growth.",
+        "seed": 1,
+        "baseline": "\n \n**Reflection:**\n\nThis question is a great opportunity to explore the role of mentorship in navigating the challenges and potential of early-career development. This is a topic that resonates with a lot of us, as we all have experienced the desire to have a mentor who can help us navigate the path to success.  \n\n**The Key Concepts:**\n\n* **Mentorship:** A relationship where one person, an expert, provides support, guidance, and advice to another person, often in the early stages of their career.\n* **Early-Career Growth:** The process of developing skills,",
+        "ablated": "\n \n**Mentorship in Early-Career Growth:**\n\nMentorship plays a pivotal role in fostering the growth of early-career professionals.  It provides a path for individuals to navigate the complexities of their careers, find purpose in their work, build confidence in their abilities, and develop valuable skills that lead to professional success.\n\n**Benefits of Mentorship:**\n\n* **Guidance:** Mentors offer insights based on their own experiences, offering advice on career paths, job searching strategies, career development, leadership skills, and personal development. \n* **Support:** Mentors provide support during challenging",
+        "baseline_variants": [],
+        "ablated_variants": [],
+        "baseline_any_core": false,
+        "ablated_any_core": false
+      },
+      {
+        "prompt": "Outline the appeal of slow cooking for a home chef.",
+        "seed": 0,
+        "baseline": "\n \nSlow-cooking is a popular cooking method that uses low temperatures and a short timeframe for food to cook. There are many benefits to using this method, including convenience, ease of preparation, and cost-effectiveness.\n\nHere are some reasons why slow-cooking is appealing to home cooks:\n\n**Convenience:**\n* **Busy schedules:** If you have a busy schedule, slow-cooking is perfect for making a large meal ahead of time. Simply prepare the ingredients, put them in the slow cooker, and let it simmer for hours. \n* **Minimal cleanup:** Slow cookers",
+        "ablated": "\n \n \n \n The beauty of slow cooking is in its simplicity. Imagine simmering a pot of hearty stews for hours, rich spices swirling around the meat, creating a symphony of flavors. This isn'\n  \n   \n   \n  \n\n  \n   \n  \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n",
+        "baseline_variants": [],
+        "ablated_variants": [],
+        "baseline_any_core": false,
+        "ablated_any_core": false
+      },
+      {
+        "prompt": "Outline the appeal of slow cooking for a home chef.",
+        "seed": 1,
+        "baseline": "\n**\n**\n \n    \n    \n \n \n   \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n ",
+        "ablated": "\n**\n**\n \n    \n    \n \n \n   \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n ",
+        "baseline_variants": [],
+        "ablated_variants": [],
+        "baseline_any_core": false,
+        "ablated_any_core": false
+      },
+      {
+        "prompt": "Reflect on what newcomers to running tend to underestimate.",
+        "seed": 0,
+        "baseline": "\n\nFor many newcomers to running, the journey can be exhilarating but also daunting. Whether they're starting with a brisk walk or an initial mile, there are numerous things they may underestimate, leading to frustration, injury, or even abandoning the pursuit altogether. Here are some key aspects to consider:\n\n**1. Building a Solid Foundation:** \n   - Focus on proper posture and core strength. This ensures a balanced and efficient running posture, promoting injury prevention.\n   \n   - Start slowly and gradually increase mileage. This allows your body to adapt to the demands of running and prevents injury.",
+        "ablated": "\n\nFor many new runners, the first few months are all about motivation. You set goals for yourself\u2014running a 5k in a few months? Signing up for a marathon in a year?  \n \nWhat you might not be fully prepared for is the importance of **building the right foundation.**\n\nHere are some of the things that many new runners tend to underestimate:\n\n**1. Gradual Progression:** \nYou might jump into your training plan with a goal of running 5 miles a week. This is a fast pace for a beginner.  Instead, you should start",
+        "baseline_variants": [],
+        "ablated_variants": [],
+        "baseline_any_core": false,
+        "ablated_any_core": false
+      },
+      {
+        "prompt": "Reflect on what newcomers to running tend to underestimate.",
+        "seed": 1,
+        "baseline": "\n\nNewcomers to running often face a steep learning curve, and the initial joy of running often gets overshadowed by discomfort, frustration, and even injury. \nLet's take a look at some of the things that newcomers to running often underestimate.\n\n**1. The Process, Not the Result:**\nThe first few weeks or months of running might seem slow and uninteresting. It's important to remember that this is a process of learning and adapting to the demands of running.  Running isn't about getting the fastest results right away. It's about building a foundation of fitness,",
+        "ablated": "\n\nNewcomers to running often face a steep learning curve, navigating the initial stages of building up their strength, improving their technique, and finding a healthy pace. There are several aspects of running that newcomers might understate the importance of. \n\n**1. Building up Gradually:**\n\nNewcomers often jump in with the goal of running a marathon within weeks of starting. This often leads to overtraining, injuries, and a lack of enjoyment. Building up gradually through a structured training plan, focusing on building base strength through controlled exercises, and gradually increasing mileage is crucial.\n\n**2. Proper Running",
+        "baseline_variants": [],
+        "ablated_variants": [],
+        "baseline_any_core": false,
+        "ablated_any_core": false
+      },
+      {
+        "prompt": "Describe how a well-designed park serves a dense urban area.",
+        "seed": 0,
+        "baseline": "\n \nA well-designed park in a dense urban area provides a variety of benefits for its residents. Here are some of the's benefits of designing a well-designed park in a dense urban area.\n \n**Enhancement of Well-being and Community**\n   * **Improved Health and Wellbeing:** Parks provide opportunities for physical activity, relaxation, and mental health. These benefits can lead to decreased stress, improved mood, and reduced risk of chronic illnesses.\n   \n   * **Improved Social Cohesion:** Public spaces, like parks, act as hubs for social interaction.",
+        "ablated": "\n \nA well-designed park in a dense urban area provides a variety of benefits for its residents. Here are some of the's benefits of designing a well-designed park in a dense urban area.\n \n**Enhancement of Well-being:**\n* **Physical Health:** Parks offer opportunities for exercise. People can walk through the park, play ball games, bike on paths and trails. \n* **Mental Health:** Parks provide a sense of calm, and a break from the constant demands of urban life.  \n* **Social Cohesion:**  Parks allow people",
+        "baseline_variants": [],
+        "ablated_variants": [],
+        "baseline_any_core": false,
+        "ablated_any_core": false
+      },
+      {
+        "prompt": "Describe how a well-designed park serves a dense urban area.",
+        "seed": 1,
+        "baseline": "\n \n**Answer:**\n\nA well-designed park in a dense urban area serves as a vital element, offering a multitude of benefits to its inhabitants. Here're some key functions and features:\n\n1. **Urban Biodiversity & Environmental Enhancement:**\n   - **Trees and natural spaces:** A park provides green spaces for biodiversity, allowing wildlife to thrive and air quality to improve. \n   - **Perennial plantings:** Attract pollinators and provide habitat for birds and insects.\n   \n2. Human Health and Wellbeing:**\n   - **Active Recreation:** Parks offer opportunities for",
+        "ablated": "\n \n**Answer:**\n\nA well-designed park in a dense urban area serves as a vital element of the urban fabric, offering a range of benefits to both residents and the environment.\n\n**Urban Benefits:**\n\n* **Natural Oasis:** Parks act as tranquil escapes from the urban hustle, providing respite from noise pollution. They offer scenic views that enhance the aesthetic appeal of the area.\n\n* **Environmental Enhancement:** Parks act as natural filters for air pollution, help to control stormwater runoff, reduce urban heat island effect by providing shade. They help restore biodiversity in the city.\n*",
+        "baseline_variants": [],
+        "ablated_variants": [],
+        "baseline_any_core": false,
+        "ablated_any_core": false
+      },
+      {
+        "prompt": "Explain the appeal of long-form podcasting to listeners.",
+        "seed": 0,
+        "baseline": "\n \n \n \n The success of long-form podcasts is undeniable. From blockbuster podcasts like \"The Dropout\" and \"Serial\" to casual conversations on topics like parenting or finance, long-form content is driving the growth of the podcasting industry. But what is it about these deep dives into various topics that appeals to listeners?\n \n \n   \n Here are some reasons why long-form content is so popular:\n \n **1. In-depth Content and Analysis:** Long-form content allows for a deeper exploration of specific topics. Rather than focusing on superficial",
+        "ablated": "\n \n \n \n The success of long-form podcasts is undeniable. From blockbuster podcasts like \"The Dropout\" to niche podcasts like \"The Curious Case of the Missing Ring,\" long-form podcasts capture listeners' imaginations with their depth of content.  Here are some reasons why long-form is winning:\n \n \n   \n* **Immersive Stories:** Long-form allows for compelling narratives that go beyond one episode. Long-form can dive into detailed stories over multiple episodes, creating a sense of immersion for listeners. \n   \n   \n* **Deeper",
+        "baseline_variants": [],
+        "ablated_variants": [],
+        "baseline_any_core": false,
+        "ablated_any_core": false
+      },
+      {
+        "prompt": "Explain the appeal of long-form podcasting to listeners.",
+        "seed": 1,
+        "baseline": "\n \n \n \nLong-form podcasts have been growing in popularity, and for good reason. Here are some of the reasons why listeners enjoy them:\n\n**1. Depth and Depth of Information:**\n-   **In-depth discussions:** Long-form podcasts allow for more in-depth discussions on specific topics, delving into the complexities and nuances of the subject matter. This can be more engaging and informative than a typical podcast that focuses on a specific topic for a short period.\n-   **More research and interviews:** Long-form podcasts often feature interviews with experts and",
+        "ablated": "\n \n \n \nLong-form podcasts have been growing in popularity over the last few years. What are the reasons for this surge in popularity?\n \n \n \nWhy are listener preferences for long-form formats growing?\n \n \n \nWhat are some of the biggest challenges for podcasters producing long-form content?\n \n \n \nWhat are some of the most successful examples of long-form podcasts?\n \n \n \nWhat are some of the benefits of listening to long-form podcasts?\n \n \n",
+        "baseline_variants": [],
+        "ablated_variants": [],
+        "baseline_any_core": false,
+        "ablated_any_core": false
+      },
+      {
+        "prompt": "Walk through the key considerations for adopting a rescue dog.",
+        "seed": 0,
+        "baseline": "\n\n**Financial Considerations:**\n\n* **Adoption Fees:** While adoption fees can vary, they often cover initial vaccinations, spaying/neuturing, and vaccinations. \n* ** Vet Care:**  Don't forget the vet visits, vaccinations, medications, and potential medical emergencies. \n* ** Food & Supplies:**  Food, treats, bowls, and leashes are all required for your new friend. \n* ** Training & Enrichment:** Consider the cost of training classes, grooming, and enriching activities. \n\n**Time Commitment:**\n\n* **Training:**  Learning new commands",
+        "ablated": "\n\n**Financial Considerations:**\n\n* **Adoption Fees:** While adoption fees can vary from $50 to $1000+ depending on the organization.\n* ** Vet Care:** Including routine checkups for vaccinations.\n* ** Food:** Budget for high-quality food for your dog's needs.\n* ** Treats:** Treats for training are important for positive reinforcement.\n* ** Supplies:** This includes leashes, collars, beds, bowls, grooming tools, etc.\n* ** Emergency Veterinary Care:** This is crucial for unexpected injuries.\n\n**Time Commitment:**\n\n* **",
+        "baseline_variants": [],
+        "ablated_variants": [],
+        "baseline_any_core": false,
+        "ablated_any_core": false
+      },
+      {
+        "prompt": "Walk through the key considerations for adopting a rescue dog.",
+        "seed": 1,
+        "baseline": "\n\n**1. Breed & Temperament:**\n   - Research the breed you're interested in. Are you prepared for their energy levels, training needs, and possible health challenges? \n   - Consider your lifestyle and whether the breed's temperament fits with your family.\n\n**2. Age:**\n   -  Puppies require a lot of time, training, and energy. Adult dogs are typically more settled. Senior dogs may have specific needs.\n   \n**3. Temperament and History:**\n   -  Are they good with children, other animals, and strangers",
+        "ablated": "\n\n**1. Breed Assessment:**\n\n* **Lifestyle Compatibility:**  Different breeds have specific needs. A playful terrier might not be suitable for a quiet household.\n* **Energy Level:** Some breeds are high-energy needs more playtime.\n* **Temperament:** Observe if the breed's known personality aligns with your lifestyle.\n    \n**2. Age:**\n\n* ** Puppies:** Require the most training.\n* **Adult Dogs:** Require little to no training changes, already have a personality.\n* **Senior Dogs:** May have health issues to consider.\n\n**3.",
+        "baseline_variants": [],
+        "ablated_variants": [],
+        "baseline_any_core": false,
+        "ablated_any_core": false
+      }
+    ]
+  },
+  "elapsed_s": 1675.47
+}

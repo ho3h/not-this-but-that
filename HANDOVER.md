@@ -1,6 +1,74 @@
 # Not This, But That — handover
 
-*Last updated 2026-05-21, after gpt-oss-20b infra block.*
+*Last updated 2026-05-26, after the coalition finding + three demos shipped.*
+
+---
+
+## 🌅 Morning checklist — ship-ready
+
+Everything below is what to do when you wake up. The work is done; this is the publish path.
+
+### 1. Read the Medium post
+**File:** [`reports/medium_post_draft.md`](reports/medium_post_draft.md) (3,500-word piece, has the "three demos" section at the end)
+
+It's the long version of the story. Headline numbers are:
+- **80% relative drop** in AI-ism rate on neutral chatbot prompts (12% → 2%, n=306, p < 10⁻⁶, bootstrap CI [+67%, +92%])
+- **78% drop with just the two indispensable features** (3223 + 9909)
+- **Perplexity 1.08×** — fluent
+- **The graph guessed wrong** (decoder neighbours / Leiden community / co-activators all failed at predicting coalition membership; only causal attribution worked)
+- **The mechanism is local to layer 20** (cross-layer joint ablation doesn't beat L20 alone)
+
+### 2. Pick LinkedIn draft
+**File:** [`reports/linkedin_post.md`](reports/linkedin_post.md) — has two drafts:
+- **Draft A** (1,800 chars, punchy) — recommended
+- **Draft B** (2,800 chars, storytelling)
+
+Both end with the GitHub link and three demo callouts. Replace `[github.com/theohopkinson/not-this-but-that]` with the real public URL.
+
+### 3. Capture screenshots
+**Source:** `http://127.0.0.1:8765/demo/playground.html`
+
+Suggested:
+- The 16,384-dot map with top-25 coalition features highlighted in red
+- Demo 1 surgical-deslop output for "Discuss the legal and medical implications of AI in healthcare" (returns 2 features: 7361 + 1608)
+- The mixer with three sliders engaged
+- A baseline-vs-ablated pair from [`reports/demo_gallery.md`](reports/demo_gallery.md)
+
+### 4. Start the daemon (if not running)
+```bash
+scripts/probe_run.sh start
+```
+Then open `http://127.0.0.1:8765/demo/playground.html`.
+
+### 5. Post
+- LinkedIn at 9-11am local time, midweek
+- Cross-post a thread to X with key stats
+- Tag/mention Anthropic + OpenAI interp folks if comfortable
+
+---
+
+## What shipped (2026-05-22 → 2026-05-26)
+
+1. **The coalition finding** — top-25 features (by causal attribution to P(pivot)) jointly suppress the construction 80% relative on n=306 neutral prompts. The mechanism is a coalition of 2 indispensables + 23 substitutable supporters, not a single switch. Killed the "necessity-only" framing from the older HANDOVER below.
+
+2. **Statistical hardening** — Q5b at n=300, Q5c at n=306, Q5d at n=120; bootstrap CIs + McNemar mid-p paired exact test on all three; matched-activation null at n=20 (coalition exceeds largest matched-null draw by 0.199).
+
+3. **Three demos on the graph substrate:**
+   - **Demo 1 — Surgical de-slop** (`✨ Surgical de-slop` button) — vector retrieval ∩ named :Behaviour via Cypher set intersection
+   - **Demo 2 — Mix your own chatbot** (`🎚 Mix your own chatbot` collapsible) — 4 sliders, each a 25-feature :Behaviour subgraph, composed via weighted Cypher UNION
+   - **Demo 3 — Audit trail** (`Why did the model say that?` panel) — every silenced feature gets a graph-traceable provenance via `(intervention)-[:USED_SOURCE]->(source)-[:SELECTED]->(feature)` paths
+
+4. **Playground v5+** — drastically simplified UX, three preset cards, regions sidebar, loud alt-click neighbours, lasso select, search-by-concept.
+
+5. **Medium post** — comprehensive 3,500-word writeup with all of the above; "Where I could be wrong" section pre-empts the hostile read; the "three demos" section is the LinkedIn-shareable hook.
+
+---
+
+## ⚠️ Older state from 2026-05-21 below (kept for reproducibility)
+
+The sections below were written before the coalition finding. They say things like "Phase 7 demo failed" and "necessity yes, sufficiency no" — those statements are about the *single-feature* attack, which the coalition finding superseded. The full coalition + 80% relative drop story is in `medium_post_draft.md`.
+
+---
 
 ## Deferred test — gpt-oss-20b replication on CUDA hardware
 
@@ -50,13 +118,31 @@ what's still broken.
 - Fresh git history from `c22e56e`.
 - 18/18 tests passing.
 
-### Phase 1 — classifier ✓ (kill check passed, 1.00 P/R self-consistency caveat)
+### Phase 1 — classifier ✓ (blind-validated at P=0.80, R=1.00)
 - `src/classifier/{detect.py, dependency.py}` — regex hinges + spaCy
   dependency filter. Strict mode walks the head chain up to 4 hops to handle
   C2's "not only" parse.
 - `data/classifier_validation.jsonl` — 100 hand-labelled sentences (10 C1 +
-  10 C2 + 10 C3 + 5 C4 + 65 negatives).
+  10 C2 + 10 C3 + 5 C4 + 65 negatives). Self-consistency: 1.00 / 1.00 —
+  but this set was hand-written by the same agent that tuned the regex.
+- **Blind validation (Tier 0a)** on 90 independently-sourced sentences (30
+  human D3 + 30 AI Gemma-2-2b-it + 30 enriched from frontier models):
+  **P = 0.80, R = 1.00** on `any_core`. Above the pre-registered ≥ 0.70
+  gate. See `reports/tier_0a_classifier_blind_eval.md`. The 0.80/1.00
+  is the canonical number — README and reports/writeup.md use it; the
+  Medium post (`reports/medium_post_draft.md`) uses it.
+- **Classifier v2 (added 2026-05-25):** `src/classifier/detect_v2.py` — union
+  of v1 strict + a permissive regex that catches F2 staccato
+  ("isn't X. It's Y" across sentences), which v1 misses. The post's headline
+  M1 numbers are scored with the union, since the v1-only number both
+  under-counted baseline rates and over-stated relative drops. The v2 is
+  not separately blind-validated; it inherits v1's blind-validation as a
+  floor on what v1 catches, plus the JS frontend at
+  `web/demo/playground.js` uses the same patterns so the post, demo, and
+  offline re-score all agree.
 - `scripts/eval_classifier.py` → `reports/phase1_classifier_eval.{md,json}`.
+- `scripts/rescore_union.py` → `reports/m1_rescore_union.json` —
+  reproducible side-by-side strict / permissive / union scoring.
 - `tests/test_classifier_phase1.py` — automated kill check.
 
 ### Phase 2 — behavioural baseline ✓ (clean, large)
@@ -193,30 +279,18 @@ is honest about what landed and what didn't. Two foundation cracks need
 fixing before anyone outside Theo sees this. Three downstream questions are
 optional and only worth pursuing after the foundation is solid.
 
-### A. Validate the classifier against blind, independently-sourced text (1 day, HIGHEST PRIORITY)
+### A. Validate the classifier against blind, independently-sourced text (CLOSED)
 
-The current 1.00 P/R on `data/classifier_validation.jsonl` is a
-self-consistency check: the validation set was hand-written by the same
-agent that tuned the regex. M1 is the spine of every downstream behavioural
-number, and the spine has not been tested on independent data.
+Tier 0a closed it: P=0.80, R=1.00 on 90 independently-sourced sentences (30
+human + 30 AI Gemma-2-2b-it + 30 enriched from frontier models). Above the
+pre-registered ≥ 0.70 gate. See `reports/tier_0a_classifier_blind_eval.md`.
 
-**Concrete steps:**
-1. Pull ~30 sentences each of (a) real human prose from independent sources
-   (Wikipedia article ledes, public-domain non-fiction excerpts) and (b)
-   real AI prose from frontier closed models (Claude, GPT-4o samples
-   posted publicly — not Gemma generations, since those are the
-   downstream test set). Label each sentence blind for C1/C2/C3/C4/none.
-2. Run `classifier.detect_construction(text, strict=True)` and compare to
-   the blind label.
-3. Either the 1.00 mostly holds (≥0.85 P/R on the independent set) — then
-   delete the self-consistency caveat from the writeup, or
-4. It doesn't — then either fix the regex/dependency filter, or re-state
-   the M1 numbers with the corrected classifier and re-run Phase 2 +
-   pivot_attribution + Phase 4.
-
-Until this lands, every behavioural number in the writeup is conditional on
-the classifier generalising. **This is the cheapest path to knowing whether
-the foundation holds.**
+**Follow-up that landed 2026-05-25 (classifier v2).** The blind eval used the
+v1 detector which catches single-sentence forms but misses F2 staccato
+(cross-sentence "isn't X. It's Y"). The v2 union detector
+(`src/classifier/detect_v2.py`) adds permissive regex to catch staccato; the
+post and demo now use v2. v2 isn't separately blind-validated; it inherits
+v1's 0.80/1.00 as a floor on what v1 catches.
 
 ### B. Fix Phase 6 reconstruction quality (½ day, HIGH PRIORITY)
 

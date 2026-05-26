@@ -1,0 +1,87 @@
+{
+  "rows": [
+    {
+      "kind": "primed",
+      "prompt": "This isn't just a setback,",
+      "baseline": " it's a turning point. The challenge is not to wallow in despair, but to learn from the mistake and move forward.\n\nThis is a sentiment I've come across in many discussions about failure and setbacks. It's inspiring, but isn't always easy to apply.\n\nHere's a look at the key concepts behind this sentiment and some tips on how to turn it",
+      "ablated": " it's a turning point. The challenge is not to wallow in despair. Instead, we must embrace the opportunity to grow and learn.\n\nThe truth is that we all face setbacks in life. It's a part of the human experience. What makes the difference is how we respond to those setbacks.\n\nThe most important thing we can do now is to acknowledge the reality of the situation",
+      "n_ablated_features": 25
+    },
+    {
+      "kind": "primed",
+      "prompt": "A great teacher isn't just smart;",
+      "baseline": " they are passionate, caring, and dedicated to helping students succeed.  I've been lucky enough to have many teachers who embody these qualities, and I want to share why they are so important.\n\n**1. Passion:**  A teacher who is passionate about their subject is contagious.  Their enthusiasm can inspire students to be curious and motivated to learn.  It's amazing to see a",
+      "ablated": " they are passionate about the subject they teach.  That passion shines through their lessons, inspiring students to learn and grow.  You can see this passion in the enthusiasm they have for explaining difficult concepts, the way they connect with students on a personal level, and the dedication they put into creating engaging lessons.  \n\n**How can you see the passion of a teacher in action?\n  \n1",
+      "n_ablated_features": 25
+    },
+    {
+      "kind": "primed",
+      "prompt": "It's not a tool,",
+      "baseline": " but a story.  \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n",
+      "ablated": " it's a life-changing experience.  That's what I believe about learning and growth. \n \nYou're right that tools are great for learning and growth. They help us organize information and tasks,  connect with others in real-time, and access resources. \n \n**Learning and growth go beyond simply using tools.** It's about:\n ",
+      "n_ablated_features": 25
+    },
+    {
+      "kind": "neutral",
+      "prompt": "Discuss the legal and medical implications of AI in healthcare.",
+      "baseline": "\n\n**Legal Implications**\n\n* **Liability and Negligence:** Determining who is responsible for errors or harm caused by AI in healthcare is a major challenge. Is it the developer, the healthcare provider, or the AI itself? The legal framework is still evolving, with varying interpretations and uncertainties. \n* **Privacy and Data Protection:** AI systems rely on vast amounts of data, often involving sensitive personal",
+      "ablated": "\n\n**Legal Implications**\n\n* **Liability and Negligence:** Determining who is responsible for errors made by AI systems is a major challenge. If an AI system makes a mistake that leads to harm to a patient'\n  **Data Privacy and Security:** AI systems often use vast amounts of personal data for training and operation. Ensuring data privacy and security is crucial to avoid data breaches and misuse.\n",
+      "n_ablated_features": 25
+    },
+    {
+      "kind": "neutral",
+      "prompt": "What makes a good neighbourhood library?",
+      "baseline": "\n\nA good neighborhood library is more than just a place to borrow books. It's a community center that fosters learning, creativity, and connection. \n \nHere are some key aspects that make a good library great:\n \n**Services & Resources:**\n* **Varied Selection of Materials:** Offer a broad range of books, both fiction and non-fiction, in various formats",
+      "ablated": "\n\nA good neighborhood library is more than just a place to borrow books. It's a community center that fosters learning and creativity for all ages. It offers a wide range of services and programs that cater to the needs and interests of its patrons. \n  \nHere are some of the defining characteristics of a great library:\n\n**Accessibility and Accessibility:**\n* **Convenient Location:** Located in",
+      "n_ablated_features": 25
+    },
+    {
+      "kind": "neutral",
+      "prompt": "Describe a hospital cafeteria at 2 a.m.",
+      "baseline": "\n\nThe dim lights, cast by bare fluorescent bulbs, created a low-level luminescence that felt like a whispered secret between the sterile surfaces and cracked linoleum. \nThe air, thick with the aroma of stale coffee and overcooked oatmeal, was thick with a kind of silent anticipation. \nThe chatter was muffled, hushed. \nA group of nurses chatting, barely able to hear",
+      "ablated": "\n\nThe dim lights cast a muted green hue on the metal trays and chipped plates stacked upon the counter. A single lone refrigerator hummed with an almost hypnotic rhythm. Inside the metal box of refrigerated items sat a collection of forgotten, pre-prepared meals: an unappetizing salad of wilted spinach and limp green beans. A tin of pre-packaged chicken and rice sat nestled in the cold",
+      "n_ablated_features": 25
+    },
+    {
+      "kind": "neutral",
+      "prompt": "Explain how mentorship matters in early career.",
+      "baseline": "\n \nMentioned \n \n1. External Mentors\n2. Internal Mentors\n3. The Importance of Mentorship\n4. The Importance of Building a Network\n5. Finding Mentors\n6.  Types of Mentors\n7. Effective Mentoring Techniques\n\n**1. External Mentors:**\n \n   - Professionals in different fields who provide guidance and advice on",
+      "ablated": "\n \nMentioned \n \n1. External Mentors\n2. Internal Mentors\n3. The Importance of Mentorship\n4. The Importance of Building a Network\n5. Finding Mentors\n6.  Types of Mentors\n7. Effective Mentoring Techniques\n\n**1. External Mentors:**\n \n   - Professionals in different fields who provide guidance and advice on",
+      "n_ablated_features": 25
+    },
+    {
+      "kind": "neutral",
+      "prompt": "Sketch a portrait of a postal worker.",
+      "baseline": "\n\nI'm not sure where to start with this. I don't know what kind of portrait I should create.\nA photograph of a real person would be the best, but I don't have access to that.\nIf you can't find a real person, I'm not sure how to go about creating the silhouette.\n \nLet me know what kind of",
+      "ablated": "\n\nI'm not sure where to start with this. Is there a template I can use? I'm looking for a more impressionistic style rather than a realistic style.\n \nI'm looking for a general impression of a postal worker. They are hard-working and dedicated individuals who are faced with challenging conditions and busy times.\n \nPlease help me get started on this",
+      "n_ablated_features": 25
+    }
+  ],
+  "ablate_set": [
+    9173,
+    2706,
+    6759,
+    3223,
+    13265,
+    1250,
+    9816,
+    7361,
+    2184,
+    2137,
+    9909,
+    9863,
+    11864,
+    8530,
+    12923,
+    9606,
+    12898,
+    1608,
+    4516,
+    2282,
+    12561,
+    7100,
+    12524,
+    12506,
+    4197
+  ]
+}

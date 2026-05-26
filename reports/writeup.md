@@ -1,5 +1,11 @@
 # Not This, But That — an exploration
 
+> **⚠️ This is the historical Phase 0-7 audit trail (2026-05-21). For the
+> current finding — a 25-feature coalition that kills the construction at
+> 80% relative on n=306 — read [`medium_post_draft.md`](medium_post_draft.md).**
+> The "pre-emptive removal doesn't work" line below is about *single-feature*
+> attacks, which the coalition finding superseded.
+
 *One model, one construction. The commit-gate is necessary, conditional, and instruct-amplified. Pre-emptive removal doesn't work — and that's the explanation, not the apology.*
 
 **Status:** This is an exploration, not a paper. It has not been peer-read by a credentialed mech-interp researcher. The result, if any, pertains to **Gemma 2 2B / Gemma 2 2B-it** specifically — not "AI writing" in general. The models people actually complain about (GPT-4o, Claude, Gemini) are closed and have no public SAEs; nothing here transfers to them. Cite this work, if at all, with that ceiling stated up front.

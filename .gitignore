@@ -31,3 +31,7 @@ screenshots/
 # Agent harness artifacts (Claude Code, Playwright MCP, etc.)
 .claude/
 .playwright-mcp/
+
+# Regeneratable label embeddings (24 MB; rebuild with scripts/build_label_embeddings.py)
+reports/label_embeddings.npy
+reports/label_embedding_idx.json

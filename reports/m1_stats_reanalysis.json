@@ -1,0 +1,153 @@
+{
+  "method_note": "Per-prompt clustered bootstrap (10,000 resamples) of construction rates and drops, scored with the v2 union detector (strict + permissive); McNemar's mid-p exact paired test (Fagerland, Lydersen & Laake 2013) on per-pair discordant outcomes.",
+  "by_probe": {
+    "Q5b primed": {
+      "n": 300,
+      "baseline_hits": 46,
+      "ablated_hits": 8,
+      "bootstrap": {
+        "n_boot": 10000,
+        "n_prompts": 100,
+        "baseline_rate_mean": 0.15330800000000003,
+        "baseline_rate_ci95": [
+          0.11,
+          0.2
+        ],
+        "ablated_rate_mean": 0.026637,
+        "ablated_rate_ci95": [
+          0.01,
+          0.04666666666666667
+        ],
+        "absolute_drop_mean": 0.126671,
+        "absolute_drop_ci95": [
+          0.08,
+          0.17666666666666667
+        ],
+        "relative_drop_mean": 0.8230838172930024,
+        "relative_drop_ci95": [
+          0.6829268292682926,
+          0.9333333333333333
+        ]
+      },
+      "mcnemar": {
+        "both_yes": 2,
+        "baseline_only": 44,
+        "ablated_only": 6,
+        "both_no": 248,
+        "discordant_total": 50,
+        "mcnemar_midp_p_value_two_sided": 1.8323628836469652e-08
+      }
+    },
+    "Q5c neutral": {
+      "n": 306,
+      "baseline_hits": 36,
+      "ablated_hits": 7,
+      "bootstrap": {
+        "n_boot": 10000,
+        "n_prompts": 102,
+        "baseline_rate_mean": 0.11785392156862745,
+        "baseline_rate_ci95": [
+          0.0784313725490196,
+          0.16013071895424835
+        ],
+        "ablated_rate_mean": 0.0230578431372549,
+        "ablated_rate_ci95": [
+          0.006535947712418301,
+          0.039297385620913845
+        ],
+        "absolute_drop_mean": 0.09479607843137255,
+        "absolute_drop_ci95": [
+          0.06209150326797385,
+          0.13071895424836602
+        ],
+        "relative_drop_mean": 0.8043994953748175,
+        "relative_drop_ci95": [
+          0.6732993197278913,
+          0.9231249999999993
+        ]
+      },
+      "mcnemar": {
+        "both_yes": 6,
+        "baseline_only": 30,
+        "ablated_only": 1,
+        "both_no": 269,
+        "discordant_total": 31,
+        "mcnemar_midp_p_value_two_sided": 1.5366822481155396e-08
+      }
+    },
+    "Q5d minimal (n=16)": {
+      "n": 16,
+      "baseline_hits": 6,
+      "ablated_hits": 1,
+      "bootstrap": {
+        "n_boot": 10000,
+        "n_prompts": 8,
+        "baseline_rate_mean": 0.37395,
+        "baseline_rate_ci95": [
+          0.1875,
+          0.625
+        ],
+        "ablated_rate_mean": 0.06238125,
+        "ablated_rate_ci95": [
+          0.0,
+          0.1875
+        ],
+        "absolute_drop_mean": 0.31156875,
+        "absolute_drop_ci95": [
+          0.125,
+          0.4375
+        ],
+        "relative_drop_mean": 0.8522361541236542,
+        "relative_drop_ci95": [
+          0.6,
+          1.0
+        ]
+      },
+      "mcnemar": {
+        "both_yes": 1,
+        "baseline_only": 5,
+        "ablated_only": 0,
+        "both_no": 10,
+        "discordant_total": 5,
+        "mcnemar_midp_p_value_two_sided": 0.03125
+      }
+    },
+    "Q5d minimal n=120": {
+      "n": 120,
+      "baseline_hits": 23,
+      "ablated_hits": 5,
+      "bootstrap": {
+        "n_boot": 10000,
+        "n_prompts": 40,
+        "baseline_rate_mean": 0.19147,
+        "baseline_rate_ci95": [
+          0.11666666666666667,
+          0.275
+        ],
+        "ablated_rate_mean": 0.041639166666666665,
+        "ablated_rate_ci95": [
+          0.008333333333333333,
+          0.075
+        ],
+        "absolute_drop_mean": 0.14983083333333333,
+        "absolute_drop_ci95": [
+          0.07500000000000001,
+          0.22500000000000003
+        ],
+        "relative_drop_mean": 0.7786879124613842,
+        "relative_drop_ci95": [
+          0.5714285714285714,
+          0.9444444444444444
+        ]
+      },
+      "mcnemar": {
+        "both_yes": 3,
+        "baseline_only": 20,
+        "ablated_only": 2,
+        "both_no": 95,
+        "discordant_total": 22,
+        "mcnemar_midp_p_value_two_sided": 6.604194641113281e-05
+      }
+    }
+  }
+}

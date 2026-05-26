@@ -49,8 +49,8 @@ log = get_logger("phase4.pivot_attrib")
 REPO_ROOT = Path(__file__).resolve().parent.parent
 D1_PATH = REPO_ROOT / "data" / "D1_contrast_pairs.jsonl"
 LABELS_PATH = REPO_ROOT / "data" / "labels_cache.json"
-OUT_JSON = REPO_ROOT / "reports" / "pivot_attribution.json"
-OUT_MD = REPO_ROOT / "reports" / "pivot_attribution.md"
+DEFAULT_OUT_JSON = REPO_ROOT / "reports" / "pivot_attribution.json"
+DEFAULT_OUT_MD = REPO_ROOT / "reports" / "pivot_attribution.md"
 
 PIVOT_STRINGS = {
     "C1": [", it", ", they", ", he", ", she", ", we", "—", "; it"],
@@ -100,6 +100,12 @@ def main():
                     help="Cap on truncated D1 with-prompts to process.")
     ap.add_argument("--top-k", type=int, default=25)
     ap.add_argument("--variants", nargs="+", default=["C1", "C2", "C3"])
+    ap.add_argument("--checkpoint-every", type=int, default=10,
+                    help="Write partial pivot_attribution.json every N samples.")
+    ap.add_argument("--sae-layer", type=int, default=20,
+                    help="Which Gemma Scope canonical SAE layer to scan. "
+                         "Default 20. Outputs go to pivot_attribution_L<N>.json "
+                         "(L20 keeps the canonical filename for back-compat).")
     args = ap.parse_args()
 
     dev = device()
@@ -107,15 +113,25 @@ def main():
     model = HookedSAETransformer.from_pretrained("gemma-2-2b", device=dev)
     model.eval()
 
-    log.info("loading Gemma Scope SAE")
+    layer = int(args.sae_layer)
+    sae_id = f"layer_{layer}/width_16k/canonical"
+    log.info(f"loading Gemma Scope SAE at layer {layer} ({sae_id})")
     sae = SAE.from_pretrained(
-        release=GEMMA_SAE.release, sae_id=GEMMA_SAE.sae_id, device=dev,
+        release=GEMMA_SAE.release, sae_id=sae_id, device=dev,
     )
     if isinstance(sae, tuple):
         sae = sae[0]
     sae.eval()
     hook_acts_post = f"{sae.cfg.metadata.hook_name}.hook_sae_acts_post"
     d_sae = sae.cfg.d_sae
+
+    # Per-layer output paths (L20 keeps canonical name for back-compat)
+    if layer == 20:
+        OUT_JSON = DEFAULT_OUT_JSON
+        OUT_MD = DEFAULT_OUT_MD
+    else:
+        OUT_JSON = REPO_ROOT / "reports" / f"pivot_attribution_L{layer}.json"
+        OUT_MD = REPO_ROOT / "reports" / f"pivot_attribution_L{layer}.md"
 
     # Truncated samples
     samples = []
@@ -138,6 +154,42 @@ def main():
     attrib_sum = np.zeros(d_sae, dtype=np.float64)
     attrib_count = np.zeros(d_sae, dtype=np.int32)
     baseline_ps = []
+
+    def _write_checkpoint(processed_n: int) -> None:
+        """Snapshot current state to disk so killed runs leave usable data."""
+        ma = np.zeros(d_sae, dtype=np.float64)
+        nz = attrib_count > 0
+        ma[nz] = attrib_sum[nz] / attrib_count[nz]
+        sc = ma * np.sqrt(attrib_count)
+        nonzero_idx = np.where(attrib_count > 0)[0]
+        full = sorted(
+            [(int(i), float(ma[i]), int(attrib_count[i]), float(sc[i]))
+             for i in nonzero_idx], key=lambda t: -t[3],
+        )
+        labels_local = load_labels()
+        top_pos_local = np.argsort(-sc)[: args.top_k]
+        top_neg_local = np.argsort(sc)[: args.top_k]
+
+        def _fmt(idx: int) -> dict:
+            return {"feature_idx": int(idx), "mean_attribution_drop": float(ma[idx]),
+                    "n_prompts_active": int(attrib_count[idx]),
+                    "scored": float(sc[idx]), "label": labels_local.get(int(idx), "")}
+
+        partial = {
+            "n_samples": processed_n,
+            "n_samples_target": len(samples),
+            "checkpoint": True,
+            "baseline_p_pivot_mean": float(np.mean(baseline_ps)) if baseline_ps else 0.0,
+            "top_promotes_pivot": [_fmt(int(i)) for i in top_pos_local],
+            "top_suppresses_pivot": [_fmt(int(i)) for i in top_neg_local],
+            "n_features_with_signal": int(len(full)),
+            "full_ranked_by_score": [
+                {"feature_idx": fi, "mean_attribution_drop": mav,
+                 "n_prompts_active": ct, "scored": scv}
+                for (fi, mav, ct, scv) in full
+            ],
+        }
+        OUT_JSON.write_text(json.dumps(partial, indent=2))
 
     t0 = time.perf_counter()
     for si, s in enumerate(samples):
@@ -182,6 +234,9 @@ def main():
         if (si + 1) % 5 == 0 or si == len(samples) - 1:
             log.info(f"  {si + 1}/{len(samples)} ({rate:.2f}/s, ETA {eta:.0f}s)  "
                      f"active feats this prompt: {len(active)}")
+        if (si + 1) % args.checkpoint_every == 0 or si == len(samples) - 1:
+            _write_checkpoint(si + 1)
+            log.info(f"  checkpoint written at {si + 1}/{len(samples)}")
 
     # Compute per-feature mean attribution where it was active
     mean_attrib = np.zeros(d_sae, dtype=np.float64)
@@ -205,11 +260,26 @@ def main():
             "label": labels.get(int(idx), ""),
         }
 
+    # Full ranked list (only features that fired at least once) so downstream
+    # consumers can pull any top-N without re-running the scan.
+    nonzero_idx = np.where(attrib_count > 0)[0]
+    full_ranked = sorted(
+        [(int(i), float(mean_attrib[i]), int(attrib_count[i]), float(score[i]))
+         for i in nonzero_idx],
+        key=lambda t: -t[3],
+    )
+
     result = {
         "n_samples": len(samples),
         "baseline_p_pivot_mean": float(np.mean(baseline_ps)),
         "top_promotes_pivot": [fmt(int(i)) for i in top_pos],
         "top_suppresses_pivot": [fmt(int(i)) for i in top_neg],
+        "n_features_with_signal": int(len(full_ranked)),
+        "full_ranked_by_score": [
+            {"feature_idx": fi, "mean_attribution_drop": ma,
+             "n_prompts_active": ct, "scored": sc}
+            for (fi, ma, ct, sc) in full_ranked
+        ],
     }
     OUT_JSON.write_text(json.dumps(result, indent=2))
 

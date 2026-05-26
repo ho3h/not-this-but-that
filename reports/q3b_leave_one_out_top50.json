@@ -1,0 +1,409 @@
+{
+  "top50": [
+    3223,
+    9909,
+    12898,
+    9816,
+    6759,
+    4197,
+    4516,
+    1250,
+    2137,
+    11864,
+    2282,
+    12524,
+    8530,
+    7361,
+    8820,
+    2184,
+    12923,
+    12506,
+    14401,
+    9606,
+    1608,
+    6336,
+    347,
+    10822,
+    12767,
+    3251,
+    4238,
+    8206,
+    10701,
+    7647,
+    7332,
+    3807,
+    1959,
+    3019,
+    12555,
+    8958,
+    2706,
+    10111,
+    15300,
+    2230,
+    5472,
+    1572,
+    10640,
+    3068,
+    14862,
+    13500,
+    6713,
+    15585,
+    12035,
+    874
+  ],
+  "baseline_mean_p_pivot": 0.277750276948791,
+  "full_set_drop": 0.20925183764775285,
+  "full_set_rel_drop": 0.7533812025193146,
+  "leave_one_out": [
+    {
+      "removed": 3223,
+      "label": "phrases conveying exceptions or negations",
+      "drop_without": 0.139169272055733,
+      "rel_drop_without": 0.5010589857355633,
+      "cost_of_removal": 0.07008256559201984
+    },
+    {
+      "removed": 9909,
+      "label": "references to digital technology and online interactions",
+      "drop_without": 0.1381678184698103,
+      "rel_drop_without": 0.49745339586208365,
+      "cost_of_removal": 0.07108401917794255
+    },
+    {
+      "removed": 12898,
+      "label": "references to societal issues, particularly related to laws and marginalized groups",
+      "drop_without": 0.18925460902391933,
+      "rel_drop_without": 0.6813840515407023,
+      "cost_of_removal": 0.01999722862383352
+    },
+    {
+      "removed": 9816,
+      "label": "topics related to legal and political accountability",
+      "drop_without": 0.20742613834445364,
+      "rel_drop_without": 0.7468080342641636,
+      "cost_of_removal": 0.0018256993032992053
+    },
+    {
+      "removed": 6759,
+      "label": "terms related to coverage and protection in the context of services or products",
+      "drop_without": 0.20428145792684518,
+      "rel_drop_without": 0.7354860638519136,
+      "cost_of_removal": 0.004970379720907664
+    },
+    {
+      "removed": 4197,
+      "label": "references to opinions, decisions, and activities around relationships and equality",
+      "drop_without": 0.2029886873147916,
+      "rel_drop_without": 0.7308316288455646,
+      "cost_of_removal": 0.006263150332961237
+    },
+    {
+      "removed": 4516,
+      "label": "phrases related to scientific measurements and their implications",
+      "drop_without": 0.2045693857362494,
+      "rel_drop_without": 0.7365227065964941,
+      "cost_of_removal": 0.00468245191150346
+    },
+    {
+      "removed": 1250,
+      "label": "various professional roles and their associated tasks or features",
+      "drop_without": 0.20553902967949397,
+      "rel_drop_without": 0.7400137704179115,
+      "cost_of_removal": 0.0037128079682588744
+    },
+    {
+      "removed": 2137,
+      "label": "elements of concern or caution in various contexts",
+      "drop_without": 0.1998759190668352,
+      "rel_drop_without": 0.7196245536190282,
+      "cost_of_removal": 0.009375918580917658
+    },
+    {
+      "removed": 11864,
+      "label": "technical terms and phrases related to legal and procedural contexts",
+      "drop_without": 0.19697239724628163,
+      "rel_drop_without": 0.709170840116201,
+      "cost_of_removal": 0.01227944040147122
+    },
+    {
+      "removed": 2282,
+      "label": "specific medical terms and conditions, particularly related to studies and outcomes",
+      "drop_without": 0.2025787520047743,
+      "rel_drop_without": 0.7293557156096873,
+      "cost_of_removal": 0.0066730856429785546
+    },
+    {
+      "removed": 12524,
+      "label": "data related to physical attributes and measurements",
+      "drop_without": 0.2090593125030864,
+      "rel_drop_without": 0.7526880433736914,
+      "cost_of_removal": 0.00019252514466644444
+    },
+    {
+      "removed": 8530,
+      "label": "tokens related to scientific concepts and conditions, particularly focusing on environmental and health-related themes",
+      "drop_without": 0.20558106779353694,
+      "rel_drop_without": 0.7401651226127852,
+      "cost_of_removal": 0.0036707698542159106
+    },
+    {
+      "removed": 7361,
+      "label": "statements about legal analysis and recommendations",
+      "drop_without": 0.20741015678504482,
+      "rel_drop_without": 0.7467504949537284,
+      "cost_of_removal": 0.0018416808627080283
+    },
+    {
+      "removed": 8820,
+      "label": "references to ethical concerns and issues related to accountability",
+      "drop_without": 0.2075504812237341,
+      "rel_drop_without": 0.7472557129510993,
+      "cost_of_removal": 0.0017013564240187518
+    },
+    {
+      "removed": 2184,
+      "label": "positive attributes and expressions of appreciation",
+      "drop_without": 0.20783770129201,
+      "rel_drop_without": 0.7482898075753465,
+      "cost_of_removal": 0.0014141363557428344
+    },
+    {
+      "removed": 12923,
+      "label": "references to urgency and priority in actions or events",
+      "drop_without": 0.20864823971060104,
+      "rel_drop_without": 0.7512080347954779,
+      "cost_of_removal": 0.0006035979371518119
+    },
+    {
+      "removed": 12506,
+      "label": "concepts related to problems, significant findings, and situations of concern",
+      "drop_without": 0.20706240889267064,
+      "rel_drop_without": 0.7454984785878246,
+      "cost_of_removal": 0.0021894287550822122
+    },
+    {
+      "removed": 14401,
+      "label": "elements related to emotional depth and complexity in narratives",
+      "drop_without": 0.20921357537736185,
+      "rel_drop_without": 0.7532434447074725,
+      "cost_of_removal": 3.82622703909985e-05
+    },
+    {
+      "removed": 9606,
+      "label": "elements related to communication and technology usage",
+      "drop_without": 0.2072128560685087,
+      "rel_drop_without": 0.7460401420471406,
+      "cost_of_removal": 0.002038981579244148
+    },
+    {
+      "removed": 1608,
+      "label": "legal and health-related terms associated with studies and analyses",
+      "drop_without": 0.2086121888656635,
+      "rel_drop_without": 0.7510782389035221,
+      "cost_of_removal": 0.0006396487820893582
+    },
+    {
+      "removed": 6336,
+      "label": "terms related to legal and criminal proceedings",
+      "drop_without": 0.20856372562702746,
+      "rel_drop_without": 0.7509037539699033,
+      "cost_of_removal": 0.0006881120207253844
+    },
+    {
+      "removed": 347,
+      "label": "phrases and concepts related to accountability and compliance",
+      "drop_without": 0.2089076157833915,
+      "rel_drop_without": 0.7521418811110958,
+      "cost_of_removal": 0.00034422186436133817
+    },
+    {
+      "removed": 10822,
+      "label": "indicators of significant or important concepts within the text, often activating for words or phrases that introduce key ideas, topics, or themes.",
+      "drop_without": 0.20919880022411236,
+      "rel_drop_without": 0.7531902488892296,
+      "cost_of_removal": 5.303742364048958e-05
+    },
+    {
+      "removed": 12767,
+      "label": "references to historical or significant events related to change or progress",
+      "drop_without": 0.20902803300996312,
+      "rel_drop_without": 0.7525754260489963,
+      "cost_of_removal": 0.0002238046377897318
+    },
+    {
+      "removed": 3251,
+      "label": "terms related to coldness",
+      "drop_without": 0.20930616090190596,
+      "rel_drop_without": 0.7535767855975742,
+      "cost_of_removal": -5.4323254153110234e-05
+    },
+    {
+      "removed": 4238,
+      "label": "references to luck and fortunate circumstances",
+      "drop_without": 0.20920356121496297,
+      "rel_drop_without": 0.7532073901533282,
+      "cost_of_removal": 4.827643278987326e-05
+    },
+    {
+      "removed": 8206,
+      "label": "mentions of customers and customer support",
+      "drop_without": 0.20888132372056134,
+      "rel_drop_without": 0.7520472203132057,
+      "cost_of_removal": 0.000370513927191507
+    },
+    {
+      "removed": 10701,
+      "label": "the skewed perceptions and realities of a character named Earl",
+      "drop_without": 0.20847614724771119,
+      "rel_drop_without": 0.7505884405873988,
+      "cost_of_removal": 0.000775690400041662
+    },
+    {
+      "removed": 7647,
+      "label": "terms related to roles and relationships in partnerships and affiliations",
+      "drop_without": 0.20910636417684145,
+      "rel_drop_without": 0.752857446170592,
+      "cost_of_removal": 0.00014547347091140028
+    },
+    {
+      "removed": 7332,
+      "label": "references to Christmas and Easter celebrations",
+      "drop_without": 0.2092108839948196,
+      "rel_drop_without": 0.7532337547709879,
+      "cost_of_removal": 4.095365293324549e-05
+    },
+    {
+      "removed": 3807,
+      "label": "references to specific settings or situations involving food or social gatherings",
+      "drop_without": 0.20911075950716623,
+      "rel_drop_without": 0.7528732709264593,
+      "cost_of_removal": 0.0001410781405866146
+    },
+    {
+      "removed": 1959,
+      "label": "terms related to emotional states and interpersonal relationships",
+      "drop_without": 0.20887252752436325,
+      "rel_drop_without": 0.7520155508715234,
+      "cost_of_removal": 0.0003793101233895979
+    },
+    {
+      "removed": 3019,
+      "label": "elements related to operational or procedural contexts in a structured format",
+      "drop_without": 0.20813195582013577,
+      "rel_drop_without": 0.7493492287624585,
+      "cost_of_removal": 0.0011198818276170752
+    },
+    {
+      "removed": 12555,
+      "label": "phrases related to accountability and social justice issues",
+      "drop_without": 0.20831068193656394,
+      "rel_drop_without": 0.749992706487815,
+      "cost_of_removal": 0.0009411557111889124
+    },
+    {
+      "removed": 8958,
+      "label": "topics related to food, fashion, and travel experiences",
+      "drop_without": 0.2085607240034733,
+      "rel_drop_without": 0.7508929470551915,
+      "cost_of_removal": 0.0006911136442795396
+    },
+    {
+      "removed": 2706,
+      "label": "words associated with gain or loss in competitive scenarios",
+      "drop_without": 0.2087775423831772,
+      "rel_drop_without": 0.7516735705061768,
+      "cost_of_removal": 0.00047429526457565263
+    },
+    {
+      "removed": 10111,
+      "label": "terms related to political and social issues involving control and regulations",
+      "drop_without": 0.2087132328480948,
+      "rel_drop_without": 0.7514420332570015,
+      "cost_of_removal": 0.0005386047996580601
+    },
+    {
+      "removed": 15300,
+      "label": "information related to business practices and customer service",
+      "drop_without": 0.2089322502957657,
+      "rel_drop_without": 0.7522305741365172,
+      "cost_of_removal": 0.00031958735198714394
+    },
+    {
+      "removed": 2230,
+      "label": "references to causality and violation of rules or expectations",
+      "drop_without": 0.20868663666187787,
+      "rel_drop_without": 0.7513462775065155,
+      "cost_of_removal": 0.0005652009858749807
+    },
+    {
+      "removed": 5472,
+      "label": "mentions of physical activities, particularly those related to movement and exercise",
+      "drop_without": 0.20898703297134488,
+      "rel_drop_without": 0.7524278112956696,
+      "cost_of_removal": 0.0002648046764079648
+    },
+    {
+      "removed": 1572,
+      "label": "elements related to adventure and inner struggles in fantastical or dark contexts",
+      "drop_without": 0.20926660670083946,
+      "rel_drop_without": 0.7534343763747968,
+      "cost_of_removal": -1.4769053086616246e-05
+    },
+    {
+      "removed": 10640,
+      "label": "information about critiques and evaluations in research studies",
+      "drop_without": 0.2093115591094829,
+      "rel_drop_without": 0.7535962210690209,
+      "cost_of_removal": -5.972146173005566e-05
+    },
+    {
+      "removed": 3068,
+      "label": "references to scientific research and methodologies, particularly in the field of biology",
+      "drop_without": 0.20910252894391307,
+      "rel_drop_without": 0.7528436379649963,
+      "cost_of_removal": 0.0001493087038397789
+    },
+    {
+      "removed": 14862,
+      "label": "references to cooperation and community involvement",
+      "drop_without": 0.20882589512621053,
+      "rel_drop_without": 0.7518476576162403,
+      "cost_of_removal": 0.0004259425215423218
+    },
+    {
+      "removed": 13500,
+      "label": "specific height measurements and properties in a document",
+      "drop_without": 0.20916815328528174,
+      "rel_drop_without": 0.7530799089854596,
+      "cost_of_removal": 8.368436247110922e-05
+    },
+    {
+      "removed": 6713,
+      "label": "specific technical terms and mechanisms related to communication systems and devices",
+      "drop_without": 0.20914159233798274,
+      "rel_drop_without": 0.752984280107639,
+      "cost_of_removal": 0.00011024530977010727
+    },
+    {
+      "removed": 15585,
+      "label": "expressions of magnitude or intensity related to concepts and experiences",
+      "drop_without": 0.20911991674802266,
+      "rel_drop_without": 0.7529062402576046,
+      "cost_of_removal": 0.00013192089973018684
+    },
+    {
+      "removed": 12035,
+      "label": "statements related to the existence or presence of phenomena or conditions",
+      "drop_without": 0.20918540352140552,
+      "rel_drop_without": 0.7531420159842834,
+      "cost_of_removal": 6.64341263473256e-05
+    },
+    {
+      "removed": 874,
+      "label": "phrases related to personal reflections on experiences and preferences",
+      "drop_without": 0.2080924281210173,
+      "rel_drop_without": 0.7492069149561403,
+      "cost_of_removal": 0.0011594095267355442
+    }
+  ]
+}

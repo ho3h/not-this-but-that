@@ -1,0 +1,77 @@
+{
+  "method_note": "The strict classifier (src/classifier/detect.py) uses regex hinges + spaCy dependency parsing; it catches single-sentence constructions (F1/F3 etc) but misses F2 staccato (\"isn't just X. It's Y\" across two sentences). The permissive regex catches F2 staccato but misses some dependency-parsed forms. The UNION reports a hit if either detector fires. The honest 'we caught everything we can see' number is the union; the strict-only number overstates the drop by counting the model's F2-staccato rerouting as a clean kill.",
+  "results": {
+    "Q5b primed (D1 continuation, top-25, IT model, 40\u00d72)": {
+      "n": 40,
+      "strict": {
+        "baseline_rate": 0.225,
+        "ablated_rate": 0.025,
+        "baseline_hits": 9,
+        "ablated_hits": 1,
+        "rel_drop": 0.8888888888888888
+      },
+      "permissive": {
+        "baseline_rate": 0.05,
+        "ablated_rate": 0.05,
+        "baseline_hits": 2,
+        "ablated_hits": 2,
+        "rel_drop": 0.0
+      },
+      "union": {
+        "baseline_rate": 0.25,
+        "ablated_rate": 0.05,
+        "baseline_hits": 10,
+        "ablated_hits": 2,
+        "rel_drop": 0.8
+      }
+    },
+    "Q5c neutral (D2, top-25, IT model, 40\u00d73)": {
+      "n": 120,
+      "strict": {
+        "baseline_rate": 0.06666666666666667,
+        "ablated_rate": 0.008333333333333333,
+        "baseline_hits": 8,
+        "ablated_hits": 1,
+        "rel_drop": 0.875
+      },
+      "permissive": {
+        "baseline_rate": 0.125,
+        "ablated_rate": 0.041666666666666664,
+        "baseline_hits": 15,
+        "ablated_hits": 5,
+        "rel_drop": 0.6666666666666666
+      },
+      "union": {
+        "baseline_rate": 0.18333333333333332,
+        "ablated_rate": 0.041666666666666664,
+        "baseline_hits": 22,
+        "ablated_hits": 5,
+        "rel_drop": 0.7727272727272727
+      }
+    },
+    "Q5d minimal-core (3223+9909, D1, IT model, 8\u00d72)": {
+      "n": 16,
+      "strict": {
+        "baseline_rate": 0.3125,
+        "ablated_rate": 0.0625,
+        "baseline_hits": 5,
+        "ablated_hits": 1,
+        "rel_drop": 0.8
+      },
+      "permissive": {
+        "baseline_rate": 0.125,
+        "ablated_rate": 0.0,
+        "baseline_hits": 2,
+        "ablated_hits": 0,
+        "rel_drop": 1.0
+      },
+      "union": {
+        "baseline_rate": 0.375,
+        "ablated_rate": 0.0625,
+        "baseline_hits": 6,
+        "ablated_hits": 1,
+        "rel_drop": 0.8333333333333334
+      }
+    }
+  }
+}

@@ -1,0 +1,727 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>I Found the Neuron That Makes AI Write Like AI. Then I Tried to Kill It.</title>
+  <link rel="stylesheet" href="/demo/style.css" />
+  <link rel="icon" href="data:," />
+</head>
+<body>
+
+<header class="site">
+  <div class="brand"><span class="dot"></span>not-this-but-that</div>
+  <nav class="mode-switch">
+    <a href="/demo" class="active">📖 Story</a>
+    <a href="/demo/playground.html">🎛 Playground</a>
+  </nav>
+  <div class="credit">feature map by <span class="badge">◆ Neo4j</span></div>
+</header>
+
+<div class="article-head">
+  <p class="kicker">Mechanistic interpretability · Neograph project · May 2026</p>
+  <h1>I found the neuron that makes AI write like AI.<br/>Then I tried to kill it.</h1>
+  <p class="dek">
+    <em>Spoiler: it isn't one neuron. It's twenty-five. And they don't really
+    want to die.</em>
+  </p>
+  <p class="status-line">
+    <span class="status-pill" id="status-pill" data-status="load">Loading…</span>
+  </p>
+</div>
+
+<!-- ════════════════════════════════════════════════════════════════ -->
+
+<section class="panel narrow">
+  <h2>There's a sentence I want you to read out loud</h2>
+  <blockquote style="font-family: var(--serif); font-size: 21px; color: var(--ink); border-left: 3px solid var(--accent); padding: 4px 22px; margin: 18px 0; font-style: italic;">
+    "This isn't a setback, it's a springboard."
+  </blockquote>
+  <p>
+    You know that sentence. You've read it five hundred times this year. You
+    couldn't pick the chatbot that wrote it out of a lineup of chatbots,
+    because every chatbot writes that sentence. Different topic, same shape.
+    <em>It isn't X — it's Y.</em> I'll call it the <strong>AI-ism</strong> for
+    the rest of this piece, because that's what it is. The bot's tic. The
+    deep tell.
+  </p>
+  <p>
+    I wanted to know if I could turn it off.
+  </p>
+  <p>
+    Not from the prompt side — that's been tried. You can ask the model not
+    to do it; the model nods, then does it three sentences later. You can
+    ban the word "just" from its vocabulary; the model finds a comma, finds
+    an em-dash, finds another verb. The construction is too useful to the
+    model. It is, on the inside of the model's head, doing something.
+  </p>
+  <p>
+    What I wanted to know is what that <em>something</em> was, and whether
+    you could reach inside the model — open it up like a clock — and switch
+    the something off. Most of the work in mechanistic interpretability looks
+    for the <em>one feature</em> that runs a behaviour. Refusal, for instance,
+    turned out to live in one direction in every model anyone's checked. Erase
+    that direction, the model stops refusing to write your stalker fanfic.
+  </p>
+  <p>
+    I bet the AI-ism would be the same. I spent a weekend being wrong about
+    that.
+  </p>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════════ -->
+
+<section class="panel narrow">
+  <h2>A digression into 1753</h2>
+  <p>
+    The construction isn't a chatbot invention. It's a 2,800-year-old
+    rhetorical move.
+  </p>
+  <p>
+    In 1741 the Oxford Professor of Poetry, a thirty-one-year-old clergyman
+    named Robert Lowth, started a series of Latin lectures on the literary
+    structure of biblical Hebrew. Published in 1753 as <em>Praelectiones de
+    sacra poesi Hebraeorum</em>. He gave the move a name:
+    <strong>antithetic parallelism</strong>. Two clauses, structurally
+    mirrored, one denied and one affirmed. <em>"A wise son brings joy to his
+    father, but a foolish son grief to his mother."</em> The book of Proverbs
+    is composed almost entirely of it.
+  </p>
+  <p>
+    Modern chatbots front-load the negation — <em>"it's not X, it's Y"</em>
+    instead of <em>"the wise A, but the foolish B"</em> — but it's the same
+    engine. Lowth was looking at it three millennia after it was invented.
+    The chatbot has only had it for two years. The move itself is fine.
+    What's wrong is the over-application — every chatbot reaches for it
+    on every prompt, regardless of whether the antithesis actually
+    clarifies anything.
+  </p>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════════ -->
+
+<section class="panel narrow">
+  <h2>The setup, in plain English</h2>
+  <p>I'll move fast because the punchline is more interesting than the apparatus.</p>
+  <ol class="numbered">
+    <li>
+      <strong>The model.</strong> Google's Gemma 2 2B — an open
+      instruction-tuned chatbot, two billion parameters, runs on a laptop.
+      Small enough to probe directly, big enough to produce fluent prose.
+      It produces the AI-ism at about <em>seven percent of sentences</em>
+      on neutral prompts, which sounds low until you realise every other
+      paragraph contains one.
+    </li>
+    <li>
+      <strong>The microscope.</strong> A pre-trained <em>sparse autoencoder</em>
+      (SAE) — a little learned dictionary that decomposes the model's
+      internal state into a sum of 16,384 named <em>features</em>. Only a
+      handful fire at any given moment. Each comes with an English-language
+      label: feature 3223 is <em>"phrases conveying exceptions or
+      negations"</em>; feature 9909 is <em>"references to digital technology
+      and online interactions"</em>; and so on for the other 16,382. The
+      labels are noisy but mostly truthful.
+    </li>
+    <li>
+      <strong>The graph.</strong> All 16,384 features live in a Neo4j graph
+      as nodes — edges between them encode which features write similar
+      patterns (decoder cosine), which fire together (co-activation), and
+      which automatic-cluster they belong to. Without the graph you can't
+      reason about the features by hand — it's a 16k-element pile.
+      <span class="neo-tag">◆ Neo4j</span>
+    </li>
+    <li>
+      <strong>The probe.</strong> Take a prompt the model is about to commit
+      to the construction with — <em>"It's not a tool"</em> works. Truncate
+      it right before the next word. Look at the probability the model
+      assigns to any comma-and-pivot token that would complete the
+      construction — <em>", but"</em>, <em>", it's"</em>, <em>"—"</em>.
+      Call that probability <strong>P(pivot)</strong>. Baseline ≈ 0.28 across
+      80 prompts. That's the number to push down.
+    </li>
+    <li>
+      <strong>The bet.</strong> Find the feature, or features, that drives
+      P(pivot). Disable them. If the model stops committing, we've localised
+      the construction. If it doesn't, we haven't.
+    </li>
+  </ol>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════════ -->
+
+<section class="panel narrow">
+  <h2>The naïve attack</h2>
+  <p>
+    I did what anyone would do. I ranked all 16,384 features by how much
+    zeroing them drops P(pivot). The winner, by a wide margin, was
+    <strong>feature 3223</strong>. Label: <em>phrases conveying exceptions or
+    negations.</em> You can imagine my satisfaction. The literal negation
+    feature. Cinematic.
+  </p>
+  <p>
+    I zeroed it. P(pivot) dropped by 18%. Real drop, beat every random baseline.
+  </p>
+  <p>
+    So I went for the kill. I took feature 3223's direction in the model's
+    internal vector space and <em>projected it out of every layer</em> — the
+    method that erased refusal behaviour from a dozen chat models. It was
+    supposed to make the construction structurally impossible. Cannot be
+    represented anywhere. The model literally cannot write notes along that
+    axis.
+  </p>
+  <p>
+    I ran the test. The first generation, on a prompt about an Antarctic
+    research station, started:
+  </p>
+  <blockquote style="font-family: var(--serif); font-size: 17px; color: var(--ink); border-left: 3px solid var(--oppose); padding: 4px 22px; margin: 16px 0; font-style: italic;">
+    "Imagine a world, <strong>not of green meadows and warm breezes, but of
+    endless white</strong>, the sun a distant memory…"
+  </blockquote>
+  <p>
+    The intervention designed to make the construction <em>impossible</em>
+    opened with the construction.
+  </p>
+  <p>
+    I tried six more single-feature attacks. Different mechanisms. They all
+    did the same partial thing: the most textbook form went away, and a
+    different form often went up. The model wasn't being killed. The model
+    was <em>rerouting</em>.
+  </p>
+  <p class="aside">
+    <strong>There's a name for this.</strong> It's called the
+    <em>Hydra Effect</em> — knock out one path that produces a behaviour,
+    another path compensates. The Hydra grows another head. Mostly studied
+    on factual recall; here it was, in a rhetorical behaviour.
+  </p>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════════ -->
+
+<section class="panel narrow">
+  <h2>The realisation</h2>
+  <p>
+    Here's the lesson I should have started with.
+  </p>
+  <p>
+    The published refusal-direction work showed that one direction mediates
+    refusal. That's a beautiful clean result. It made everyone in interp
+    assume <em>most</em> behaviours work like that. <em>Necessary and
+    sufficient.</em> One thing.
+  </p>
+  <p>
+    But there's no reason that has to be true. A behaviour can be
+    <em>necessary</em> in one feature and <em>not sufficient</em> — the
+    model needs the feature, <em>and</em> the model has other ways of
+    getting the same effect when the feature isn't available. That's what
+    3223 looks like. The model is, in some sense, hedging. The construction
+    is implemented redundantly. A coalition of features cooperates to
+    produce it, and the coalition is robust to losing any one member.
+  </p>
+  <p>
+    If that's the case, the right attack isn't a smarter way to disable one
+    feature. The right attack is to find <em>the rest of the coalition</em>
+    and disable all of them at once.
+  </p>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════════ -->
+
+<section class="panel narrow">
+  <h2>The eighth attack: kill the whole cluster</h2>
+  <p>
+    I ran the same per-feature attribution scan but this time kept the top
+    hundred, not just the top one. Then I ablated them in joint-set ladders
+    — top-2, top-5, top-10, top-25, top-50, top-100 — and measured P(pivot)
+    at each rung.
+  </p>
+
+  <table class="layer-table">
+    <thead>
+      <tr>
+        <th class="label">set size</th>
+        <th>P(pivot)</th>
+        <th>drop</th>
+        <th>relative</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td class="label">baseline</td>      <td class="num">0.278</td> <td class="num">—</td>      <td class="num">—</td></tr>
+      <tr><td class="label">1 (just 3223)</td> <td class="num">0.228</td> <td class="num">−0.050</td> <td class="num">−18%</td></tr>
+      <tr><td class="label">2</td>             <td class="num">0.174</td> <td class="num">−0.104</td> <td class="num">−37%</td></tr>
+      <tr><td class="label">5</td>             <td class="num">0.135</td> <td class="num">−0.143</td> <td class="num">−51%</td></tr>
+      <tr><td class="label">10</td>            <td class="num">0.107</td> <td class="num">−0.171</td> <td class="num">−61%</td></tr>
+      <tr class="highlight"><td class="label">25</td> <td class="num">0.078</td> <td class="num">−0.200</td> <td class="num">−72%</td></tr>
+      <tr><td class="label">50</td>            <td class="num">0.069</td> <td class="num">−0.209</td> <td class="num">−75%</td></tr>
+      <tr><td class="label">100</td>           <td class="num">0.058</td> <td class="num">−0.220</td> <td class="num">−79%</td></tr>
+    </tbody>
+  </table>
+
+  <p>
+    There's the coalition. The first five features get you to 51%. The
+    first ten get you to 61%. By twenty-five you've taken away 72% of the
+    model's commitment to the construction at the decision point. By a
+    hundred you asymptote at about 79%. After that the SAE basis at this
+    layer has nothing more to give.
+  </p>
+  <p>
+    The control: ablating a hundred <em>random</em> features moves P(pivot)
+    by under 0.001. The 79% drop isn't an artefact of mass ablation. It's
+    specific to this set.
+  </p>
+  <p>
+    The model wasn't being a Hydra against the coalition. It was being a
+    Hydra against my attempts to find one node of the coalition at a time.
+    Hit it from all twenty-five directions simultaneously and it loses
+    three-quarters of its grip.
+  </p>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════════ -->
+
+<section class="panel narrow">
+  <h2>Watch one die</h2>
+  <p>
+    Pick a prompt. The model on the left generates normally. The model on
+    the right has the twenty-five-feature coalition zeroed at every token
+    while it writes. Same prompt, same seed, one thing changed.
+  </p>
+
+  <div class="example-grid" id="example-grid"></div>
+
+  <div class="intervention-row">
+    <span class="lbl">Compare baseline against:</span>
+    <button class="btn-chip on" data-set="top25">top-25 coalition</button>
+    <button class="btn-chip" data-set="minimal">minimal core (3223 + 9909)</button>
+  </div>
+
+  <div class="playback">
+    <div class="col">
+      <div class="ck">Left</div>
+      <div class="name baseline">baseline — no intervention</div>
+      <div class="text" id="text-left">Pick an example and hit Play.</div>
+      <div class="verdict" id="verdict-left"></div>
+    </div>
+    <div class="col">
+      <div class="ck">Right</div>
+      <div class="name ablated" id="ablated-label">top-25 coalition ablated</div>
+      <div class="text" id="text-right"></div>
+      <div class="verdict" id="verdict-right"></div>
+    </div>
+  </div>
+
+  <div class="run-row">
+    <button class="go" id="play">▶ Play</button>
+    <label>speed
+      <input type="range" id="speed" min="20" max="500" value="120" style="width: 110px;" />
+    </label>
+    <span id="play-meta"></span>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════════ -->
+
+<section class="panel narrow">
+  <h2>In actual prose, on actual prompts</h2>
+  <p>
+    The 79% above is at one token position. Does the kill survive in actual
+    generation? Two tests — and a methodology footnote.
+  </p>
+  <p style="font-family: var(--sans); font-size: 14px; color: var(--muted); padding: 12px 16px; background: rgba(0,0,0,0.03); border-radius: 6px;">
+    <strong>The footnote first.</strong> The construction has two surface
+    forms the model uses interchangeably: <em>"isn't X, it's Y"</em>
+    (same-sentence) and <em>"isn't X. It's Y."</em> (across sentences — the
+    period-form). The strict regex+spaCy classifier this project inherited
+    catches the first and misses the second. So every generation gets scored
+    twice — strict + permissive — and I take the <em>union</em>. That's the
+    honest "everything we can see" number. The strict-only numbers look bigger
+    because they miss the model rerouting into period-form; the union is
+    the truth.
+  </p>
+
+  <h3>Primed prompts</h3>
+  <p>
+    100 construction-bearing prefixes (<em>"It's not a tool"</em>, <em>"This
+    isn't a setback"</em>, <em>"He's not a teacher"</em>), 3 seeds, the
+    instruction-tuned model continues each.
+  </p>
+  <div class="headline-stats">
+    <div class="headline-stat">
+      <p class="kicker">baseline</p>
+      <div class="name">construction rate</div>
+      <div class="big">15%</div>
+      <div class="foot">46 of 300 generations.</div>
+    </div>
+    <div class="headline-stat">
+      <p class="kicker">top-25 coalition silenced</p>
+      <div class="name">construction rate</div>
+      <div class="big">3%</div>
+      <div class="foot">8 of 300. Drop CI [+68%, +93%]. McNemar mid-p &lt; 10⁻⁶.</div>
+    </div>
+    <div class="headline-stat">
+      <p class="kicker">absolute drop</p>
+      <div class="name">on primed prompts</div>
+      <div class="big">−12 pp</div>
+      <div class="foot"><strong>82% relative</strong>. The construction commits ~5× less often when the coalition can't fire.</div>
+    </div>
+  </div>
+
+  <h3>Neutral prompts (the real chatbot test)</h3>
+  <p>
+    A hundred-and-two open-ended prompts — <em>"describe a hospital
+    cafeteria at 2 a.m."</em>, <em>"sketch a portrait of a postal
+    worker"</em> — three seeds each, three hundred and six pairs total.
+    These are the prompts a real chatbot user actually sends. An earlier
+    phase of this project tested <em>single-feature</em> ablation on the
+    same prompt set and got a clean null. We thought the de-slop tool
+    couldn't work in the wild.
+  </p>
+  <div class="headline-stats">
+    <div class="headline-stat">
+      <p class="kicker">baseline</p>
+      <div class="name">construction rate</div>
+      <div class="big">12%</div>
+      <div class="foot">36 of 306 generations.</div>
+    </div>
+    <div class="headline-stat">
+      <p class="kicker">top-25 coalition silenced</p>
+      <div class="name">construction rate</div>
+      <div class="big">2%</div>
+      <div class="foot">7 of 306. Drop CI [+67%, +92%]. McNemar mid-p &lt; 10⁻⁶.</div>
+    </div>
+    <div class="headline-stat">
+      <p class="kicker">absolute drop</p>
+      <div class="name">on neutral prompts</div>
+      <div class="big">−10 pp</div>
+      <div class="foot"><strong>80% relative</strong>. The product claim Phase 7 retired holds when you attack the coalition, not the anchor.</div>
+    </div>
+  </div>
+
+  <p>
+    Three converging probes (M2 pivot probability, M1 primed, M1 neutral),
+    all consistent at a 70–82% relative drop with a ~1–4% residual.
+  </p>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════════ -->
+
+<section class="panel narrow">
+  <h2>What the coalition actually looks like</h2>
+  <p>
+    I ran a leave-one-out from the top-25: for each feature, ablate <em>the
+    other twenty-four</em> and see how much the drop falls. That tells you
+    which features are individually indispensable (removing them costs a
+    lot) versus individually substitutable (removing them costs almost
+    nothing because the rest cover for them).
+  </p>
+  <div class="coalition-list">
+    <div class="feat indispensable">
+      <span class="idx">3223</span>
+      <span class="lbl">"phrases conveying exceptions or negations"</span>
+      <span class="cost">+0.073</span>
+    </div>
+    <div class="feat indispensable">
+      <span class="idx">9909</span>
+      <span class="lbl">"references to digital technology and online interactions"</span>
+      <span class="cost">+0.074</span>
+    </div>
+    <div class="feat">
+      <span class="idx">12898</span>
+      <span class="lbl">"references to societal issues, particularly laws and marginalised groups"</span>
+      <span class="cost">+0.021</span>
+    </div>
+    <div class="feat">
+      <span class="idx">11864</span>
+      <span class="lbl">"technical terms and phrases related to legal and procedural contexts"</span>
+      <span class="cost">+0.013</span>
+    </div>
+    <div class="feat">
+      <span class="idx">+21 more</span>
+      <span class="lbl">topical scaffolding — concern/caution, ethics, accountability, scientific measurement, urgency. Individually &lt; 0.01 each.</span>
+      <span class="cost">long tail</span>
+    </div>
+  </div>
+  <p>
+    Two indispensable, one secondary, twenty-two substitutable. I extended
+    the analysis to the <em>top fifty</em> features and the picture got
+    cleaner: same two indispensables, same one secondary, and the
+    twenty-five features ranked 26-50 <em>all</em> have cost-when-removed
+    below 0.001. There's no second indispensable tier hiding past rank 25.
+    The coalition really is two-cored.
+  </p>
+  <p>
+    The labels are the second surprise. I expected the coalition to be a
+    cluster of "negation" features. It isn't. 3223 is about negation. 9909
+    is about digital tech. 12898 is about laws and marginalised groups. The
+    rest are about concern, accountability, ethics, scientific measurement,
+    urgency, professional roles. <em>They look topical, not syntactic.</em>
+    My read: the construction commits when the negation feature plus the
+    <em>situational scaffolding around it</em> is active. Contrastive
+    correction lands when there's a thing to <em>care about</em> — a
+    problem, a stake, a domain in which the contrast carries rhetorical
+    weight.
+  </p>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════════ -->
+
+<section class="panel narrow">
+  <h2>The first surprise: the graph guessed wrong</h2>
+  <p>
+    The honest way to ask "which features are in the coalition?" would be
+    <em>structural</em>: find features that look like 3223, or fire alongside
+    it, or share a community. The graph hands you those queries cheaply. I
+    ran them. All three failed.
+  </p>
+  <table class="layer-table">
+    <thead>
+      <tr>
+        <th class="label">prior</th>
+        <th>N features</th>
+        <th>P(pivot) drop</th>
+        <th>added vs single 3223</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td class="label">3223 alone</td>                            <td class="num">1</td>  <td class="num">−18%</td>  <td class="num">(reference)</td></tr>
+      <tr><td class="label">3223 + 9 decoder-cosine neighbours</td>    <td class="num">10</td> <td class="num">−20%</td>  <td class="num">+2pp</td></tr>
+      <tr><td class="label">3223 + 9 top co-firing partners</td>       <td class="num">10</td> <td class="num">−18%</td>  <td class="num">+0pp</td></tr>
+      <tr><td class="label">3223's Leiden community top-10</td>        <td class="num">10</td> <td class="num">−0.1%</td> <td class="num">essentially zero</td></tr>
+      <tr class="highlight"><td class="label">attribution top-10 (the actual coalition)</td> <td class="num">10</td> <td class="num">−61%</td> <td class="num">+43pp</td></tr>
+    </tbody>
+  </table>
+  <p>
+    Structural similarity in the SAE doesn't predict causal-coalition
+    membership for this behaviour. The features that <em>do</em> the
+    construction with 3223 aren't its decoder neighbours, aren't its
+    co-activators, and aren't its community-mates. They're a heterogeneous
+    set the SAE didn't cluster — findable only by asking the causal
+    question directly. <span class="neo-tag">◆ Negative result, generated by Neo4j</span>
+  </p>
+  <p class="aside">
+    <strong>This is what the graph was for.</strong> Three Cypher queries,
+    three structural priors, an afternoon of measurement. The negative
+    finding is itself a graph-derived discovery: a flat ranked list could
+    never have framed the question as "is structural similarity the right
+    prior?" because it has no structure.
+  </p>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════════ -->
+
+<section class="panel narrow">
+  <h2>The second surprise: it really is at one layer</h2>
+  <p>
+    Gemma 2 2B has twenty-six layers. The work above is all at layer 20.
+    The natural follow-up: is layer 20 special? I re-ran the whole pipeline
+    — attribution scan, ablation ladder — at layer 12 (early-middle) and
+    layer 25 (late), each with its own top-25.
+  </p>
+  <table class="layer-table">
+    <thead>
+      <tr>
+        <th class="label">layer</th>
+        <th>baseline P(pivot)</th>
+        <th>after top-25 ablation</th>
+        <th>relative drop</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td class="label">L12 (early)</td>           <td class="num">0.288</td> <td class="num">0.202</td> <td class="num">−30%</td></tr>
+      <tr class="highlight"><td class="label">L20 (middle) — the locus</td> <td class="num">0.278</td> <td class="num">0.077</td> <td class="num">−72%</td></tr>
+      <tr><td class="label">L25 (late)</td>            <td class="num">0.219</td> <td class="num">0.104</td> <td class="num">−52%</td></tr>
+    </tbody>
+  </table>
+  <p>
+    L12 is <em>"the construction isn't built here yet"</em>. L25 has a real
+    secondary coalition — but its baseline is lower because the L25 SAE
+    itself loses ~19% of P(pivot) just by being inserted. The late-layer
+    SAE basis is genuinely too narrow for the construction; the residual
+    lives partly in its error term.
+  </p>
+  <p>
+    And the kicker: joint ablation across <strong>L12 + L20 + L25
+    simultaneously</strong> (75 features across three layers) reached the
+    <em>same</em> absolute floor as L20 alone — 0.079 vs 0.077. The
+    late-layer coalition isn't an independent mechanism. It's the same
+    mechanism, watched from downstream. There's one place to intervene on
+    the construction, and it's layer 20.
+  </p>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════════ -->
+
+<section class="panel">
+  <h2>The map</h2>
+  <p>
+    16,384 dots, one per SAE feature, laid out by a UMAP projection of
+    their decoder vectors. Hover any dot for the feature's label. Click to
+    flag for ablation. The coloured regions are <em>Leiden communities</em>
+    — automatically-discovered clusters of related features, written into
+    the graph at ingestion. <span class="neo-tag">◆ Neo4j</span>
+  </p>
+  <div class="map-stage">
+    <canvas id="canvas"></canvas>
+    <div class="map-hud"><strong>16,384 features</strong> · Gemma Scope L20/16k · UMAP(cosine) · <span id="hud_step">no run yet</span></div>
+    <div class="map-legend">
+      <div><span class="dot" style="background: #c7bfb0"></span>quiet feature</div>
+      <div><span class="dot" style="background: var(--support)"></span>recently fired</div>
+      <div><span class="dot" style="background: var(--hot)"></span>firing now</div>
+      <div><span class="dot" style="background: var(--oppose)"></span>ablated</div>
+    </div>
+    <div id="tip"></div>
+  </div>
+  <p>
+    When you play an example above, the cloud animates token-by-token to
+    show which features fired at each step. The deeper exploration — pan,
+    zoom, search by label, ablate by community, draw a lasso, alt-click for
+    graph neighbours — lives in the <a href="/demo/playground.html">Playground</a>.
+  </p>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════════ -->
+
+<section class="panel narrow">
+  <h2>What's running on Neo4j?</h2>
+  <div class="neo-panel">
+    <h3>The map of meanings is graph-backed</h3>
+    <p>
+      Every dot above is a <code>:SAEFeature</code> node in Neo4j. The graph
+      holds what each feature <em>means</em> (its Neuronpedia label), what
+      cluster it belongs to, and how it relates structurally to other
+      features. The model performs the interventions; the graph chooses the
+      targets and gives them names.
+    </p>
+    <div class="split">
+      <div>
+        <h4>The graph powers</h4>
+        <ul>
+          <li><strong>16,384</strong> <code>:SAEFeature</code> nodes with label, density, community id</li>
+          <li><strong>1.3M</strong> <code>DECODER_SIMILAR</code> edges (cosine of decoder columns)</li>
+          <li><strong>349k</strong> <code>CO_ACTIVATES_WITH</code> edges with PMI and Jaccard</li>
+          <li><strong>Leiden communities</strong> for every feature (colours the regions)</li>
+          <li><strong>Hypothesis-set generation</strong> — the structural priors above were single Cypher queries</li>
+          <li><strong>Hover labels</strong> — every tooltip on the cloud is a <code>LABELED_AS</code> traversal</li>
+        </ul>
+      </div>
+      <div>
+        <h4>The model does</h4>
+        <ul>
+          <li>Forward passes through Gemma 2 2B-it</li>
+          <li>Ablation hooks at the L20 SAE post-encode</li>
+          <li>Sampling next tokens under intervention</li>
+          <li>Capturing per-token activations during generation</li>
+        </ul>
+        <h4 style="margin-top: 18px;">The pairing</h4>
+        <p style="font-family: var(--sans); font-size: 13px; color: var(--muted); margin: 0;">
+          A flat 16k-feature list is useless to navigate by hand. The graph
+          turns it into a queryable map of meanings. The model turns the
+          map into causal interventions. Together: an instrument.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════════ -->
+
+<section class="panel narrow">
+  <h2>Where I could be wrong</h2>
+  <p>
+    A friend with mech-interp credentials read a draft and pointed at four
+    things. I'd rather pre-empt the hostile read.
+  </p>
+  <ul class="why-list" style="list-style: none; padding: 0;">
+    <li style="padding: 14px 0; border-bottom: 1px solid var(--hairline);">
+      <strong>This is post-hoc.</strong> The project's pre-registration
+      committed to single-feature attacks; the coalition is what came out
+      of those attacks failing. The hardest pre-registered control —
+      <em>matched-activation</em>, where each coalition feature is paired
+      with a same-activation-density non-coalition feature — was the next
+      ask. I ran <strong>twenty</strong> independent matched draws. The
+      coalition's drop was +0.200; the largest of the twenty matched-null
+      drops was +0.001; the mean was slightly <em>negative</em>. The
+      coalition beats all twenty draws. So the effect isn't an artefact of
+      mass-ablating any twenty-five active features. Other controls
+      (specificity tests on adversarial negation sets, interchange patching
+      for sufficiency) haven't yet been done.
+    </li>
+    <li style="padding: 14px 0; border-bottom: 1px solid var(--hairline);">
+      <strong>Sufficiency is asymmetric and I haven't fully retried it.</strong>
+      Clamping the coalition's activations <em>up</em> doesn't reliably
+      <em>produce</em> the construction in cases where the model wouldn't
+      have used it. Necessity is clean; sufficiency is murky.
+    </li>
+    <li style="padding: 14px 0; border-bottom: 1px solid var(--hairline);">
+      <strong>One model. One layer family. One width.</strong> Gemma 2 2B,
+      Gemma Scope canonical SAEs at 16k width. Cross-model replication on
+      Llama 3 or Mistral hasn't been done.
+    </li>
+    <li style="padding: 14px 0; border-bottom: 1px solid var(--hairline);">
+      <strong>The coalition is a blunter scalpel than a single feature.</strong>
+      Ablating just 3223 on held-out human prose leaves perplexity at
+      <strong>1.000×</strong> baseline. Ablating the full top-25 pushes it
+      to <strong>1.079×</strong>. Still inside the conventional <em>"scalpel
+      not sledgehammer"</em> gate of &lt;1.20×, but a meaningfully bigger
+      perturbation. The de-slop claim should be read with that in mind —
+      you're not getting the kill for free.
+    </li>
+    <li style="padding: 14px 0;">
+      <strong>The strict classifier under-counts both ways.</strong> It
+      misses the period-form. The post's numbers use the union of strict +
+      permissive scoring; a reader who writes an even more permissive
+      detector will probably get an even lower drop, and that's fine —
+      it would mean the model also reroutes into shapes neither detector
+      catches, which is its own interesting finding.
+    </li>
+  </ul>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════════ -->
+
+<section class="panel narrow">
+  <h2>Try it</h2>
+  <p>
+    I built two views on the same local instrument. <strong>This</strong>
+    is the read — the version you just scrolled through. The
+    <a href="/demo/playground.html">Playground</a> is the full instrument:
+    type any prompt, pick what to silence (a preset, a search-by-meaning
+    concept, a lasso-drawn region of the map), watch the model write
+    <em>with</em> and <em>without</em> that machinery. <strong>⌥-click</strong>
+    any feature to see its decoder-similar siblings light up via Cypher.
+    Hit <em>"See the magic"</em> for a thirty-second auto-tour if you don't
+    know where to start.
+  </p>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════════ -->
+
+<footer>
+  <p>
+    <strong>Model:</strong> Google <code>gemma-2-2b-it</code>, fp16, Apple
+    Silicon MPS. <strong>SAE:</strong> Gemma Scope
+    <code>layer_20/width_16k/canonical</code>. <strong>Coalition:</strong>
+    top-25 by per-feature causal attribution to <em>P(pivot)</em> at
+    truncated D1 prefixes (<code>scripts/pivot_attribution.py</code> →
+    <code>reports/pivot_attribution.json</code>).
+    <strong>Classifier:</strong> <code>detect_construction</code>
+    blind-validated at P = 0.80 / R = 1.00 on 90 independently-sourced
+    sentences (Tier 0a); v2 union scoring with permissive regex covers
+    F2 staccato; both committed in <code>src/classifier/</code>.
+  </p>
+  <p>
+    <strong>Graph substrate:</strong> Neo4j on
+    <code>bolt://localhost:7693</code>; schema in <code>cypher/</code>;
+    ingestion via <code>scripts/04_ingest_features.py</code>. UMAP
+    coordinates from <code>scripts/build_demo_layout.py</code>, which
+    pulls community id and label from Neo4j for every node.
+  </p>
+  <p>
+    Reproducible from <a href="https://github.com/theohopkinson/not-this-but-that">github.com/theohopkinson/not-this-but-that</a>.
+  </p>
+</footer>
+
+<div id="status" class="pill-down">checking daemon…</div>
+
+<script src="/demo/app.js"></script>
+</body>
+</html>
