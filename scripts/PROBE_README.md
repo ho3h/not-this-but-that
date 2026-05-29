@@ -69,6 +69,11 @@ probe.py '{"cmd": "attribution", "top_n": 10, "kind": "suppress"}'
 
 ### `graph` — structural priors from Neo4j
 
+For interactive interpretation, prefer `coact_partners`: it is grounded in
+observed feature co-activation and better matches the "feature atoms tile
+behavior manifolds" framing. Use `decoder_neighbors` as a secondary
+diagnostic or fallback when activation edges are unavailable.
+
 ```bash
 # Top-10 decoder-cosine neighbors of 3223
 probe.py '{"cmd": "graph", "query": "decoder_neighbors", "anchor": 3223, "k": 10}'

@@ -199,7 +199,12 @@ class ProbeEngine:
     # === Commands ===
 
     def cmd_ping(self, _: dict) -> dict:
-        return {"device": self._dev, "d_sae": self.d_sae, "model": "gemma-2-2b"}
+        return {
+            "device": self._dev,
+            "d_sae": self.d_sae,
+            "model": "gemma-2-2b",
+            "capabilities": ["graph.coact_batch"],
+        }
 
     def cmd_labels(self, args: dict) -> dict:
         feats = [int(f) for f in args.get("features", [])]
@@ -268,6 +273,31 @@ class ProbeEngine:
                     ORDER BY score DESC LIMIT $k
                     """, idx=anchor, k=k,
                 )
+            elif q == "coact_batch":
+                anchors = [int(a) for a in args.get("anchors", [])]
+                rank = args.get("rank_by", "jaccard")  # "jaccard" or "pmi"
+                order_by = "r.jaccard" if rank == "jaccard" else "r.pmi"
+                rows = c.run(
+                    f"""
+                    UNWIND $anchors AS anchor
+                    MATCH (a:SAEFeature {{index: anchor}})-[r:CO_ACTIVATES_WITH]-(b:SAEFeature)
+                    WHERE a.sae_id CONTAINS 'L20/16k' AND b.sae_id CONTAINS 'L20/16k'
+                    WITH anchor, b.index AS idx, {order_by} AS score
+                    ORDER BY anchor, score DESC
+                    WITH anchor, collect({{idx: idx, score: score}})[..$k] AS partners
+                    RETURN anchor, partners
+                    """, anchors=anchors, k=k,
+                )
+                by_anchor = {str(a): {"features": [], "scores": []} for a in anchors}
+                for row in rows:
+                    features = [int(p["idx"]) for p in row["partners"]]
+                    scores = [float(p["score"]) for p in row["partners"]]
+                    by_anchor[str(int(row["anchor"]))] = {
+                        "features": features,
+                        "scores": scores,
+                        "labels": {str(f): self.labels.get(f, "") for f in features},
+                    }
+                return {"by_anchor": by_anchor}
             elif q == "community":
                 cid = int(args.get("cid", 12))
                 lim = int(args.get("limit", 50))
@@ -657,16 +687,18 @@ class ProbeEngine:
         )
         prompt_len = tokens.shape[1]
         records: list[dict] = []
+        ablate_idxs = (
+            torch.tensor(ablate, device=tokens.device, dtype=torch.long)
+            if ablate else None
+        )
 
         for step in range(max_new):
             hooks = []
             captured: dict = {}
-            if ablate:
-                idxs = torch.tensor(ablate, device=tokens.device, dtype=torch.long)
-
+            if ablate_idxs is not None:
                 def clamp(act, **kwargs):
                     act = act.clone()
-                    act[..., idxs] = 0.0
+                    act[..., ablate_idxs] = 0.0
                     return act
 
                 hooks.append((self.hook_name, clamp))
@@ -675,10 +707,11 @@ class ProbeEngine:
             # on the same hook (acts_post) but as a separate observer hook.
             def capture(act, **kwargs):
                 # act shape: (batch, seq, d_sae) at this site
-                last = act[0, -1, :].float().cpu()
+                last = act[0, -1, :].float()
                 vals, idx = torch.topk(last, top_k)
                 captured["top_features"] = [
-                    {"idx": int(i), "act": float(v)} for v, i in zip(vals.tolist(), idx.tolist())
+                    {"idx": int(i), "act": float(v)}
+                    for v, i in zip(vals.detach().cpu().tolist(), idx.detach().cpu().tolist())
                 ]
 
             hooks.append((self.hook_name, capture))

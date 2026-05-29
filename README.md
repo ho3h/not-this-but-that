@@ -76,7 +76,15 @@ The single thing that sank `grammar-layer` was a missing related-work section. W
 - Marks, Rager, Michaud, Belinkov, Bau & Mueller, ["Sparse Feature Circuits"](https://arxiv.org/abs/2403.19647), ICLR 2025 — signed indirect-effect attribution.
 - Anthropic, ["Circuit Tracing"](https://transformer-circuits.pub/2025/attribution-graphs/methodology.html) + ["On the Biology of a Large Language Model"](https://transformer-circuits.pub/2025/attribution-graphs/biology.html), Transformer Circuits, March 2025.
 - Lieberum et al., ["Gemma Scope"](https://arxiv.org/abs/2408.05147), August 2024 — the SAEs we use.
+- Goodfire / Bhalla et al., ["Do Sparse Autoencoders Find True Features?"](https://arxiv.org/abs/2604.28119), arXiv:2604.28119, April 2026 — the key warning that meaningful concepts may be tiled across low-dimensional manifolds of SAE atoms rather than represented by isolated feature directions.
 - Zhang, Wang & Su, "Mechanistic Knobs: Retrieving and Steering High-Order Semantic Features via SAEs" — arXiv:2601.02978 — precedent for steering behavior-level linguistic features.
+
+**How this differs from the Goodfire manifold work:** we do not claim that
+the global 2D UMAP is the manifold, nor that single SAE atoms are complete
+concepts. The graph is used as a substrate for hypotheses and interventions:
+activation-linked sets, behavior coalitions, communities, and prompt-retrieved
+slices. The visualization is currently an atlas over atoms; the research claim
+is the causal effect of a validated behavior coalition.
 
 **Cultural anchor:**
 - Wikipedia, [*Signs of AI writing*](https://en.wikipedia.org/wiki/Signs_of_AI_writing) (WP:AIPARALLEL). The reason anyone cares.

@@ -625,6 +625,146 @@
 <!-- ════════════════════════════════════════════════════════════════ -->
 
 <section class="panel narrow">
+  <h2>Three demos built on the graph</h2>
+  <p>
+    The finding above — a coalition of twenty-five features causally
+    implementing a behaviour — is interesting. What I want to convince you
+    of here is a different claim: <strong>once that coalition is stored as
+    a first-class object in a graph, with the rest of the SAE around it,
+    you can do things you genuinely cannot do anywhere else.</strong>
+  </p>
+  <p>
+    Each of the three demos below is a Cypher query of fewer than twelve
+    lines. Each is impossible without the graph.
+  </p>
+
+  <div class="demo-card">
+    <div class="demo-card-head">
+      <span class="demo-card-num">Demo&nbsp;1</span>
+      <h3>Surgical de-slop — <em>concept ∩ behaviour</em></h3>
+    </div>
+    <p>
+      The full coalition has twenty-five features. For any given prompt
+      only a handful are <em>topically</em> relevant. The graph lets you
+      intersect a prompt's semantic content — via vector search over the
+      16,384 SAE feature labels — with a named behaviour's feature set,
+      and silence only the overlap.
+    </p>
+    <p>
+      For <em>"Discuss the legal and medical implications of AI in
+      healthcare"</em> the graph returns two: feat 7361
+      (<em>legal analysis and recommendations</em>) and feat 1608
+      (<em>legal and health-related terms</em>). Of the twenty-five-feature
+      coalition, those are the two your prompt actually invokes.
+    </p>
+    <p>
+      For <em>"Explain quantum computing to a child"</em> it returns
+      zero — the AI-ism coalition isn't topically active for this prompt,
+      so there's nothing to silence. The graph said <em>leave it alone</em>.
+    </p>
+    <pre class="cypher-block">MATCH (b:Behaviour {name: 'ai-ism'})-[r:INCLUDES]-&gt;(f:SAEFeature)
+  WHERE f.index IN $retrieved AND f.sae_id CONTAINS 'L20/16k'
+RETURN f.index AS idx, r.weight AS weight, r.rank AS rank
+ORDER BY r.rank</pre>
+    <p class="demo-card-foot">
+      <strong>Why this needs a graph:</strong> a vector DB can do the
+      retrieve; only a graph with first-class behaviour membership can
+      <em>intersect</em> it with a named coalition. RAG, but the retrieved
+      objects are model features and the composition is an intervention,
+      not a context window.
+      <a href="/demo/playground.html">Try it in the Playground →</a>
+    </p>
+  </div>
+
+  <div class="demo-card">
+    <div class="demo-card-head">
+      <span class="demo-card-num">Demo&nbsp;2</span>
+      <h3>Mix your own chatbot — weighted Cypher union</h3>
+    </div>
+    <p>
+      The playground has four <code>:Behaviour</code> nodes seeded:
+      <code>ai-ism</code> (the coalition), <code>bullets</code>
+      (bullet-point compulsion), <code>hedging</code> (caveats),
+      <code>formal_register</code> (academic prose). Each is a
+      twenty-five-feature subgraph, weighted by per-feature contribution.
+    </p>
+    <p>
+      The mixer gives you a slider per behaviour, 0-100%. The intensity
+      controls how many of each behaviour's top features get pulled into
+      the union. <code>{ai-ism: 100, bullets: 50, hedging: 30}</code>
+      composes a 45-feature silence-set drawn from three behaviours at
+      proportional depth.
+    </p>
+    <pre class="cypher-block">UNWIND $intensities AS i
+MATCH (b:Behaviour {name: i.name})-[r:INCLUDES]-&gt;(f:SAEFeature)
+  WITH b, f, r ORDER BY r.rank
+  LIMIT toInteger(i.intensity * b.coalition_size / 100)
+RETURN DISTINCT f.index AS idx, collect(b.name) AS sources</pre>
+    <p class="demo-card-foot">
+      <strong>Why this needs a graph:</strong> the same query mechanism
+      could mix <code>personality_anxious</code>, <code>tone_dry</code>,
+      <code>register_clinical</code> — behaviours are user-defined, named,
+      persistent, composable. Style as a graph algebra. The closest thing
+      I've seen to a model personality control plane that's actually
+      mechanistic — not a system prompt, not a fine-tune.
+      <a href="/demo/playground.html">Try the mixer →</a>
+    </p>
+  </div>
+
+  <div class="demo-card">
+    <div class="demo-card-head">
+      <span class="demo-card-num">Demo&nbsp;3</span>
+      <h3>Audit trail — feature provenance as graph paths</h3>
+    </div>
+    <p>
+      Every generation writes an <code>:Intervention</code> node with
+      <code>:USED_SOURCE</code> edges to the things that selected each
+      silenced feature — <code>preset:top25</code>,
+      <code>surgical_deslop:&lt;prompt&gt;</code>,
+      <code>community_click:&lt;region&gt;</code>, <code>lasso</code>,
+      <code>user_click</code>, <code>search:&lt;query&gt;</code>. Each
+      source is in turn <code>:SELECTED</code> → <code>:SAEFeature</code>.
+    </p>
+    <p>
+      So you can ask, weeks later: <em>"Why did this run silence feature
+      3223?"</em> The answer is one MATCH query.
+    </p>
+    <pre class="cypher-block">MATCH (i:Intervention {id: $iid})-[:USED_SOURCE]-&gt;(s:Source)-[:SELECTED]-&gt;(f:SAEFeature)
+  OPTIONAL MATCH (f)-[:LABELED_AS {primary:true}]-&gt;(l:AutoInterpLabel)
+RETURN s.kind, s.label, collect({idx: f.index, label: l.text}) AS features
+ORDER BY s.ts</pre>
+    <p class="demo-card-foot">
+      <strong>Why this needs a graph:</strong> the audit isn't a join,
+      it's a <em>traversal</em> across
+      <code>(intervention) → (source) → (feature) → (label) → (community)</code>.
+      Path queries are what graphs are for. Glass-box governance — <em>show
+      me which features your AI silenced, and which lineage decided to
+      silence them</em> — wants this primitive.
+      <a href="/demo/playground.html">Inspect a run →</a>
+    </p>
+  </div>
+
+  <div class="neo-panel" style="margin-top: 28px;">
+    <h3>What only a graph can do here</h3>
+    <ul>
+      <li><strong>First-class coalition membership</strong> — <em>"these
+        twenty-five features collectively implement that behaviour"</em>
+        as a queryable node with weighted edges. Demo 1's intersection
+        has nothing to intersect <em>with</em> otherwise.</li>
+      <li><strong>Composable behaviour subgraphs</strong> — Demo 2's
+        union is one Cypher query over arbitrary named coalitions.
+        Without typed edges between behaviours and features you'd
+        rebuild the union in application code per request.</li>
+      <li><strong>Lineage as paths</strong> — Demo 3's audit traverses
+        <code>(intervention) → (source) → (feature)</code>. That's a
+        graph traversal, not a join.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════════ -->
+
+<section class="panel narrow">
   <h2>Where I could be wrong</h2>
   <p>
     A friend with mech-interp credentials read a draft and pointed at four
@@ -681,15 +821,20 @@
 <section class="panel narrow">
   <h2>Try it</h2>
   <p>
-    I built two views on the same local instrument. <strong>This</strong>
-    is the read — the version you just scrolled through. The
+    Two views on the same local instrument. <strong>This</strong> is the
+    read — the version you just scrolled through. The
     <a href="/demo/playground.html">Playground</a> is the full instrument:
-    type any prompt, pick what to silence (a preset, a search-by-meaning
-    concept, a lasso-drawn region of the map), watch the model write
-    <em>with</em> and <em>without</em> that machinery. <strong>⌥-click</strong>
-    any feature to see its decoder-similar siblings light up via Cypher.
-    Hit <em>"See the magic"</em> for a thirty-second auto-tour if you don't
-    know where to start.
+    type any prompt, pick what to silence, watch the model write
+    <em>with</em> and <em>without</em> that machinery.
+  </p>
+  <p>
+    The three demos above are wired in. Click <strong>Prompt-aware
+    de-slop</strong> for Demo 1, open the <strong>Behaviour mixer</strong>
+    under <em>Advanced controls</em> for Demo 2, and the audit panel
+    appears under any generation for Demo 3. Beyond that: type any
+    concept into the search box, lasso a region of the map with
+    <strong>shift-drag</strong>, or <strong>⌥-click</strong> any feature
+    to see its activation-linked features light up via Cypher.
   </p>
 </section>
 
@@ -714,6 +859,14 @@
     ingestion via <code>scripts/04_ingest_features.py</code>. UMAP
     coordinates from <code>scripts/build_demo_layout.py</code>, which
     pulls community id and label from Neo4j for every node.
+  </p>
+  <p>
+    <strong>Related work:</strong> the interface is informed by Goodfire /
+    Bhalla et al., <a href="https://arxiv.org/abs/2604.28119">"Do Sparse
+    Autoencoders Find True Features?"</a>, especially the warning that SAE
+    atoms can tile concept manifolds. This demo treats the UMAP as a navigation
+    atlas, not the manifold itself; causal claims come from interventions on
+    graph-selected feature sets.
   </p>
   <p>
     Reproducible from <a href="https://github.com/theohopkinson/not-this-but-that">github.com/theohopkinson/not-this-but-that</a>.

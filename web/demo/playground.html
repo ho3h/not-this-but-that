@@ -12,201 +12,212 @@
 <header class="site">
   <div class="brand"><span class="dot"></span>not-this-but-that</div>
   <nav class="mode-switch">
-    <a href="/demo">📖 Story</a>
-    <a href="/demo/playground.html" class="active">🎛 Playground</a>
+    <a href="/demo">Story</a>
+    <a href="/demo/playground.html" class="active">Playground</a>
   </nav>
-  <div class="credit">feature map by <span class="badge">◆ Neo4j</span></div>
+  <div class="credit">feature steering lab</div>
 </header>
 
 <div class="pg-shell">
 
-  <!-- ── HERO ROW ───────────────────────────────────────────── -->
-  <div class="pg-hero">
-    <button class="go" id="tour-btn" style="font-size: 16px; padding: 12px 24px;">▶ See the magic</button>
-    <p>
-      A live look inside a chatbot's brain. The 16,384 dots are <em>ideas</em>
-      the model has learned. Silence the ones that decide to write
-      <em>"not X, but Y"</em>, and watch the model write something else.
-    </p>
-  </div>
-
-  <!-- ── PROMPT ROW (visually dominant) ─────────────────────── -->
-  <div class="pg-prompt-row">
-    <input id="prompt" type="text"
-           placeholder='Try: "A great teacher isn'"'"'t…"'
-           value="Discuss the legal and medical implications of AI in healthcare." />
-    <button class="go" id="generate">▶ Generate</button>
-    <div class="pg-prompt-aux">
-      <button class="btn-chip" id="retrieve-btn" title="Embed the prompt, find features whose meanings match, highlight them on the map">
-        🎯 What concepts does this prompt touch? <span class="neo-tag">◆ Vector search</span>
-      </button>
-      <button class="btn-chip" id="surgical-btn" title="Silence only AI-ism features that are also relevant to this prompt — graph set intersection">
-        ✨ Surgical de-slop <span class="neo-tag">◆ Set intersection</span>
-      </button>
-    </div>
-  </div>
-
-  <!-- ── 3 SIMPLE PRESET CARDS ─────────────────────────────── -->
-  <div class="preset-grid pg-presets-3">
-    <div class="preset-card on" data-preset="none">
-      <div class="title">Nothing</div>
-      <div class="desc">Generate normally. No features silenced.</div>
-    </div>
-    <div class="preset-card" data-preset="top25">
-      <div class="title">The AI-ism coalition</div>
-      <div class="desc">The 25 features that decide to write <em>"not X but Y"</em>. Silencing kills the construction in ~90% of cases. <span class="neo-tag">◆ Cypher</span></div>
-    </div>
-    <div class="preset-card" data-preset="minimal">
-      <div class="title">Just the two key features</div>
-      <div class="desc">Inside the coalition, only two features are individually indispensable: <code>3223</code> (negation) and <code>9909</code> (digital tech).</div>
-    </div>
-  </div>
-
-  <!-- ── MIXER (Demo 2) ─────────────────────────────────────── -->
-  <details class="pg-mixer">
-    <summary>🎚 Mix your own chatbot — silence 4 named behaviours at any intensity <span class="neo-tag">◆ Cypher set union</span></summary>
-    <div class="pg-mixer-body">
-      <p class="pg-mixer-intro">
-        Each slider is a <code>:Behaviour</code> node in the graph with weighted edges
-        to its constituent features. Move a slider, the graph composes a union of the
-        top features from each behaviour at the chosen intensity, the model
-        regenerates without them. Drag, then hit <em>Apply &amp; Generate</em>.
-      </p>
-      <div class="pg-sliders">
-        <div class="pg-slider" data-behaviour="ai-ism">
-          <label>AI-ism coalition <span class="behaviour-desc">(the "not X but Y" tic)</span></label>
-          <input type="range" min="0" max="100" value="0" data-name="ai-ism" />
-          <span class="slider-val">0%</span>
-        </div>
-        <div class="pg-slider" data-behaviour="bullets">
-          <label>Bullet-point compulsion</label>
-          <input type="range" min="0" max="100" value="0" data-name="bullets" />
-          <span class="slider-val">0%</span>
-        </div>
-        <div class="pg-slider" data-behaviour="hedging">
-          <label>Hedging / caveats</label>
-          <input type="range" min="0" max="100" value="0" data-name="hedging" />
-          <span class="slider-val">0%</span>
-        </div>
-        <div class="pg-slider" data-behaviour="formal_register">
-          <label>Formal register</label>
-          <input type="range" min="0" max="100" value="0" data-name="formal_register" />
-          <span class="slider-val">0%</span>
-        </div>
-      </div>
-      <div class="pg-mixer-actions">
-        <button class="go" id="mixer-apply">Apply &amp; Generate</button>
-        <button class="btn-chip" id="mixer-cypher-toggle">show Cypher</button>
-        <span id="mixer-info" style="font-family: var(--sans); font-size: 12px; color: var(--faint); margin-left: 12px;">All sliders at 0 — no behaviours silenced.</span>
-      </div>
-      <pre id="mixer-cypher" class="pg-audit-cypher" style="display: none;"></pre>
-    </div>
-  </details>
-
-  <!-- ── SEARCH ROW (replaces concept chips for cleaner UX) ─── -->
-  <div class="pg-search-row">
-    <input id="search" type="text"
-           placeholder='Or type a concept to silence — try "negation", "code", "names", "dates"…' />
-    <button class="btn-chip" id="search-ablate">Silence matches</button>
-    <button class="btn-chip" id="search-clear">Clear</button>
-    <div id="search-info" class="pg-search-info">Matches highlight blue on the map. <span class="neo-tag">◆ Neo4j labels</span></div>
-  </div>
-
-  <!-- ── MAIN: map + regions sidebar ────────────────────────── -->
-  <div class="pg-main">
-    <div class="pg-canvas-wrap">
-      <canvas id="canvas"></canvas>
-      <div class="zoom-row">
-        <button id="zoom-in" title="Zoom in">+</button>
-        <button id="zoom-out" title="Zoom out">−</button>
-        <button id="zoom-reset" title="Reset view">⌂</button>
-      </div>
-      <div class="map-hud"><strong>16,384 features</strong> · <span id="hud_step">no run yet</span></div>
-      <div class="map-legend">
-        <div><span class="dot" style="background: var(--support)"></span>recently fired</div>
-        <div><span class="dot" style="background: var(--hot)"></span>firing now</div>
-        <div><span class="dot" style="background: var(--oppose)"></span>silenced</div>
-        <div><span class="dot" style="background: var(--neo)"></span>matches / neighbours</div>
-      </div>
-      <div class="map-gestures">
-        <strong>hover</strong> a dot · <strong>click</strong> to silence ·
-        <strong>⇧ drag</strong> to lasso · <strong>⌥ click</strong> for graph neighbours
-      </div>
-      <div id="tip"></div>
-    </div>
-
-    <aside class="pg-side">
-      <div class="box" style="flex: 1 1 50%; min-height: 220px;">
-        <h4>Regions on the map <span class="count" id="comm-count">18</span></h4>
-        <div style="font-family: var(--sans); font-size: 11px; color: var(--faint); margin-bottom: 6px;">
-          Each region is a cluster of related features (Leiden community).
-          <strong>Hover</strong> to highlight on the map · <strong>click</strong>
-          to silence its top features.
-        </div>
-        <div class="scroll comm-nav" id="comm-nav"></div>
-      </div>
-
-      <div class="box" style="flex: 1 1 50%; min-height: 200px;">
-        <h4>Currently silenced <span class="count" id="ablated-count">0</span></h4>
-        <div class="scroll" id="ablated-list">
-          <div style="font-family: var(--sans); font-size: 11px; color: var(--faint);">
-            Pick a preset, type a concept, click a region, or click features on the map.
+  <div class="pg-workbench">
+    <section class="pg-left" aria-label="Controls and generation">
+      <div class="pg-compose">
+        <div class="pg-step-head compact">
+          <div>
+            <span class="step-kicker">Compose</span>
+            <h3>Prompt and compare</h3>
           </div>
         </div>
-        <div class="row-actions">
-          <button class="danger" id="clear-ablated">Clear all</button>
+        <div class="pg-prompt-row">
+          <textarea id="prompt" rows="3"
+                    placeholder="Try: &quot;A great teacher isn't...&quot;">Discuss the legal and medical implications of AI in healthcare.</textarea>
+          <div class="generate-actions">
+            <button class="go" id="generate">Generate</button>
+            <button class="btn-chip" id="cancel-run" hidden>Cancel</button>
+          </div>
+        </div>
+
+        <div class="pg-output">
+          <div class="col">
+            <h5>Baseline · model writes freely <span class="verdict" id="vl"></span></h5>
+            <div class="text" id="text-left">(generation appears here after you hit Generate)</div>
+          </div>
+          <div class="col">
+            <h5 id="ablated-label">With features silenced <span class="verdict" id="vr"></span></h5>
+            <div class="text" id="text-right"></div>
+          </div>
         </div>
       </div>
-    </aside>
-  </div>
 
-  <!-- ── OUTPUT STRIP ───────────────────────────────────────── -->
-  <div class="pg-output">
-    <div class="col">
-      <h5>Baseline · model writes freely <span class="verdict" id="vl"></span></h5>
-      <div class="text" id="text-left">(generation appears here after you hit Generate)</div>
-    </div>
-    <div class="col">
-      <h5 id="ablated-label">With features silenced <span class="verdict" id="vr"></span></h5>
-      <div class="text" id="text-right"></div>
-    </div>
-  </div>
+      <details class="pg-mixer">
+        <summary>Advanced controls</summary>
+        <div class="pg-mixer-body">
+          <div class="pg-advanced-section">
+            <h4>Concept search</h4>
+            <div class="pg-search-row">
+              <input id="search" type="text"
+                     placeholder='Find features by concept — try "negation", "code", "names"...' />
+              <button class="btn-chip" id="search-ablate">Silence</button>
+              <button class="btn-chip" id="retrieve-btn" title="Embed the prompt and find matching features">
+                Analyze prompt
+              </button>
+              <button class="btn-chip" id="search-clear">Clear</button>
+              <div id="search-info" class="pg-search-info">Search highlights matching features on the graph.</div>
+            </div>
+          </div>
 
-  <!-- ── AUDIT / "WHY?" PANEL ───────────────────────────────── -->
-  <div id="audit-panel" class="pg-audit" style="display: none;">
-    <div class="pg-audit-head">
-      <h4>Why did the model say that? <span class="neo-tag">◆ Audit trail</span></h4>
-      <button class="btn-chip" id="audit-cypher-toggle">show Cypher</button>
-    </div>
-    <div id="audit-summary" class="pg-audit-summary"></div>
-    <pre id="audit-cypher" class="pg-audit-cypher" style="display: none;"></pre>
-  </div>
+          <div class="pg-advanced-section">
+            <h4>Behaviour mixer</h4>
+            <p class="pg-mixer-intro">Compose named behaviours into one feature set.</p>
+            <div class="pg-sliders">
+              <div class="pg-slider" data-behaviour="ai-ism">
+                <label>Not-this-but-that construction</label>
+                <input type="range" min="0" max="100" value="0" data-name="ai-ism" />
+                <span class="slider-val">0%</span>
+              </div>
+              <div class="pg-slider" data-behaviour="bullets">
+                <label>Bullet-point compulsion</label>
+                <input type="range" min="0" max="100" value="0" data-name="bullets" />
+                <span class="slider-val">0%</span>
+              </div>
+              <div class="pg-slider" data-behaviour="hedging">
+                <label>Hedging / caveats</label>
+                <input type="range" min="0" max="100" value="0" data-name="hedging" />
+                <span class="slider-val">0%</span>
+              </div>
+              <div class="pg-slider" data-behaviour="formal_register">
+                <label>Formal register</label>
+                <input type="range" min="0" max="100" value="0" data-name="formal_register" />
+                <span class="slider-val">0%</span>
+              </div>
+            </div>
+            <div class="pg-mixer-actions">
+              <button class="go" id="mixer-apply">Apply &amp; Generate</button>
+              <button class="btn-chip" id="mixer-cypher-toggle">show Cypher</button>
+              <span id="mixer-info">All sliders at 0.</span>
+            </div>
+            <pre id="mixer-cypher" class="pg-audit-cypher" style="display: none;"></pre>
+          </div>
 
-  <!-- ── ADVANCED (collapsed) ───────────────────────────────── -->
-  <details class="pg-advanced">
-    <summary>Advanced options</summary>
-    <div class="opts" style="margin-top: 10px;">
-      <span>Model:</span>
-      <select id="model"><option value="it">gemma-2-2b-it (chat)</option><option value="base">gemma-2-2b (base)</option></select>
-      <span>·</span>
-      <span>Tokens:</span>
-      <input id="max_new" type="number" value="60" min="10" max="200" style="width: 60px;" />
-      <span>·</span>
-      <span>Seed:</span>
-      <input id="seed" type="number" value="0" style="width: 60px;" />
-      <span>·</span>
-      <span>Playback speed:</span>
-      <input id="speed" type="range" min="20" max="400" value="120" style="width: 100px;" />
-      <span style="margin-left: 14px;">Extra preset:</span>
-      <button class="btn-chip preset-card" data-preset="suppressors" style="font-size: 12px;">Make it more AI-ish (silence suppressors)</button>
-    </div>
-    <div style="margin-top: 12px;">
-      <h4 style="font-family: var(--sans); font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--faint); margin: 0 0 6px;">
-        Active features <span class="count" id="active-count">—</span>
-      </h4>
-      <div id="active-list" style="font-family: var(--sans); font-size: 11px; max-height: 140px; overflow-y: auto;"></div>
-    </div>
-  </details>
+          <div class="pg-advanced-section pg-stress-section">
+            <h4>Stress test</h4>
+            <button class="preset-card side-preset stress-preset" data-preset="suppressors" type="button">
+              <span class="title">Amplify not-this-but-that</span>
+              <span class="desc">Debug only: silence features that normally dampen the pattern, making the construction easier to spot.</span>
+            </button>
+          </div>
+
+          <div class="pg-advanced-section">
+            <h4>Run settings</h4>
+            <div class="opts">
+              <span>Model</span>
+              <select id="model"><option value="it">gemma-2-2b-it</option><option value="base">gemma-2-2b</option></select>
+              <span>Tokens</span>
+              <input id="max_new" type="number" value="60" min="10" max="200" />
+              <span>Seed</span>
+              <input id="seed" type="number" value="0" />
+              <span>Speed</span>
+              <input id="speed" type="range" min="20" max="400" value="45" />
+            </div>
+          </div>
+
+          <div class="pg-advanced-section">
+            <h4>Active features <span class="count" id="active-count">—</span></h4>
+            <div id="active-list" class="active-list"></div>
+          </div>
+        </div>
+      </details>
+
+      <div id="audit-panel" class="pg-audit" style="display: none;">
+        <div class="pg-audit-head">
+          <h4>Why did the model say that?</h4>
+          <button class="btn-chip" id="audit-cypher-toggle">show Cypher</button>
+        </div>
+        <div id="audit-summary" class="pg-audit-summary"></div>
+        <pre id="audit-cypher" class="pg-audit-cypher" style="display: none;"></pre>
+      </div>
+    </section>
+
+    <section class="pg-right" aria-label="Feature graph">
+      <div class="pg-main">
+        <div class="pg-canvas-wrap">
+          <canvas id="canvas"></canvas>
+          <div class="zoom-row">
+            <button id="zoom-in" title="Zoom in">+</button>
+            <button id="zoom-out" title="Zoom out">−</button>
+            <button id="zoom-reset" title="Reset view">⌂</button>
+            <button id="graph-fullscreen" title="Fullscreen graph pane">⛶</button>
+          </div>
+          <div class="relation-view-toggle" aria-label="Relationship overlay view">
+            <button id="relation-links" class="on" type="button">Features</button>
+            <button id="relation-communities" type="button">Communities</button>
+          </div>
+          <div class="map-hud"><strong>16,384 features</strong> · <span id="hud_step">no run yet</span></div>
+          <div class="map-note" id="map-note">
+            Feature view keeps decoder-vector positions. Click a dot, group, or preset to add it to Currently silenced.
+          </div>
+          <div class="map-legend">
+            <div><span class="dot" style="background: var(--support)"></span>recently fired</div>
+            <div><span class="dot" style="background: var(--hot)"></span>firing now</div>
+            <div><span class="dot" style="background: var(--oppose)"></span>silenced</div>
+            <div><span class="dot" style="background: var(--neo)"></span>overlay candidates</div>
+          </div>
+          <div class="map-gestures">
+            <span class="gesture-primary">Click = silence</span>
+            <span>Hover = inspect</span>
+            <span>⇧ drag = lasso</span>
+            <span>⌥ click = relationships</span>
+          </div>
+          <div id="tip"></div>
+        </div>
+
+        <aside class="pg-side">
+          <div class="box silence-box">
+            <h4>Silence not-this-but-that</h4>
+            <div class="side-help">
+              Pick the contrastive sentence features to remove. Smart silence uses the prompt first; the fixed set removes the whole construction.
+            </div>
+            <div class="side-preset-list silence-choice-list">
+              <button class="preset-card action-card prompt-aware-card" id="surgical-btn" type="button" title="Analyze the prompt and silence only the not-this-but-that features it is likely to use">
+                <span class="eyebrow">Recommended</span>
+                <span class="title">Smart silence for this prompt</span>
+                <span class="desc">Analyze the prompt, then silence only the not-this-but-that features it appears likely to use.</span>
+              </button>
+              <button class="preset-card side-preset" data-preset="top25" type="button">
+                <span class="eyebrow muted">Fixed set</span>
+                <span class="title">Silence all not-this-but-that features</span>
+                <span class="desc">Remove the full 25-feature construction set, even when this prompt only touches part of it.</span>
+              </button>
+            </div>
+            <div class="silence-info" id="silence-info">
+              Smart silence is usually the useful path: it finds the prompt-specific overlap, then adds those features to Currently silenced.
+            </div>
+          </div>
+
+          <div class="box">
+            <h4>Currently silenced <span class="count" id="ablated-count">0</span></h4>
+            <div class="scroll" id="ablated-list">
+              <div class="empty-note">
+                Nothing silenced yet. Click Smart silence, a feature group, a preset, or any dot on the graph.
+              </div>
+            </div>
+            <div class="row-actions">
+              <button class="danger" id="clear-ablated">Clear all</button>
+            </div>
+          </div>
+
+          <div class="box">
+            <h4>Feature groups <span class="count" id="comm-count">18</span></h4>
+            <div class="side-help">
+              Hover to highlight a group. Click any row to silence that whole group.
+            </div>
+            <div class="scroll comm-nav" id="comm-nav"></div>
+          </div>
+        </aside>
+      </div>
+    </section>
+  </div>
 
 </div>
 
