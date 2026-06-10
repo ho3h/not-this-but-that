@@ -26,7 +26,7 @@ It turns out the AI-ism doesn't live in one feature. It lives in a coalition of 
 → and the model's favourite escape — the affirmative cousin "it's more than just X. It's Y" — actually goes UP. Count everything that smells like the tic: −25%.
 → fluency intact: same length, same perplexity. Primed with "It's not a tool", the model completes the construction 89% of the time at baseline, 40% silenced.
 
-Honesty note, because it's the best part: an earlier draft claimed an 80% drop. I audited my own detector twice, and each fix revealed another escape route the model was using. The number fell; the finding got better. You can't delete a habit by deleting its grammar — the model re-expresses the intention through whatever grammar is left. Every dropped and added detection is hand-auditable in the repo.
+Honesty note, because it's the best part: an earlier draft claimed an 80% drop. I audited my own detector twice, and each fix revealed another escape route the model was using. Then I had a blinded Claude judge re-score all 1,452 generations: it agrees with my detector 88–92% — and confirms the punchline. Count anything antithesis-shaped and the neutral-prompt total barely moves. You can't delete a habit by deleting its grammar; the model re-expresses the intention through whatever grammar is left. Every receipt is in the repo.
 
 Then I built three demos that only work because everything lives in a Neo4j graph:
 
@@ -68,7 +68,7 @@ So I did the unfashionable thing: I went looking for the rest of the coalition.
 
 The AI-ism lives in twenty-five features. Two cores (negation + digital-tech, of all things) doing a third of the work each, plus twenty-three supporters that keep the kill killed while the model writes. Silence all twenty-five on 306 neutral prompts: the textbook form drops 93% (14 hits → 1); the whole negated family drops 44% (~1 in 85 by luck; nine prompts changed status, eight toward clean). The model stays fluent — it just stops pivoting every claim against a strawman.
 
-And then the twist: the model reroutes. Its favourite escape is an affirmative cousin — "it's more than just X. It's Y" — which *rises* under the kill. Count everything that smells like the tic and the net drop is 25%. You can't delete a habit by deleting its grammar; the model re-expresses the intention through whatever grammar remains. What those features really control is the model's *contrast machinery* — "but" falls from 13% of generations to 1% — and the AI-ism is just that machinery's loudest output. The graph's structural guesses at coalition membership (decoder neighbours, Leiden communities) all failed; only direct causal attribution found it. Behaviours have *coalition addresses*, and you need causal priors to find them.
+And then the twist: the model reroutes. Its favourite escape is an affirmative cousin — "it's more than just X. It's Y" — which *rises* under the kill. A blinded Claude judge, counting anything antithesis-shaped, sees the neutral total barely move. The grammar dies; the intention survives. You can't delete a habit by deleting its grammar; the model re-expresses the intention through whatever grammar remains. What those features really control is the model's *contrast machinery* — "but" falls from 13% of generations to 1% — and the AI-ism is just that machinery's loudest output. The graph's structural guesses at coalition membership (decoder neighbours, Leiden communities) all failed; only direct causal attribution found it. Behaviours have *coalition addresses*, and you need causal priors to find them.
 
 Then I built three demos on the graph: surgical de-slop (prompt ∩ coalition via Cypher), a mix-your-own-chatbot slider board (each behaviour a :Behaviour subgraph), and an audit trail where "why did the model say that?" is one MATCH query.
 
@@ -117,7 +117,7 @@ Cross-post target. Each `(n/7)` is one tweet. Thread together.
 >
 > "Imagine a world, NOT of green meadows and warm breezes, BUT of endless white..."
 >
-> The intervention designed to make the construction impossible opened with the construction. 90 gens later: nothing removed.
+> The intervention designed to make the construction impossible opened with the construction. 90 gens later: a fifth removed.
 
 ### Tweet 4 (the coalition)
 > So I tried 25 features at once.

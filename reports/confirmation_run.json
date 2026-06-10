@@ -1,0 +1,507 @@
+{
+  "prereg": {
+    "registered": "2026-06-10",
+    "coalition": [
+      347,
+      1250,
+      1608,
+      2137,
+      2184,
+      2282,
+      3223,
+      4197,
+      4516,
+      6336,
+      6759,
+      7361,
+      8530,
+      8820,
+      9606,
+      9816,
+      9909,
+      10822,
+      11864,
+      12506,
+      12524,
+      12767,
+      12898,
+      12923,
+      14401
+    ],
+    "prompts_file": "data/D2b_confirmation_prompts.json",
+    "seeds": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "max_new_tokens": 50,
+    "temperature": 0.8,
+    "top_p": 0.95,
+    "model": "it",
+    "n_pairs": 300,
+    "primary_endpoint": "family_relative_drop",
+    "pass_rule": {
+      "min_rel_drop": 0.3,
+      "max_midp": 0.05
+    },
+    "kill_rule": {
+      "rel_drop_below": 0.15,
+      "or_midp_at_least": 0.05
+    },
+    "detector": "v2 union as of 2026-06-10 (negation-mandatory revision, more-than-just cousin excluded from family)",
+    "notes": "See confirmation_prereg.md. Single analysis at n=300; no interim looks; no edits after registration."
+  },
+  "rows": [
+    {
+      "prompt_idx": 0,
+      "prompt": "Describe the first hour of a night shift at a small bakery.",
+      "seed": 0,
+      "baseline": "\n**This is the most challenging time of the day at the The Best Bakery, The Best Bakery is famous for its croissants and for selling wholesale to local cafes.\n**\n\nThe gentle hum of the ovens was replaced by the clang of pots and",
+      "ablated": "\n**This is the most challenging time of the day at the**\n**bakery.\n   \n   **The first hour is typically filled with a series of small tasks that often get overlooked,\n   and these tasks, when completed properly,"
+    },
+    {
+      "prompt_idx": 0,
+      "prompt": "Describe the first hour of a night shift at a small bakery.",
+      "seed": 1,
+      "baseline": "\n**Layout:** \n   - Setting: Inside a small bakery in a neighborhood.\n   \n   - Time: 10:00 PM - 11:00 PM\n   \n   - Characters: \n      ",
+      "ablated": "\n**Layout:** \n   - Setting: Inside a small bakery in a neighborhood.\n   \n   - Time: 10:00 PM - 11:00 PM\n   \n   - Characters: \n      "
+    },
+    {
+      "prompt_idx": 0,
+      "prompt": "Describe the first hour of a night shift at a small bakery.",
+      "seed": 2,
+      "baseline": "\n** \n**\n \n \n**\n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n",
+      "ablated": "\n** \n**\n \n \n**\n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n"
+    },
+    {
+      "prompt_idx": 0,
+      "prompt": "Describe the first hour of a night shift at a small bakery.",
+      "seed": 3,
+      "baseline": "\n \n**The night shift was quiet at the\\`The night shift was quiet at the beginning, the aroma of fresh yeast was everywhere, but no one else was there. The scent of vanilla and cinnamon was so potent that it was almost intoxicating",
+      "ablated": "\nThe aroma of yeast bread permeates the air, mixing with the metallic aroma of the mixer. The scent is intoxicating to many, a welcome comfort to some, while others might find the aroma overwhelming.  \n \nThis morning's plan"
+    },
+    {
+      "prompt_idx": 0,
+      "prompt": "Describe the first hour of a night shift at a small bakery.",
+      "seed": 4,
+      "baseline": "\n \n**What's the mood? \n* What's the setup of the bakery?\n* How is the staff interacting with each other?\n\n* What are the tasks that need to be completed?\n* Is there",
+      "ablated": "\n \n**What's the mood? \n* What's the setup of the bakery?\n* How is the staff interacting with each other?\n\n* What are the tasks that need to be completed?\n* Is there"
+    },
+    {
+      "prompt_idx": 0,
+      "prompt": "Describe the first hour of a night shift at a small bakery.",
+      "seed": 5,
+      "baseline": "\n \n**Let'\ns get baking! \n \nThe aroma of sweet pastry and coffee wafted from the window, a siren song to the sleepy city.  At 2:00 a.m., the bakery doors",
+      "ablated": "\n \n**Let'\ns get baking! \n \nThe aroma of sweet pastry hung heavy in the air as the morning sun began to fade, the evening sky turning a dark blue, the last of the warmth beginning to fade."
+    },
+    {
+      "prompt_idx": 1,
+      "prompt": "Explain how a community garden assigns and maintains its plots.",
+      "seed": 0,
+      "baseline": "\n \n A community garden is a great way to connect with neighbors, learn about gardening, and enjoy fresh produce. But the process of assigning and maintaining plots can be confusing. Here'\n  \n  \n  \n**Assigning Plots:**",
+      "ablated": "\n \n A community garden is a great way to connect with neighbors and grow your own food. Community gardens are often governed by rules that dictate how to maintain the garden. These rules often involve assigning specific plots to members. How is this done?"
+    },
+    {
+      "prompt_idx": 1,
+      "prompt": "Explain how a community garden assigns and maintains its plots.",
+      "seed": 1,
+      "baseline": "\n \n Community gardens are often designed to serve the needs of the community. Community gardens often have a history of sharing resources amongst community members.  But how does a community garden define its plot size, define its allocation process, and maintain the plots",
+      "ablated": "\n \n Community gardens are often designed to serve the needs of the community by providing access to fresh produce, social interaction, and community connection. To ensure that everyone has access to a plot and that the garden remains a vibrant space for all members to"
+    },
+    {
+      "prompt_idx": 1,
+      "prompt": "Explain how a community garden assigns and maintains its plots.",
+      "seed": 2,
+      "baseline": "\n \n The following are some ideas that might be helpful for your response:\n  * Defining community gardens\n  \n  * Types of community gardens\n  \n  * Defining the process of assigning and maintaining plots\n  \n  * Community",
+      "ablated": "\n \n The following are some important factors to consider in creating a community garden:\n  \n  **Factors to Consider:**\n  \n  * **Community needs:** Are there gaps in food access in the community? Are there specific crops that"
+    },
+    {
+      "prompt_idx": 1,
+      "prompt": "Explain how a community garden assigns and maintains its plots.",
+      "seed": 3,
+      "baseline": "\n \n**Community garden types:**\n\n* Community Garden (traditional): Plots are assigned to individuals, families, or community groups through a process of sign-up, waitlists, and sometimes lottery draws.\n    \n* Permaculture Community",
+      "ablated": "\n \n**Community garden types:**\n\n* Community Garden (traditional): Plots are assigned to individuals based on a waiting list.\n    \n* Cooperative Garden (co-operative): Members develop their own rules for plot assignment.\n\n* Shared Garden"
+    },
+    {
+      "prompt_idx": 1,
+      "prompt": "Explain how a community garden assigns and maintains its plots.",
+      "seed": 4,
+      "baseline": "\n \n**What are some common community garden models?\n \n**Are there any downsides to a community garden model?\n \n**What are some ways to ensure fairness and equity in a community garden?\n \n**How do",
+      "ablated": "\n \n**What are some common community garden models?\n \n**Are there any downsides to a community garden model?\n \n**What are some ways to ensure fairness in community garden allocation?\n \n**Is there a model"
+    },
+    {
+      "prompt_idx": 1,
+      "prompt": "Explain how a community garden assigns and maintains its plots.",
+      "seed": 5,
+      "baseline": "\n \n \n**Options:**\n \n    A.  The community assigns roles to individuals and assigns plots based on skill and experience.\n    B.  The community decides on a lottery or random draw for plot assignment.\n    ",
+      "ablated": "\n \n \n**Options:**\n \n    A.  The community assigns roles to individuals based on their skills, experience, and time availability. \n    B.  The community decides through a voting process for available plots.\n"
+    },
+    {
+      "prompt_idx": 2,
+      "prompt": "Sketch a portrait of a ferry deckhand on a morning commuter run.",
+      "seed": 0,
+      "baseline": "\n\n**This is the most challenging aspect of this prompt.**\n\n**I'd like you to focus on details that show the human side of the passenger. The details you give should be subtle, yet reveal a lot about the person's life",
+      "ablated": "\n\n**This is the most challenging aspect of this prompt.**\n\n**I'd like you to focus on details that show the human side of the passenger.\n \n**Details that go beyond the casual passenger, highlighting moments of hope, fear"
+    },
+    {
+      "prompt_idx": 2,
+      "prompt": "Sketch a portrait of a ferry deckhand on a morning commuter run.",
+      "seed": 1,
+      "baseline": "\n\n**Layout & Details:**\n\n*   **Style:** Realistic, with a bit of impressionism to capture the sun's light on his face.\n*   **Perspective:**  Wide-angle, showing a glimpse of the busy harbor and",
+      "ablated": "\n\n**Layout:**\n\n*   The image is a single scene, with a cityscape in the background.\n*   Focus on the face of the man, with a slight tilt to the right.\n*   The background is busy with ferries leaving"
+    },
+    {
+      "prompt_idx": 2,
+      "prompt": "Sketch a portrait of a ferry deckhand on a morning commuter run.",
+      "seed": 2,
+      "baseline": "\n\n**Sketching Techniques:**\n\n1. **Basic Shapes:** Start with simple shapes to guide your composition. A slightly curved oval for the head, a slightly curved line for the shoulders, and an angular rectangle for the body.\n2.**",
+      "ablated": "\n\n**Description:**\n\n**Physical Description:** \n* A man in his 20s.\n* Well-muscled from years of working on ferries.\n* Wiping down the rail with a damp cloth.\n* Sun-"
+    },
+    {
+      "prompt_idx": 2,
+      "prompt": "Sketch a portrait of a ferry deckhand on a morning commuter run.",
+      "seed": 3,
+      "baseline": "\n\nI'm trying to capture the quiet dignity of his demeanor, even as he surveys the vast expanse of the river.\n \n**Rendering Techniques:**\n- Focus on capturing the subtle complexities of a face painted by time and experience.\n",
+      "ablated": "\n\nI'm trying to capture the quiet dignity of his demeanor as he surveys the sunrise.\n\nThis is a realistic style of painting\n \n**Details:**\n\n*   The man's silhouette against the sunrise\n*   A wrinkled face"
+    },
+    {
+      "prompt_idx": 2,
+      "prompt": "Sketch a portrait of a ferry deckhand on a morning commuter run.",
+      "seed": 4,
+      "baseline": "\n\nThe sun is beginning to rise, casting a faint glow across the water. A sky of brilliant lavender and orange is just beginning to rise above the horizon. The water is calm and the sails are full.\n \nThe ferry deckhand,",
+      "ablated": "\n\nThe sun is beginning to rise, casting a faint glow across the water. A sky of brilliant lavender-blue appears just above the water's edge. The water is calm, with the faint outline of passing boats. \n \nThe"
+    },
+    {
+      "prompt_idx": 2,
+      "prompt": "Sketch a portrait of a ferry deckhand on a morning commuter run.",
+      "seed": 5,
+      "baseline": "\n \n**Details:**\n* **Age:** 30s\n* **Gender:** Male\n***Appearance:**\n* Gray-streaked hair, slicked back and styled in a single swoop. \n* Rough, call",
+      "ablated": "\n \n**Details:**\n* **Age:** 30s\n* **Gender:** Male\n***Appearance:**\n* Gray-streaked hair, slicked back with a small amount of gel. A few scraggly hairs"
+    },
+    {
+      "prompt_idx": 3,
+      "prompt": "Walk through how a public swimming pool opens for the day.",
+      "seed": 0,
+      "baseline": "\n\n**Morning Begins:**\n\n* **6:00 AM:** The team arrives at the pool. They may be comprised of lifeguards, maintenance staff, administrative staff, and potentially cleaning staff.\n**\n**Preparations & Setup:**\n\n",
+      "ablated": "\n\n**Morning Begins:**\n\n* **6:00 AM:** The team arrives at the pool for the morning shift.  Staff members gather to discuss the plan for the day, check on supplies (like towels for use throughout the day) and"
+    },
+    {
+      "prompt_idx": 3,
+      "prompt": "Walk through how a public swimming pool opens for the day.",
+      "seed": 1,
+      "baseline": "\n\n**1. \n   Morning Prep:\n   \n   - Arrive at the pool early. (around 8:00 am for a 9:00 am opening).\n   - Check pool water temperature. \n   ",
+      "ablated": "\n\n**1. \n   Morning Prep:\n   \n   - Arrive at the pool early. (around 8:00 am for a 9:00 am opening).\n   - Check pool water temperature. \n   "
+    },
+    {
+      "prompt_idx": 3,
+      "prompt": "Walk through how a public swimming pool opens for the day.",
+      "seed": 2,
+      "baseline": "\n\n**Morning at the Pool:**\n\n* **Early Arrival:** \n    *  Staff arrives at the pool to check on equipment, water levels, and make sure the pool is clean and safe.\n    \n* **Initial Prep:**\n",
+      "ablated": "\n\n**Morning at the Pool:**\n\n* **Early Arrival:** \n    *  Staff arrives at 7:00 am to prepare the pool for the day. \n    \n* **Pre-Opening Procedures:**\n    * **"
+    },
+    {
+      "prompt_idx": 3,
+      "prompt": "Walk through how a public swimming pool opens for the day.",
+      "seed": 3,
+      "baseline": "\n\n**Morning:**\n\n* **7:00 AM:** The lifeguard's schedule starts at 7:00 AM. The staff arrives at the pool and begins their pre-opening tasks:\n    * **Cleaner:** Checks for",
+      "ablated": "\n\n**Morning:**\n\n* **7:00 AM:** The lifeguard's schedule starts at 7:00 AM. The staff arrives at the pool to set up the pool equipment:  \n    * Check equipment:** Ensure all"
+    },
+    {
+      "prompt_idx": 3,
+      "prompt": "Walk through how a public swimming pool opens for the day.",
+      "seed": 4,
+      "baseline": "\n \n**Early Morning Prep:**\n* \n* **7:00 AM:**  Pool staff arrives at the pool and begin setting up for the day. \n* **7:15 AM:**  **First Tasks:**",
+      "ablated": "\n \n**Early Morning Prep:**\n* \n* **7:00am:**  Pool staff arrive at the pool to begin the day's tasks. \n* **7:15am:**  **First Tasks:**"
+    },
+    {
+      "prompt_idx": 3,
+      "prompt": "Walk through how a public swimming pool opens for the day.",
+      "seed": 5,
+      "baseline": "\n \n**Morning**\n \n1. \n \n**Opening Day:** \n    \n   *   \n   \n   \n  \n   \n   \n   \n   \n   \n   \n   \n   \n   ",
+      "ablated": "\n \n**Morning**\n \n1. \n \n   -  \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   "
+    },
+    {
+      "prompt_idx": 4,
+      "prompt": "Reflect on what makes a neighbourhood hardware store endure.",
+      "seed": 0,
+      "baseline": "\n\nFor many people, a local hardware store is more than just a place to buy tools and hardware. It's a community hub, a place of knowledge, and a reminder of a time when service was paramount. \n  \nHere are",
+      "ablated": "\n\nFor many people, a local hardware store is more than just a place to buy tools. It's a testament to the human spirit of community, a source of information about the local landscape, and a platform for personal connections. The enduring success"
+    },
+    {
+      "prompt_idx": 4,
+      "prompt": "Reflect on what makes a neighbourhood hardware store endure.",
+      "seed": 1,
+      "baseline": "\n\n## The Heartland of Community: What Makes a Hardware Store Last?\n\nThe hum of saws, the clink of hammers, the scent of sawdust - those are the hallmarks of a neighborhood hardware store. They're more than just shops;",
+      "ablated": "\n\n## The Heartland of Community: What Makes a Hardware Store Last?\n\nThe smell of pine aroma hangs heavy in the air. A handwritten sign on the old window displays \"Just Fix It.\" Inside, a plethora of tools gleam like beacons of ingenuity"
+    },
+    {
+      "prompt_idx": 4,
+      "prompt": "Reflect on what makes a neighbourhood hardware store endure.",
+      "seed": 2,
+      "baseline": " \n \nThe charm of a neighborhood hardware store goes beyond just selling tools and hardware. It's about creating a community space. \n \nHere are some factors that make a neighborhood hardware store endure:\n  \n* **Community",
+      "ablated": " \n \nThe charm of a neighborhood hardware store goes beyond just selling tools.  It's the embodiment of community itself.  \n \nHere are some aspects that make a neighborhood hardware store endure:\n \n* **Personal Relationships"
+    },
+    {
+      "prompt_idx": 4,
+      "prompt": "Reflect on what makes a neighbourhood hardware store endure.",
+      "seed": 3,
+      "baseline": "\n\n**The Community Hub:**\n\n**1.  Familiar Faces:**  Friendly, knowledgeable staff, and a dedication to service foster a sense of community.\n  - Think of small-scale businesses with a strong sense of community identity and local pride",
+      "ablated": "\n\n**The Community Hub:**\n\n**1.  Familiar Faces:**  Friendly staff who know their customers' names, who remember their needs, even if they haven't been in for a while.  \n   - This fosters a sense of"
+    },
+    {
+      "prompt_idx": 4,
+      "prompt": "Reflect on what makes a neighbourhood hardware store endure.",
+      "seed": 4,
+      "baseline": " \n \nWhat's the key to success?\n \nDiscuss the challenges faced by these stores and how they overcome them.\n \nDiscuss the role of technology in the future of hardware stores.\n \n**Key Aspects to",
+      "ablated": " \n \nWhat's the key to success?\n \nDiscuss the challenges faced by these stores in a modern world driven by discount chains.\n \nUltimately, neighborhood hardware stores are more than just retailers. They are integral parts of"
+    },
+    {
+      "prompt_idx": 4,
+      "prompt": "Reflect on what makes a neighbourhood hardware store endure.",
+      "seed": 5,
+      "baseline": "\n \n**Let's examine the factors that distinguish a successful and enduring neighborhood hardware store. \n \n**Factors that Drive Longevity:**\n  \n* **Community Engagement:** \n    * Understanding local needs: Expertise in specific areas",
+      "ablated": "\n \n**Let's examine the factors that distinguish a successful neighborhood hardware store from a fading one:**\n \n**1. Community-Driven Approach:**\n* **Personal Touch:** Friendly employees who know customers' names.\n    \n"
+    },
+    {
+      "prompt_idx": 5,
+      "prompt": "Describe the atmosphere of a laundromat on a Sunday evening.",
+      "seed": 0,
+      "baseline": "\n\nThe door to the laundromat hummed open, sending a wave of heat from the dryer vents into the chilly evening. Inside, the humid scent of detergent and laundry soap mingled with the faint aroma of coffee. The sun, now high in the",
+      "ablated": "\n\nThe door to the laundromat hummed open with a click of a latch, sunlight spilling through the dust-streaked windows like spilled paint. A low hum of the machines started to fade, replaced by the low hum of conversation. \n"
+    },
+    {
+      "prompt_idx": 5,
+      "prompt": "Describe the atmosphere of a laundromat on a Sunday evening.",
+      "seed": 1,
+      "baseline": "\n\n**Layout & Design:**\n\nThe air is thick with the scent of detergent and wet laundry. The machines hum softly, their rhythmic patterns echoing throughout the room. Sunlight streams through the windows, casting a soft glow on the floors. The air is",
+      "ablated": "\n\n**Layout:**\n*   The lights are dim, a few spotlights are on some machines.\n*   The floors are slick with leftover moisture from the wash cycle.\n*   The air is thick with the scent of detergent.\n*"
+    },
+    {
+      "prompt_idx": 5,
+      "prompt": "Describe the atmosphere of a laundromat on a Sunday evening.",
+      "seed": 2,
+      "baseline": "\n\n**Here's a description of the layout and what you might see:**\n\nThe bright exterior lights cast a warm glow on a seemingly endless line of washers and dryers. Inside, the air smells like detergent and laundry. A gentle hum from the",
+      "ablated": "\n\n**Here's a description of the layout of a laundromat:**\n\n*  Two rows of washers ranging from small to large.\n*  Two rows of dryers.\n*  Clean, sanitized, bright, and minimalist layout.\n"
+    },
+    {
+      "prompt_idx": 5,
+      "prompt": "Describe the atmosphere of a laundromat on a Sunday evening.",
+      "seed": 3,
+      "baseline": "\n\nThe air is thick with the scent of detergent and fabric softener, a potent, synthetic aroma that blends with the scent of freshly laundered clothes. The sound of humming dryers fills the room, their rhythmic whirring like a lullaby to the evening",
+      "ablated": "\n\nThe air is thick with the scent of detergent, fabric softener, and the lingering scent of laundry detergent. It's a mix of floral musk with the powdery scent of detergent. The low hum of the dryers seems to blend with the distant sound"
+    },
+    {
+      "prompt_idx": 5,
+      "prompt": "Describe the atmosphere of a laundromat on a Sunday evening.",
+      "seed": 4,
+      "baseline": "\n\nThe sun has dipped below the horizon, painting the sky with vibrant hues of deep purple and orange. The chill of dusk settles in, swirling with the smell of freshly washed clothes. Inside the laundromat, the usual buzz of Sunday evenings sets in",
+      "ablated": "\n\nThe sun has dipped below the horizon, painting the sky with vibrant hues of deep purple. The air is cool, a reminder of the approaching winter. The only sound in the row of washers are the hum of their motors. \n \n"
+    },
+    {
+      "prompt_idx": 5,
+      "prompt": "Describe the atmosphere of a laundromat on a Sunday evening.",
+      "seed": 5,
+      "baseline": "\n \n \n**You might find some ideas like:**\n  * The smell of detergent and fabric softener.\n  * The hum of machines and the sounds of laundry tumbling.\n  * The presence of the laundromat staff.\n",
+      "ablated": "\n\nThe sun has long since set, the sky is now a deep indigo with scattered stars. Inside the small laundromat, the scent of detergent hangs heavy in the air. Soft humming from the dryers throws the light from the fluorescent bulbs across the lin"
+    },
+    {
+      "prompt_idx": 6,
+      "prompt": "Explain how a small town organises its annual agricultural show.",
+      "seed": 0,
+      "baseline": "\nWhispers of the show's success are swirling throughout the quiet town of Willow Creek.\n\nWillow Creek's annual Agricultural Show is a celebration of community, agriculture, and the vibrant spirit of its inhabitants. The annual event is held in the",
+      "ablated": "\nWhispers of the show's success are swirling throughout the quiet town of Willow Creek.\n\nWillow Creek'\n**Willow Creek Annual Agricultural Show**\nWillow Creek has a long history of celebrating its connection to agriculture. The annual Agricultural Show,"
+    },
+    {
+      "prompt_idx": 6,
+      "prompt": "Explain how a small town organises its annual agricultural show.",
+      "seed": 1,
+      "baseline": "\n## Organising a Small Town's Agricultural Show\n\nSmall towns often celebrate their connection to agriculture with annual shows that bring together families, farmers, and the community.  Organizing this event requires a team effort and a plan that helps achieve success.",
+      "ablated": "\n## Organising a Small Town's Agricultural Show\n\nSmall towns often celebrate their connection to agriculture with annual shows that bring together families for fun-filled festivities. Here's how a small town might organize its annual agricultural show:\n\n**Planning"
+    },
+    {
+      "prompt_idx": 6,
+      "prompt": "Explain how a small town organises its annual agricultural show.",
+      "seed": 2,
+      "baseline": "\n** \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n",
+      "ablated": "\n**Answer:**\n\nA small town's annual agricultural show is a chance to celebrate the hard work of its residents.  It's a celebration of community, agriculture, and agriculture-related skills. This is how one might be organized:"
+    },
+    {
+      "prompt_idx": 6,
+      "prompt": "Explain how a small town organises its annual agricultural show.",
+      "seed": 3,
+      "baseline": "\n## The Bannister Grove Agricultural Show: A Town-Wide Celebration\n\nBannister Grove, a charming town nestled in the foothills of the Blue Ridge Mountains, is known for its vibrant community and its annual agricultural show. This annual event draws residents and",
+      "ablated": "\n## The Bannister Grove Agricultural Show: A Town-Wide Celebration\n\nBannister Grove, a charming town nestled in the foothills of the Blue Ridge Mountains, is known for its vibrant community spirit. Every year during the summer months, the community gathers"
+    },
+    {
+      "prompt_idx": 6,
+      "prompt": "Explain how a small town organises its annual agricultural show.",
+      "seed": 4,
+      "baseline": "\n* What is the's main purpose?\n* What are the various events held during the festival?\n            \nLet's assume the quaint town of Oakhaven, located in the heart of the Hudson Valley, is holding its annual agricultural",
+      "ablated": "\n* What is the's main purpose?\n* What are the various events held during the festival?\n            \nLet's assume the quaint town of Oakhaven, located in the heart of the Hudson Valley region of New York, with"
+    },
+    {
+      "prompt_idx": 6,
+      "prompt": "Explain how a small town organises its annual agricultural show.",
+      "seed": 5,
+      "baseline": "\n## Organising a Show in a Small Town: A Showcasing of Hard Work and Community\n\nA small town's annual agricultural show is a unique celebration of the town's agricultural heritage and its community'\n**Planning and Logistics:**\n\n",
+      "ablated": "\n## Organising a Show in a Small Town\n\nA small town's annual agricultural show is a testament to the community's connection to its agricultural heritage. The show is an important cultural event that brings together families for a day of fun."
+    },
+    {
+      "prompt_idx": 7,
+      "prompt": "Discuss the role of a crossing guard in a school's morning routine.",
+      "seed": 0,
+      "baseline": "\n**Role of a Crossing Guard in a School's Morning Routine**\n\nCrossing guards are essential components of a school's morning routine, ensuring the safety of students as they walk to school. Their role extends beyond simply directing traffic; they are",
+      "ablated": "\n**Role of a Crossing Guard in a School's Morning Routine**\n\nCrossing guards are essential components of a school's morning routine, ensuring the safety of students as they walk to school. Their role extends beyond simply directing traffic. Here'"
+    },
+    {
+      "prompt_idx": 7,
+      "prompt": "Discuss the role of a crossing guard in a school's morning routine.",
+      "seed": 1,
+      "baseline": "\n**Crossing guards are essential in ensuring the safety of children traveling to and from school each day. They play a crucial role in the school'\ns morning routine by:\n* **Managing Traffic:** They help ensure that traffic is controlled and safe",
+      "ablated": "\n**Crossing Guards: Safe Crossing Guardians for Young Minds**\n\nCrossing guards are a vital part of a school's morning routine, ensuring safety for students as they navigate their way to classrooms. They are trained individuals tasked with ensuring the safety of children"
+    },
+    {
+      "prompt_idx": 7,
+      "prompt": "Discuss the role of a crossing guard in a school's morning routine.",
+      "seed": 2,
+      "baseline": "\n\n**Role of a Crossing Guard in a School's Morning Routine**\n\nCrossing guards are essential elements of a safe and efficient school morning routine. They play a crucial role in ensuring the safety of children as they walk to school. Here's",
+      "ablated": "\n**Role of a Crossing Guard in a School's Morning Routine**\n\nCrossing guards are essential elements of a safe school morning routine. They play a critical role in ensuring the safety of children as they cross the street.  Here's a"
+    },
+    {
+      "prompt_idx": 7,
+      "prompt": "Discuss the role of a crossing guard in a school's morning routine.",
+      "seed": 3,
+      "baseline": "\n \n**The Role of a Crossing Guard in a School's Morning Routine**\n \nCrossing guards are essential to the safety of children traveling to and from school. They play a vital role in the school's morning routine by:",
+      "ablated": "\n \n**The Role of a Crossing Guard in a School's Morning Routine**\n \nCrossing guards are essential to the safety of children traveling to school. They help ensure that children reach the school safely and that traffic follows the rules."
+    },
+    {
+      "prompt_idx": 7,
+      "prompt": "Discuss the role of a crossing guard in a school's morning routine.",
+      "seed": 4,
+      "baseline": "\n \n**Crossing guards play a vital role in keeping children safe as they navigate their way to school. Their presence helps create a structured and safe environment for children. \n \nHere are some of the duties of a crossing guard:\n",
+      "ablated": "\n \n**Crossing guards play a vital role in keeping children safe as they navigate their way to school. Their presence helps create a structured routine that minimizes risks associated with traffic.**\n\n**Responsibilities of a Crossing Guard:**\n- **Maintaining Safety:**"
+    },
+    {
+      "prompt_idx": 7,
+      "prompt": "Discuss the role of a crossing guard in a school's morning routine.",
+      "seed": 5,
+      "baseline": "\n \n A crossing guard is a person who manages traffic at a school crossing, ensuring safety for students and pedestrians. \n \n Here are some of the responsibilities of a crossing guard in a school's morning routine:\n \n",
+      "ablated": "\n \n A crossing guard is a person who manages the traffic flow around a school's designated crossing area. They help ensure the safety of students as they cross the street. They do this by directing traffic flow from the intersection. They are usually"
+    },
+    {
+      "prompt_idx": 8,
+      "prompt": "Describe what a lighthouse keeper's logbook might record in a week.",
+      "seed": 0,
+      "baseline": "\n \nLighthouse Keeper'\ns Logbook\n \nDate: \nLocation: \nWeather: \nCurrent Location: \nCurrent State of the Lighthouse: \nCurrent State of the Luminous Beacon: \nStatus",
+      "ablated": "\n \nLighthouse Keeper'\ns Logbook\n \nDate: \nLocation: \nWeather: \nCurrent Location: \nCurrent State of the Lighthouse: \nCurrent State of the Luminous Beacon: \nStatus"
+    },
+    {
+      "prompt_idx": 8,
+      "prompt": "Describe what a lighthouse keeper's logbook might record in a week.",
+      "seed": 1,
+      "baseline": "\n \n** \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n",
+      "ablated": "\n \n**Example Logbook Entries:**\n1. 14th June 2023, 10:00pm: **Current weather:  Clear with a gentle breeze. Tide: 11:00"
+    },
+    {
+      "prompt_idx": 8,
+      "prompt": "Describe what a lighthouse keeper's logbook might record in a week.",
+      "seed": 2,
+      "baseline": "\n \n**Logbook:**\n \n**Date:** \n**Weather:** \n**High Tide:** \n**Low Tide:** \n**Oil consumption:** \n**Engine Oil temperature:** \n**Cooling system:** ",
+      "ablated": "\n \n**Logbook:**\n \n**Date:** \n**Weather:** \n**High Tide:** \n**Low Tide:** \n**Oil Consumption:** \n**Engine Oil Temperature:** \n**Cooling System:** "
+    },
+    {
+      "prompt_idx": 8,
+      "prompt": "Describe what a lighthouse keeper's logbook might record in a week.",
+      "seed": 3,
+      "baseline": "\n \n**Example:**\n\n**Week \n**\n**Date:** 2023-03-02\n**Weather:** Stormy, rain, wind \n**High Tide:** 10:00 AM",
+      "ablated": "\n \n**Example:**\n\n**Week \n**\n**Date:** 2023-03-02\n**Weather:** Stormy with rain. Waves high. Winds from the north at 20 mph.\n"
+    },
+    {
+      "prompt_idx": 8,
+      "prompt": "Describe what a lighthouse keeper's logbook might record in a week.",
+      "seed": 4,
+      "baseline": "\n \n**Log Book Entry - \nDate: \nTime: \nWeather:** \n**Lighthouse:**\n**Status of Lighthouse:**\n**Operational Log:**\n   -  Lighthouse Operational Status: \n   -",
+      "ablated": "\n \n**Log Book Entry - \nDate: \nTime: \nWeather:** \n**Lighthouse:**\n**Status of Lighthouse:**\n**Operational Log:**\n   -  Lighthouse Operational Status: \n   -"
+    },
+    {
+      "prompt_idx": 8,
+      "prompt": "Describe what a lighthouse keeper's logbook might record in a week.",
+      "seed": 5,
+      "baseline": "\n \n**Log Book Log Entry - Week \nDate:  August 15th, 2023\n**\n**Current Weather Conditions:**  Clear, calm, with minimal wind\n**Lighthouse Status:**  Working",
+      "ablated": "\n \n**Log Book Log Entry - Week \nDate:  August 15th, 2023\n**\n**Current Weather Conditions:**  Clear with occasional gusting winds.\n \n**Tide:**  \n"
+    },
+    {
+      "prompt_idx": 9,
+      "prompt": "Explain how a community choir prepares for a winter concert.",
+      "seed": 0,
+      "baseline": "\n \n \n \n The journey to a winter concert begins with a shared dream: the sound of a community coming together for a joyous celebration of winter. \n \n A well-prepared community choir starts its journey with a few key",
+      "ablated": "\n \n \n \n The journey to the winter concert begins with a shared dream: the sound of a community coming together for a joyous celebration of the holidays.  This dream is realized through the dedication of the community choir.  The journey"
+    },
+    {
+      "prompt_idx": 9,
+      "prompt": "Explain how a community choir prepares for a winter concert.",
+      "seed": 1,
+      "baseline": "\n \nCommunity Choirs are often a great way to connect with others and enjoy music, but preparing for a winter concert requires a lot of work. This process requires dedicated rehearsal time, a clear vision, and a strong collaborative approach. Here'",
+      "ablated": "\n \nCommunity Choirs are often a great way to connect with others in a supportive environment. They're known for their joy and community-building spirit. \n \nLet's look at how a community choir prepares for a winter"
+    },
+    {
+      "prompt_idx": 9,
+      "prompt": "Explain how a community choir prepares for a winter concert.",
+      "seed": 2,
+      "baseline": "\n** \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n",
+      "ablated": "\n** \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n"
+    },
+    {
+      "prompt_idx": 9,
+      "prompt": "Explain how a community choir prepares for a winter concert.",
+      "seed": 3,
+      "baseline": "\n \n**Community Choir Presents: \"Winter Wonderland\"\n \n \n**Preparation Process:**\n1. **Choosing the Music:** \n   - **Survey:** Send out a survey to all members to gauge their preferences and suggest songs",
+      "ablated": "\n \n**Community Choir Presents: \"Winter Wonderland\"\n \n \n**Preparation Process:**\n1. **Choosing the Music:** \n   - **Survey Community Members:** Ask members to suggest songs they would like to sing.\n"
+    },
+    {
+      "prompt_idx": 9,
+      "prompt": "Explain how a community choir prepares for a winter concert.",
+      "seed": 4,
+      "baseline": "\n \n**What are the the key points and steps you would suggest for this process?\n \n**Note: Focus on community-based preparation, as opposed to professional or professional-level choirs.\n \n**Optional:  \n",
+      "ablated": "\n \n**What are the the key points of this process?\n \n******\n \nA Community Choir's Journey to Winter Solstice \n \nThe community choir is buzzing with anticipation for their annual winter concert."
+    },
+    {
+      "prompt_idx": 9,
+      "prompt": "Explain how a community choir prepares for a winter concert.",
+      "seed": 5,
+      "baseline": "\n \n \n**Preparation Stages:**\n**1. \nSetting Goals and Choosing Music:**\n  \n* Determine the type of music you want to perform (e.g., classical, pop, holiday-themed).\n  \n",
+      "ablated": "\n \n \n**Preparation Stages:**\n\n**1. Registration:** Open to all. Registration allows the community to see who is interested in participating.\n**2. Audition (Optional):** Optional for those who want to sing solo."
+    },
+    {
+      "prompt_idx": 10,
+      "prompt": "Walk through the steps of repairing a bicycle puncture at home.",
+      "seed": 0,
+      "baseline": "\n\n**What You Need:**\n\n* Tire pump or floor pump\n* Tire patch kit\n\nInner tube\nPatch glue or sealant\nTire levers\nInner tube removal tool\nReplacement inner tube (optional)\nClean rags\nMulti-tool (",
+      "ablated": "\n\n**What You Need:**\n\n* Tire pump with at least 20 PSI of pressure\n* Specialized tire sealant\n\n    \n**Steps**\n\n1. **Prepare the Bike:**\n   - Check for other damage.\n   -"
+    },
+    {
+      "prompt_idx": 10,
+      "prompt": "Walk through the steps of repairing a bicycle puncture at home.",
+      "seed": 1,
+      "baseline": "\n\n**Tools Needed:**\n\n* A patch kit (including a tube, sealant, and patch)**\n* Inflator\n* Tire levers\n    \n**Step 1: Locate the Problem**\n\n* Before you even begin, check the tires",
+      "ablated": "\n\n**Tools Needed:**\n\n* A patch kit (including a tube patch glue tube)**\n    \n    \n**Step 1: Prepare the bike:**\n   \n   * **Remove the tire:** If possible, remove the tire for easier"
+    },
+    {
+      "prompt_idx": 10,
+      "prompt": "Walk through the steps of repairing a bicycle puncture at home.",
+      "seed": 2,
+      "baseline": "\n\n**Tools You'll Need:**\n\n* Tire pump (pump with air valve as well as a tire lever)\n* Tire sealant\n###\n\n**Preparation:**\n\n1. Find a safe and level place to work.\n2. Prepare",
+      "ablated": "\n\n**Tools You'll Need:**\n\n* Tire pump (pump with air valve inflation gauge is best)\n* Tire patch kit (includes glue-like sealant)**\n\n* Tire levers (optional)\n    \n**Steps:**\n\n1"
+    },
+    {
+      "prompt_idx": 10,
+      "prompt": "Walk through the steps of repairing a bicycle puncture at home.",
+      "seed": 3,
+      "baseline": "\n\n**Tools:**\n\n* **Puncture kit:** Includes a small pump, tire levers, and a repair kit.\n```\n   You can buy these at most bike shops. \n   \n   If you don't have one,",
+      "ablated": "\n\n**Tools Needed:**\n\n* Tire levers\n* Tire pump\ntube repair kit (with patches)\n===\n\n**Steps:**\n\n1. **Locate the puncture:** Look for any evidence of damage in the tire's rubber layer.\n"
+    }
+  ]
+}

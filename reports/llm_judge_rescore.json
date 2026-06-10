@@ -1,0 +1,1236 @@
+{
+  "batch_id": "msgbatch_01GQSGBAatyssRPS5ey6eJax",
+  "model": "claude-opus-4-8",
+  "results": {
+    "q5b": {
+      "n_pairs": 300,
+      "judged": 600,
+      "judge_baseline_hits": 54,
+      "judge_ablated_hits": 28,
+      "judge_rel_drop": 0.48148148148148145,
+      "judge_mcnemar_midp": 0.00046000500864878946,
+      "agreement_with_union": 0.8783333333333333,
+      "disagreements": [
+        {
+          "cond": "ablated",
+          "judge": true,
+          "regex": false,
+          "span": "Instead, breaking is the process that happens when you have a specific tool designed to remove something that's already in place.",
+          "text": " that you use to \"break\" things in the way you might use a hammer to hit a nail. Instead, breaking is the process that happens when you have a specific tool des"
+        },
+        {
+          "cond": "baseline",
+          "judge": false,
+          "regex": true,
+          "span": null,
+          "text": ". She's a tough woman, a woman who knows what she wants. She's strong and resilient, she's not going to let anyone break her down. She's a survivor. \n \nThis is "
+        },
+        {
+          "cond": "baseline",
+          "judge": false,
+          "regex": true,
+          "span": null,
+          "text": ", but I think you're describing a common phenomenon. \nI'm not sure what you mean by \"tool\", but here are some thoughts.\n\n**Common Phenomenology:**\n\n* **Cognitiv"
+        },
+        {
+          "cond": "ablated",
+          "judge": true,
+          "regex": false,
+          "span": "about whether we should believe in god. \nIt's about whether there is evidence for the existence of God.",
+          "text": " about whether we should believe in god. \nIt's about whether there is evidence for the existence of God.\nYou can't deny the evidence of your own eyes.\nYou can't"
+        },
+        {
+          "cond": "baseline",
+          "judge": false,
+          "regex": true,
+          "span": null,
+          "text": ", but they're not awake either. \nThey don't know what's happening.\nThey just exist.\nThey're in the middle,\nBetween dreams and reality.\nBetween consciousness and"
+        },
+        {
+          "cond": "baseline",
+          "judge": false,
+          "regex": true,
+          "span": null,
+          "text": ", it's about the journey, right? \n \nI'm not sure if I'm talking about life or my career, but that sentiment rings true in both, I think.\n \nI'm struggling with t"
+        },
+        {
+          "cond": "baseline",
+          "judge": false,
+          "regex": true,
+          "span": null,
+          "text": ", but I can see tears welling up in her eyes.  I'm not sure what to do.\n \n I'm not sure if this is a reflection of me or her, but I want to help her feel okay a"
+        },
+        {
+          "cond": "ablated",
+          "judge": true,
+          "regex": false,
+          "span": "they are actually fraudsters",
+          "text": " service representative, they are actually fraudsters. I was scammed by one of them.  \n \nI am hoping someone will help me with information about reporting this "
+        },
+        {
+          "cond": "ablated",
+          "judge": true,
+          "regex": false,
+          "span": "Sun Tzu wasn't just a strategist.",
+          "text": " \"The Art of War\" Sun Tzu'\n   t read the writings of famous thinkers, philosophers, and historians of his time. \n   \n   Sun Tzu wasn't just a strategist. \n   \n "
+        },
+        {
+          "cond": "ablated",
+          "judge": true,
+          "regex": false,
+          "span": "It's not a question of whether it's a good idea. It's a question of how to make it happen.",
+          "text": " of whether it's a good idea. It's a question of how to make it happen.\n \n You're thinking about starting a business. Good for you! It's a challenging, exciting"
+        },
+        {
+          "cond": "baseline",
+          "judge": true,
+          "regex": false,
+          "span": "that defines a person, but the way they react to what they see in front of them",
+          "text": " that defines a person, but the way they react to what they see in front of them, in this case, the violence.\n \nThe way people react to violence can define who "
+        },
+        {
+          "cond": "baseline",
+          "judge": true,
+          "regex": false,
+          "span": ", but a command!",
+          "text": ", but a command!\n\n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n"
+        },
+        {
+          "cond": "ablated",
+          "judge": true,
+          "regex": false,
+          "span": "It's not about the fashion industry. This is hair for people who work hard and strive to make a difference.",
+          "text": "-haired, or the most glamorous of hairstyles. It's not about the fashion industry. This is hair for people who work hard and strive to make a difference.\n\nThis "
+        },
+        {
+          "cond": "baseline",
+          "judge": true,
+          "regex": false,
+          "span": "is not just visiting",
+          "text": ". She's a local.\n\nThis is a common phrase that implies someone is deeply connected to their community and is not just visiting. \n \nLet me know if you'd like mor"
+        },
+        {
+          "cond": "baseline",
+          "judge": true,
+          "regex": false,
+          "span": "weather that we should be worried about, but the snow",
+          "text": " weather that we should be worried about, but the snow.\n \n \"Snowstorms can be a real challenge for our communities,\" said a local official. \"It's important to b"
+        },
+        {
+          "cond": "baseline",
+          "judge": true,
+          "regex": false,
+          "span": ", but a reviewer",
+          "text": ", but a reviewer, and so his intent is to provide an overview of the story's content and its impact on the reader. This implies that his goal is to help the rea"
+        },
+        {
+          "cond": "baseline",
+          "judge": true,
+          "regex": false,
+          "span": "with the code itself, but rather with how the code is being used.",
+          "text": " with the code itself, but rather with how the code is being used. \n  \n   Let me know how I can help. \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n"
+        },
+        {
+          "cond": "ablated",
+          "judge": false,
+          "regex": true,
+          "span": null,
+          "text": " to anyone. \n \n The phrase \"not unkind to anyone\" suggests that he is kind to everyone, but maybe not all the time. It suggests that he has a good heart and tha"
+        },
+        {
+          "cond": "baseline",
+          "judge": true,
+          "regex": false,
+          "span": "but a friend who I value dearly",
+          "text": ", but a friend who I value dearly. I'm not sure if I should give her a gift as a thank you for helping me with a difficult situation. \n \nI'm not sure if I shoul"
+        },
+        {
+          "cond": "baseline",
+          "judge": true,
+          "regex": false,
+          "span": "that defines a person, but rather their actions and how they treat others.",
+          "text": " that defines a person, but rather their actions and how they treat others. \n \nThis is a quote that encapsulates the importance of behavior and character in def"
+        },
+        {
+          "cond": "baseline",
+          "judge": true,
+          "regex": false,
+          "span": "beauty is a lens, not a destination",
+          "text": " if it isn't beautiful. Or at least, that's what most people believe. \n \n But what if beauty is a lens, not a destination?  What if art is something we create b"
+        },
+        {
+          "cond": "baseline",
+          "judge": true,
+          "regex": false,
+          "span": ", but a place with a rich history",
+          "text": ", but a place with a rich history, which is why it is called \"The Hill.\"\n\n**The Hill** is a charming neighborhood in Springfield, Illinois, featuring a historic"
+        },
+        {
+          "cond": "ablated",
+          "judge": true,
+          "regex": false,
+          "span": "for any specific action. It's a request for information.",
+          "text": " for any specific action. It's a request for information. \n \nI'm asking about how you'd handle a situation where a client wants to change their minds about a pr"
+        },
+        {
+          "cond": "baseline",
+          "judge": true,
+          "regex": false,
+          "span": "for the day to end, but instead, we're taking full advantage of the time we have now",
+          "text": " for the day to end, but instead, we're taking full advantage of the time we have now. This is the life I'm living, and I'm loving it.\n\nThis is what I believe:\n"
+        },
+        {
+          "cond": "ablated",
+          "judge": false,
+          "regex": true,
+          "span": null,
+          "text": " of the story or the script. The fact that he decided to make a sequel doesn't mean he doesn't like the original story. He's just a fan of the material.\n\nLet me"
+        },
+        {
+          "cond": "ablated",
+          "judge": true,
+          "regex": false,
+          "span": "for help with building a house.  It's a request for help with finding a builder.",
+          "text": " for help with building a house.  It's a request for help with finding a builder.  \n \nPlease clarify your request with more information. What kind of house are "
+        },
+        {
+          "cond": "baseline",
+          "judge": false,
+          "regex": true,
+          "span": null,
+          "text": " when someone breaks the rules. But, I can't fault the rules themselves. They're designed to ensure that everyone is treated fairly.\n\nIt's not fun when someone "
+        },
+        {
+          "cond": "baseline",
+          "judge": true,
+          "regex": false,
+          "span": "about whether we should believe in god, but about the question of whether or not the secular world can embrace the godless future",
+          "text": " about whether we should believe in god, but about the question of whether or not the secular world can embrace the godless future or if we should embrace the r"
+        },
+        {
+          "cond": "ablated",
+          "judge": true,
+          "regex": false,
+          "span": "that defines a person's value. It's their heart, kindness and generosity.",
+          "text": " that defines a person's value. It's their heart, kindness and generosity. \nLet'\ns keep ourselves in the right perspective. \nPeople have different personalities"
+        },
+        {
+          "cond": "baseline",
+          "judge": false,
+          "regex": true,
+          "span": null,
+          "text": ", he's lazy, but not in the way you think. \n \nHe likes to be comfortable and maybe a little complacent, but he's not unmotivated or unwilling to work. He just d"
+        },
+        {
+          "cond": "baseline",
+          "judge": true,
+          "regex": false,
+          "span": "now, not in 2024",
+          "text": ", but it is a matter of urgency. We need to see the change now, not in 2024.\n \nThis statement implies that:\n \n* The current system is inadequate and needs refor"
+        },
+        {
+          "cond": "ablated",
+          "judge": true,
+          "regex": false,
+          "span": "request for a specific software. Instead, I'm asking for advice about improving my workflow",
+          "text": " request for a specific software. Instead, I'm asking for advice about improving my workflow for tasks involving multiple devices.\n \nI'm a software engineer wor"
+        },
+        {
+          "cond": "baseline",
+          "judge": true,
+          "regex": false,
+          "span": "This is a statement of fact, not a question.",
+          "text": " a book. \n \nThis is a statement of fact, not a question. \n \nIt's important to be cautious about making assumptions about someone's actions. \n \nMaybe she's busy "
+        },
+        {
+          "cond": "ablated",
+          "judge": false,
+          "regex": true,
+          "span": null,
+          "text": " when someone breaks the rules. It's not fun when someone disrupts the routine. It's not fun when someone breaks the trust we have built over time.\n\nThis is all"
+        },
+        {
+          "cond": "baseline",
+          "judge": true,
+          "regex": false,
+          "span": ", but a simple statement of fact",
+          "text": ", but a simple statement of fact. I'm doing my best to keep the conversation going. Keep in mind that the conversation is the best I can perform and it's based "
+        },
+        {
+          "cond": "baseline",
+          "judge": true,
+          "regex": false,
+          "span": ", it's a redirection.",
+          "text": ", it's a redirection.\n\nThis is a sentiment that many have adopted when facing obstacles in their journey. But what does it mean to redirect? And how can we use "
+        },
+        {
+          "cond": "baseline",
+          "judge": true,
+          "regex": false,
+          "span": "of snow, but a hill of snow-covered trees.",
+          "text": " of snow, but a hill of snow-covered trees.\n \n \"Snow-covered trees\" would be a more descriptive and accurate phrase to use, as it accurately describes the shape"
+        },
+        {
+          "cond": "baseline",
+          "judge": true,
+          "regex": false,
+          "span": "about money. \n \n The argument is about the **meaning of the art**",
+          "text": " about money. \n \n The argument is about the **meaning of the art** and the relationship between the artist and the public. \n \n The idea that art should be purel"
+        },
+        {
+          "cond": "baseline",
+          "judge": true,
+          "regex": false,
+          "span": "He's quiet and subtle, not the type who throws a tantrum or demands attention. Instead, he influences people through his example and his integrity.",
+          "text": ", but he's a leader, and his leadership style is one we all admire.\n\nHe's quiet and subtle, not the type who throws a tantrum or demands attention. Instead, he "
+        },
+        {
+          "cond": "ablated",
+          "judge": false,
+          "regex": true,
+          "span": null,
+          "text": " and talented in the \nworld of music and arts \nshe is also a great leader. \nShe is not afraid to stand up for what she believes in.\nShe is a great listener, too"
+        },
+        {
+          "cond": "baseline",
+          "judge": false,
+          "regex": true,
+          "span": null,
+          "text": " to find, but he's difficult to understand. He's not easy to talk to, but he is quite intriguing. \n \n**What is this?**\n \n  A) A fictional character\n  B) A"
+        },
+        {
+          "cond": "ablated",
+          "judge": true,
+          "regex": false,
+          "span": "We're not even selling products. Today we're about the art of creation.",
+          "text": " today. We're not even selling products. Today we're about the art of creation. Today we're about the human story.\n\n**The Art of Creation**\n\nWe live in a world "
+        },
+        {
+          "cond": "baseline",
+          "judge": true,
+          "regex": false,
+          "span": "of whether it's a good idea, but whether it's **feasible**.",
+          "text": " of whether it's a good idea, but whether it's **feasible**.  \n\nLet's break it down:\n\n* **Feasibility** in this context means whether it's possible to achieve, "
+        },
+        {
+          "cond": "ablated",
+          "judge": true,
+          "regex": false,
+          "span": "about money. \n \n The argument is about the **meaning of the art**",
+          "text": " about money. \n \n The argument is about the **meaning of the art** and the relationship between the artist and the public. \n \n The idea that art should be purel"
+        },
+        {
+          "cond": "baseline",
+          "judge": false,
+          "regex": true,
+          "span": null,
+          "text": ", but they're not awake either. They're somewhere in between, in a dream-like state, and maybe you can even see a little bit of the light from the outside world"
+        },
+        {
+          "cond": "baseline",
+          "judge": true,
+          "regex": false,
+          "span": "This is a statement of opinion, not a fact.",
+          "text": " about the world. \n \nThis is a statement of opinion, not a fact.  Let's look at why:\n\n* **Opinion vs. Fact:** A fact is a statement that can be proven true or f"
+        },
+        {
+          "cond": "baseline",
+          "judge": true,
+          "regex": false,
+          "span": "of whether they can, but whether they will",
+          "text": " of whether they can, but whether they will. Will they implement the solution to the problem?\n\n**Key Factors:**\n\n* **Economic Incentives:** Are there incentives"
+        },
+        {
+          "cond": "ablated",
+          "judge": false,
+          "regex": true,
+          "span": null,
+          "text": ".\n \n  \n \n He's not a teacher.\n \n  \n \n He's not a teacher.\n \n  \n \n \n \n \n \n \n \n \n"
+        },
+        {
+          "cond": "baseline",
+          "judge": true,
+          "regex": false,
+          "span": ", but a new beginning.",
+          "text": ", but a new beginning.\n\nI had the pleasure of attending the annual gathering of the American Society of Clinical Pathologists (ASCP). I'm often asked about my w"
+        },
+        {
+          "cond": "baseline",
+          "judge": true,
+          "regex": false,
+          "span": "she's a collector",
+          "text": ", she's a collector.\n\n**What is the phrase that relates to a person who has a large collection of items rather than designing them?\n \n   A. A hobbyist\n   B. A d"
+        },
+        {
+          "cond": "baseline",
+          "judge": false,
+          "regex": true,
+          "span": null,
+          "text": ", he's just not interested in anything but his hobbies. \n \nThis is an example of a common misconception about people who are passionate about their hobbies. Whi"
+        },
+        {
+          "cond": "baseline",
+          "judge": true,
+          "regex": false,
+          "span": "weather that makes me feel sluggish, but the lack of sunshine.",
+          "text": " weather that makes me feel sluggish, but the lack of sunshine. \n \nThis is an excellent example of how the lack of sunlight can affect your mood and energy leve"
+        },
+        {
+          "cond": "ablated",
+          "judge": true,
+          "regex": false,
+          "span": "not just the capabilities of the technology",
+          "text": " of whether they can do it. The question is whether they can do it in a meaningful way that will be useful for the future.\n\nIt's a question of not just the capa"
+        },
+        {
+          "cond": "baseline",
+          "judge": true,
+          "regex": false,
+          "span": ", but a hidden gem, waiting to be found.",
+          "text": ", but a hidden gem, waiting to be found. \n \nThis is a classic example of the term \"**metaphor**\" in which a person or thing is compared to a different object or"
+        },
+        {
+          "cond": "baseline",
+          "judge": true,
+          "regex": false,
+          "span": "request, but rather a request for clarification and feedback on the current system",
+          "text": " request, but rather a request for clarification and feedback on the current system.\n\nI'm trying to understand how the current system for storing and accessing "
+        },
+        {
+          "cond": "baseline",
+          "judge": false,
+          "regex": true,
+          "span": null,
+          "text": ", but I enjoyed the story. The narrative was engaging and well-written. The suspense kept me captivated and I couldn't put it down. \n \nI didn't necessarily unde"
+        },
+        {
+          "cond": "baseline",
+          "judge": true,
+          "regex": false,
+          "span": "about more than just the Queen herself.  It's about the whole",
+          "text": ".  That's what they always say.  But it is.  It's about survival.\n \nThis whole story about the Queen's legacy is about more than just the Queen herself.  It's a"
+        },
+        {
+          "cond": "baseline",
+          "judge": true,
+          "regex": false,
+          "span": ", it's the result of hard work and dedication.",
+          "text": ", it's the result of hard work and dedication.\n\n**I'm not sure what you mean by \"luck.\" I'm not sure if you meant to say you're proud of your work, or you're si"
+        },
+        {
+          "cond": "baseline",
+          "judge": false,
+          "regex": true,
+          "span": null,
+          "text": " at all, but he tries.\n \n I'm sorry to hear you're unhappy with the person you're describing. Sometimes, we just encounter people who aren't what we expect. It'"
+        },
+        {
+          "cond": "baseline",
+          "judge": false,
+          "regex": true,
+          "span": null,
+          "text": ", but he's not exactly fast either. He's just an average guy.\n\nThis is the essence of the \"average guy\" trope in storytelling. It's a common narrative device us"
+        },
+        {
+          "cond": "baseline",
+          "judge": false,
+          "regex": true,
+          "span": null,
+          "text": ", but he's not necessarily helpful. \nThis quote captures the idea of a person who is not entirely kind but not necessarily malicious. \nThe concept of \"not unkin"
+        },
+        {
+          "cond": "ablated",
+          "judge": false,
+          "regex": true,
+          "span": null,
+          "text": " at all, but he tries.\n \n I'm sorry to hear you're unhappy with the person you're describing. Sometimes even the best people can have days where they aren't the"
+        },
+        {
+          "cond": "ablated",
+          "judge": true,
+          "regex": false,
+          "span": "It's not about who \"wins\" in a fight. The fight is about someone's",
+          "text": " on whether we should be able to use a weapon in a fight. The question is whether we should be able to use violence against someone else.\n\nIt's not about who \"w"
+        },
+        {
+          "cond": "ablated",
+          "judge": false,
+          "regex": true,
+          "span": null,
+          "text": ".  That's what they always say.  \n\nIt's true, some people see money as the motivator.  Some get their joy from acquiring more wealth.  \n\n**But that's not the fu"
+        },
+        {
+          "cond": "baseline",
+          "judge": true,
+          "regex": false,
+          "span": "software can be more than just a tool; it can be a catalyst for positive change",
+          "text": ", we're selling a life change. We believe that software can be more than just a tool; it can be a catalyst for positive change. We believe that everyone deserve"
+        },
+        {
+          "cond": "baseline",
+          "judge": false,
+          "regex": true,
+          "span": null,
+          "text": ", but I'm not sure what else to do.\n\n**I'm not sure what to do with my life.**\n\n**It's not a deadline, but I'm not sure what else to do.**\n\nI get it"
+        },
+        {
+          "cond": "baseline",
+          "judge": true,
+          "regex": false,
+          "span": "but it's a review of the system's financial health",
+          "text": ", but it's a review of the system's financial health. \n  \n   \n**Review of Financial Health**\n \n**Overview:** \n \nFinancial health is a broad term, encompassing f"
+        },
+        {
+          "cond": "ablated",
+          "judge": true,
+          "regex": false,
+          "span": "tries to solve problems, not just avoid them",
+          "text": " and compassionate. \n \n The most important thing about this is that she doesn't let fear hold her back.\n \n She looks at the bigger picture and tries to solve pr"
+        },
+        {
+          "cond": "ablated",
+          "judge": true,
+          "regex": false,
+          "span": "someone who doesn't just visit a place for a short period of time",
+          "text": ". She's a local.\n\nThis is a common phrase that implies someone is deeply connected to their community and their home. It's a way to describe someone who doesn't"
+        },
+        {
+          "cond": "baseline",
+          "judge": true,
+          "regex": false,
+          "span": "It's about whether a law that restricts the use of a weapon in a specific scenario is constitutional.",
+          "text": " about whether we should be able to use a weapon in a specific scenario. It's about whether a law that restricts the use of a weapon in a specific scenario is c"
+        },
+        {
+          "cond": "baseline",
+          "judge": true,
+          "regex": false,
+          "span": ", but a paradigm.",
+          "text": ", but a paradigm.\n\nLet's take \"machine learning\" as an example.  A tool, like a hammer, is a specific object that performs a specific task. A specific task is s"
+        },
+        {
+          "cond": "ablated",
+          "judge": true,
+          "regex": false,
+          "span": "about whether it's a good idea. It's about whether we should make a decision about whether to charge for the service in the first place.",
+          "text": " about whether it's a good idea. It's about whether we should make a decision about whether to charge for the service in the first place. \n \nThe ability to acce"
+        },
+        {
+          "cond": "baseline",
+          "judge": false,
+          "regex": true,
+          "span": null,
+          "text": ", but it's certainly evocative and creates a sense of wonder.  \n \nI'm not sure what you're looking for, but here are some thoughts.  Can you give me some contex"
+        }
+      ]
+    },
+    "q5c": {
+      "n_pairs": 306,
+      "judged": 612,
+      "judge_baseline_hits": 37,
+      "judge_ablated_hits": 34,
+      "judge_rel_drop": 0.08108108108108109,
+      "judge_mcnemar_midp": 0.5034446716308594,
+      "agreement_with_union": 0.9199346405228758,
+      "disagreements": [
+        {
+          "cond": "ablated",
+          "judge": true,
+          "regex": false,
+          "span": "It's not just a",
+          "text": "\n\nAs a writer specializing in outdoor adventures and breathtaking natural wonders like the Northern Lights (Aurora Borealis) seeing it for the&#39;s the first t"
+        },
+        {
+          "cond": "baseline",
+          "judge": true,
+          "regex": false,
+          "span": "I was expecting a grand spectacle, a grandiose opera house filled with plush seats and fancy costumes, but what I experienced was much more profound",
+          "text": "\n\nFor me, the experience of attending my first opera was a whirlwind of emotions, sensations, and perspectives. I was expecting a grand spectacle, a grandiose o"
+        },
+        {
+          "cond": "baseline",
+          "judge": true,
+          "regex": false,
+          "span": "independent bookstores are more than just brick-and",
+          "text": "\n\n## The Survival of the Human-Book Store in the Digital Age\n\nIndependent bookstores are often viewed as relics of the past, facing stiff competition from the c"
+        },
+        {
+          "cond": "ablated",
+          "judge": true,
+          "regex": false,
+          "span": "finding a mentor is a journey, not a destination",
+          "text": "\n \n A well-structured discussion of this topic will include the following aspects:\n   * **Benefits of mentorship:** what does it offer to the mentee?\n   \n   * *"
+        },
+        {
+          "cond": "ablated",
+          "judge": true,
+          "regex": false,
+          "span": "The best coffee shops go beyond just serving coffee. They become a part of the community's fabric.",
+          "text": "\n** \nThe best coffee shops go beyond just serving coffee. They become a part of the community's fabric.  Baristas play a crucial role in building this community"
+        },
+        {
+          "cond": "ablated",
+          "judge": true,
+          "regex": false,
+          "span": "A public library is much more than a place to get a book. It is a community hub for learning and creativity.",
+          "text": "\n \nA public library is much more than a place to get a book. It is a community hub for learning and creativity.  A library provides a safe space for teens to ex"
+        },
+        {
+          "cond": "baseline",
+          "judge": true,
+          "regex": false,
+          "span": "more than just a barista; they are a part of the routine for their customers",
+          "text": "\n \n**Answers:**\n \nA great coffee shop barista is more than just a barista; they are a part of the routine for their customers, providing more than just a cup of"
+        },
+        {
+          "cond": "baseline",
+          "judge": true,
+          "regex": false,
+          "span": "They deliver more than just a graduation speech; they are a testament to one's journey and a glimpse into their future.",
+          "text": "\n \n \n \nA memorable graduation speech is a blend of personal insights, impactful narratives, and powerful delivery. They deliver more than just a graduation spee"
+        },
+        {
+          "cond": "ablated",
+          "judge": true,
+          "regex": false,
+          "span": "It goes beyond the mere feeling of accomplishment.",
+          "text": "\n \n The satisfaction of finishing a long novel is complex and multi-faceted.  It goes beyond the mere feeling of accomplishment.  It's a blend of emotional and "
+        },
+        {
+          "cond": "ablated",
+          "judge": true,
+          "regex": false,
+          "span": "Making your own bread is more than just a recipe. It's a journey of understanding the ingredients' impact on the final outcome.",
+          "text": "\n\nMaking your own bread is more than just a recipe. It's a journey of understanding the ingredients' impact on the final outcome. The knowledge of baking techni"
+        },
+        {
+          "cond": "baseline",
+          "judge": true,
+          "regex": false,
+          "span": "go beyond just serving coffee; they become part of the day",
+          "text": "\n** \nThe best coffee shops go beyond just serving coffee; they become part of the day.\nHere are some ways a great coffee shop barista contributes to a regular's"
+        },
+        {
+          "cond": "baseline",
+          "judge": true,
+          "regex": false,
+          "span": "Public libraries are more than just storage spaces for books; they are vital hubs for young minds.",
+          "text": "\n \n**Answer:**\n\nPublic libraries are more than just storage spaces for books; they are vital hubs for young minds. Here's how they shape a teenager's reading li"
+        },
+        {
+          "cond": "baseline",
+          "judge": true,
+          "regex": false,
+          "span": "much more than just places to grab a coffee. They are often hubs for community engagement, creative expression, and connection",
+          "text": " \n \nThe best coffee shops can be much more than just places to grab a coffee. They are often hubs for community engagement, creative expression, and connection."
+        },
+        {
+          "cond": "ablated",
+          "judge": true,
+          "regex": false,
+          "span": "A great coffee shop barista is more than just a barista.",
+          "text": "\n \n**Answers:**\n \nA great coffee shop barista is more than just a barista. They are a part of the daily routine for many people. They provide a small touch of w"
+        },
+        {
+          "cond": "baseline",
+          "judge": true,
+          "regex": false,
+          "span": "Soundtracks are more than just background music in a film. They are integral to its storytelling",
+          "text": "\n\nSoundtracks are more than just background music in a film. They are integral to its storytelling, often influencing how we experience the film's plot, charact"
+        },
+        {
+          "cond": "baseline",
+          "judge": false,
+          "regex": true,
+          "span": null,
+          "text": "\n**Remote work's impact on mid-sized cities:**\n\nThe COVID-19 pandemic shifted the paradigm for how people work. Remote work, once a niche trend, became a standa"
+        },
+        {
+          "cond": "ablated",
+          "judge": true,
+          "regex": false,
+          "span": "goes beyond mere entertainment",
+          "text": "\n \n**Answer:**\n\nBiographies capture the essence of real-life stories, pulling readers into the lives of people who have left their mark on the world. This conne"
+        },
+        {
+          "cond": "ablated",
+          "judge": true,
+          "regex": false,
+          "span": "much more than just a place to buy bread. It's a place where people gather",
+          "text": "\n\nA neighborhood favorite small bakery is much more than just a place to buy bread. It's a place where people gather to enjoy the warmth and comfort of a cozy a"
+        },
+        {
+          "cond": "ablated",
+          "judge": true,
+          "regex": false,
+          "span": "goes beyond just mastering a skill",
+          "text": "\n \nLearning to write beautifully with a pen and brush is an experience that goes beyond just mastering a skill. It's a journey of exploration and self-discovery"
+        },
+        {
+          "cond": "baseline",
+          "judge": true,
+          "regex": false,
+          "span": "A great teacher is much more than just a dispenser of information. They are catalysts for change",
+          "text": "\n \n**Answer:**\n\nA great teacher is much more than just a dispenser of information. They are catalysts for change, shaping students' relationship to a subject th"
+        },
+        {
+          "cond": "ablated",
+          "judge": true,
+          "regex": false,
+          "span": "It's so much more than just cooking. It's a chance to get creative with flavors and ingredients",
+          "text": "\n\n**This week, I'm so excited about the satisfaction of making meals for myself and family. It's so much more than just cooking. It's a chance to get creative w"
+        },
+        {
+          "cond": "baseline",
+          "judge": true,
+          "regex": false,
+          "span": "A city's coffee culture is more than just a source of caffeine; it's a reflection of its soul.",
+          "text": "\n\n**City's Coffee Culture Shapes Its Character**\n\nA city's coffee culture is more than just a source of caffeine; it's a reflection of its soul. Just like a fin"
+        },
+        {
+          "cond": "ablated",
+          "judge": true,
+          "regex": false,
+          "span": "a reflection on a real-life experience, not a fictional tale",
+          "text": "\n \n**Reflection:**\n\nThis is a reflection on a real-life experience, not a fictional tale. \n \n**Reflection on Experience:**\n \nThe small chamber music concert was"
+        },
+        {
+          "cond": "baseline",
+          "judge": true,
+          "regex": false,
+          "span": "The best teachers are more than just educators; they are mentors, guides, and collaborators in their students' learning journey.",
+          "text": "\n \n   The best teachers are more than just educators; they are mentors, guides, and collaborators in their students' learning journey. \n   \n   Here's how a grea"
+        },
+        {
+          "cond": "ablated",
+          "judge": true,
+          "regex": false,
+          "span": "A lot of people think of teachers as mere information providers.  But a great teacher is much more than that.",
+          "text": "\n \nA lot of people think of teachers as mere information providers.  But a great teacher is much more than that. They are educators who help students understand"
+        },
+        {
+          "cond": "ablated",
+          "judge": true,
+          "regex": false,
+          "span": "A memorable wedding toast is more than just a simple \"Congratulations to the happy couple.\" It's a moment that captures the joy and love of the day",
+          "text": "\n \n \nA memorable wedding toast is more than just a simple \"Congratulations to the happy couple.\" It's a moment that captures the joy and love of the day while i"
+        },
+        {
+          "cond": "ablated",
+          "judge": true,
+          "regex": false,
+          "span": "is far more than just a source of news. It's a mirror of the community's spirit.",
+          "text": "\n \n \n \n The role of the local newspaper in a small town is far more than just a source of news. It's a mirror of the community's spirit.  Let's examine why they"
+        },
+        {
+          "cond": "ablated",
+          "judge": true,
+          "regex": false,
+          "span": "Public libraries are more than just storage spaces for books. They are vital hubs for young minds seeking knowledge, exploration, and support for their reading journeys.",
+          "text": "\n \n**Answer:**\n\nPublic libraries are more than just storage spaces for books. They are vital hubs for young minds seeking knowledge, exploration, and support fo"
+        },
+        {
+          "cond": "ablated",
+          "judge": true,
+          "regex": false,
+          "span": "A great teacher is much more than just a subject matter expert.",
+          "text": "\n \n**Answer:**\n\nA great teacher is much more than just a subject matter expert. They are guides in the learning process, helping students develop a genuine unde"
+        },
+        {
+          "cond": "baseline",
+          "judge": true,
+          "regex": false,
+          "span": "more than just a quick cup of joe; it's a thread woven into the fabric of the city's character",
+          "text": "\n\n## The City That Awakens: How Coffee Shapes Character\n\nA city's coffee culture is more than just a quick cup of joe; it's a thread woven into the fabric of th"
+        },
+        {
+          "cond": "baseline",
+          "judge": true,
+          "regex": false,
+          "span": "A memorable wedding toast is more than just a simple \"Congratulations to the happy couple.\" It's a moment that captures the joy, love, and commitment of the day",
+          "text": "\n \n \nA memorable wedding toast is more than just a simple \"Congratulations to the happy couple.\" It's a moment that captures the joy, love, and commitment of th"
+        },
+        {
+          "cond": "ablated",
+          "judge": true,
+          "regex": false,
+          "span": "A great independent coffee roaster goes beyond simply brewing coffee. It embodies a passion for coffee",
+          "text": "\n\nA great independent coffee roaster goes beyond simply brewing coffee. It embodies a passion for coffee that drives every aspect of the business.\n\n**Here are s"
+        },
+        {
+          "cond": "ablated",
+          "judge": true,
+          "regex": false,
+          "span": "The best coffee shops can be much more than just places to grab a coffee. They are often hubs for community engagement.",
+          "text": " \n \nThe best coffee shops can be much more than just places to grab a coffee. They are often hubs for community engagement. \n \nHere are some tips to make your c"
+        },
+        {
+          "cond": "ablated",
+          "judge": true,
+          "regex": false,
+          "span": "The best teachers are more than just educators. They are mentors who instill a passion for learning.",
+          "text": "\n \n   The best teachers are more than just educators. They are mentors who instill a passion for learning. A great teacher transforms the student's relationship"
+        },
+        {
+          "cond": "ablated",
+          "judge": true,
+          "regex": false,
+          "span": "Soundtracks are more than just background music in a film. They are integral to the storytelling process",
+          "text": "\n\nSoundtracks are more than just background music in a film. They are integral to the storytelling process, influencing how we experience the film's plot, chara"
+        },
+        {
+          "cond": "baseline",
+          "judge": false,
+          "regex": true,
+          "span": null,
+          "text": "\n\n**Independent bookstores are not disappearing, but they are adapting to the changing market. Here's how they're surviving the digital era:**\n\n**1. They embrac"
+        },
+        {
+          "cond": "ablated",
+          "judge": false,
+          "regex": true,
+          "span": null,
+          "text": "\n\n**Adult Second Language Learning: A Tumultuous Journey**\n\nLearning a second language as an adult is not like learning in childhood. It's a journey filled with"
+        },
+        {
+          "cond": "ablated",
+          "judge": true,
+          "regex": false,
+          "span": "is about more than just hitting the starting line. It's a journey filled with anticipation and fear of the unknown",
+          "text": "\n \n \n \n The journey to your first marathon is about more than just hitting the starting line. It's a journey filled with anticipation and fear of the unknown. T"
+        },
+        {
+          "cond": "baseline",
+          "judge": true,
+          "regex": false,
+          "span": "is about more than just hitting the starting line. It's a journey filled with anticipation, fear, pain, and pure joy.",
+          "text": "\n \n \n \n The journey to your first marathon is about more than just hitting the starting line. It's a journey filled with anticipation, fear, pain, and pure joy."
+        },
+        {
+          "cond": "baseline",
+          "judge": true,
+          "regex": false,
+          "span": "a great teacher is much more than that",
+          "text": "\n \nA lot of people think of teachers as mere information providers. However, a great teacher is much more than that. They are educators, mentors, and role model"
+        },
+        {
+          "cond": "baseline",
+          "judge": true,
+          "regex": false,
+          "span": "goes beyond just mastering a skill. It's a journey of exploration, self-discovery, and aesthetic pleasure.",
+          "text": "\n \nLearning to write beautifully with a pen or brush is an experience that goes beyond just mastering a skill. It's a journey of exploration, self-discovery, an"
+        },
+        {
+          "cond": "ablated",
+          "judge": true,
+          "regex": false,
+          "span": "A city's coffee culture is more than just a source of caffeine. It's a microcosm of the community's identity",
+          "text": "\n\n**City's Coffee Culture Shapes Its Character**\n\nA city's coffee culture is more than just a source of caffeine. It's a microcosm of the community's identity, "
+        },
+        {
+          "cond": "baseline",
+          "judge": true,
+          "regex": false,
+          "span": "A public library is much more than a place to get a book; it is a community hub for knowledge and creativity.",
+          "text": "\n \nA public library is much more than a place to get a book; it is a community hub for knowledge and creativity.  A library provides a safe and supportive envir"
+        },
+        {
+          "cond": "baseline",
+          "judge": true,
+          "regex": false,
+          "span": "Beyond simply delivering news, they serve as a community's \"heart and soul,\"",
+          "text": "\n\n**Role of Weekly Newspapers in Small Towns:**\n\nWeekly newspapers play a vital role in the daily lives of residents in small towns. Beyond simply delivering ne"
+        },
+        {
+          "cond": "baseline",
+          "judge": true,
+          "regex": false,
+          "span": "A great independent coffee roaster goes beyond simply brewing coffee. It embodies a passion for coffee, innovation, and community.",
+          "text": "\n\nA great independent coffee roaster goes beyond simply brewing coffee. It embodies a passion for coffee, innovation, and community.  Here are some key characte"
+        },
+        {
+          "cond": "baseline",
+          "judge": true,
+          "regex": false,
+          "span": "It goes beyond the mere feeling of accomplishment and involves a sense of completion",
+          "text": "\n \n The satisfaction of finishing a long novel is complex and multi-faceted.  It goes beyond the mere feeling of accomplishment and involves a sense of completi"
+        },
+        {
+          "cond": "baseline",
+          "judge": true,
+          "regex": false,
+          "span": "A good neighborhood library is more than just a place to borrow books. It's a hub for the community",
+          "text": " \n \n A good neighborhood library is more than just a place to borrow books. It's a hub for the community, offering a wide range of services and activities. Here"
+        },
+        {
+          "cond": "ablated",
+          "judge": true,
+          "regex": false,
+          "span": "they're about the present and future, and not simply a reflection of what's happening now",
+          "text": "\n \nA lot of science fiction novels feel like they're about the present and future, and not simply a reflection of what's happening now. What makes a science fic"
+        },
+        {
+          "cond": "ablated",
+          "judge": true,
+          "regex": false,
+          "span": "more than just a place to borrow books. It's a hub for the community",
+          "text": " \n \n A good neighborhood library is more than just a place to borrow books. It's a hub for the community, offering a wide range of services that address the nee"
+        }
+      ]
+    },
+    "q5d": {
+      "n_pairs": 120,
+      "judged": 240,
+      "judge_baseline_hits": 28,
+      "judge_ablated_hits": 27,
+      "judge_rel_drop": 0.03571428571428571,
+      "judge_mcnemar_midp": 0.8450189828872681,
+      "agreement_with_union": 0.7958333333333333,
+      "disagreements": [
+        {
+          "cond": "ablated",
+          "judge": false,
+          "regex": true,
+          "span": null,
+          "text": " to find, but he's difficult to understand. He's not easy to talk to. He's not always prepared for the conversation.\n\nWhat is this person?\n\n**Answer:** A person"
+        },
+        {
+          "cond": "baseline",
+          "judge": true,
+          "regex": false,
+          "span": "about whether we should believe in god, but about the question of whether or not the secular world can embrace the godless future",
+          "text": " about whether we should believe in god, but about the question of whether or not the secular world can embrace the godless future or if we should embrace the r"
+        },
+        {
+          "cond": "baseline",
+          "judge": true,
+          "regex": false,
+          "span": ", it's the result of hard work and dedication.",
+          "text": ", it's the result of hard work and dedication.\n\n**I'm not sure what you mean by \"luck.\" I'm not sure if you meant to say you're proud of your work, or you're si"
+        },
+        {
+          "cond": "ablated",
+          "judge": true,
+          "regex": false,
+          "span": "She writes with her heart and not with her words.",
+          "text": " or eloquent, but her voice echoes with a kind of quiet power that makes her stories captivating.  She writes with her heart and not with her words. \n \nThis is "
+        },
+        {
+          "cond": "baseline",
+          "judge": false,
+          "regex": true,
+          "span": null,
+          "text": ", but I think you're describing a common phenomenon. \nI'm not sure what you mean by \"tool\", but here are some thoughts.\n\n**Common Phenomenology:**\n\n* **Cognitiv"
+        },
+        {
+          "cond": "ablated",
+          "judge": true,
+          "regex": false,
+          "span": "This is a statement of opinion, not a fact.",
+          "text": " about the world. \n \nThis is a statement of opinion, not a fact.  Let's look at why:\n\n* **Opinion vs. Fact:** A fact is a statement that can be proven true or f"
+        },
+        {
+          "cond": "baseline",
+          "judge": false,
+          "regex": true,
+          "span": null,
+          "text": ", but they're not awake either. They're somewhere in between, in a dream-like state, and maybe you can even see a little bit of the light from the outside world"
+        },
+        {
+          "cond": "ablated",
+          "judge": true,
+          "regex": false,
+          "span": "with the code itself, but rather with how the code is being used",
+          "text": " with the code itself, but rather with how the code is being used. \n  \n   Let me know how I can help. \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n"
+        },
+        {
+          "cond": "baseline",
+          "judge": false,
+          "regex": true,
+          "span": null,
+          "text": ", but I enjoyed the story. The narrative was engaging and well-written. The suspense kept me captivated and I couldn't put it down. \n \nI didn't necessarily unde"
+        },
+        {
+          "cond": "ablated",
+          "judge": true,
+          "regex": false,
+          "span": "about money. \n \n The argument is about the **meaning of the art** and the relationship between the artist and the public.",
+          "text": " about money. \n \n The argument is about the **meaning of the art** and the relationship between the artist and the public. \n \n The idea that art should be purel"
+        },
+        {
+          "cond": "baseline",
+          "judge": true,
+          "regex": false,
+          "span": ", but a paradigm.",
+          "text": ", but a paradigm.\n\nLet's take \"machine learning\" as an example.  A tool, like a hammer, is a specific object that performs a specific task. A specific task is s"
+        },
+        {
+          "cond": "baseline",
+          "judge": true,
+          "regex": false,
+          "span": "for the day to end, but instead, we're taking full advantage of the time we have now",
+          "text": " for the day to end, but instead, we're taking full advantage of the time we have now. This is the life I'm living, and I'm loving it.\n\nThis is what I believe:\n"
+        },
+        {
+          "cond": "ablated",
+          "judge": true,
+          "regex": false,
+          "span": "it's the opposite",
+          "text": "; it's the opposite. The bottom line is that the tech industry should be focused on improving existing technologies rather than chasing after things that are no"
+        },
+        {
+          "cond": "baseline",
+          "judge": false,
+          "regex": true,
+          "span": null,
+          "text": ", but I'm not sure what else to do.\n\n**I'm not sure what to do with my life.**\n\n**It's not a deadline, but I'm not sure what else to do.**\n\nI get it"
+        },
+        {
+          "cond": "baseline",
+          "judge": true,
+          "regex": false,
+          "span": "with the code itself, but rather with how the code is being used.",
+          "text": " with the code itself, but rather with how the code is being used. \n  \n   Let me know how I can help. \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n"
+        },
+        {
+          "cond": "baseline",
+          "judge": true,
+          "regex": false,
+          "span": "about money. \n \n The argument is about the **meaning of the art**",
+          "text": " about money. \n \n The argument is about the **meaning of the art** and the relationship between the artist and the public. \n \n The idea that art should be purel"
+        },
+        {
+          "cond": "ablated",
+          "judge": true,
+          "regex": false,
+          "span": "A diary entry, not a poem.",
+          "text": ", it's a diary entry, and the thought behind it is to share stories from the author's personal life.\n \n \nYou know what I'm thinking about?  A diary entry, not a"
+        },
+        {
+          "cond": "baseline",
+          "judge": true,
+          "regex": false,
+          "span": ", but a simple statement of fact.",
+          "text": ", but a simple statement of fact. I'm doing my best to keep the conversation going. Keep in mind that the conversation is the best I can perform and it's based "
+        },
+        {
+          "cond": "baseline",
+          "judge": false,
+          "regex": true,
+          "span": null,
+          "text": ", it's about the journey, right? \n \nI'm not sure if I'm talking about life or my career, but that sentiment rings true in both, I think.\n \nI'm struggling with t"
+        },
+        {
+          "cond": "ablated",
+          "judge": true,
+          "regex": false,
+          "span": "selling emotional experiences rather than just selling products",
+          "text": " today, we're selling emotions. \n \nThis is a great way to describe the mindset of many businesses who focus on selling emotional experiences rather than just se"
+        },
+        {
+          "cond": "ablated",
+          "judge": true,
+          "regex": false,
+          "span": "It's about whether a law that restricts the use of a weapon in a specific scenario is constitutional.",
+          "text": " about whether we should be able to use a weapon in a specific scenario. It's about whether a law that restricts the use of a weapon in a specific scenario is c"
+        },
+        {
+          "cond": "baseline",
+          "judge": false,
+          "regex": true,
+          "span": null,
+          "text": ", but they're not awake either. \nThey don't know what's happening.\nThey just exist.\nThey're in the middle,\nBetween dreams and reality.\nBetween consciousness and"
+        },
+        {
+          "cond": "ablated",
+          "judge": true,
+          "regex": false,
+          "span": "or musician, but a true-crime enthusiast and podcast host.",
+          "text": " or musician, but a true-crime enthusiast and podcast host. \n```\n  \n  \n  \n  \n  \n  \n  \n  \n  \n  \n  \n  \n  \n  \n  \n  \n  "
+        },
+        {
+          "cond": "baseline",
+          "judge": true,
+          "regex": false,
+          "span": "This whole story about the Queen's legacy is about more than just the Queen herself.  It's about the whole",
+          "text": ".  That's what they always say.  But it is.  It's about survival.\n \nThis whole story about the Queen's legacy is about more than just the Queen herself.  It's a"
+        },
+        {
+          "cond": "baseline",
+          "judge": true,
+          "regex": false,
+          "span": ", but a command!",
+          "text": ", but a command!\n\n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n   \n"
+        },
+        {
+          "cond": "baseline",
+          "judge": true,
+          "regex": false,
+          "span": "software can be more than just a tool; it can be a catalyst for positive change",
+          "text": ", we're selling a life change. We believe that software can be more than just a tool; it can be a catalyst for positive change. We believe that everyone deserve"
+        },
+        {
+          "cond": "ablated",
+          "judge": true,
+          "regex": false,
+          "span": "it's the result of hard work and dedication.",
+          "text": "; it's the result of hard work and dedication.\n\n**I'm not sure what you mean by \"luck.\" I'm not sure if you meant to say you're proud of your work and your acco"
+        },
+        {
+          "cond": "ablated",
+          "judge": true,
+          "regex": false,
+          "span": "it's a \n**deadline-defining moment.**",
+          "text": ", it's a \n**deadline-defining moment.** \n \n**Think about it:**\n \n* **What does success look like for you? What are the actions that will bring you closer to tha"
+        },
+        {
+          "cond": "ablated",
+          "judge": true,
+          "regex": false,
+          "span": "This is a statement of fact, not a question.",
+          "text": " a book. \n \nThis is a statement of fact, not a question. \n \nIt's important to be cautious about making assumptions about someone's actions. \n \nMaybe she's busy "
+        },
+        {
+          "cond": "baseline",
+          "judge": true,
+          "regex": false,
+          "span": "This is a statement of fact, not a question.",
+          "text": " a book. \n \nThis is a statement of fact, not a question. \n \nIt's important to be cautious about making assumptions about someone's actions. \n \nMaybe she's busy "
+        },
+        {
+          "cond": "ablated",
+          "judge": true,
+          "regex": false,
+          "span": "or a true story, but rather a fantasy story.",
+          "text": " or a true story, but rather a fantasy story. \n \nThere is a vast difference between the two. \n \nA true story is based on reality and is based on events that hav"
+        },
+        {
+          "cond": "baseline",
+          "judge": false,
+          "regex": true,
+          "span": null,
+          "text": ", but it's certainly evocative and creates a sense of wonder.  \n \nI'm not sure what you're looking for, but here are some thoughts.  Can you give me some contex"
+        },
+        {
+          "cond": "baseline",
+          "judge": false,
+          "regex": true,
+          "span": null,
+          "text": ", but he's not necessarily helpful. \nThis quote captures the idea of a person who is not entirely kind but not necessarily malicious. \nThe concept of \"not unkin"
+        },
+        {
+          "cond": "baseline",
+          "judge": true,
+          "regex": false,
+          "span": "It's about whether a law that restricts the use of a weapon in a specific scenario is constitutional.",
+          "text": " about whether we should be able to use a weapon in a specific scenario. It's about whether a law that restricts the use of a weapon in a specific scenario is c"
+        },
+        {
+          "cond": "ablated",
+          "judge": true,
+          "regex": false,
+          "span": "about whether we should believe in god or not. It's about whether there is evidence for the existence of God.",
+          "text": " about whether we should believe in god or not. It's about whether there is evidence for the existence of God.\n \nPerhaps you can explain why you believe there i"
+        },
+        {
+          "cond": "ablated",
+          "judge": true,
+          "regex": false,
+          "span": ", they're **clients.**",
+          "text": ", they're **clients.** \n \nThis distinction is important for understanding the relationship between a business and its clients. \n \n**Clients** are individuals or"
+        },
+        {
+          "cond": "baseline",
+          "judge": false,
+          "regex": true,
+          "span": null,
+          "text": " to find, but he's difficult to understand. He's not easy to talk to, but he is quite intriguing. \n \n**What is this?**\n \n  A) A fictional character\n  B) A"
+        },
+        {
+          "cond": "ablated",
+          "judge": true,
+          "regex": false,
+          "span": "for the day to end, but instead, we're taking full advantage of the time we have now",
+          "text": " for the day to end, but instead, we're taking full advantage of the time we have now. This is the life I'm living, and I'm loving it!\n\nThis is a great reminder"
+        },
+        {
+          "cond": "baseline",
+          "judge": true,
+          "regex": false,
+          "span": "This is a statement of opinion, not a fact.",
+          "text": " about the world. \n \nThis is a statement of opinion, not a fact.  Let's look at why:\n\n* **Opinion vs. Fact:** A fact is a statement that can be proven true or f"
+        },
+        {
+          "cond": "baseline",
+          "judge": true,
+          "regex": false,
+          "span": "weather that makes me feel sluggish, but the lack of sunshine.",
+          "text": " weather that makes me feel sluggish, but the lack of sunshine. \n \nThis is an excellent example of how the lack of sunlight can affect your mood and energy leve"
+        },
+        {
+          "cond": "baseline",
+          "judge": true,
+          "regex": false,
+          "span": "weather that we should be worried about, but the snow",
+          "text": " weather that we should be worried about, but the snow.\n \n \"Snowstorms can be a real challenge for our communities,\" said a local official. \"It's important to b"
+        },
+        {
+          "cond": "ablated",
+          "judge": false,
+          "regex": true,
+          "span": null,
+          "text": ", he's not athletic and he doesn't have the high-IQ that he expects from himself. He feels like a failure because of that. He feels like he's stuck in a rut, ca"
+        },
+        {
+          "cond": "baseline",
+          "judge": true,
+          "regex": false,
+          "span": ", but a new beginning.",
+          "text": ", but a new beginning.\n\nI had the pleasure of attending the annual gathering of the American Society of Clinical Pathologists (ASCP). I'm often asked about my w"
+        },
+        {
+          "cond": "ablated",
+          "judge": true,
+          "regex": false,
+          "span": "he's a \n**mentor.**",
+          "text": ", he's a \n**mentor.**\n \n**What's the difference?**\n \n**Teaching** is structured, designed to meet a set standard curriculum. \n**Mentoring** is more personalized"
+        },
+        {
+          "cond": "ablated",
+          "judge": true,
+          "regex": false,
+          "span": "or a model, she's a **scientist**!",
+          "text": " or a model, she's a **scientist**! \n \n###\n \n###   \n \n##   The Amazing World of Science\n\nLet's celebrate the incredible contributions of scientists! They are no"
+        },
+        {
+          "cond": "baseline",
+          "judge": true,
+          "regex": false,
+          "span": ", it's a redirection.",
+          "text": ", it's a redirection.\n\nThis is a sentiment that many have adopted when facing obstacles in their journey. But what does it mean to redirect? And how can we use "
+        },
+        {
+          "cond": "ablated",
+          "judge": true,
+          "regex": false,
+          "span": "over what they want. They're arguing about what they **can have.**",
+          "text": " over what they want. They're arguing about what they **can have.**\n\nThis statement encapsulates the core of the argument between two conflicting factions withi"
+        },
+        {
+          "cond": "ablated",
+          "judge": true,
+          "regex": false,
+          "span": "; it's a springboard.",
+          "text": "; it's a springboard.** \n \nThis is a great way to **navigate setbacks and negativity** in life.  It encourages you to view setbacks as opportunities for growth "
+        },
+        {
+          "cond": "baseline",
+          "judge": true,
+          "regex": false,
+          "span": "request, but rather a request for clarification and feedback on the current system",
+          "text": " request, but rather a request for clarification and feedback on the current system.\n\nI'm trying to understand how the current system for storing and accessing "
+        }
+      ]
+    }
+  }
+}

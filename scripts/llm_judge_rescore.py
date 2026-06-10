@@ -78,8 +78,8 @@ SCHEMA = {
             "description": "Exact span from the text if present, else null",
         },
         "form": {
-            "type": ["string", "null"],
-            "enum": ["same-sentence", "cross-sentence", "minimizer", "reframing", None],
+            "type": "string",
+            "enum": ["same-sentence", "cross-sentence", "minimizer", "reframing", "none"],
         },
         "confidence": {"type": "string", "enum": ["high", "medium", "low"]},
     },
