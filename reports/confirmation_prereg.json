@@ -1,0 +1,55 @@
+{
+  "registered": "2026-06-10",
+  "coalition": [
+    347,
+    1250,
+    1608,
+    2137,
+    2184,
+    2282,
+    3223,
+    4197,
+    4516,
+    6336,
+    6759,
+    7361,
+    8530,
+    8820,
+    9606,
+    9816,
+    9909,
+    10822,
+    11864,
+    12506,
+    12524,
+    12767,
+    12898,
+    12923,
+    14401
+  ],
+  "prompts_file": "data/D2b_confirmation_prompts.json",
+  "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "max_new_tokens": 50,
+  "temperature": 0.8,
+  "top_p": 0.95,
+  "model": "it",
+  "n_pairs": 300,
+  "primary_endpoint": "family_relative_drop",
+  "pass_rule": {
+    "min_rel_drop": 0.3,
+    "max_midp": 0.05
+  },
+  "kill_rule": {
+    "rel_drop_below": 0.15,
+    "or_midp_at_least": 0.05
+  },
+  "detector": "v2 union as of 2026-06-10 (negation-mandatory revision, more-than-just cousin excluded from family)",
+  "notes": "See confirmation_prereg.md. Single analysis at n=300; no interim looks; no edits after registration."
+}

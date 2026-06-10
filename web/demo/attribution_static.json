@@ -1,0 +1,296 @@
+{
+ "promote_top25": {
+  "features": [
+   3223,
+   9909,
+   12898,
+   9816,
+   6759,
+   4197,
+   4516,
+   1250,
+   2137,
+   11864,
+   2282,
+   12524,
+   8530,
+   7361,
+   8820,
+   2184,
+   12923,
+   12506,
+   14401,
+   9606,
+   1608,
+   6336,
+   347,
+   10822,
+   12767
+  ],
+  "details": [
+   {
+    "index": 3223,
+    "mean_drop": 0.07097435463219881,
+    "n_active": 24,
+    "score": 0.34770190734445344,
+    "label": "phrases conveying exceptions or negations"
+   },
+   {
+    "index": 9909,
+    "mean_drop": 0.04184797516948468,
+    "n_active": 37,
+    "score": 0.2545512953297917,
+    "label": "references to digital technology and online interactions"
+   },
+   {
+    "index": 12898,
+    "mean_drop": 0.024830730876419693,
+    "n_active": 40,
+    "score": 0.15704333107231042,
+    "label": "references to societal issues, particularly related to laws and marginalized groups"
+   },
+   {
+    "index": 9816,
+    "mean_drop": 0.03495564063390096,
+    "n_active": 3,
+    "score": 0.06054494558903562,
+    "label": "topics related to legal and political accountability"
+   },
+   {
+    "index": 6759,
+    "mean_drop": 0.00918600669032649,
+    "n_active": 38,
+    "score": 0.05662634827321532,
+    "label": "terms related to coverage and protection in the context of services or products"
+   },
+   {
+    "index": 4197,
+    "mean_drop": 0.013199874717328284,
+    "n_active": 18,
+    "score": 0.05600232554061414,
+    "label": "references to opinions, decisions, and activities around relationships and equality"
+   },
+   {
+    "index": 4516,
+    "mean_drop": 0.009351515050592094,
+    "n_active": 29,
+    "score": 0.05035944974383719,
+    "label": "phrases related to scientific measurements and their implications"
+   },
+   {
+    "index": 1250,
+    "mean_drop": 0.024704739451408386,
+    "n_active": 4,
+    "score": 0.04940947890281677,
+    "label": "various professional roles and their associated tasks or features"
+   },
+   {
+    "index": 2137,
+    "mean_drop": 0.007337052620843881,
+    "n_active": 36,
+    "score": 0.04402231572506329,
+    "label": "elements of concern or caution in various contexts"
+   },
+   {
+    "index": 11864,
+    "mean_drop": 0.005900613137055188,
+    "n_active": 40,
+    "score": 0.037318754209211366,
+    "label": "technical terms and phrases related to legal and procedural contexts"
+   },
+   {
+    "index": 2282,
+    "mean_drop": 0.016724061220884323,
+    "n_active": 4,
+    "score": 0.033448122441768646,
+    "label": "specific medical terms and conditions, particularly related to studies and outcomes"
+   },
+   {
+    "index": 12524,
+    "mean_drop": 0.028875291347503662,
+    "n_active": 1,
+    "score": 0.028875291347503662,
+    "label": "data related to physical attributes and measurements"
+   },
+   {
+    "index": 8530,
+    "mean_drop": 0.00494033072529168,
+    "n_active": 29,
+    "score": 0.02660449515744603,
+    "label": "tokens related to scientific concepts and conditions, particularly focusing on environmental and health-related themes"
+   },
+   {
+    "index": 7361,
+    "mean_drop": 0.006381132639944553,
+    "n_active": 16,
+    "score": 0.025524530559778214,
+    "label": "statements about legal analysis and recommendations"
+   },
+   {
+    "index": 8820,
+    "mean_drop": 0.01131739914417267,
+    "n_active": 5,
+    "score": 0.025306473814868034,
+    "label": "references to ethical concerns and issues related to accountability"
+   },
+   {
+    "index": 2184,
+    "mean_drop": 0.006977337102095286,
+    "n_active": 12,
+    "score": 0.02417020472472886,
+    "label": "positive attributes and expressions of appreciation"
+   },
+   {
+    "index": 12923,
+    "mean_drop": 0.012046709656715393,
+    "n_active": 3,
+    "score": 0.020865513189461688,
+    "label": "references to urgency and priority in actions or events"
+   },
+   {
+    "index": 12506,
+    "mean_drop": 0.004423558712005615,
+    "n_active": 19,
+    "score": 0.01928184539645142,
+    "label": "concepts related to problems, significant findings, and situations of concern"
+   },
+   {
+    "index": 14401,
+    "mean_drop": 0.018873140215873718,
+    "n_active": 1,
+    "score": 0.018873140215873718,
+    "label": "elements related to emotional depth and complexity in narratives"
+   },
+   {
+    "index": 9606,
+    "mean_drop": 0.00660271942615509,
+    "n_active": 8,
+    "score": 0.01867531072202566,
+    "label": "elements related to communication and technology usage"
+   },
+   {
+    "index": 1608,
+    "mean_drop": 0.007117537160714467,
+    "n_active": 6,
+    "score": 0.01743433426904819,
+    "label": "legal and health-related terms associated with studies and analyses"
+   },
+   {
+    "index": 6336,
+    "mean_drop": 0.003926862859063678,
+    "n_active": 18,
+    "score": 0.016660268138601123,
+    "label": "terms related to legal and criminal proceedings"
+   },
+   {
+    "index": 347,
+    "mean_drop": 0.011749301105737686,
+    "n_active": 2,
+    "score": 0.01661602097213944,
+    "label": "phrases and concepts related to accountability and compliance"
+   },
+   {
+    "index": 10822,
+    "mean_drop": 0.011656209826469421,
+    "n_active": 2,
+    "score": 0.0164843700224596,
+    "label": "indicators of significant or important concepts within the text, often activating for words or phrases that introduce key ideas, topics, or themes."
+   },
+   {
+    "index": 12767,
+    "mean_drop": 0.011194854974746704,
+    "n_active": 2,
+    "score": 0.015831915734086703,
+    "label": "references to historical or significant events related to change or progress"
+   }
+  ],
+  "n_with_signal": 1237
+ },
+ "suppress_top10": {
+  "features": [
+   2235,
+   4028,
+   6143,
+   13853,
+   8836,
+   139,
+   12790,
+   7136,
+   13584,
+   15509
+  ],
+  "details": [
+   {
+    "index": 2235,
+    "mean_drop": -0.11952884495258331,
+    "n_active": 1,
+    "score": -0.11952884495258331,
+    "label": "comparative adjectives and their contexts related to ease or difficulty"
+   },
+   {
+    "index": 4028,
+    "mean_drop": -0.03389314468950033,
+    "n_active": 5,
+    "score": -0.07578737549695874,
+    "label": "phrases related to assessment and accountability in various contexts"
+   },
+   {
+    "index": 6143,
+    "mean_drop": -0.01169467713827124,
+    "n_active": 39,
+    "score": -0.0730332353204194,
+    "label": "phrases related to medical conditions and treatments"
+   },
+   {
+    "index": 13853,
+    "mean_drop": -0.026968328016144887,
+    "n_active": 7,
+    "score": -0.07135148920593527,
+    "label": "discussions around beliefs and decisions"
+   },
+   {
+    "index": 8836,
+    "mean_drop": -0.019715762650594115,
+    "n_active": 10,
+    "score": -0.062346715783155884,
+    "label": "themes related to opportunities and abilities, particularly in the context of decisions and choices"
+   },
+   {
+    "index": 139,
+    "mean_drop": -0.0243584339817365,
+    "n_active": 6,
+    "score": -0.059665734188524756,
+    "label": "references to actions and their consequences, emphasizing occurrences and substances"
+   },
+   {
+    "index": 12790,
+    "mean_drop": -0.017456316947937013,
+    "n_active": 10,
+    "score": -0.05520172111327989,
+    "label": "contexts involving work, labor, or employment-related discussions"
+   },
+   {
+    "index": 7136,
+    "mean_drop": -0.016941616684198378,
+    "n_active": 10,
+    "score": -0.05357409596757643,
+    "label": "terms related to biological and medical processes"
+   },
+   {
+    "index": 13584,
+    "mean_drop": -0.029770823816458385,
+    "n_active": 3,
+    "score": -0.05156457943328751,
+    "label": "words of acceptance and phrases emphasizing unconditional perspectives"
+   },
+   {
+    "index": 15509,
+    "mean_drop": -0.007731696538394317,
+    "n_active": 40,
+    "score": -0.04889954247713108,
+    "label": "words likely to be near the end of sentences"
+   }
+  ],
+  "n_with_signal": 1237
+ }
+}

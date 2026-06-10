@@ -1,0 +1,58 @@
+{
+  "Q5b primed (n=300)": {
+    "baseline": {
+      "n": 300,
+      "share_with_but": 0.75,
+      "share_with_however": 0.013333333333333334,
+      "share_with_instead": 0.013333333333333334,
+      "mean_buts": 0.8966666666666666,
+      "mean_commas": 2.006666666666667,
+      "mean_emdashes": 0.0,
+      "mean_nots": 0.49333333333333335,
+      "mean_pivot_bigrams": 0.9966666666666667,
+      "mean_words": 33.00666666666667,
+      "mean_sentences": 3.2
+    },
+    "ablated": {
+      "n": 300,
+      "share_with_but": 0.016666666666666666,
+      "share_with_however": 0.0033333333333333335,
+      "share_with_instead": 0.023333333333333334,
+      "mean_buts": 0.016666666666666666,
+      "mean_commas": 0.6266666666666667,
+      "mean_emdashes": 0.0,
+      "mean_nots": 0.31666666666666665,
+      "mean_pivot_bigrams": 0.06333333333333334,
+      "mean_words": 29.553333333333335,
+      "mean_sentences": 3.18
+    }
+  },
+  "Q5c neutral (n=306)": {
+    "baseline": {
+      "n": 306,
+      "share_with_but": 0.13398692810457516,
+      "share_with_however": 0.029411764705882353,
+      "share_with_instead": 0.0,
+      "mean_buts": 0.13725490196078433,
+      "mean_commas": 1.5196078431372548,
+      "mean_emdashes": 0.0,
+      "mean_nots": 0.1111111111111111,
+      "mean_pivot_bigrams": 0.10784313725490197,
+      "mean_words": 32.13725490196079,
+      "mean_sentences": 2.4379084967320264
+    },
+    "ablated": {
+      "n": 306,
+      "share_with_but": 0.013071895424836602,
+      "share_with_however": 0.0032679738562091504,
+      "share_with_instead": 0.0032679738562091504,
+      "mean_buts": 0.013071895424836602,
+      "mean_commas": 0.5816993464052288,
+      "mean_emdashes": 0.0032679738562091504,
+      "mean_nots": 0.08496732026143791,
+      "mean_pivot_bigrams": 0.0032679738562091504,
+      "mean_words": 31.637254901960784,
+      "mean_sentences": 2.738562091503268
+    }
+  }
+}

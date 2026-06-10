@@ -14,6 +14,7 @@
   <nav class="mode-switch">
     <a href="/demo" class="active">📖 Story</a>
     <a href="/demo/playground.html">🎛 Playground</a>
+    <a href="/demo/slopometer.html">🔍 Slop-o-meter</a>
   </nav>
   <div class="credit">feature map by <span class="badge">◆ Neo4j</span></div>
 </header>
@@ -108,9 +109,9 @@
       <strong>The model.</strong> Google's Gemma 2 2B — an open
       instruction-tuned chatbot, two billion parameters, runs on a laptop.
       Small enough to probe directly, big enough to produce fluent prose.
-      It produces the AI-ism at about <em>seven percent of sentences</em>
-      on neutral prompts, which sounds low until you realise every other
-      paragraph contains one.
+      It produces the AI-ism in about <em>seven and a half percent of
+      replies</em> on neutral prompts, which sounds low until you realise
+      every other paragraph contains one.
     </li>
     <li>
       <strong>The microscope.</strong> A pre-trained <em>sparse autoencoder</em>
@@ -348,20 +349,20 @@
     <div class="headline-stat">
       <p class="kicker">baseline</p>
       <div class="name">construction rate</div>
-      <div class="big">15%</div>
-      <div class="foot">46 of 300 generations.</div>
+      <div class="big">12.3%</div>
+      <div class="foot">37 of 300 generations.</div>
     </div>
     <div class="headline-stat">
       <p class="kicker">top-25 coalition silenced</p>
       <div class="name">construction rate</div>
-      <div class="big">3%</div>
-      <div class="foot">8 of 300. Drop CI [+68%, +93%]. McNemar mid-p &lt; 10⁻⁶.</div>
+      <div class="big">6%</div>
+      <div class="foot">18 of 300. Drop CI [+21%, +73%]. McNemar mid-p ≈ 0.005.</div>
     </div>
     <div class="headline-stat">
       <p class="kicker">absolute drop</p>
       <div class="name">on primed prompts</div>
-      <div class="big">−12 pp</div>
-      <div class="foot"><strong>82% relative</strong>. The construction commits ~5× less often when the coalition can't fire.</div>
+      <div class="big">−6.3 pp</div>
+      <div class="foot"><strong>51% relative (92% of the strict textbook form, 25 → 2)</strong>. What survives is looser shapes the union detector still sees.</div>
     </div>
   </div>
 
@@ -379,26 +380,30 @@
     <div class="headline-stat">
       <p class="kicker">baseline</p>
       <div class="name">construction rate</div>
-      <div class="big">12%</div>
-      <div class="foot">36 of 306 generations.</div>
+      <div class="big">5.9%</div>
+      <div class="foot">18 of 306 generations (the negated family).</div>
     </div>
     <div class="headline-stat">
       <p class="kicker">top-25 coalition silenced</p>
       <div class="name">construction rate</div>
-      <div class="big">2%</div>
-      <div class="foot">7 of 306. Drop CI [+67%, +92%]. McNemar mid-p &lt; 10⁻⁶.</div>
+      <div class="big">3.3%</div>
+      <div class="foot">10 of 306. Drop CI [+14%, +70%]. McNemar mid-p ≈ 0.012 — about 1 in 85 by luck.</div>
     </div>
     <div class="headline-stat">
       <p class="kicker">absolute drop</p>
       <div class="name">on neutral prompts</div>
-      <div class="big">−10 pp</div>
-      <div class="foot"><strong>80% relative</strong>. The product claim Phase 7 retired holds when you attack the coalition, not the anchor.</div>
+      <div class="big">−2.6 pp</div>
+      <div class="foot"><strong>44% relative (93% of the strict textbook form, 14 → 1)</strong>. Nine prompts changed status; eight changed toward clean. The model partially reroutes — count the affirmative "more than just" cousin too and the net drop is 25%.</div>
     </div>
   </div>
 
   <p>
-    Three converging probes (M2 pivot probability, M1 primed, M1 neutral),
-    all consistent at a 70–82% relative drop with a ~1–4% residual.
+    Three converging probes: P(pivot) at the decision point −72%, primed
+    completions 89% → 40%, neutral prose family −44% — with the strict
+    textbook form down 82–93% everywhere. One more tell about what was actually removed: the
+    share of generations containing <em>"but"</em> collapses from 13.4% to
+    1.3%. The coalition isn't a slop switch; it's the model's <em>contrast
+    machinery</em>, and the AI-ism is what that machinery over-produces.
   </p>
 </section>
 
@@ -850,8 +855,9 @@ ORDER BY s.ts</pre>
     <code>reports/pivot_attribution.json</code>).
     <strong>Classifier:</strong> <code>detect_construction</code>
     blind-validated at P = 0.80 / R = 1.00 on 90 independently-sourced
-    sentences (Tier 0a); v2 union scoring with permissive regex covers
-    F2 staccato; both committed in <code>src/classifier/</code>.
+    sentences (Tier 0a); family scoring adds the negation-mandatory permissive layer
+    (cross-sentence forms); the affirmative “more than just” cousin is
+    counted separately. All committed in <code>src/classifier/</code>.
   </p>
   <p>
     <strong>Graph substrate:</strong> Neo4j on
@@ -869,7 +875,7 @@ ORDER BY s.ts</pre>
     graph-selected feature sets.
   </p>
   <p>
-    Reproducible from <a href="https://github.com/theohopkinson/not-this-but-that">github.com/theohopkinson/not-this-but-that</a>.
+    Reproducible from <a href="https://github.com/ho3h/not-this-but-that">github.com/ho3h/not-this-but-that</a>.
   </p>
 </footer>
 

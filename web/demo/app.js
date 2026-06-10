@@ -137,14 +137,18 @@
   // More permissive than the canonical Python classifier — catches F2
   // staccato (cross-sentence) and F1/F3 (same-sentence) so the UI shows the
   // construction users can actually SEE in the prose.
+  // 2026-06-09: mirrors the fixed Python permissive layer in
+  // src/classifier/detect_v2.py — negation mandatory, \b on pronoun tails,
+  // first-person/epistemic/bare-do-support FP classes excluded. See
+  // reports/permissive_fix_audit.md.
   const PATTERNS = [
     {
       name: "F1/F3 (same-sentence)",
-      re: /\b(is|are|isn'?t|aren'?t|was|were|wasn'?t|weren'?t|don'?t|doesn'?t|don)\s+(?:not\s+)?(?:just\s+)?[^.,;:!?\n]{1,80}[,;—–\-]\s*(?:it'?s?|they'?re?|they|he'?s?|she'?s?|we'?re?|but\s+|but\b)/gi,
+      re: /\b(?:(?:is|are|was|were)n'?t|(?:is|are|was|were|am)\s+not|(?:it|that|this|he|she|there)'?s\s+not|(?:we|they|you)'?re\s+not|(?:do|does|did)(?:n'?t|\s+not)\s+(?:just|merely|simply|only|necessarily|really|mean))(?!\s+(?:sure|certain|aware|convinced)\b)\s+(?:just\s+|merely\s+|simply\s+|only\s+)?[^.,;:!?\n]{1,80}[,;—–\-]\s*(?:it'?s?|that'?s|they'?re|they|he'?s?|she'?s?|we'?re|we|but|rather|instead)\b/gi,
     },
     {
       name: "F2 staccato (cross-sentence)",
-      re: /\b(?:is|are|isn'?t|aren'?t|was|were|wasn'?t|weren'?t|don'?t|doesn'?t)\s+(?:not|just)\s+(?:just\s+)?[^.!?\n]{1,80}[.!?]\s*(?:It'?s?|They'?re?|He'?s?|She'?s?|We'?re?|But\s+|Rather|Instead)/g,
+      re: /\b(?:(?:is|are|was|were)n'?t|(?:is|are|was|were|am)\s+not|(?:[Ii]t|[Tt]hat|[Tt]his|[Hh]e|[Ss]he|[Tt]here)'?s\s+not|(?:[Ww]e|[Tt]hey|[Yy]ou)'?re\s+not|(?:[Dd]o|[Dd]oes|[Dd]id)(?:n'?t|\s+not)\s+(?:just|merely|simply|only|necessarily|really|mean))(?!\s+(?:sure|certain|aware|convinced)\b)\s+(?:just\s+|merely\s+|simply\s+|only\s+|about\s+)?[^.!?\n]{1,80}[.!?]\s*(?:It'?s?|That'?s|They'?re|They|He'?s?|She'?s?|We'?re|We|But|Rather|Instead)\b/g,
     },
     {
       name: "F4/F5 (less/more, not about)",

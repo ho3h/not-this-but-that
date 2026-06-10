@@ -1,0 +1,51 @@
+{
+  "A1": {
+    "attack": "Ask nicely (system prompt)",
+    "n": 90,
+    "baseline_hits": 14,
+    "intervened_hits": 8,
+    "rel_drop": 0.42857142857142855
+  },
+  "A2": {
+    "attack": "Ban the words (logit ban: but/just/only/rather/more/less/em-dash)",
+    "n": 90,
+    "baseline_hits": 14,
+    "intervened_hits": 0,
+    "rel_drop": 1.0
+  },
+  "A3": {
+    "attack": "Show the cure (4 de-slopped exemplars in-context)",
+    "n": 90,
+    "baseline_hits": 14,
+    "intervened_hits": 0,
+    "rel_drop": 1.0
+  },
+  "A4": {
+    "attack": "Scalpel mid-act (ablate 3223 when it fires)",
+    "n": 90,
+    "baseline_hits": 15,
+    "intervened_hits": 11,
+    "rel_drop": 0.26666666666666666
+  },
+  "A5": {
+    "attack": "Scalpel pre-emptive (ablate 3223 throughout)",
+    "n": 90,
+    "baseline_hits": 15,
+    "intervened_hits": 11,
+    "rel_drop": 0.26666666666666666
+  },
+  "A6": {
+    "attack": "Orthogonalize (project 3223 direction out of all layers, Arditi-style)",
+    "n": 90,
+    "baseline_hits": 15,
+    "intervened_hits": 12,
+    "rel_drop": 0.2
+  },
+  "A7": {
+    "attack": "Steering vector (CAA, alpha=8.0)",
+    "n": 90,
+    "baseline_hits": 14,
+    "intervened_hits": 2,
+    "rel_drop": 0.8571428571428571
+  }
+}

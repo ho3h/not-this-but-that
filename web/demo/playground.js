@@ -23,6 +23,7 @@
   const GRAPH_CACHE = new Map();
   const ACTIVE_FEATURES = new Set();
   let SUPPORTS_GRAPH_BATCH = false;
+  let DAEMON_UP = false;
   let RELATIONSHIP_RENDER_MODE = "links";
   let MAP_NOTE_TEXT = "";
 
@@ -152,6 +153,26 @@
   function describeError(e) {
     return esc(e && e.message ? e.message : "unknown error");
   }
+  // One consistent line for graph/daemon-dependent features on a static host
+  // (Vercel serves the files; POST /probe 404s by design).
+  const REPO_URL = "https://github.com/ho3h/not-this-but-that";
+  const OFFLINE_NOTE_PLAIN = "needs the local daemon + Neo4j — see github.com/ho3h/not-this-but-that";
+  const OFFLINE_NOTE = `Needs the local daemon + Neo4j — see <a href="${REPO_URL}" target="_blank" rel="noopener">github.com/ho3h/not-this-but-that</a>`;
+  function failureNote(e) {
+    return DAEMON_UP ? `network: ${describeError(e)}` : OFFLINE_NOTE;
+  }
+  // Baked cmd_attribution responses for static hosting
+  // (written by scripts/bake_attribution_static.py).
+  let STATIC_ATTRIBUTION = null;
+  async function staticAttribution() {
+    if (STATIC_ATTRIBUTION === null) {
+      try {
+        const r = await fetch("/demo/attribution_static.json");
+        STATIC_ATTRIBUTION = r.ok ? await r.json() : {};
+      } catch (e) { STATIC_ATTRIBUTION = {}; }
+    }
+    return STATIC_ATTRIBUTION;
+  }
   const DEFAULT_MAP_NOTE = "Feature view keeps decoder-vector positions. Click a dot, group, or preset to add it to Currently silenced.";
   function setMapNote(text = DEFAULT_MAP_NOTE) {
     MAP_NOTE_TEXT = text;
@@ -161,9 +182,13 @@
   }
 
   // Visual construction detector (shared with story view).
+  // 2026-06-09: mirrors the fixed Python permissive layer in
+  // src/classifier/detect_v2.py — negation mandatory, \b on pronoun tails,
+  // first-person/epistemic/bare-do-support FP classes excluded. See
+  // reports/permissive_fix_audit.md.
   const PATTERNS = [
-    /\b(is|are|isn'?t|aren'?t|was|were|wasn'?t|weren'?t|don'?t|doesn'?t|don)\s+(?:not\s+)?(?:just\s+)?[^.,;:!?\n]{1,80}[,;—–\-]\s*(?:it'?s?|they'?re?|they|he'?s?|she'?s?|we'?re?|but\s+|but\b)/gi,
-    /\b(?:is|are|isn'?t|aren'?t|was|were|wasn'?t|weren'?t|don'?t|doesn'?t)\s+(?:not|just)\s+(?:just\s+)?[^.!?\n]{1,80}[.!?]\s*(?:It'?s?|They'?re?|He'?s?|She'?s?|We'?re?|But\s+|Rather|Instead)/g,
+    /\b(?:(?:is|are|was|were)n'?t|(?:is|are|was|were|am)\s+not|(?:it|that|this|he|she|there)'?s\s+not|(?:we|they|you)'?re\s+not|(?:do|does|did)(?:n'?t|\s+not)\s+(?:just|merely|simply|only|necessarily|really|mean))(?!\s+(?:sure|certain|aware|convinced)\b)\s+(?:just\s+|merely\s+|simply\s+|only\s+)?[^.,;:!?\n]{1,80}[,;—–\-]\s*(?:it'?s?|that'?s|they'?re|they|he'?s?|she'?s?|we'?re|we|but|rather|instead)\b/gi,
+    /\b(?:(?:is|are|was|were)n'?t|(?:is|are|was|were|am)\s+not|(?:[Ii]t|[Tt]hat|[Tt]his|[Hh]e|[Ss]he|[Tt]here)'?s\s+not|(?:[Ww]e|[Tt]hey|[Yy]ou)'?re\s+not|(?:[Dd]o|[Dd]oes|[Dd]id)(?:n'?t|\s+not)\s+(?:just|merely|simply|only|necessarily|really|mean))(?!\s+(?:sure|certain|aware|convinced)\b)\s+(?:just\s+|merely\s+|simply\s+|only\s+|about\s+)?[^.!?\n]{1,80}[.!?]\s*(?:It'?s?|That'?s|They'?re|They|He'?s?|She'?s?|We'?re|We|But|Rather|Instead)\b/g,
     /(?:\bless\b\s+[^.,;:!?\n]{1,40}\s*[,;—–\-]\s*more\b|\bnot\s+about\b\s+[^.,;:!?\n]{1,40}\s*[,;—–\-]\s*(?:it'?s?\s+about|about))/gi,
   ];
   function hasConstruction(text) {
@@ -203,17 +228,20 @@
     try {
       const r = await probe({ cmd: "ping" }, { timeoutMs: 8000 });
       if (r.ok) {
+        DAEMON_UP = true;
         SUPPORTS_GRAPH_BATCH = Array.isArray(r.result.capabilities) &&
           r.result.capabilities.includes("graph.coact_batch");
         setStatus("up", `daemon UP · Gemma 2 2B on ${r.result.device}`);
       }
       else { setStatus("down", "daemon: " + r.error); $("generate").disabled = true; }
     } catch (e) {
-      setStatus("down", "daemon down — start with scripts/probe_run.sh start");
+      setStatus("down", "Live generation needs the local daemon — this hosted version is the atlas + presets only. Run it locally: github.com/ho3h/not-this-but-that (then scripts/probe_run.sh start)");
       $("generate").disabled = true;
+      $("generate").title = "Live generation " + OFFLINE_NOTE_PLAIN;
     }
 
-    // Fetch preset sets in the background
+    // Fetch preset sets in the background. On a static host the probe call
+    // fails, so fall back to the baked attribution presets.
     try {
       const r1 = await probe({ cmd: "attribution", top_n: 25, kind: "promote" }, { timeoutMs: 15000 });
       if (r1.ok) TOP25 = r1.result.features;
@@ -222,6 +250,11 @@
       const r2 = await probe({ cmd: "attribution", top_n: 10, kind: "suppress" }, { timeoutMs: 15000 });
       if (r2.ok) SUPPRESSORS10 = r2.result.features;
     } catch (e) {}
+    if (!TOP25 || !SUPPRESSORS10) {
+      const baked = await staticAttribution();
+      if (!TOP25 && baked.promote_top25) TOP25 = baked.promote_top25.features;
+      if (!SUPPRESSORS10 && baked.suppress_top10) SUPPRESSORS10 = baked.suppress_top10.features;
+    }
   }
 
   // ─── canvas + cloud ─────────────────────────────────────────────────────
@@ -1448,6 +1481,9 @@
     const seedSet = new Set(seedIds);
     const nodes = new Map(seedIds.map(idx => [idx, makeNode(idx, opts.seedType || "prompt")]));
     const edges = new Map();
+    // Static host: no daemon, so no edge evidence — skip the per-anchor
+    // probe fan-out instead of issuing dozens of doomed requests.
+    if (!DAEMON_UP) return { nodes: [...nodes.values()], edges: [] };
     const anchors = seedIds.slice(0, opts.maxAnchors || 36);
     const maxNodes = opts.maxNodes || 72;
     const includeExternal = opts.includeExternal || false;
@@ -1665,7 +1701,9 @@
     neighbourPulse = neighbourAnchor === null ? 0 : 1;
     renderRelationshipList(built.nodes);
     const edgeText = visibleEdges.length === 0
-      ? "No co-activation edges were returned inside this slice yet."
+      ? (DAEMON_UP
+          ? "No co-activation edges were returned inside this slice yet."
+          : `Live edge evidence ${OFFLINE_NOTE_PLAIN}.`)
       : `${visibleEdges.length} strongest co-activation edge${visibleEdges.length === 1 ? "" : "s"} among ${built.nodes.length} feature atoms.`;
     const communityText = RELATIONSHIP_COMMUNITIES.length
       ? ` ${RELATIONSHIP_COMMUNITIES.length} graph communit${RELATIONSHIP_COMMUNITIES.length === 1 ? "y" : "ies"} found in this relevant subgraph.`
@@ -1716,7 +1754,9 @@
       maxAnchors: 8,
       k: 4,
       maxEdges: 10,
-      note: "The construction features stay in atlas space. A few strongest relationship edges are shown, not the whole graph.",
+      note: DAEMON_UP
+        ? "The construction features stay in atlas space. A few strongest relationship edges are shown, not the whole graph."
+        : `The construction features stay in atlas space. Live edge evidence ${OFFLINE_NOTE_PLAIN}.`,
     });
   }
 
@@ -1802,7 +1842,7 @@
       startAnim();
       setTimeout(stopAnim, 1500);
     } catch (e) {
-      $("search-info").innerHTML = `<span style="color: var(--oppose);">network: ${describeError(e)}</span>`;
+      $("search-info").innerHTML = `<span style="color: var(--oppose);">${failureNote(e)}</span>`;
     } finally {
       restore();
     }
@@ -1865,7 +1905,7 @@
       btn.textContent = "Generating…";
       await generate();
     } catch (e) {
-      $("mixer-info").innerHTML = `<span style="color: var(--oppose);">network: ${describeError(e)}</span>`;
+      $("mixer-info").innerHTML = `<span style="color: var(--oppose);">${failureNote(e)}</span>`;
     } finally {
       restore();
     }
@@ -1949,8 +1989,10 @@
       startAnim();
       setTimeout(stopAnim, 1500);
     } catch (e) {
-      $("search-info").innerHTML = `<span style="color: var(--oppose);">network: ${describeError(e)}</span>`;
-      setSilenceInfo(`<span style="color: var(--oppose);">Smart silence could not reach the daemon: ${describeError(e)}</span>`);
+      $("search-info").innerHTML = `<span style="color: var(--oppose);">${failureNote(e)}</span>`;
+      setSilenceInfo(`<span style="color: var(--oppose);">${DAEMON_UP
+        ? `Smart silence could not reach the daemon: ${describeError(e)}`
+        : OFFLINE_NOTE}</span>`);
     } finally {
       restore();
     }
@@ -2016,7 +2058,7 @@
       startAnim();
       setTimeout(stopAnim, 1500);
     } catch (e) {
-      $("search-info").innerHTML = `<span style="color: var(--oppose);">network error: ${describeError(e)}</span>`;
+      $("search-info").innerHTML = `<span style="color: var(--oppose);">${failureNote(e)}</span>`;
     }
   }
 
@@ -2142,10 +2184,15 @@
   }
 
   // ─── presets ───────────────────────────────────────────────────────────
-  function pickPreset(name) {
+  async function pickPreset(name) {
     document.querySelectorAll(".preset-card").forEach(c => c.classList.toggle("on", c.dataset.preset === name));
     if (name === "none") return clearAblation();
     if (name === "top25") {
+      if (!TOP25 || TOP25.length === 0) {
+        // Static-host fallback: serve the preset from the baked file.
+        const baked = await staticAttribution();
+        if (baked.promote_top25) TOP25 = baked.promote_top25.features;
+      }
       if (!TOP25 || TOP25.length === 0) {
         $("search-info").innerHTML = `<span style="color: var(--oppose);">The construction feature set is still loading. Try again in a moment.</span>`;
         setSilenceInfo(`<span style="color: var(--oppose);">The fixed not-this-but-that set is still loading. Try again in a moment.</span>`);
@@ -2158,6 +2205,10 @@
     }
     if (name === "minimal")      return setAblation(MINIMAL,             { kind: "preset", label: "preset: minimal core (3223+9909)" });
     if (name === "suppressors") {
+      if (!SUPPRESSORS10 || SUPPRESSORS10.length === 0) {
+        const baked = await staticAttribution();
+        if (baked.suppress_top10) SUPPRESSORS10 = baked.suppress_top10.features;
+      }
       if (!SUPPRESSORS10 || SUPPRESSORS10.length === 0) {
         $("search-info").innerHTML = `<span style="color: var(--oppose);">The stress-test feature set is still loading. Try again in a moment.</span>`;
         return;

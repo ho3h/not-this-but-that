@@ -6,15 +6,18 @@
 
 ## 🌅 Morning checklist — ship-ready
 
+Numbers below revised 2026-06-10 after the permissive-detector fixes (incl. the more-than-just cousin boundary) — see reports/permissive_fix_audit.md.
+
 Everything below is what to do when you wake up. The work is done; this is the publish path.
 
 ### 1. Read the Medium post
 **File:** [`reports/medium_post_draft.md`](reports/medium_post_draft.md) (3,500-word piece, has the "three demos" section at the end)
 
 It's the long version of the story. Headline numbers are:
-- **80% relative drop** in AI-ism rate on neutral chatbot prompts (12% → 2%, n=306, p < 10⁻⁶, bootstrap CI [+67%, +92%])
-- **78% drop with just the two indispensable features** (3223 + 9909)
-- **Perplexity 1.08×** — fluent
+- Neutral prompts, out-of-sample: **strict −93%** (14 → 1); **negated family −44%** (18/306 → 10/306, mid-p 0.012); **family + "more than just" cousin −25%** (cousin itself rises 10 → 11)
+- Primed prompts (n=300): prefix-inclusive family 267 → 120 (−55%), strict −82%; completion-only −51%, held-out half −50%
+- **Two-feature core 3223+9909** (n=120, in-sample): completion-only −53%; prefix-inclusive only −15% — the tail carries sustained suppression
+- **Perplexity 1.079×** — fluent; the deeper finding is contrast-machinery control ("but"-share 13.4% → 1.3% neutral, 75% → 1.7% primed; words/gen identical)
 - **The graph guessed wrong** (decoder neighbours / Leiden community / co-activators all failed at predicting coalition membership; only causal attribution worked)
 - **The mechanism is local to layer 20** (cross-layer joint ablation doesn't beat L20 alone)
 
@@ -23,7 +26,7 @@ It's the long version of the story. Headline numbers are:
 - **Draft A** (1,800 chars, punchy) — recommended
 - **Draft B** (2,800 chars, storytelling)
 
-Both end with the GitHub link and three demo callouts. Replace `[github.com/theohopkinson/not-this-but-that]` with the real public URL.
+Both end with the GitHub link and three demo callouts. Replace `[github.com/ho3h/not-this-but-that]` with the real public URL.
 
 ### 3. Capture screenshots
 **Source:** `http://127.0.0.1:8765/demo/playground.html`
@@ -41,9 +44,7 @@ scripts/probe_run.sh start
 Then open `http://127.0.0.1:8765/demo/playground.html`.
 
 ### 5. Post
-- LinkedIn at 9-11am local time, midweek
 - Cross-post a thread to X with key stats
-- Tag/mention Anthropic + OpenAI interp folks if comfortable
 
 ---
 

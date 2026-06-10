@@ -1,217 +1,135 @@
 # Not This, But That
 
-> Find the feature inside a small open LLM that produces the **"not X, but Y"** writing tell, prove you can switch it off without wrecking the prose, and tell the story in the voice of the tell itself.
+*"This isn't a setback, it's a springboard."* Every chatbot writes that sentence. I went looking for the single internal feature in Gemma 2 2B that produces it — the way refusal famously lives in a single direction — and found that there isn't one. There's a **coalition of twenty-five SAE features**, two of which do a third of the work each. Silence all twenty-five and the textbook form of the tic nearly vanishes (**−93%** under the strict, blind-validated detector); the whole negated family drops **44%** on out-of-sample neutral prompts (18/306 → 10/306 paired generations, McNemar mid-p 0.012), with the prose staying fluent. And then the model reroutes: its favourite escape — the affirmative cousin *"it's more than just X. It's Y"* — actually **rises** under the kill, putting the widest honest count at **−25%**. The catch that became the finding: what those features actually run is the model's **contrast machinery** — silence them and the share of generations containing "but" falls from 13.4% to 1.3% while words-per-generation stays identical at 32 — and the "not X, but Y" construction is just that machinery's loudest output.
 
-This isn't a detector. It's the same engine that lived in the previous repo (`grammar-layer`), repointed at a better question.
+This repo is the code, data, and receipts behind the writeup. Every number the post quotes maps to an artifact in the [receipts table](#receipts) below.
 
-The previous project rediscovered a known phenomenon — SAE "suppression features" — and over-claimed novelty. The post-mortem was clear: the framework was sound, the framing was not, and the finding was someone else's from 2024. The machinery, though, was good. *Not* this — but *that*.
+## The finding in five bullets
 
----
+- **It's a coalition, not a switch.** Twenty-five layer-20 SAE features, selected by per-feature causal attribution to the pivot decision. Leave-one-out says two are indispensable — **3223** (*"phrases conveying exceptions or negations"*, cost-when-removed 0.073) and **9909** (*"references to digital technology"*, 0.074) — one is secondary (12898, 0.021), and the other twenty-two are redundant supporters at under 0.013 each. Ablating the two cores alone buys most of what twenty-five buy.
+- **Single-feature and prompt-level attacks fail.** A gauntlet of seven — ask nicely (−38%), logit bans ("works" by making seven common words unsayable), in-context exemplars ("work" by replacing the model's voice), directional orthogonalization (−12%), CAA steering (kills only where the prose collapses), scoped and global single-feature ablation — failed outright or worked only via collateral. The model reroutes around any one feature: the Hydra Effect, applied to rhetoric.
+- **The selection had to be causal, not structural.** Feature 3223's decoder neighbours (−20%), co-activation partners (−18%, i.e. nothing beyond 3223 alone), and Leiden community-mates (−0.1%) all failed to find the coalition; the causal-attribution top-10 dropped P(pivot) 61%. Structural similarity in this SAE does not predict coalition membership.
+- **It's layer-20-local.** The same pipeline at L12 buys −30%, at L25 −52%, at L20 −72% — and joint ablation across all three layers (75 features) floors at 0.079, indistinguishable from L20 alone at 0.077. Heads at several layers, one heart.
+- **Necessity, not sufficiency.** Ablating the coalition removes the construction; clamping it up does not reproduce it. That asymmetry is the deepest unresolved thing in the project.
 
-## Status
+## What this is not
 
-This project has run two parallel investigations through the same adversarial methodology. **Read them in this order:**
+- **Not a detector.** AI-text detection is crowded and adversarially doomed. This is about mechanism and control. (The slop-o-meter is a demo of what the project's measurement instrument sees, not a product.)
+- **Not a claim about "AI writing" in general.** One construction, one model. Gemma 2 2B is not the model whose prose anyone complains about; it's the one with public SAEs. The honest claim is *here is the machinery of this tell in this model*, not *here is why AI writes like this*.
+- **Not peer-reviewed.** Nothing here has been read by a credentialed mech-interp researcher. The receipts exist so you can check the work, not so you can skip checking it.
 
-1. **[`reports/operating_protocol.md`](reports/operating_protocol.md)** — Discovery/Confirmation firewall, BH-FDR multiplicity correction, pre-registered Tiers 0–6, prime directive. The methodology is the load-bearing intellectual contribution; the empirical findings are the worked example of it working.
-2. **[`reports/the_explicit_decision.md`](reports/the_explicit_decision.md)** — Path A (mechanism) vs Path B (register) split. Two separate writeups, deliberately not merged.
-3. **[`reports/path_b_register_writeup.md`](reports/path_b_register_writeup.md)** — the behavioural finding, narrowed by cross-family replication, with the honest cross-family null reported.
-4. **[`reports/writeup.md`](reports/writeup.md)** — the Path A exploration writeup with its caveats. Conditional on the Tier 0b prerequisite.
+## See it
 
-### Path B — narrowed empirical finding
+**[Live demo](https://not-this-but-that.vercel.app/demo/)** <!-- TODO: confirm URL after vercel deploy --> — the hosted story page: side-by-side baseline-vs-ablated playbacks you can step through token by token, with the construction highlighted as it forms — or doesn't. There's also a **slop-o-meter** (`/demo/slopometer.html`): paste your own prose and see exactly what this project's detector sees.
 
-**Within Gemma 2 2B-it (Tier 0a + Discovery → Confirmation → BH-FDR passed):**
-- Construction rate is **4.2× the base model's** (Gemma 2 2B-it: 1.8% / Gemma 2 2B base: 0.4%); non-overlapping bootstrap CIs.
-- **94% of construction usage is C3** ("It's not just X — it's Y", minimize-then-elevate).
-- Constructions cluster at the **beginning of generations** (median relative position 0.10 vs 0.50 for non-construction sentences; Mann-Whitney p_BH = 0.043 on the held-out Confirmation split).
+The full **playground** — the 16,384-dot feature atlas, concept search, lasso ablation, surgical de-slop, the behaviour mixer, the audit trail — needs the live model and runs locally. Honest requirements: a Hugging Face account with access to the gated Gemma 2 weights, ~10 GB of downloads on first run, and enough memory to hold both Gemma 2 2B variants plus the SAE (~12 GB; developed on Apple Silicon/MPS, falls back to CPU). The graph-backed features additionally want a local Neo4j (below).
 
-**Cross-family replication on Qwen 2.5 7B Instruct: NULL.** C3 share of any_core = 0%; H17 direction does not replicate (n=3 positives, no power either way). The 94%-C3 / opener-position signature is Gemma-2-2b-it-specific, not a cross-family instruct register. The surface register (opening summary + bullets + bold headers) appears shared cross-family by eyeball but was not measured. Gemma 2 9B-it would have tested the within-Gemma-family scale question but the HF token doesn't have access.
+## Quickstart
 
-**Retired:** "Instruct-tuning installs the C3 register across families." Also retired: H19 (was an apostrophe-in-contraction artifact, not a real quote-mark effect).
+```bash
+# 1. Install. Requires uv (https://docs.astral.sh/uv/); Python 3.12 is pinned.
+uv sync
+.venv/bin/python -m spacy download en_core_web_sm   # the strict detector's dependency check
 
-### Path A — mechanism story (conditional, unresolved)
+# 2. Credentials. Gemma 2 is gated on Hugging Face — accept the licence at
+#    huggingface.co/google/gemma-2-2b-it, then put a read token in .env:
+cp .env.example .env    # edit: HF_TOKEN=hf_...
 
-- **Discovery candidate**: SAE feature #3223 ("phrases conveying exceptions or negations") at L20 of Gemma Scope width-16k. Ablation at the pre-pivot decision point drops P(pivot) by 25% relative; 5/5 random-k controls produced no measurable change.
-- **Necessity yes, sufficiency no**: clamping the feature *up* doesn't reproduce the construction.
-- **De-slop product claim retracted**: ablating the feature during open-ended generation gives 0% drop in construction rate, because the feature is dormant on neutral prompts. It gates the *commit* to the pivot, not the *entry* into construction-mode.
-- **Foundation crack**: Tier 0b (Gemma Scope reconstruction-quality verification) returns negative VE through every measurement path, which is definitionally an instrument bug. Proxy evidence the SAE is functional (L0 = 74 vs canonical 71; cosine 0.83) does not substitute for the prerequisite the pre-registration demanded. Until a credentialed mech-interp reader unblocks the VE-reproduction recipe, the mechanism story stays as Discovery candidates, not findings.
+# 3. Start the probe daemon (holds model + SAE in memory, serves the demo).
+scripts/probe_run.sh start
 
-### Foundation cracks
-1. **CLOSED** — classifier blind-validation. [Tier 0a](reports/tier_0a_classifier_blind_eval.md): P = 0.80, R = 1.00 on 90 independently-sourced sentences. Above the pre-registered ≥ 0.70 gate. **Caveat (H09 lesson):** the classifier's C3 regex partly leans on the "just/merely/simply" lexicon, so the 94%-C3 share partly reflects what the classifier can see. Worth a sentence of honesty in any onward use.
-2. **OPEN** — Tier 0b VE reconstruction. See [`reports/tier_0b_kill.md`](reports/tier_0b_kill.md).
+# 4. Open the playground.
+open http://127.0.0.1:8765/demo/
+```
 
-Nothing here has been peer-read by a credentialed mech-interp researcher. Path B is shippable as a small modest finding; Path A is conditional. The honesty contract (§9 below) still applies.
+The map, community names, and baked examples are committed under `web/demo/`, so the atlas renders and the story page works without any graph. Generation, ablation, and P(pivot) probes run against the daemon.
 
----
+### Graph features (optional)
 
-## 1. The thing we are studying
+Surgical de-slop, the behaviour mixer, the audit trail, and the live neighbour overlays are Cypher under the hood and need a local **Neo4j 5 with GDS and APOC** at `bolt://localhost:7693` (credentials in `.env.example`).
 
-Wikipedia's *Signs of AI writing* page (shortcut **WP:AIPARALLEL**) describes the target precisely: LLMs over-produce parallel constructions built on *not / but / however*. We study four variants:
+`scripts/00_bootstrap_neo4j.sh` builds one, but it is honestly macOS/Homebrew-pinned: it clones a Homebrew-installed Neo4j 2026.03.1 into `.neograph-db/` and downloads GDS. Any Neo4j 5+ instance with GDS works — point `NEO4J_URI` at it. Then the ingest chain:
 
-| # | Variant | Example | Lexical hinge |
-|---|---------|---------|---------------|
-| **C1** | Contrastive correction | "It's *not* a tool, it's a revolution." | `not` … `it's` / `,` pivot |
-| **C2** | Additive escalation | "*Not only* does it scale, *but* it adapts." | `not only` … `but` |
-| **C3** | Minimize-then-elevate | "It's *not just* an update — it's a rethink." | `not just` … `but` / `—` |
-| **C4** | Triadic negation | "No mandate. No approval. Just power." | `no` … `no` … `just` |
+1. `scripts/01_load_model_and_sae.py` — smoke test: Neo4j reachable (GDS + APOC), HF auth, model + SAE load and produce (1, seq, 16384) activations.
+2. `scripts/migrate.py` — applies schema constraints + vector indexes, idempotently.
+3. `scripts/04_ingest_features.py` — writes the 16,384 `:SAEFeature` nodes with decoder/encoder vectors and pulls Neuronpedia auto-interp labels for each.
+4. `scripts/seed_behaviours.py` — seeds the `:Behaviour` nodes and weighted `INCLUDES` edges (the `ai-ism` coalition, straight from `reports/pivot_attribution.json` + the leave-one-out costs).
+5. `scripts/build_label_embeddings.py` — embeds all 16,384 feature labels and writes the vector index that concept search and surgical de-slop retrieve against (~2 min on CPU).
 
-**C1–C3 are the core. C4 is a rhythmic cousin** (added to the WP discussion in 2026); kept in the corpus, kept out of the primary causal claim until C1–C3 are nailed.
+`reports/label_embeddings.npy` (and its index JSON) are gitignored — run step 5 locally or surgical de-slop has nothing to retrieve with. One more honesty note: the `DECODER_SIMILAR` / `CO_ACTIVATES_WITH` edges (524k / 272k) and the 18 Leiden communities were built with GDS via `src/neograph/relations.py` rather than a numbered script; the demo degrades gracefully without them — only the live graph-neighbour expansions need the edges.
 
-Why this construction and not "rule of three" or "delve": it has a **lexical hinge** — a specific tokenizable pivot (`but`, `it's`, `just`, `—`). That converts "did the model enter the construction" into a next-token probability, which is exactly what the existing ablation harness measures. The rule of three is rhythmic, unanchored, SAE-illocalizable. **Out of scope for v1.**
+With the graph up, the playground's three demos are each one Cypher query:
 
----
+- **Surgical de-slop** — embed your prompt, vector-retrieve matching feature labels, intersect with the `ai-ism` `:Behaviour`'s `INCLUDES` edges, silence only the overlap. For some prompts the intersection is empty and the graph says *leave it alone* — which is the point.
+- **Mix your own chatbot** — four `:Behaviour` subgraphs (`ai-ism`, `bullets`, `hedging`, `formal_register`) with a slider each; intensities compose into one weighted Cypher UNION of features to silence.
+- **Audit trail** — every generation writes an `:Intervention` node with `(:Intervention)-[:USED_SOURCE]->(:Source)-[:SELECTED]->(:SAEFeature)` paths, so "why did this run silence feature 3223?" is a path query, weeks later. Each demo has a `show Cypher` button.
 
-## 2. Prior work — read this section first
+## Receipts
 
-The single thing that sank `grammar-layer` was a missing related-work section. We fix that *before* writing analysis.
+Every claim, with the artifact that backs it. All paths under `reports/`.
 
-**Closest prior art** (the work this project must differentiate from, row by row in §3):
-- **"Feature-Level Insights into Artificial Text Detection with Sparse Autoencoders"** — Kuznetsov et al., [arXiv:2503.03601](https://arxiv.org/abs/2503.03601), March 2025. SAE features from Gemma-2-2b's residual stream + a steering approach + the finding that LLMs have a distinct writing style.
+| Claim | Receipt |
+|---|---|
+| Neutral prompts, out-of-sample, n=306 pairs: family 18 → 10 (**−44%**, CI 14–70%, mid-p 0.012; 8 of 9 changed prompts toward clean); strict 14 → 1 (**−93%**); family+cousin 28 → 21 (**−25%**, the cousin itself 10 → 11) | [`m1_stats_reanalysis.md`](reports/m1_stats_reanalysis.md), [`m1_rescore_union.json`](reports/m1_rescore_union.json) |
+| Prompt-level: 10 prompts changed status, all 10 toward clean (sign-test p ≈ 0.001) | [`m1_stats_reanalysis.md`](reports/m1_stats_reanalysis.md) |
+| The detector fixes that revised the 80% draft headline, twice — every dropped/added hit hand-inspectable | [`permissive_fix_audit.md`](reports/permissive_fix_audit.md) |
+| Primed prompts, n=300 (40% in-sample): prefix-inclusive family 267 → 120 (−55%), strict 172 → 31 (−82%); completion-only −51% (p=4.5×10⁻³), held-out half −50% | [`m1_stats_reanalysis.md`](reports/m1_stats_reanalysis.md), [`heldout_reslice.md`](reports/heldout_reslice.md) |
+| Two-feature core 3223+9909, n=120 (in-sample): completion-only −53%; prefix-inclusive only −15% vs the full coalition's −55% — two features carry the decision, twenty-five carry the paragraph | [`m1_stats_reanalysis.md`](reports/m1_stats_reanalysis.md) |
+| Contrast machinery, not just the tic: "but"-share 13.4% → 1.3% (neutral) and 75% → 1.7% (primed); commas 1.52 → 0.58/gen; words/gen 32 → 32 | [`collateral_syntax.md`](reports/collateral_syntax.md) |
+| Ablation ladder at the pivot decision (n=80): 1/2/5/10/25/50/100 features → −18/−37/−51/−61/−72/−75/−79%; top-25 at n=200 = −76% | [`asymptote_ladder.json`](reports/asymptote_ladder.json) |
+| Controls: 100 random features < 0.001 effect; coalition beats all 20 matched-activation null draws (drop +0.200 vs best null +0.001) | [`matched_activation_null.json`](reports/matched_activation_null.json) |
+| Leave-one-out: two indispensable cores (3223: 0.073, 9909: 0.074), secondary 12898 (0.021), rest < 0.013 | [`q3_leave_one_out.json`](reports/q3_leave_one_out.json) |
+| Layer-local: L12 −30%, L20 −72%, L25 −52%; joint L12+L20+L25 floor 0.079 ≈ L20-alone 0.077 | [`q7c_cross_layer_joint.json`](reports/q7c_cross_layer_joint.json) |
+| Fluency: perplexity on held-out human prose 1.079× (coalition) / 1.000× (single feature) | [`phase5_quality_coalition_top25.md`](reports/phase5_quality_coalition_top25.md) |
+| Strict classifier blind-validated at P = 0.80, R = 1.00 on 90 independently-sourced sentences | [`tier_0a_classifier_blind_eval.md`](reports/tier_0a_classifier_blind_eval.md) |
+| The seven-attack gauntlet, re-scored per-generation with the union detector | [`gauntlet_union_rescore.json`](reports/gauntlet_union_rescore.json) |
+| The canonical coalition (n=40 selection run; the n=100 rerun overlaps 19/25 with identical top-3) | [`pivot_attribution.json`](reports/pivot_attribution.json), [`pivot_attribution_n100.json`](reports/pivot_attribution_n100.json) |
 
-**Genealogy of the tell:**
-- "Understanding the Effects of RLHF on the Quality and Detectability of LLM-Generated Texts" — [arXiv:2503.17965](https://arxiv.org/abs/2503.17965), March 2025.
-- "The Last Fingerprint: How Markdown Training Shapes LLM Prose" — arXiv:2603.27006 — RLHF amplifies stylistic tells because evaluators reward structured, emphatic prose.
+Detector provenance, stated plainly: the strict classifier is the only blind-validated one; the permissive layer that completes the family is FP-audited but not blind-validated; the affirmative "more than just" cousin is counted separately (it rises under ablation); the gauntlet's original referee was a third detector (P = R = 0.857 on its own holdout). The statistics regenerate from the committed generation JSONs without a GPU — `m1_stats_reanalysis.py`, `rescore_union.py`, `heldout_reslice.py`, `collateral_syntax.py`, `audit_permissive_fix.py` in `scripts/`. The Discovery/Confirmation protocol the project ran under is at [`reports/operating_protocol.md`](reports/operating_protocol.md).
 
-**Methodological lineage:**
-- Bloom & Lin, ["Understanding SAE Features with the Logit Lens"](https://www.lesswrong.com/posts/qykrYY6rXXM7EEs8Q/understanding-sae-features-with-the-logit-lens), LessWrong, March 2024 — the original suppression-vs-prediction features framing.
-- Marks, Rager, Michaud, Belinkov, Bau & Mueller, ["Sparse Feature Circuits"](https://arxiv.org/abs/2403.19647), ICLR 2025 — signed indirect-effect attribution.
-- Anthropic, ["Circuit Tracing"](https://transformer-circuits.pub/2025/attribution-graphs/methodology.html) + ["On the Biology of a Large Language Model"](https://transformer-circuits.pub/2025/attribution-graphs/biology.html), Transformer Circuits, March 2025.
-- Lieberum et al., ["Gemma Scope"](https://arxiv.org/abs/2408.05147), August 2024 — the SAEs we use.
-- Goodfire / Bhalla et al., ["Do Sparse Autoencoders Find True Features?"](https://arxiv.org/abs/2604.28119), arXiv:2604.28119, April 2026 — the key warning that meaningful concepts may be tiled across low-dimensional manifolds of SAE atoms rather than represented by isolated feature directions.
-- Zhang, Wang & Su, "Mechanistic Knobs: Retrieving and Steering High-Order Semantic Features via SAEs" — arXiv:2601.02978 — precedent for steering behavior-level linguistic features.
+## Where this could be wrong
 
-**How this differs from the Goodfire manifold work:** we do not claim that
-the global 2D UMAP is the manifold, nor that single SAE atoms are complete
-concepts. The graph is used as a substrate for hypotheses and interventions:
-activation-linked sets, behavior coalitions, communities, and prompt-retrieved
-slices. The visualization is currently an atlas over atoms; the research claim
-is the causal effect of a validated behavior coalition.
+- **It's post-hoc.** The pre-registration committed to single-feature attacks; the coalition is what came out of those failing. On the order of fifty analyses ran before the headline number existed. What protects the result is effect size, the out-of-sample neutral eval, and the matched-activation null — not pre-registration. A properly pre-registered confirmation run on fresh prompts is the most important experiment not yet done.
+- **Several supporting numbers are in-sample.** The ladder, leave-one-out, matched null, and cross-layer tests all use the 80 prompts the coalition was selected on. The neutral-prompt eval (−93% strict / −44% family / −25% incl. cousin) is the out-of-sample one. The primed eval is 40% in-sample, but its held-out half shows the same drop (−50% vs −51%); re-selecting the coalition at n=100 keeps 19/25 members and the same top three.
+- **Sufficiency is unresolved.** Clamping the coalition up doesn't reproduce the construction. The pre-registered interchange-patching retrial hasn't been run; the asymmetry may be a real fact about coalitions or an experiment away from dissolving.
+- **One model, one SAE, one width.** Gemma 2 2B, Gemma Scope L20/16k canonical. No cross-model replication yet; this is an existence proof, not a law.
+- **The fluency defence uses the wrong instrument.** 1.079× perplexity on held-out *human* prose says the model still predicts clean text, not that its own de-slopped generations stayed good. Blinded preference judging hasn't been run; the circumstantial evidence is the collateral table (identical length, identical sentence counts).
 
-**Cultural anchor:**
-- Wikipedia, [*Signs of AI writing*](https://en.wikipedia.org/wiki/Signs_of_AI_writing) (WP:AIPARALLEL). The reason anyone cares.
-
----
-
-## 3. What this is, and what 2503.03601 was
-
-| | Kuznetsov et al. 2503.03601 (prior art) | Not This, But That |
-|---|---|---|
-| Unit of analysis | Aggregate "AI-ness" of a text | One named construction (C1–C3) |
-| Feature claim | Features *correlate* with AI text | A specific feature with *bidirectional causal* effect |
-| Validation | Steering / detection statistics | Ablate → rate drops **and** clamp → rate rises, vs random-k / bottom-k controls |
-| Genealogy | — | Base vs instruct: is the feature *dormant in base, amplified by tuning*? |
-| Output | Detection insight | A working "off switch" + quality-preservation evidence |
-
-If, after Phase 4, no row holds up better than the prior art — the contribution is dead and we say so. See the kill criteria in `docs/phases.md` (created from PRD §8 when Phase 1 starts).
-
----
-
-## 4. What this is NOT
-
-- **Not a detector.** AI-text detection (DetectGPT, GPTZero, watermarking, Binoculars) is crowded, adversarially doomed, and gets gamed the moment it ships. We study *mechanism and control*, not classification.
-- **Not a claim about "AI writing" in general.** We study *one model's* tell. Gemma 2 2B is small and is **not** the model whose prose anyone actually complains about (that's GPT-4o / Claude / Gemini — all closed, no public SAEs). The honest claim is *"here is the mechanism of this tell in this model,"* not *"here is why AI writes like this."*
-- **Not a paper, yet.** It is an exploration until a credentialed mech-interp reader says otherwise. No self-citation BibTeX. No "Reviewer: Closed" theater. No genre-cosplay of a Transformer Circuits report.
-
----
-
-## 5. The metrics
-
-`grammar-layer` measured effect on a **single factual token**. The construction is **multi-token**, so the metric changes. Three measurements:
-
-- **M1 — Construction rate (behavioral ground truth).** Generate N continuations (N ≥ 50, ≥ 5 seeds) from neutral prompts; a hinge-detector classifier (`src/classifier/`) labels each for C1–C4 presence. Rate = fraction containing the construction. Model-agnostic. Needs no SAE.
-- **M2 — Pivot probability (the causal lever).** Given a context that has opened the negation ("It's not just an update"), measure `P(pivot token completes the construction)` — `P(—) + P(it's) + P(but) | …`. Clean next-token probability — the existing ablation harness applies directly.
-- **M3 — Quality preservation (the thing that makes it useful, not a trick).** After any intervention: fluency (perplexity on held-out), coherence (LLM-judge 1–5), meaning (embedding cosine vs original). The *product* claim lives or dies on M3. Removing the tell and wrecking the prose is a failure, not a finding.
-
----
-
-## 6. Build phases — what each kill check actually returned
-
-| Phase | What | Kill check | Outcome |
-|---|---|---|---|
-| **0** | Scaffold the refactor | repo runs end-to-end, README leads with prior work | ✅ |
-| **1** | Build & validate the construction classifier | precision/recall ≥ 0.85 on C1–C3 | ✅ 1.00 P/R (self-consistency caveat) |
-| **2** | Behavioral baseline (M1) across 4 models | instruct rate ≫ base | ✅ instruct **12× C3**, **4.2× any_core**, non-overlapping CIs |
-| **3** | Feature discovery — differential SAE activation | clean label-interpretable feature | ⚠ found consequence features, not causes; recovered via per-feature pre-pivot attribution → feat **3223** "phrases conveying exceptions or negations" |
-| **4** | **Causal validation** — bidirectional vs random-k | both directions beat controls | ⚠ **PARTIAL** — ablate drops P(pivot) 25%, separated qualitatively from a near-degenerate random-k null (5/5 controls produced no change); clamp-up fails (necessity yes, sufficiency no) |
-| **5** | Quality preservation (M3) | fluency / coherence / meaning preserved | ✅ D3 perplexity ratio **1.000×** baseline (scalpel) |
-| **6** | Genealogy — base vs instruct | reconstruction quality acceptable; gap signal | ✅ instruct ablation drop **1.81× larger** than base; VE recon measurement has a bug to fix |
-| **7** | De-slop demo + writeup | ablation during generation reduces M1 | ❌ **0% drop** — feature is conditional on construction-mode contexts; the mechanism stands, the product claim does not |
-
-The full prose narrative — what worked, what didn't, what we can and cannot claim — is at **[`reports/writeup.md`](reports/writeup.md)**. The honesty contract was honored: where a null landed, the writeup reports it as a null.
-
----
-
-## 7. Repo layout
+## Repo map
 
 ```
 src/
-  classifier/      # M1 — regex hinges + dependency-based FP filter
-  steering/        # SAE-feature clamp hooks (ablate ↓ and clamp ↑)
-  quality/         # M3 — fluency / coherence / meaning
-  genealogy/       # Phase 6 — base vs instruct, with SAE-transfer check
-  deslop/          # Phase 7 demo — inference-time steering vector
-  neograph/        # Reused substrate from grammar-layer (Neo4j feature graph,
-                   # SAELens loaders, Neuronpedia label cache, manifold fits)
-
-scripts/
-  load_bearing_topk.py            # KEEP — per-prompt top-K ablation harness
-  load_bearing_control.py         # KEEP — random-k / bottom-k targeting controls
-  load_bearing_mean_ablation.py   # KEEP — mean-ablation OOD robustness
-  causal_attribution_v2.py        # KEEP — per-feature attribution
-  01_load_model_and_sae.py        # KEEP — model + SAE smoke
-  04_ingest_features.py           # KEEP — feature ingestion
-  prefetch_labels.py              # KEEP — Neuronpedia label warm
-  fetch_labels_pending.py         # KEEP — per-model label cache
-  migrate.py / 00_bootstrap_neo4j.sh  # KEEP — substrate setup
-  legacy/                         # grammar-layer-era scripts, preserved for
-                                  # reproducibility of the prior writeups
-
-data/
-  D1_contrast_pairs.jsonl   # Phase 1 — ≥200 hand-checked minimal pairs
-  D2_neutral_prompts.json   # Phase 2 — ≥100 prompts that don't beg the construction
-  D3_fluency.txt            # Phase 5 — held-out human prose for perplexity
-  labels_cache.json         # Gemma 2 2B Neuronpedia autointerp cache
-  legacy/                   # Capital-city / weekday / arithmetic prompts (prior project)
-
-reports/                    # New outputs land here; reports/legacy/ has the prior writeups
-notebooks/legacy/           # STORY.md, OVERNIGHT_SUMMARY.md and other prior-project artifacts
-apps/legacy/                # Three.js viewer from the previous project (may be revived in §9)
-web/legacy/                 # Earlier interactive walkthrough
+  classifier/   the detectors — strict (regex + spaCy dependency check) and the v2 union
+  steering/     SAE hook factories: ablate / clamp
+  quality/      fluency, coherence, meaning preservation (M3)
+  genealogy/    base vs instruct comparisons
+  deslop/       generation-time coalition ablation
+  gauntlet/     the seven single-feature / prompt-level attacks
+  firewall/     Discovery/Confirmation data-split enforcement
+  neograph/     Neo4j substrate: schema, ingest, relations, manifold fits
+scripts/        the pipeline + the probe daemon (probe_run.sh / probe_daemon.py / PROBE_README.md)
+data/           D1 contrast pairs (226), D2 neutral prompts (102), D3 fluency prose, committed splits
+reports/        every artifact cited above, plus the full writeups
+web/demo/       story page, slop-o-meter, playground (served by the daemon at /demo/)
+cypher/         graph schema + saved queries
+bloom/          Neo4j Bloom perspective for the feature graph
+tests/          pytest suite
 ```
 
-The **Neo4j substrate (`src/neograph/`)** is the genuinely Hopkinson-shaped piece worth preserving: a multi-relation feature graph indexed for vector search and Cypher-queryable across models. Its v2-era role here is to store validated construction features and their cross-model alignments — the graph-native question from PRD §9: *does the "not X, but Y" feature in Gemma align (by decoder cosine) with the corresponding feature in Pythia, and is the alignment stronger among instruct-tuned models?*
+## Lineage
 
----
+The methods this project leans on, and where they came from: the SAEs are Gemma Scope ([Lieberum et al. 2024](https://arxiv.org/abs/2408.05147)); the directional-ablation attack that failed here is the one that *worked* on refusal ([Arditi et al., NeurIPS 2024](https://arxiv.org/abs/2406.11717)); the steering vectors are CAA ([Rimsky et al., ACL 2024](https://arxiv.org/abs/2312.06681)); the rerouting behaviour has a name, the Hydra Effect ([McGrath et al. 2023](https://arxiv.org/abs/2307.15771)); and the closest prior art on SAE features of AI-text style is [Kuznetsov et al. 2025](https://arxiv.org/abs/2503.03601). The construction itself is antithetic parallelism, named by Robert Lowth in 1753 — the model didn't invent it, it just can't stop.
 
-## 8. Reproduce — Phase 0 only
+## Tests
 
 ```bash
-# 1. Install. Requires uv (https://docs.astral.sh/uv/) and Python 3.12.
-uv sync
-
-# 2. Set HF_TOKEN in .env (Gemma 2 is gated on Hugging Face).
-echo "HF_TOKEN=hf_..." > .env
-
-# 3. Smoke test — imports + classifier hits canonical C1–C4 examples.
-.venv/bin/python -m pytest -W ignore tests/test_refactor_smoke.py -v
+.venv/bin/python -m pytest tests/ -q --ignore=tests/test_neo4j_smoke.py
+# 24 passed
 ```
 
-Phases 1–7 are not yet runnable. Their scripts will land under `scripts/` (engines reused) and new modules under `src/<name>/` as each phase ships.
+`test_neo4j_smoke.py` needs the live graph on port 7693; everything else runs cold.
 
----
-
-## 9. Honesty contract
-
-Carried from the last project, non-negotiable:
-
-1. **Cite prior work in the README before writing a line of analysis.** ✅ §2 above.
-2. **State the Gemma-2-2b external-validity ceiling in every writeup's opening.** This is *one model's* tell, not "why AI writes like this."
-3. **Report quality and faithfulness, not just the headline effect.** M3 is a hard gate on the product claim.
-4. **Honor the kill checks.** A null result reported honestly is worth more than a grand result that doesn't hold.
-5. **Before promoting it anywhere near ML researchers or the Neo4j AI Ethics committee:** get one credentialed mech-interp reader to sanity-check the causal claim. Posting first, checking later, is exactly the move that hurt last time.
-
----
-
-## 10. License
+## License
 
 MIT — see [LICENSE](LICENSE).
 

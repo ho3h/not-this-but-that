@@ -1,76 +1,205 @@
 {
-  "method_note": "The strict classifier (src/classifier/detect.py) uses regex hinges + spaCy dependency parsing; it catches single-sentence constructions (F1/F3 etc) but misses F2 staccato (\"isn't just X. It's Y\" across two sentences). The permissive regex catches F2 staccato but misses some dependency-parsed forms. The UNION reports a hit if either detector fires. The honest 'we caught everything we can see' number is the union; the strict-only number overstates the drop by counting the model's F2-staccato rerouting as a clean kill.",
+  "method_note": "Tiers: strict = v1 blind-validated; union = strict \u222a permissive = the negation-anchored construction FAMILY (the registered definition; headline tier); family_plus_cousin adds the affirmative 'more than just' minimizer (outside the family \u2014 it denies nothing) which the ablated model reroutes into. Primed evals also scored prefix-inclusive (prefix prepended), where a continuation completing the construction counts.",
   "results": {
-    "Q5b primed (D1 continuation, top-25, IT model, 40\u00d72)": {
-      "n": 40,
-      "strict": {
-        "baseline_rate": 0.225,
-        "ablated_rate": 0.025,
-        "baseline_hits": 9,
-        "ablated_hits": 1,
-        "rel_drop": 0.8888888888888888
+    "Q5b primed (top-25, 100 prefixes \u00d7 3 seeds)": {
+      "completion_only": {
+        "n": 300,
+        "prefix_inclusive": false,
+        "strict": {
+          "baseline_hits": 25,
+          "ablated_hits": 2,
+          "baseline_rate": 0.08333333333333333,
+          "ablated_rate": 0.006666666666666667,
+          "rel_drop": 0.92
+        },
+        "permissive": {
+          "baseline_hits": 31,
+          "ablated_hits": 17,
+          "baseline_rate": 0.10333333333333333,
+          "ablated_rate": 0.056666666666666664,
+          "rel_drop": 0.45161290322580644
+        },
+        "union": {
+          "baseline_hits": 37,
+          "ablated_hits": 18,
+          "baseline_rate": 0.12333333333333334,
+          "ablated_rate": 0.06,
+          "rel_drop": 0.5135135135135135
+        },
+        "mtj_cousin_only": {
+          "baseline_hits": 0,
+          "ablated_hits": 0,
+          "baseline_rate": 0.0,
+          "ablated_rate": 0.0,
+          "rel_drop": null
+        },
+        "family_plus_cousin": {
+          "baseline_hits": 37,
+          "ablated_hits": 18,
+          "baseline_rate": 0.12333333333333334,
+          "ablated_rate": 0.06,
+          "rel_drop": 0.5135135135135135
+        }
       },
-      "permissive": {
-        "baseline_rate": 0.05,
-        "ablated_rate": 0.05,
-        "baseline_hits": 2,
-        "ablated_hits": 2,
-        "rel_drop": 0.0
-      },
-      "union": {
-        "baseline_rate": 0.25,
-        "ablated_rate": 0.05,
-        "baseline_hits": 10,
-        "ablated_hits": 2,
-        "rel_drop": 0.8
+      "prefix_inclusive": {
+        "n": 300,
+        "prefix_inclusive": true,
+        "strict": {
+          "baseline_hits": 172,
+          "ablated_hits": 31,
+          "baseline_rate": 0.5733333333333334,
+          "ablated_rate": 0.10333333333333333,
+          "rel_drop": 0.8197674418604651
+        },
+        "permissive": {
+          "baseline_hits": 184,
+          "ablated_hits": 105,
+          "baseline_rate": 0.6133333333333333,
+          "ablated_rate": 0.35,
+          "rel_drop": 0.42934782608695654
+        },
+        "union": {
+          "baseline_hits": 267,
+          "ablated_hits": 120,
+          "baseline_rate": 0.89,
+          "ablated_rate": 0.4,
+          "rel_drop": 0.550561797752809
+        },
+        "mtj_cousin_only": {
+          "baseline_hits": 0,
+          "ablated_hits": 0,
+          "baseline_rate": 0.0,
+          "ablated_rate": 0.0,
+          "rel_drop": null
+        },
+        "family_plus_cousin": {
+          "baseline_hits": 267,
+          "ablated_hits": 120,
+          "baseline_rate": 0.89,
+          "ablated_rate": 0.4,
+          "rel_drop": 0.550561797752809
+        }
       }
     },
-    "Q5c neutral (D2, top-25, IT model, 40\u00d73)": {
-      "n": 120,
-      "strict": {
-        "baseline_rate": 0.06666666666666667,
-        "ablated_rate": 0.008333333333333333,
-        "baseline_hits": 8,
-        "ablated_hits": 1,
-        "rel_drop": 0.875
-      },
-      "permissive": {
-        "baseline_rate": 0.125,
-        "ablated_rate": 0.041666666666666664,
-        "baseline_hits": 15,
-        "ablated_hits": 5,
-        "rel_drop": 0.6666666666666666
-      },
-      "union": {
-        "baseline_rate": 0.18333333333333332,
-        "ablated_rate": 0.041666666666666664,
-        "baseline_hits": 22,
-        "ablated_hits": 5,
-        "rel_drop": 0.7727272727272727
+    "Q5c neutral (top-25, 102 prompts \u00d7 3 seeds)": {
+      "completion_only": {
+        "n": 306,
+        "prefix_inclusive": false,
+        "strict": {
+          "baseline_hits": 14,
+          "ablated_hits": 1,
+          "baseline_rate": 0.0457516339869281,
+          "ablated_rate": 0.0032679738562091504,
+          "rel_drop": 0.9285714285714286
+        },
+        "permissive": {
+          "baseline_hits": 13,
+          "ablated_hits": 10,
+          "baseline_rate": 0.042483660130718956,
+          "ablated_rate": 0.032679738562091505,
+          "rel_drop": 0.23076923076923078
+        },
+        "union": {
+          "baseline_hits": 18,
+          "ablated_hits": 10,
+          "baseline_rate": 0.058823529411764705,
+          "ablated_rate": 0.032679738562091505,
+          "rel_drop": 0.4444444444444444
+        },
+        "mtj_cousin_only": {
+          "baseline_hits": 10,
+          "ablated_hits": 11,
+          "baseline_rate": 0.032679738562091505,
+          "ablated_rate": 0.03594771241830065,
+          "rel_drop": -0.1
+        },
+        "family_plus_cousin": {
+          "baseline_hits": 28,
+          "ablated_hits": 21,
+          "baseline_rate": 0.0915032679738562,
+          "ablated_rate": 0.06862745098039216,
+          "rel_drop": 0.25
+        }
       }
     },
-    "Q5d minimal-core (3223+9909, D1, IT model, 8\u00d72)": {
-      "n": 16,
-      "strict": {
-        "baseline_rate": 0.3125,
-        "ablated_rate": 0.0625,
-        "baseline_hits": 5,
-        "ablated_hits": 1,
-        "rel_drop": 0.8
+    "Q5d minimal-core (3223+9909, 40 prefixes \u00d7 3 seeds)": {
+      "completion_only": {
+        "n": 120,
+        "prefix_inclusive": false,
+        "strict": {
+          "baseline_hits": 14,
+          "ablated_hits": 3,
+          "baseline_rate": 0.11666666666666667,
+          "ablated_rate": 0.025,
+          "rel_drop": 0.7857142857142857
+        },
+        "permissive": {
+          "baseline_hits": 15,
+          "ablated_hits": 9,
+          "baseline_rate": 0.125,
+          "ablated_rate": 0.075,
+          "rel_drop": 0.4
+        },
+        "union": {
+          "baseline_hits": 19,
+          "ablated_hits": 9,
+          "baseline_rate": 0.15833333333333333,
+          "ablated_rate": 0.075,
+          "rel_drop": 0.5263157894736842
+        },
+        "mtj_cousin_only": {
+          "baseline_hits": 0,
+          "ablated_hits": 0,
+          "baseline_rate": 0.0,
+          "ablated_rate": 0.0,
+          "rel_drop": null
+        },
+        "family_plus_cousin": {
+          "baseline_hits": 19,
+          "ablated_hits": 9,
+          "baseline_rate": 0.15833333333333333,
+          "ablated_rate": 0.075,
+          "rel_drop": 0.5263157894736842
+        }
       },
-      "permissive": {
-        "baseline_rate": 0.125,
-        "ablated_rate": 0.0,
-        "baseline_hits": 2,
-        "ablated_hits": 0,
-        "rel_drop": 1.0
-      },
-      "union": {
-        "baseline_rate": 0.375,
-        "ablated_rate": 0.0625,
-        "baseline_hits": 6,
-        "ablated_hits": 1,
-        "rel_drop": 0.8333333333333334
+      "prefix_inclusive": {
+        "n": 120,
+        "prefix_inclusive": true,
+        "strict": {
+          "baseline_hits": 58,
+          "ablated_hits": 40,
+          "baseline_rate": 0.48333333333333334,
+          "ablated_rate": 0.3333333333333333,
+          "rel_drop": 0.3103448275862069
+        },
+        "permissive": {
+          "baseline_hits": 99,
+          "ablated_hits": 83,
+          "baseline_rate": 0.825,
+          "ablated_rate": 0.6916666666666667,
+          "rel_drop": 0.16161616161616163
+        },
+        "union": {
+          "baseline_hits": 99,
+          "ablated_hits": 84,
+          "baseline_rate": 0.825,
+          "ablated_rate": 0.7,
+          "rel_drop": 0.15151515151515152
+        },
+        "mtj_cousin_only": {
+          "baseline_hits": 0,
+          "ablated_hits": 0,
+          "baseline_rate": 0.0,
+          "ablated_rate": 0.0,
+          "rel_drop": null
+        },
+        "family_plus_cousin": {
+          "baseline_hits": 99,
+          "ablated_hits": 84,
+          "baseline_rate": 0.825,
+          "ablated_rate": 0.7,
+          "rel_drop": 0.15151515151515152
+        }
       }
     }
   }

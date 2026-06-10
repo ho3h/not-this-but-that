@@ -35,30 +35,109 @@ class Hit:
 
 
 # Permissive patterns — identical to the JS frontend at web/demo/playground.js
-# so the post, the demo, and the offline re-score all agree.
+# and web/demo/app.js so the post, the demo, and the offline re-score all agree.
+#
+# 2026-06-09 revision: negation is now MANDATORY in the same-sentence and
+# staccato patterns. The original patterns accepted a bare copula with
+# `(?:not\s+)?` optional, which made "Running is a wonderful activity that
+# provides numerous health benefits, but…" a hit — an ordinary concessive,
+# not a contrastive correction. The original staccato pattern was also blind
+# to the plain period-form ("isn't X. It's Y") because it required a literal
+# not/just after the negated verb. The pronoun tails gained \b so "He" can no
+# longer prefix-match "Here's". Three FP classes found in the audit are
+# excluded by construction: first-person openers ("I'm not sure…" — epistemic
+# hedging dominates), bare do-support ("didn't know. He…" — narration, only
+# minimizer/mean forms kept), and epistemic predicates ("wasn't sure what I
+# meant. He…"). Audit + before/after counts: reports/permissive_fix_audit.md.
+
+# Negated openers shared by the same-sentence and staccato patterns. v1
+# (`detect.py`) already covers most copula negation same-sentence; the
+# permissive layer adds do-support correction forms ("doesn't just X, it Y",
+# "doesn't mean X. It means Y") and the cross-sentence variants.
+# The (?!…) lookahead drops epistemic-state predicates, which hedge rather
+# than correct.
+#
+# DEFINITIONAL BOUNDARY (2026-06-09): the construction family is
+# negation-anchored — that's what the pre-registration defined (C1-C4) and
+# what the strict classifier was blind-validated on. The affirmative
+# "more than just X(,;.) it's/they're Y" minimizer is a rhetorical COUSIN,
+# not a member: it denies nothing. It is detected separately
+# (`detect_more_than_just`) and reported as its own tier in the analyses,
+# because the ablated model reroutes into it heavily. Folding it into the
+# family mid-project would change the validated definition; ignoring it
+# would hide the escape route. So: family and cousin, two numbers.
+_NEG_OPENER = (
+    r"(?:"
+    r"(?:is|are|was|were)n'?t"                                   # isn't / weren't
+    r"|(?:is|are|was|were|am)\s+not"                              # is not
+    r"|(?:it|that|this|he|she|there)'?s\s+not"                    # it's not
+    r"|(?:we|they|you)'?re\s+not"                                 # they're not
+    r"|(?:do|does|did)(?:n'?t|\s+not)\s+(?:just|merely|simply|only|necessarily|really|mean)"
+    r")"
+    r"(?!\s+(?:sure|certain|aware|convinced)\b)"
+)
+
+# Pivot tails. \b after the group — without it "He" prefix-matched "Here's"
+# and "it" matched "items". Bare pronouns (it/they/he/she/we) stay in the
+# alternation: "doesn't replace teachers, it empowers them".
+_TAIL_SAME = (
+    r"(?:it'?s?|that'?s|they'?re|they|he'?s?|she'?s?|we'?re|we"
+    r"|but|rather|instead)\b"
+)
+_TAIL_STACCATO = (
+    r"(?:It'?s?|That'?s|They'?re|They|He'?s?|She'?s?|We'?re|We"
+    r"|But|Rather|Instead)\b"
+)
+
 _PERMISSIVE = [
-    # F1/F3 same-sentence with comma/dash pivot
+    # F1/F3 same-sentence with comma/dash pivot — negation required
     (re.compile(
-        r"\b(is|are|isn'?t|aren'?t|was|were|wasn'?t|weren'?t|don'?t|doesn'?t|don)"
-        r"\s+(?:not\s+)?(?:just\s+)?[^.,;:!?\n]{1,80}"
-        r"[,;—–\-]\s*(?:it'?s?|they'?re?|they|he'?s?|she'?s?|we'?re?|but\s+|but\b)",
+        r"\b" + _NEG_OPENER +
+        r"\s+(?:just\s+|merely\s+|simply\s+|only\s+)?[^.,;:!?\n]{1,80}"
+        r"[,;—–\-]\s*" + _TAIL_SAME,
         re.IGNORECASE,
     ), Variant.C1, "same-sentence comma/dash"),
 
-    # F2 staccato — cross-sentence "isn't/not just X. It's Y."
+    # F2 staccato — cross-sentence "isn't X. It's Y." — negation required.
+    # Case-sensitive tail anchors the second sentence's capitalised start;
+    # the opener list carries its own capitalised subject variants.
     (re.compile(
-        r"\b(?:is|are|isn'?t|aren'?t|was|were|wasn'?t|weren'?t|don'?t|doesn'?t)"
-        r"\s+(?:not|just)\s+(?:just\s+)?[^.!?\n]{1,80}"
-        r"[.!?]\s*(?:It'?s?|They'?re?|He'?s?|She'?s?|We'?re?|But\s+|Rather|Instead)",
+        r"\b(?:"
+        r"(?:is|are|was|were)n'?t"
+        r"|(?:is|are|was|were|am)\s+not"
+        r"|(?:[Ii]t|[Tt]hat|[Tt]his|[Hh]e|[Ss]he|[Tt]here)'?s\s+not"
+        r"|(?:[Ww]e|[Tt]hey|[Yy]ou)'?re\s+not"
+        r"|(?:[Dd]o|[Dd]oes|[Dd]id)(?:n'?t|\s+not)\s+(?:just|merely|simply|only|necessarily|really|mean)"
+        r")"
+        r"(?!\s+(?:sure|certain|aware|convinced)\b)"
+        r"\s+(?:just\s+|merely\s+|simply\s+|only\s+|about\s+)?[^.!?\n]{1,80}"
+        r"[.!?]\s*" + _TAIL_STACCATO,
     ), Variant.C3, "cross-sentence staccato"),
 
-    # F4/F5 less/more or not about
+    # F4/F5 less/more or not about — unchanged (both arms already encode the
+    # contrast lexically; "less X, more Y" needs no negator).
     (re.compile(
         r"(?:\bless\b\s+[^.,;:!?\n]{1,40}\s*[,;—–\-]\s*more\b"
         r"|\bnot\s+about\b\s+[^.,;:!?\n]{1,40}\s*[,;—–\-]\s*"
         r"(?:it'?s?\s+about|about))",
         re.IGNORECASE,
     ), Variant.C1, "less/more or not-about reframing"),
+]
+
+
+# The affirmative "more than just" cousin — comma/semicolon form and
+# period form, symmetric. Not part of the construction family (see the
+# definitional-boundary note above); reported as its own tier.
+_MTJ = [
+    (re.compile(
+        r"\b(?:is|are|was|were)\s+(?:much\s+)?more\s+than\s+(?:just\s+|merely\s+|simply\s+)?"
+        r"[^.,;:!?\n]{1,80}[,;—–\-]\s*" + _TAIL_SAME,
+        re.IGNORECASE,
+    ), "more-than-just (same-sentence)"),
+    (re.compile(
+        r"\b(?:is|are|was|were)\s+(?:much\s+)?more\s+than\s+(?:just\s+|merely\s+|simply\s+)?"
+        r"[^.!?\n]{1,80}[.!?]\s*" + _TAIL_STACCATO,
+    ), "more-than-just (cross-sentence)"),
 ]
 
 
@@ -69,6 +148,16 @@ def detect_permissive(text: str) -> list[Hit]:
         for m in pat.finditer(text):
             hits.append(Hit(variant=var, span=(m.start(), m.end()),
                              hinge=hinge_name, detector="permissive"))
+    return hits
+
+
+def detect_more_than_just(text: str) -> list[Hit]:
+    """The affirmative cousin, detected separately from the family."""
+    hits: list[Hit] = []
+    for pat, hinge_name in _MTJ:
+        for m in pat.finditer(text):
+            hits.append(Hit(variant=Variant.C3, span=(m.start(), m.end()),
+                             hinge=hinge_name, detector="mtj-cousin"))
     return hits
 
 
@@ -107,4 +196,4 @@ def rate_v2(texts) -> dict[str, float]:
 
 
 __all__ = ["Hit", "Variant", "detect_construction_v2", "has_construction",
-           "detect_permissive", "rate_v2"]
+           "detect_permissive", "detect_more_than_just", "rate_v2"]

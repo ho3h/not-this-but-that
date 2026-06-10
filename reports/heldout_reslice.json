@@ -1,0 +1,72 @@
+{
+  "q5c_confirmation_split": {
+    "label": "Q5c neutral, 26 confirmation-split prompts (78 pairs)",
+    "n": 78,
+    "union": {
+      "baseline": 7,
+      "ablated": 5,
+      "rel_drop": 0.2857142857142857,
+      "mcnemar_midp": 0.25,
+      "kills": 2,
+      "leaks": 0,
+      "rel_drop_ci95": [
+        0.0,
+        0.6666666666666667
+      ]
+    },
+    "strict": {
+      "baseline": 5,
+      "ablated": 0,
+      "rel_drop": 1.0
+    }
+  },
+  "q5b_nonselection_40plus": {
+    "label": "Q5b primed, prefixes 40-99 \u2014 outside the n=40 selection set (180 pairs)",
+    "n": 180,
+    "union": {
+      "baseline": 18,
+      "ablated": 9,
+      "rel_drop": 0.5,
+      "mcnemar_midp": 0.06391465663909912,
+      "kills": 16,
+      "leaks": 7,
+      "rel_drop_ci95": [
+        -0.10000000000000002,
+        0.7879186602870807
+      ]
+    },
+    "strict": {
+      "baseline": 11,
+      "ablated": 0,
+      "rel_drop": 1.0
+    }
+  },
+  "q5b_nonselection_80plus": {
+    "label": "Q5b primed, prefixes 80-99 \u2014 outside every attribution scan (60 pairs)",
+    "n": 60,
+    "union": {
+      "baseline": 1,
+      "ablated": 0,
+      "rel_drop": 1.0,
+      "mcnemar_midp": 0.5,
+      "kills": 1,
+      "leaks": 0,
+      "rel_drop_ci95": [
+        0.0,
+        1.0
+      ]
+    },
+    "strict": {
+      "baseline": 1,
+      "ablated": 0,
+      "rel_drop": 1.0
+    }
+  },
+  "q5c_full_prompt_level": {
+    "n_prompts": 102,
+    "changed_to_clean": 8,
+    "changed_to_hit": 1,
+    "hit_in_both": 9,
+    "sign_test_midp": 0.021484375
+  }
+}

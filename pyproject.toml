@@ -1,12 +1,12 @@
 [project]
 name = "not-this-but-that"
 version = "0.2.0"
-description = "Mechanism and control of the 'not X, but Y' construction in one open LLM (Gemma 2 2B). SAE feature discovery, bidirectional causal validation, quality-preserved de-slop. Reuses the neograph substrate from the grammar-layer project."
+description = "Mechanism and control of the 'not X, but Y' construction in Gemma 2 2B: a 25-feature SAE coalition behind the chatbot tic, causal necessity at the pivot decision, quality-preserved de-slop, and a Neo4j feature-graph substrate."
 readme = "README.md"
 requires-python = ">=3.11,<3.13"
 license = { file = "LICENSE" }
 authors = [{ name = "Theo Hopkinson" }]
-urls = { Homepage = "https://github.com/ho3h/grammar-layer" }
+urls = { Homepage = "https://github.com/ho3h/not-this-but-that" }
 dependencies = [
     "torch>=2.4",
     "transformer-lens>=2.0",

@@ -1,28 +1,36 @@
-"""Re-score Q5b / Q5c / Q5d with both detectors and their UNION.
+"""Re-score Q5b / Q5c / Q5d across every detector tier. The post's receipt.
 
-The strict Python classifier (src/classifier/detect.py) misses F2 staccato
-("isn't just X. It's Y") because it requires the hinge and pivot in the same
-sentence. The JS-frontend permissive regex catches F2 but misses some forms
-the dependency-checked strict classifier finds. Honest reporting needs both,
-or the union.
+Tiers:
+  strict        v1 (regex hinges + spaCy), blind-validated P=0.80/R=1.00 —
+                single-sentence negated forms.
+  permissive    detect_v2 permissive layer (2026-06-09 negation-mandatory
+                revision; FP audit at reports/permissive_fix_audit.md) —
+                looser syntax + cross-sentence, still negation-anchored.
+  union         strict ∪ permissive = the CONSTRUCTION FAMILY as defined by
+                the pre-registration (negation-anchored C1-C4). Headline tier.
+  family+cousin union ∪ the affirmative "more than just X(.;,) it's/they're Y"
+                minimizer — a rhetorical cousin OUTSIDE the registered family
+                (it denies nothing), detected symmetrically in comma and
+                period forms. Reported because the ablated model reroutes
+                into it heavily; hiding it would overstate the kill.
 
-Writes reports/m1_rescore_union.json so the Medium post can cite a single
-reproducible artifact.
+Primed evals (Q5b/Q5d) additionally get PREFIX-INCLUSIVE rows: the prefix
+("It's not a tool") prepended to the continuation before scoring, so a
+continuation that completes the construction (", but a partner") counts.
+Completion-only scoring (the default rows) measures re-occurrence inside the
+continuation instead; both are reported, they answer different questions.
+
+Writes reports/m1_rescore_union.json.
 """
 from __future__ import annotations
-import json, pathlib, re
-from classifier import detect_construction
+import json, pathlib
 
-# Identical to web/demo/playground.js — the F2 staccato is the important one.
-PATTERNS_PERMISSIVE = [
-    re.compile(r"\b(is|are|isn'?t|aren'?t|was|were|wasn'?t|weren'?t|don'?t|doesn'?t|don)\s+(?:not\s+)?(?:just\s+)?[^.,;:!?\n]{1,80}[,;—–\-]\s*(?:it'?s?|they'?re?|they|he'?s?|she'?s?|we'?re?|but\s+|but\b)", re.I),
-    re.compile(r"\b(?:is|are|isn'?t|aren'?t|was|were|wasn'?t|weren'?t|don'?t|doesn'?t)\s+(?:not|just)\s+(?:just\s+)?[^.!?\n]{1,80}[.!?]\s*(?:It'?s?|They'?re?|He'?s?|She'?s?|We'?re?|But\s+|Rather|Instead)"),
-    re.compile(r"(?:\bless\b\s+[^.,;:!?\n]{1,40}\s*[,;—–\-]\s*more\b|\bnot\s+about\b\s+[^.,;:!?\n]{1,40}\s*[,;—–\-]\s*(?:it'?s?\s+about|about))", re.I),
-]
+from classifier import detect_construction
+from classifier.detect_v2 import detect_more_than_just, detect_permissive
 
 
 def perm(text: str) -> bool:
-    return any(p.search(text) for p in PATTERNS_PERMISSIVE)
+    return bool(detect_permissive(text))
 
 
 def strict(text: str) -> bool:
@@ -34,24 +42,33 @@ def union(text: str) -> bool:
     return strict(text) or perm(text)
 
 
-def score_run(rows: list) -> dict:
+def cousin(text: str) -> bool:
+    return bool(detect_more_than_just(text))
+
+
+def family_plus_cousin(text: str) -> bool:
+    return union(text) or cousin(text)
+
+
+TIERS = [("strict", strict), ("permissive", perm), ("union", union),
+         ("mtj_cousin_only", cousin), ("family_plus_cousin", family_plus_cousin)]
+
+
+def score_run(rows: list, prefix_key: str | None = None) -> dict:
     n = len(rows)
-    def cnt(field, fn):
-        return sum(1 for r in rows if fn(r[field]))
-    sb, sa = cnt("baseline", strict), cnt("ablated", strict)
-    pb, pa = cnt("baseline", perm),   cnt("ablated", perm)
-    ub, ua = cnt("baseline", union),  cnt("ablated", union)
-    def rel(b, a):
-        return (b - a) / b if b else 0.0
-    return {
-        "n": n,
-        "strict": {"baseline_rate": sb/n, "ablated_rate": sa/n,
-                    "baseline_hits": sb, "ablated_hits": sa, "rel_drop": rel(sb, sa)},
-        "permissive": {"baseline_rate": pb/n, "ablated_rate": pa/n,
-                        "baseline_hits": pb, "ablated_hits": pa, "rel_drop": rel(pb, pa)},
-        "union": {"baseline_rate": ub/n, "ablated_rate": ua/n,
-                   "baseline_hits": ub, "ablated_hits": ua, "rel_drop": rel(ub, ua)},
-    }
+    def text(r, field):
+        t = r[field]
+        if prefix_key:
+            t = (r.get(prefix_key) or "") + t
+        return t
+    out = {"n": n, "prefix_inclusive": bool(prefix_key)}
+    for name, fn in TIERS:
+        b = sum(1 for r in rows if fn(text(r, "baseline")))
+        a = sum(1 for r in rows if fn(text(r, "ablated")))
+        out[name] = {"baseline_hits": b, "ablated_hits": a,
+                     "baseline_rate": b / n, "ablated_rate": a / n,
+                     "rel_drop": (b - a) / b if b else None}
+    return out
 
 
 def main():
@@ -59,38 +76,40 @@ def main():
     out_path = repo / "reports" / "m1_rescore_union.json"
 
     targets = [
-        ("Q5b primed (D1 continuation, top-25, IT model, 40×2)",
-         "reports/q5b_d1_continuation.json"),
-        ("Q5c neutral (D2, top-25, IT model, 40×3)",
-         "reports/q5c_d2_high_power.json"),
-        ("Q5d minimal-core (3223+9909, D1, IT model, 8×2)",
-         "reports/q5d_minimal_set_d1.json"),
+        ("Q5b primed (top-25, 100 prefixes × 3 seeds)",
+         "reports/q5b_d1_continuation.json", "prefix"),
+        ("Q5c neutral (top-25, 102 prompts × 3 seeds)",
+         "reports/q5c_d2_high_power.json", None),
+        ("Q5d minimal-core (3223+9909, 40 prefixes × 3 seeds)",
+         "reports/q5d_minimal_set_d1_n120.json", "prefix"),
     ]
 
     results = {}
-    for label, path in targets:
-        d = json.loads((repo / path).read_text())
-        rows = d["rows"]
-        results[label] = score_run(rows)
-        s = results[label]
-        print(f"=== {label} ===")
-        for k in ("strict", "permissive", "union"):
-            v = s[k]
-            print(f"  {k:>10}: base {v['baseline_hits']:>3}/{s['n']:>3} = {v['baseline_rate']:6.2%}, "
-                  f"abl {v['ablated_hits']:>3}/{s['n']:>3} = {v['ablated_rate']:6.2%}, "
-                  f"rel drop {v['rel_drop']:6.2%}")
-        print()
+    for label, path, prefix_key in targets:
+        rows = json.loads((repo / path).read_text())["rows"]
+        if prefix_key and prefix_key not in rows[0]:
+            prefix_key = "prompt" if "prompt" in rows[0] else None
+        results[label] = {"completion_only": score_run(rows)}
+        if prefix_key:
+            results[label]["prefix_inclusive"] = score_run(rows, prefix_key)
+        for mode, s in results[label].items():
+            print(f"=== {label} [{mode}] (n={s['n']}) ===")
+            for name, _ in TIERS:
+                v = s[name]
+                rd = f"{v['rel_drop']:6.1%}" if v["rel_drop"] is not None else "    — "
+                print(f"  {name:>18}: base {v['baseline_hits']:>3} = {v['baseline_rate']:6.2%}, "
+                      f"abl {v['ablated_hits']:>3} = {v['ablated_rate']:6.2%}, rel drop {rd}")
+            print()
 
     out = {
         "method_note": (
-            "The strict classifier (src/classifier/detect.py) uses regex hinges + "
-            "spaCy dependency parsing; it catches single-sentence constructions "
-            "(F1/F3 etc) but misses F2 staccato (\"isn't just X. It's Y\" across "
-            "two sentences). The permissive regex catches F2 staccato but misses "
-            "some dependency-parsed forms. The UNION reports a hit if either "
-            "detector fires. The honest 'we caught everything we can see' number "
-            "is the union; the strict-only number overstates the drop by counting "
-            "the model's F2-staccato rerouting as a clean kill."
+            "Tiers: strict = v1 blind-validated; union = strict ∪ permissive "
+            "= the negation-anchored construction FAMILY (the registered "
+            "definition; headline tier); family_plus_cousin adds the "
+            "affirmative 'more than just' minimizer (outside the family — "
+            "it denies nothing) which the ablated model reroutes into. "
+            "Primed evals also scored prefix-inclusive (prefix prepended), "
+            "where a continuation completing the construction counts."
         ),
         "results": results,
     }

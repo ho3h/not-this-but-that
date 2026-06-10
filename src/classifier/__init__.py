@@ -21,11 +21,12 @@ from __future__ import annotations
 from classifier.detect import Hit, Variant, detect_construction, rate
 from classifier.detect_v2 import (
     detect_construction_v2,
+    detect_more_than_just,
     detect_permissive,
     has_construction,
     rate_v2,
 )
 
 __all__ = ["Hit", "Variant", "detect_construction", "rate",
-           "detect_construction_v2", "detect_permissive",
+           "detect_construction_v2", "detect_permissive", "detect_more_than_just",
            "has_construction", "rate_v2"]
