@@ -20,7 +20,7 @@ This repo is the code, data, and receipts behind the writeup. Every number the p
 
 ## See it
 
-**[Live demo](https://not-this-but-that.vercel.app/demo/)** <!-- TODO: confirm URL after vercel deploy --> — the hosted story page: side-by-side baseline-vs-ablated playbacks you can step through token by token, with the construction highlighted as it forms — or doesn't. There's also a **slop-o-meter** (`/demo/slopometer.html`): paste your own prose and see exactly what this project's detector sees.
+**[Live demo](https://not-this-but-that.vercel.app/demo/)** — the hosted story page: side-by-side baseline-vs-ablated playbacks you can step through token by token, with the construction highlighted as it forms — or doesn't. There's also a **slop-o-meter** (`/demo/slopometer.html`): paste your own prose and see exactly what this project's detector sees.
 
 The full **playground** — the 16,384-dot feature atlas, concept search, lasso ablation, surgical de-slop, the behaviour mixer, the audit trail — needs the live model and runs locally. Honest requirements: a Hugging Face account with access to the gated Gemma 2 weights, ~10 GB of downloads on first run, and enough memory to hold both Gemma 2 2B variants plus the SAE (~12 GB; developed on Apple Silicon/MPS, falls back to CPU). The graph-backed features additionally want a local Neo4j (below).
 
