@@ -26,7 +26,7 @@ It turns out the AI-ism doesn't live in one feature. It lives in a coalition of 
 → and the model's favourite escape — the affirmative cousin "it's more than just X. It's Y" — actually goes UP. Count everything that smells like the tic: −25%.
 → fluency intact: same length, same perplexity. Primed with "It's not a tool", the model completes the construction 89% of the time at baseline, 40% silenced.
 
-Honesty note, because it's the best part: an earlier draft claimed an 80% drop. I audited my own detector twice, and each fix revealed another escape route the model was using. Then I had a blinded Claude judge re-score all 1,452 generations: it agrees with my detector 88–92% — and confirms the punchline. Count anything antithesis-shaped and the neutral-prompt total barely moves. You can't delete a habit by deleting its grammar; the model re-expresses the intention through whatever grammar is left. Every receipt is in the repo.
+Honesty note, because it's the best part: an earlier draft claimed an 80% drop. I audited my own detector twice, and each fix revealed another escape route the model was using. Then I had a blinded Claude judge re-score all 1,452 generations: it agrees with my detector 88–92% — and confirms the punchline. Count anything antithesis-shaped and the neutral-prompt total barely moves. Final check: a pre-registered replication on 50 brand-new prompts failed its own frozen gates — not by reversal (3→1), but because concrete prompts barely elicit the tic at all. The habit is topic-conditional. You can't delete it by deleting its grammar; the model re-expresses the intention through whatever grammar is left. Every receipt, including the kill, is in the repo.
 
 Then I built three demos that only work because everything lives in a Neo4j graph:
 
@@ -62,13 +62,13 @@ The first generation under the kill, on a prompt about Antarctica:
 
 "Imagine a world, NOT of green meadows and warm breezes, BUT of endless white…"
 
-The intervention designed to make the construction impossible *opened* with the construction. Ninety generations later it had removed almost exactly nothing.
+The intervention designed to make the construction impossible *opened* with the construction. Ninety generations later it had shaved off a fifth.
 
 So I did the unfashionable thing: I went looking for the rest of the coalition.
 
-The AI-ism lives in twenty-five features. Two cores (negation + digital-tech, of all things) doing a third of the work each, plus twenty-three supporters that keep the kill killed while the model writes. Silence all twenty-five on 306 neutral prompts: the textbook form drops 93% (14 hits → 1); the whole negated family drops 44% (~1 in 85 by luck; nine prompts changed status, eight toward clean). The model stays fluent — it just stops pivoting every claim against a strawman.
+The AI-ism lives in twenty-five features. Two cores (negation + digital-tech, of all things) doing a third of the work each, plus twenty-three supporters that keep the kill killed while the model writes. Silence all twenty-five on 306 neutral prompts: the textbook form drops 93% (14 hits → 1); the whole negated family drops 44% (~1 in 85 by luck). The model stays fluent — it just stops pivoting every claim against a strawman.
 
-And then the twist: the model reroutes. Its favourite escape is an affirmative cousin — "it's more than just X. It's Y" — which *rises* under the kill. A blinded Claude judge, counting anything antithesis-shaped, sees the neutral total barely move. The grammar dies; the intention survives. You can't delete a habit by deleting its grammar; the model re-expresses the intention through whatever grammar remains. What those features really control is the model's *contrast machinery* — "but" falls from 13% of generations to 1% — and the AI-ism is just that machinery's loudest output. The graph's structural guesses at coalition membership (decoder neighbours, Leiden communities) all failed; only direct causal attribution found it. Behaviours have *coalition addresses*, and you need causal priors to find them.
+And then the twist: the model reroutes. Its favourite escape is an affirmative cousin — "it's more than just X. It's Y" — which *rises* under the kill. A blinded Claude judge, counting anything antithesis-shaped, sees the neutral total barely move; a pre-registered replication on fresh prompts then failed its own gates because concrete topics barely elicit the tic at all. The grammar dies; the intention survives; the habit is topic-conditional. What those features really control is the model's *contrast machinery* — "but" falls from 13% of generations to 1% — and the AI-ism is just that machinery's loudest output. The graph's structural guesses at coalition membership (decoder neighbours, Leiden communities) all failed; only direct causal attribution found it. Behaviours have *coalition addresses*, and you need causal priors to find them.
 
 Then I built three demos on the graph: surgical de-slop (prompt ∩ coalition via Cypher), a mix-your-own-chatbot slider board (each behaviour a :Behaviour subgraph), and an audit trail where "why did the model say that?" is one MATCH query.
 
@@ -96,9 +96,9 @@ github.com/ho3h/not-this-but-that
 
 ---
 
-## Draft C — X/Twitter thread (7 tweets, ≤280 chars each)
+## Draft C — X/Twitter thread (8 tweets, ≤280 chars each)
 
-Cross-post target. Each `(n/7)` is one tweet. Thread together.
+Cross-post target. Each `(n/8)` is one tweet. Thread together.
 
 ### Tweet 1 (hook)
 > Spent a month inside a chatbot's head looking for the neuron that makes AI write like AI.
@@ -141,7 +141,12 @@ Cross-post target. Each `(n/7)` is one tweet. Thread together.
 > 2️⃣ mix-your-own-chatbot sliders
 > 3️⃣ audit-trail MATCH
 
-### Tweet 7 (CTA)
+### Tweet 7 (the last receipt)
+> Last receipt: I pre-registered a replication on 50 brand-new prompts, gates frozen in advance. It FAILED — not by reversal (3→1), but because concrete prompts barely elicit the tic (1% baseline).
+>
+> The AI-ism is topic-conditional. The kill is in the post, verbatim, as committed.
+
+### Tweet 8 (CTA)
 > Mech-interp + knowledge graphs = composable, auditable, glass-box model steering.
 >
 > Open source: 4,000-word writeup, every receipt, live demo + a slop-o-meter for your own prose:

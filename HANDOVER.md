@@ -17,6 +17,8 @@ It's the long version of the story. Headline numbers are:
 - Neutral prompts, out-of-sample: **strict −93%** (14 → 1); **negated family −44%** (18/306 → 10/306, mid-p 0.012); **family + "more than just" cousin −25%** (cousin itself rises 10 → 11)
 - Primed prompts (n=300): prefix-inclusive family 267 → 120 (−55%), strict −82%; completion-only −51%, held-out half −50%
 - **Two-feature core 3223+9909** (n=120, in-sample): completion-only −53%; prefix-inclusive only −15% — the tail carries sustained suppression
+- **Blinded LLM judge** (all 1,452 gens): 88–92% agreement with family tier; primed −48% (p≈5e-4); neutral wide-net flat — the reroute fully visible
+- **Pre-registered D2b confirmation: KILL by frozen gates** (3→1, baseline collapsed to 1.0% — fresh concrete prompts barely elicit the tic; topic-conditional). Reported verbatim in post + README.
 - **Perplexity 1.079×** — fluent; the deeper finding is contrast-machinery control ("but"-share 13.4% → 1.3% neutral, 75% → 1.7% primed; words/gen identical)
 - **The graph guessed wrong** (decoder neighbours / Leiden community / co-activators all failed at predicting coalition membership; only causal attribution worked)
 - **The mechanism is local to layer 20** (cross-layer joint ablation doesn't beat L20 alone)

@@ -129,7 +129,7 @@ def analyze(prereg):
         "# Pre-registered confirmation run — verdict",
         "",
         f"Analyzed once at n = {n} pairs per `confirmation_prereg.md` "
-        "(registered 2026-06-09).",
+        "(registered 2026-06-10).",
         "",
         f"- Union: baseline {nb}/{n} ({nb/n:.2%}) → ablated {na}/{n} ({na/n:.2%})",
         f"- Relative drop: **{rel:.1%}** "
