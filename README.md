@@ -15,12 +15,12 @@ This repo is the code, data, and receipts behind the writeup. Every number the p
 ## What this is not
 
 - **Not a detector.** AI-text detection is crowded and adversarially doomed. This is about mechanism and control. (The slop-o-meter is a demo of what the project's measurement instrument sees, not a product.)
-- **Not a claim about "AI writing" in general.** One construction, one model. Gemma 2 2B is not the model whose prose anyone complains about; it's the one with public SAEs. The honest claim is *here is the machinery of this tell in this model*, not *here is why AI writes like this*.
+- **Not a claim about "AI writing" in general.** One construction, one model. Gemma 2 2B was chosen for its public SAEs rather than for the infamy of its prose. The honest claim is *here is the machinery of this tell in this model*, not *here is why AI writes like this*.
 - **Not peer-reviewed.** Nothing here has been read by a credentialed mech-interp researcher. The receipts exist so you can check the work, not so you can skip checking it.
 
 ## See it
 
-**[Live demo](https://not-this-but-that.vercel.app/demo/)** — the hosted story page: side-by-side baseline-vs-ablated playbacks you can step through token by token, with the construction highlighted as it forms — or doesn't. There's also a **slop-o-meter** (`/demo/slopometer.html`): paste your own prose and see exactly what this project's detector sees.
+**[Live demo](https://not-this-but-that.vercel.app/demo/)** — the hosted story page: side-by-side baseline-vs-ablated playbacks you can step through token by token, with the construction highlighted as it forms — or doesn't.
 
 The full **playground** — the 16,384-dot feature atlas, concept search, lasso ablation, surgical de-slop, the behaviour mixer, the audit trail — needs the live model and runs locally. Honest requirements: a Hugging Face account with access to the gated Gemma 2 weights, ~10 GB of downloads on first run, and enough memory to hold both Gemma 2 2B variants plus the SAE (~12 GB; developed on Apple Silicon/MPS, falls back to CPU). The graph-backed features additionally want a local Neo4j (below).
 
@@ -75,7 +75,7 @@ Every claim, with the artifact that backs it. All paths under `reports/`.
 | The detector fixes that revised the 80% draft headline, twice — every dropped/added hit hand-inspectable | [`permissive_fix_audit.md`](reports/permissive_fix_audit.md) |
 | Primed prompts, n=300 (40% in-sample): prefix-inclusive family 267 → 120 (−55%), strict 172 → 31 (−82%); completion-only −51% (p=4.5×10⁻³), held-out half −50% | [`m1_stats_reanalysis.md`](reports/m1_stats_reanalysis.md), [`heldout_reslice.md`](reports/heldout_reslice.md) |
 | Two-feature core 3223+9909, n=120 (in-sample): completion-only −53%; prefix-inclusive only −15% vs the full coalition's −55% — two features carry the decision, twenty-five carry the paragraph | [`m1_stats_reanalysis.md`](reports/m1_stats_reanalysis.md) |
-| Contrast machinery, not just the tic: "but"-share 13.4% → 1.3% (neutral) and 75% → 1.7% (primed); commas 1.52 → 0.58/gen; words/gen 32 → 32 | [`collateral_syntax.md`](reports/collateral_syntax.md) |
+| Contrast machinery, beyond the tic: "but"-share 13.4% → 1.3% (neutral) and 75% → 1.7% (primed); commas 1.52 → 0.58/gen; words/gen 32 → 32 | [`collateral_syntax.md`](reports/collateral_syntax.md) |
 | Ablation ladder at the pivot decision (n=80): 1/2/5/10/25/50/100 features → −18/−37/−51/−61/−72/−75/−79%; top-25 at n=200 = −76% | [`asymptote_ladder.json`](reports/asymptote_ladder.json) |
 | Controls: 100 random features < 0.001 effect; coalition beats all 20 matched-activation null draws (drop +0.200 vs best null +0.001) | [`matched_activation_null.json`](reports/matched_activation_null.json) |
 | Leave-one-out: two indispensable cores (3223: 0.073, 9909: 0.074), secondary 12898 (0.021), rest < 0.013 | [`q3_leave_one_out.json`](reports/q3_leave_one_out.json) |
@@ -112,7 +112,7 @@ src/
 scripts/        the pipeline + the probe daemon (probe_run.sh / probe_daemon.py / PROBE_README.md)
 data/           D1 contrast pairs (226), D2 neutral prompts (102), D3 fluency prose, committed splits
 reports/        every artifact cited above, plus the full writeups
-web/demo/       story page, slop-o-meter, playground (served by the daemon at /demo/)
+web/demo/       story page + playground (served by the daemon at /demo/)
 cypher/         graph schema + saved queries
 bloom/          Neo4j Bloom perspective for the feature graph
 tests/          pytest suite

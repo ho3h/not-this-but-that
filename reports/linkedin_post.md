@@ -26,7 +26,7 @@ It turns out the AI-ism doesn't live in one feature. It lives in a coalition of 
 → and the model's favourite escape — the affirmative cousin "it's more than just X. It's Y" — actually goes UP. Count everything that smells like the tic: −25%.
 → fluency intact: same length, same perplexity. Primed with "It's not a tool", the model completes the construction 89% of the time at baseline, 40% silenced.
 
-Honesty note, because it's the best part: an earlier draft claimed an 80% drop. I audited my own detector twice, and each fix revealed another escape route the model was using. Then I had a blinded Claude judge re-score all 1,452 generations: it agrees with my detector 88–92% — and confirms the punchline. Count anything antithesis-shaped and the neutral-prompt total barely moves. Final check: a pre-registered replication on 50 brand-new prompts failed its own frozen gates — not by reversal (3→1), but because concrete prompts barely elicit the tic at all. The habit is topic-conditional. You can't delete it by deleting its grammar; the model re-expresses the intention through whatever grammar is left. Every receipt, including the kill, is in the repo.
+Honesty note, because it's the best part: an earlier draft claimed an 80% drop. I audited my own detector twice, and each fix revealed another escape route the model was using. Then I had a blinded Claude judge re-score all 1,452 generations: it agrees with my detector 88–92% — and confirms the punchline. Count anything antithesis-shaped and the neutral-prompt total barely moves. Final check: a pre-registered replication on 50 brand-new prompts failed its own frozen gates: the direction held (3→1), but concrete prompts barely elicit the tic, so the test ran out of events. The habit is topic-conditional. You can't delete it by deleting its grammar; the model re-expresses the intention through whatever grammar is left. Every receipt, including the kill, is in the repo.
 
 Then I built three demos that only work because everything lives in a Neo4j graph:
 
@@ -36,7 +36,7 @@ Then I built three demos that only work because everything lives in a Neo4j grap
 
 3️⃣ Audit trail — every silenced feature has graph-traceable lineage. "Why did the model say that?" is one MATCH query.
 
-Mech-interp + a knowledge graph = composable, auditable model steering. Open source — writeup, receipts, and a paste-your-own-prose slop-o-meter:
+Mech-interp + a knowledge graph = composable, auditable model steering. Open source — writeup, receipts, and a live walkthrough demo:
 
 github.com/ho3h/not-this-but-that
 
@@ -52,7 +52,7 @@ There's a sentence I want you to read out loud:
 
 You've seen that sentence five hundred times this year. You couldn't pick the chatbot that wrote it out of a lineup, because every chatbot writes it. Different topic, same shape. *It isn't X, it's Y.* The AI-ism. The deep tell.
 
-I wanted to know if I could turn it off — not by prompting, but by reaching inside the model.
+I wanted to know if I could turn it off from the inside — past prompting, into the model's internals.
 
 The mech-interp playbook says behaviours like this live in a *single feature*. Refusal famously does. So I scanned all 16,384 SAE features in Gemma 2 2B for the one that drives the construction.
 
@@ -72,7 +72,7 @@ And then the twist: the model reroutes. Its favourite escape is an affirmative c
 
 Then I built three demos on the graph: surgical de-slop (prompt ∩ coalition via Cypher), a mix-your-own-chatbot slider board (each behaviour a :Behaviour subgraph), and an audit trail where "why did the model say that?" is one MATCH query.
 
-Open source — full writeup, every receipt, and a slop-o-meter you can paste your own prose into:
+Open source — full writeup, every receipt, and a live walkthrough demo:
 
 github.com/ho3h/not-this-but-that
 
@@ -142,14 +142,14 @@ Cross-post target. Each `(n/8)` is one tweet. Thread together.
 > 3️⃣ audit-trail MATCH
 
 ### Tweet 7 (the last receipt)
-> Last receipt: I pre-registered a replication on 50 brand-new prompts, gates frozen in advance. It FAILED — not by reversal (3→1), but because concrete prompts barely elicit the tic (1% baseline).
+> Last receipt: I pre-registered a replication on 50 brand-new prompts. It FAILED — the direction held (3→1), but concrete prompts barely elicit the tic (1% baseline), so it ran out of events.
 >
 > The AI-ism is topic-conditional. The kill is in the post, verbatim, as committed.
 
 ### Tweet 8 (CTA)
 > Mech-interp + knowledge graphs = composable, auditable, glass-box model steering.
 >
-> Open source: 4,000-word writeup, every receipt, live demo + a slop-o-meter for your own prose:
+> Open source: 4,000-word writeup, every receipt, and a live demo:
 >
 > github.com/ho3h/not-this-but-that
 >

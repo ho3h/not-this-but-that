@@ -1,8 +1,8 @@
 # I Found the Neuron That Makes AI Write Like AI. Then I Tried to Kill It.
 
-*Spoiler: it isn't one neuron. It's twenty-five. And they don't really want to die.*
+*Spoiler: it took twenty-five of them, and they did not go quietly.*
 
-> **TL;DR** — Every chatbot leans on one sentence shape: *"It's not X, it's Y."* I went looking for the single internal feature in Gemma 2 2B that produces it. There isn't one — there's a **coalition of twenty-five features**, two of which do a third of the work each. Silence all twenty-five and the textbook form of the tic all but vanishes from neutral prompts (**−93%**), and the prose stays fluent. But the model is a Hydra: it reroutes into sibling phrasings, an affirmative cousin (*"it's more than just X…"*) that actually gets **stronger**, and escapes only a blinded frontier-model judge can see — count anything antithesis-shaped and the total barely moves. The negated grammar dies; the intention survives. The real discovery is what the coalition turns out to be: the model's **contrast machinery** — and the lesson is that you can't delete a habit by deleting its grammar; the model re-expresses the intention through whatever grammar you leave it. A pre-registered replication on fifty fresh prompts then failed by its own frozen gates — not by reversal, but because concrete, descriptive prompts barely elicit the tic in the first place (1% baseline): the habit is topic-conditional too. Code, receipts, and an interactive demo are linked at the end.
+> **TL;DR** — Every chatbot leans on one sentence shape: *"It's not X, it's Y."* I went looking for the single internal feature in Gemma 2 2B that produces it, and found a **coalition of twenty-five features** instead, two of which do a third of the work each. Silence all twenty-five and the textbook form of the tic all but vanishes from neutral prompts (**−93%**), with the prose staying fluent. The model, though, is a Hydra: it reroutes into sibling phrasings, into an affirmative cousin (*"it's more than just X…"*) that actually gets **stronger**, and into escapes only a blinded frontier-model judge can see — count anything antithesis-shaped and the total barely moves. The negated grammar dies while the intention survives. The real discovery is what the coalition turns out to be — the model's **contrast machinery** — and the lesson is that you can't delete a habit by deleting its grammar, because the model re-expresses the intention through whatever grammar you leave it. A pre-registered replication on fifty fresh prompts then failed by its own frozen gates, in an unexpected way: concrete, descriptive prompts barely elicit the tic in the first place, so the habit is topic-conditional too. Code, receipts, and an interactive demo are linked at the end.
 
 ---
 
@@ -10,13 +10,13 @@ There's a sentence I want you to read out loud.
 
 > "This isn't a setback, it's a springboard."
 
-You know that sentence. You've read it five hundred times this year. You couldn't pick the chatbot that wrote it out of a lineup of chatbots, because every chatbot writes that sentence. Different topic, same shape. *It isn't X — it's Y.* I'll call it the **AI-ism** for the rest of this piece, because that's what it is. The bot's tic. The deep tell.
+You know that sentence. You've read it five hundred times this year. You couldn't pick the chatbot that wrote it out of a lineup of chatbots, because every chatbot writes that sentence. Different topic, same shape: *it isn't X — it's Y*. I'll call it the **AI-ism** for the rest of this piece, because that's what it is — the bot's tic, its deepest tell.
 
 I wanted to know if I could turn it off.
 
 Not from the prompt side — that's been tried. You can ask the model not to do it; the model nods, then does it three sentences later. You can ban the word "just" from its vocabulary; the model finds a comma, finds an em-dash, finds another verb. The construction is too useful to the model. It is, on the inside of the model's head, doing something.
 
-What I wanted to know is what that *something* was, and whether you could reach inside the model — open it up like a clock — and switch the something off. Most of the work in mechanistic interpretability looks for the *one feature* that runs a behaviour. Refusal, for instance, turned out to live in one direction in the residual stream of every model anyone's checked. Erase that direction, the model stops refusing to write your stalker fanfic. The literature kept publishing variants on this: *a single feature mediates X*, *one direction is the locus of Y*.
+What I wanted to know is what that *something* was, and whether you could reach inside the model — open it up like a clock — and switch the something off. Most of the work in mechanistic interpretability looks for the *one feature* that runs a behaviour. Refusal, for instance, turned out to live in one direction in the residual stream of every model anyone's checked. Erase that direction and the model stops refusing things it would otherwise decline. The literature kept publishing variants on this: *a single feature mediates X*, *one direction is the locus of Y*.
 
 I bet the AI-ism would be the same. I spent a weekend being wrong about that.
 
@@ -24,25 +24,23 @@ I bet the AI-ism would be the same. I spent a weekend being wrong about that.
 
 ## A digression into 1753
 
-The construction isn't a chatbot invention. It's a 2,800-year-old rhetorical move.
+Before opening the model up, it's worth knowing how old the thing inside it actually is. The construction is no chatbot invention — the rhetorical move is 2,800 years old, and it has a name.
 
-In 1741 the Oxford Professor of Poetry, a 31-year-old clergyman named Robert Lowth, started a series of Latin lectures on the literary structure of biblical Hebrew. Published in 1753 as *Praelectiones de sacra poesi Hebraeorum*. He gave the move a name: **antithetic parallelism**. Two clauses, structurally mirrored, one denied and one affirmed. *"A wise son brings joy to his father, but a foolish son grief to his mother."* The book of Proverbs is composed almost entirely of it. Hebrew poetry uses it as a beat.
+In 1741 the Oxford Professor of Poetry, a thirty-one-year-old clergyman named Robert Lowth, started a series of Latin lectures on the literary structure of biblical Hebrew, published in 1753 as *Praelectiones de sacra poesi Hebraeorum*. He called the move **antithetic parallelism**: two clauses, structurally mirrored, one denied and one affirmed. *"A wise son brings joy to his father, but a foolish son grief to his mother."* The book of Proverbs is composed almost entirely of it.
 
-Modern chatbots front-load the negation — *"it's not X, it's Y"* instead of *"the wise A, but the foolish B"* — but it's the same engine. Lowth was looking at it three millennia after it was invented. The chatbot has only had it for two years.
+Modern chatbots front-load the negation — *"it's not X, it's Y"* instead of *"the wise A, but the foolish B"* — but it's the same engine. Lowth was looking at it three millennia after it was invented; the chatbot has had it for two years. The move itself is fine. What's wrong is the over-application — every chatbot reaching for it on every prompt, regardless of whether the antithesis actually clarifies anything.
 
-Which means: the move itself is fine. It's an old beat. The thing that's wrong is the *over-application* — every chatbot reaches for it on every prompt, regardless of whether the antithesis actually clarifies anything. Half of LinkedIn caption advice in 2026 is just "stop doing this." So: can we reach into the chatbot and remove its eagerness to do the antithetic parallelism move, while leaving the rest of the chatbot intact?
-
-That's a question with a real answer, if you have the right tools. I went looking.
+Removing that eagerness, while leaving the rest of the chatbot intact, means reaching inside the model with tools built for the job. Here is the toolkit.
 
 ---
 
 ## The setup, in plain English
 
-I'll move fast because the punchline is more interesting than the apparatus.
+I'll move fast here, because the punchline is more interesting than the apparatus.
 
-**The model.** Google's Gemma 2 2B — an open instruction-tuned model, two billion parameters, runs on a laptop. Small enough to probe directly, big enough to produce fluent prose. It produces the AI-ism or its nearest cousin in about one of every eleven answers to neutral open-ended prompts — within just the first fifty tokens — which sounds low until you realise that across a day of chatbot reading, that's one in every other paragraph you skim.
+**The model.** Google's Gemma 2 2B — an open instruction-tuned chatbot, two billion parameters, small enough to probe directly on a laptop and big enough to produce fluent prose. It produces the AI-ism in about six percent of its replies to neutral, open-ended prompts, and in about one reply in eleven once you count the construction's nearest cousin — rates that sound low until you remember how much chatbot prose a person skims in a day.
 
-**The microscope.** The way you look inside a model these days is a **sparse autoencoder** — an SAE. It's a little learned dictionary. You feed it the model's internal state at a given layer and it decomposes that state into a sum of 16,384 *features*, of which only a handful are firing at any given moment. The clever part: each feature gets an automatic English-language label. Feature 3223 in this model is labelled *"phrases conveying exceptions or negations."* Feature 9909 is *"references to digital technology and online interactions."* Feature 10678 (a different layer) is *"phrases related to careful planning."* That kind of thing. The labels come from another model that reads the example sentences each feature fires on and writes a summary. They're noisy but mostly truthful.
+**The microscope.** The way you look inside a model these days is a **sparse autoencoder** — an SAE. It's a little learned dictionary. You feed it the model's internal state at a given layer and it decomposes that state into a sum of 16,384 *features*, of which only a handful are firing at any given moment. The clever part: each feature gets an automatic English-language label. Feature 3223 in this model is labelled *"phrases conveying exceptions or negations."* Feature 9909 is *"references to digital technology and online interactions."* Feature 10678 (a different layer) is *"phrases related to careful planning."* The labels come from another model that reads the sentences each feature fires on and writes a one-line summary; they're noisy but mostly truthful.
 
 **The substrate.** I keep all 16,384 features in a Neo4j graph as nodes. Edges between them encode three structural relationships: which features write similar things to the model's scratchpad (decoder cosine, 524k edges), which features fire together (co-activation, 272k edges), and which automatically-discovered cluster they belong to (Leiden community detection, 18 communities). I'll come back to this — it's the navigational instrument that turns a flat 16k-feature list into a queryable map of meanings. Without it you can't reason about features by hand.
 
@@ -58,7 +56,7 @@ I did what anyone would do. I ranked all 16,384 features by how much zeroing the
 
 I zeroed it. P(pivot) dropped by 18%. Real drop, beat every random baseline.
 
-So I went for the kill. I took feature 3223's direction in the model's internal vector space and *projected it out of every layer* — the Arditi et al. 2024 method, the one that erased refusal behaviour from a dozen chat models. It was supposed to make the construction structurally impossible. Cannot be represented. The model literally cannot write notes along that axis.
+So I went for the kill. I took feature 3223's direction in the model's internal vector space and *projected it out of every layer* — the Arditi et al. 2024 method, the one that erased refusal behaviour from a dozen chat models. It was supposed to make the construction structurally impossible — unrepresentable, an axis the model can no longer write notes along.
 
 I ran the test. The first generation, on a prompt about an Antarctic research station, started:
 
@@ -66,13 +64,13 @@ I ran the test. The first generation, on a prompt about an Antarctic research st
 
 The intervention designed to make the construction *impossible* opened with the construction. Inside a model whose residual stream had been continuously stripped of feature 3223's direction. Ninety generations per arm later, the score was: fifteen of ninety baseline generations contained the construction; twelve of ninety still did under the kill. The most theoretically principled attack in the playbook had shaved off a fifth.
 
-I ran a gauntlet of seven attacks in total, and the scoreboard is the finding ([receipt](./gauntlet_union_rescore.json)). Asking nicely in the system prompt cut the construction by about forty percent — the model nods, then does it anyway. Banning the pivot words outright at the logit layer (*but*, *just*, *only*, *rather*, *more*, *less*, the em-dash) killed it completely — by making seven of English's most common words unsayable everywhere. That's not removing the habit; that's sewing the mouth shut. Showing the model four de-slopped exemplars in the prompt also killed it completely — by making the model imitate the exemplars' clipped register wholesale; the cure worked by replacing the model's voice. (If you only need a practical takeaway for your own prompting, it's hiding here: few-shot exemplars beat instructions, and both have side effects.) The two feature-scalpel attacks — ablate 3223 only when it fires, ablate it everywhere — did the partial thing: the textbook form went away, adjacent forms went up, net minus a quarter. And the learned steering vector (the CAA recipe) only killed the construction at a coefficient where the prose collapses into *"the cold, the cold, the cold, the cold"* repeated to the token limit.
+I ran a gauntlet of seven attacks in total, and the scoreboard is the finding ([receipt](./gauntlet_union_rescore.json)). Asking nicely in the system prompt cut the construction by about forty percent — the model nods, then does it anyway. Banning the pivot words outright at the logit layer (*but*, *just*, *only*, *rather*, *more*, *less*, the em-dash) killed it completely — by making seven of English's most common words unsayable everywhere. Doing it that way amounts to sewing the mouth shut and calling it a cure. Showing the model four de-slopped exemplars in the prompt also killed it completely — by making the model imitate the exemplars' clipped register wholesale; the cure worked by replacing the model's voice. (If you only need a practical takeaway for your own prompting, it's hiding here: few-shot exemplars beat instructions, and both have side effects.) The two feature-scalpel attacks — ablate 3223 only when it fires, ablate it everywhere — did the partial thing: the textbook form went away, adjacent forms went up, net minus a quarter. And the learned steering vector (the CAA recipe) only killed the construction at a coefficient where the prose collapses into *"the cold, the cold, the cold, the cold"* repeated to the token limit.
 
 That's the pattern: prompt- and logit-level attacks "work" only by collateral — muzzle the vocabulary, replace the voice, or lobotomize the prose. Mechanism-level attacks on *one feature* leave the behaviour standing. The model wasn't being killed. The model was *rerouting*.
 
 There's a name for this. It's called the **Hydra Effect** — Anthropic and DeepMind have been writing about it for two years. Knock out one path that produces a behaviour, another path compensates. The Hydra grows another head. Most of the published cases are about factual recall: ablate the neuron that remembers Paris is the capital of France, the model finds another way to say Paris. I'd never seen it called out for a rhetorical behaviour, but here it was. The model was being a Hydra about contrastive correction.
 
-Which means feature 3223 wasn't really *the* feature. It was *a* feature. There were others. I just hadn't found them.
+Which means feature 3223 was only ever *a* feature — one member of something larger that I hadn't yet found.
 
 ---
 
@@ -117,9 +115,9 @@ Then I ablated them in joint-set ladders — top-2, top-5, top-10, top-25, top-5
 
 There's the coalition. The first five features get you to 51%. The first ten get you to 61%. By twenty-five you've taken away 72% of the model's commitment to the construction at the decision point. By a hundred you asymptote at about 79%. After that the SAE basis at this layer has nothing more to give you — the remaining 21% lives at later layers or in the SAE's reconstruction error (I'll get to that). I also ran this exact ladder at higher power (200 D1 prompts instead of 80) and the asymptote sharpened slightly — top-25 = 76% drop, top-100 = 82% drop. Same shape, tighter numbers. [Reproducible run.](./asymptote_ladder_n200.json)
 
-The control: ablating a hundred *random* features moves P(pivot) by under 0.001. The 79% drop isn't an artefact of mass ablation. It's specific to this set.
+The control: ablating a hundred *random* features moves P(pivot) by under 0.001, so the 79% drop is specific to this set rather than an artefact of mass ablation.
 
-The model wasn't being a Hydra against the coalition. It was being a Hydra against my attempts to find one node of the coalition at a time. Hit it from all twenty-five directions simultaneously and it loses three-quarters of its grip.
+The model had only ever been a Hydra against my attempts to find one node at a time; hit from all twenty-five directions simultaneously, it loses three-quarters of its grip.
 
 ---
 
@@ -127,13 +125,13 @@ The model wasn't being a Hydra against the coalition. It was being a Hydra again
 
 The number above is at one token position. The interesting question is whether the kill survives in actual generation — does the model, allowed to write a full paragraph with the coalition silenced at every token, produce the construction less often?
 
-Up front, a confession that turned into the finding itself. An earlier draft of this post said "80% drop, p < 10⁻⁶." Then, while hardening the piece, I audited my own detector and the number started falling — not because the experiment changed, but because every time I sharpened the ruler, I caught the model escaping somewhere new. The first version of the detector counted ordinary concessives (*"running is a wonderful activity, but…"*) as AI-isms, inflating the baseline. Fixed. It was also blind to the cross-sentence form (*"isn't X. It's Y"*) — the single most common shape the silenced model escapes into. Fixed; the survivors doubled. Then I found a third escape route the detector had no name for at all. Every revision, with every dropped and added detection, is hand-inspectable in the [audit](./permissive_fix_audit.md); I'm leading with this because the alternative — you finding it — is worse.
+Up front, a confession that turned into the finding itself. An earlier draft of this post said "80% drop, p < 10⁻⁶." Then, while hardening the piece, I audited my own detector and the number started falling. The experiment never changed; what changed is that every time I sharpened the ruler, I caught the model escaping somewhere new. The first version of the detector counted ordinary concessives (*"running is a wonderful activity, but…"*) as AI-isms, inflating the baseline. Fixed. It was also blind to the cross-sentence form (*"isn't X. It's Y"*) — the single most common shape the silenced model escapes into. Fixed; the survivors doubled. Then I found a third escape route the detector had no name for at all. Every revision, with every dropped and added detection, is hand-inspectable in the [audit](./permissive_fix_audit.md); I'm leading with this because the alternative — you finding it — is worse.
 
-So here is the result, on the test that matters: 102 open-ended prompts a real chatbot user might actually send (*"describe a hospital cafeteria at 2 a.m.", "discuss the role of mentorship"*), three seeds each, 306 paired generations, none of which played any part in selecting the coalition. I'll give you the answer as **three nets, narrowest to widest**, because "did it work?" honestly depends on how wide you cast the net.
+So here is the result, on the test that matters: 102 open-ended prompts a real chatbot user might actually send (*"describe a hospital cafeteria at 2 a.m.", "discuss the role of mentorship"*), three seeds each (a seed pins the model's random choices, so each baseline-and-silenced pair differs only in the intervention), 306 paired generations in all, none of which played any part in selecting the coalition. I'll give you the answer as **three nets, narrowest to widest**, because "did it work?" honestly depends on how wide you cast the net.
 
 **Net 1 — the textbook sentence.** The strict, blind-validated classifier (precision 0.80, recall 1.00 on 90 sentences it had never seen) catches the canonical single-sentence form — *"isn't X, it's Y"*. Baseline: 14 of 306 generations. Coalition silenced: **1**. A **93% drop**. The sentence everyone recognises as the AI-ism is, to the precision of this experiment, gone.
 
-**Net 2 — the whole negated family.** Add every variant that *denies one thing and substitutes another*: the cross-sentence form, the do-support forms (*"doesn't just X, it Y"*), looser punctuation. This is the construction family as the project registered it. Baseline: 18 of 306. Silenced: **10**. A **44% drop** — if the features did nothing, a split this lopsided comes up by luck about once in 85 runs (McNemar mid-p = 0.012; 95% CI on the drop: 14% to 70%). The check a layperson can do by eye: collapse the seeds and ask which *prompts* changed. Nine changed; **eight of the nine got cleaner**, one got worse (sign-test p ≈ 0.02). Real, but half the size of Net 1 — the model reroutes into the period-form, which the coalition only partially covers.
+**Net 2 — the whole negated family.** Add every variant that *denies one thing and substitutes another*: the cross-sentence form, the do-support forms (*"doesn't just X, it Y"*), looser punctuation. This is the construction family as the project registered it. Baseline: 18 of 306. Silenced: **10**. A **44% drop** — if the features did nothing, a split this lopsided comes up by luck about once in 85 runs (a paired test, McNemar's, puts mid-p at 0.012; the 95% confidence interval — the range the true drop would plausibly land in if I re-sampled prompts — runs from 14% to 70%). The check a layperson can do by eye: collapse the seeds and ask which *prompts* changed. Nine changed; **eight of the nine got cleaner**, one got worse (sign-test p ≈ 0.02). Real, but half the size of Net 1 — the model reroutes into the period-form, which the coalition only partially covers.
 
 **Net 3 — the family plus its cousin.** The third escape route: drop the negation entirely. *"A library is more than just a building. It's a community."* Same rhetorical melody, nothing denied. This affirmative minimizer was never in the registered construction family — it isn't a correction, so I keep it out of the family and count it separately rather than quietly fold it in. Counted separately, it tells you exactly what the model did: the cousin **went up** under the kill (10 baseline → 11 silenced). Cast a wider net — family plus cousin, anything regex can see that smells like the tic — and the drop is **28 → 21, about 25%**.
 
@@ -143,7 +141,7 @@ There's the finding, stated honestly, all four nets at once. **Silence the coali
 
 **Primed prompts make the same point from the other side.** Hand the model a prefix that's already committed to the construction — *"It's not a tool"*, *"This isn't a setback"* — and score the prefix plus its continuation. At baseline, **89% of 300 continuations** complete or contain the construction (the model takes the bait almost every time). Coalition silenced: **40%**. The textbook completion specifically collapses from 57% to 10% (−82%). Caveat stated plainly: 40 of these 100 prefixes are the very prompts the coalition was selected on — but on the 60 prefixes that played no part in selection, the drop is the same, so contamination isn't carrying the result. ([Held-out re-slices.](./heldout_reslice.md))
 
-**And the two-feature core gets requalified.** Earlier I showed two features (3223 + 9909) buy a 37% drop at the decision point, and the leave-one-out says they're the only indispensable members. So can two features replace twenty-five? At the single token: largely yes. Over a sustained paragraph: no. Ablating just the two cores on the primed set cuts prefix-completion by only **15%**, against the full coalition's 55%. **Two features carry the decision; it takes twenty-five to carry the paragraph.** The twenty-three "redundant" supporters aren't cleanup — they're what keeps the kill killed while the model writes.
+**And the two-feature core gets requalified.** Earlier I showed two features (3223 + 9909) buy a 37% drop at the decision point, and the leave-one-out says they're the only indispensable members. So can two features replace twenty-five? At the single token: largely yes. Over a sustained paragraph: no. Ablating just the two cores on the primed set cuts prefix-completion by only **15%**, against the full coalition's 55%. **Two features carry the decision; it takes twenty-five to carry the paragraph.** The twenty-three "redundant" supporters turn out to be the part that keeps the kill killed while the model writes.
 
 ![Baseline vs coalition-silenced generations, same prompt and seed](figures/before_after_cards.png)
 *Same prompt, same random seed, with and without the twenty-five features. Top two: clean kills — the move never forms. Bottom: the reroute.*
@@ -156,7 +154,7 @@ Two generations show the whole story. The clean kill: a baseline answer about wh
 
 Here's the most skeptical reading of everything above, and I'd rather write it than receive it. The coalition was selected for its causal effect on P(pivot) — and the pivot token set includes the comma, *" but"*, *" it"*, and the dash. So: did I remove a rhetorical habit, or did I suppress comma-and-but syntax wholesale, with the construction dying as collateral damage?
 
-Measured rather than argued ([collateral table](./collateral_syntax.md)): on the neutral prompts, the share of generations containing the word *"but"* anywhere falls from 13.4% to 1.3%. Commas fall from 1.5 to 0.6 per generation. On the primed prompts — prefixes that practically beg for a contrast — *"but"* falls from 75% of generations to under 2%. Meanwhile: words per generation identical (32 → 32), sentence counts identical, em-dashes basically unmoved, and perplexity on held-out human prose at 1.08× baseline. The model writes just as much, just as fluently. It writes *around* the contrast.
+Measured rather than argued ([collateral table](./collateral_syntax.md)): on the neutral prompts, the share of generations containing the word *"but"* anywhere falls from 13.4% to 1.3%. Commas fall from 1.5 to 0.6 per generation. On the primed prompts — prefixes that practically beg for a contrast — *"but"* falls from 75% of generations to under 2%. Meanwhile: words per generation identical (32 → 32), sentence counts identical, em-dashes basically unmoved, and perplexity on held-out human prose at 1.08× baseline (perplexity measures how surprised the model is by text — 1.0× would mean no change at all). The model writes just as much, just as fluently. It writes *around* the contrast.
 
 So the honest name for what these twenty-five features control is not "the AI-ism." It's the model's **contrastive-syntax machinery** — its commitment to pivoting a clause against the previous one. The AI-ism is that machinery's most visible product, and it dies when the machinery dies. What this intervention gives you is *contrast-mode control*, with the construction as its loudest casualty. Whether that's a de-slop scalpel or a blunter instrument depends on whether you wanted the model to keep its "but"s. For the chatbot-tic use case — the model that contradicts itself into profundity five times a page — you mostly didn't.
 
@@ -164,7 +162,7 @@ So the honest name for what these twenty-five features control is not "the AI-is
 
 ## What the coalition actually looks like
 
-I ran a leave-one-out from the top-25: for each feature, I ablated *the other twenty-four* and measured how much the drop fell. That tells you which features are individually indispensable (removing them costs a lot) versus individually substitutable (removing them costs almost nothing because the rest cover for them).
+So which of the twenty-five actually matter? I ran a leave-one-out from the top-25: for each feature, I ablated *the other twenty-four* and measured how much the drop fell. That tells you which features are individually indispensable (removing them costs a lot) versus individually substitutable (removing them costs almost nothing because the rest cover for them).
 
 The result is the cleanest structural thing I found in this project. Two features stick out:
 
@@ -173,7 +171,7 @@ The result is the cleanest structural thing I found in this project. Two feature
 
 Then there's a secondary tier, mostly **feature 12898** (*references to societal issues, particularly laws and marginalised groups*) at 0.021. And then twenty-two features whose individual cost is under 0.013. Remove any one of them in isolation and the coalition barely notices.
 
-So the coalition has a structure: **two indispensable core features doing about a third of the work each, and a long tail of twenty-two redundant supporters**. The reason the single-feature attacks all failed isn't that the construction is uncuttable — it's that they were all hitting one node of a coalition that has twenty-five.
+So the coalition has a structure: **two indispensable core features doing about a third of the work each, and a long tail of twenty-two redundant supporters**. The single-feature attacks kept failing for a simple reason — each one was hitting a single node of a coalition that has twenty-five.
 
 ![All 16,384 SAE features as a map, with the 25 coalition features in red](figures/atlas.png)
 *The 16,384 features of the layer-20 SAE, coloured by community. The twenty-five coalition features in red — the two cores labelled. Note how the coalition scatters across the map instead of clustering: that's the next section's finding.*
@@ -182,11 +180,11 @@ I tested whether extending the analysis past rank 25 changes the picture — lea
 
 The labels are the second surprise. I expected the coalition to be a cluster of "negation" features. It isn't. 3223 is about negation. 9909 is about digital tech. 12898 is about laws and marginalised groups. The remaining features are about concern, accountability, ethics, scientific measurement, urgency, professional roles. *They look topical, not syntactic.*
 
-What I think is going on: the construction commits when the negation feature plus the *situational scaffolding around it* is active. Contrastive correction lands when there's a thing to *care about* — a problem, a stake, a domain in which the contrast carries rhetorical weight. The negation feature alone is just negation; combine it with "this is a serious topic about which a corrective claim might matter" and you get *it's not X, it's Y*. The coalition isn't a syntactic engine; it's a *rhetorical context* detector.
+What I think is going on: the construction commits when the negation feature plus the *situational scaffolding around it* is active. Contrastive correction lands when there's a thing to *care about* — a problem, a stake, a domain in which the contrast carries rhetorical weight. The negation feature alone is just negation; combine it with "this is a serious topic about which a corrective claim might matter" and you get *it's not X, it's Y*. The coalition behaves less like a syntactic engine and more like a *rhetorical context* detector.
 
 If that sounds like it contradicts the "contrast machinery" framing from two sections ago, it doesn't — they're trigger and effect. The topical features detect *when* a corrective contrast would land; what they jointly drive is the syntactic *commitment* to it — the comma, the pivot, the "but". Kill the detector and the commitment never fires, which is why the collateral table shows the syntax dying alongside the construction.
 
-I don't have a clean proof of that interpretation, but the labels point exactly there.
+I don't have a clean proof of that interpretation, but the labels point exactly there — and they explain why finding the coalition took the route it did, which brings me back to the graph.
 
 ---
 
@@ -230,7 +228,7 @@ A flat sixteen-thousand-feature list is not navigable. The graph turns it into a
 
 ## The second surprise: it really is at one layer
 
-Gemma 2 2B has twenty-six layers. The work above is all at layer 20. The natural follow-up is: is layer 20 special, or does the construction live everywhere?
+Gemma 2 2B has twenty-six layers, and everything above happened at layer 20 — which raises the natural follow-up: is layer 20 special, or does the construction live everywhere?
 
 I re-ran the whole pipeline — per-feature causal attribution, plus the ablation ladder — at layer 12 (early-middle) and layer 25 (late). Each layer with its own top-25 features. Different SAEs, different feature numberings, different coalitions.
 
@@ -244,7 +242,7 @@ L12 is *"the construction isn't built here yet"*. The early layer represents eno
 
 L25 is more interesting. It has a real coalition (52% drop), but its baseline is lower because inserting the L25 SAE itself loses 19% of P(pivot). The late-layer SAE basis is genuinely too narrow for the construction — what it reconstructs faithfully isn't quite the right thing. Some construction-relevant signal lives in the SAE's *error term* at L25.
 
-And the kicker, the bit that nails the locality finding: I joint-ablated **L12 + L20 + L25 top-25 simultaneously** — seventy-five features across three layers — and the absolute floor was 0.079. Same as L20-alone's 0.077. The late-layer coalition isn't an independent implementation. It's the same mechanism, observed from downstream. There's one place to intervene on the construction, and it's layer 20.
+And the kicker, the bit that nails the locality finding: I joint-ablated **L12 + L20 + L25 top-25 simultaneously** — seventy-five features across three layers — and the absolute floor was 0.079. Same as L20-alone's 0.077. The late-layer coalition turns out to be the same mechanism observed from downstream rather than an independent implementation. There's one place to intervene on the construction, and it's layer 20.
 
 The Hydra has heads at multiple layers, but it has one heart.
 
@@ -256,7 +254,7 @@ I'll be honest about the scope. This is one construction in one open-source mode
 
 The published interpretability literature's flagship results are behaviours that live in one direction. Refusal famously does; sycophancy and honesty have been argued to. Single directions. Single switches.
 
-I expected the AI-ism to be the same. What I found is that even when one feature is genuinely the right anchor — feature 3223 is exactly what you'd want the negation feature to be — the behaviour the feature anchors can still be a coalition. The model can run the construction without using the feature, because the model has twenty-two redundant supporters. Single-feature attacks failed not because they were wrong about the feature but because they were wrong about the architecture: behaviours have coalition addresses, not switch addresses, and the prior you need to find the coalition is causal, not structural.
+I expected the AI-ism to be the same. What I found is that even when one feature is genuinely the right anchor — feature 3223 is exactly what you'd want the negation feature to be — the behaviour the feature anchors can still be a coalition. The model can run the construction without using the feature, because the model has twenty-two redundant supporters. Single-feature attacks failed because they assumed the wrong architecture even when they held the right feature: behaviours have coalition addresses rather than switch addresses, and the prior that finds a coalition is causal rather than structural.
 
 The coalition's membership is honest about its own fuzziness, too. Re-run the selection with a hundred prompts instead of forty and nineteen of the twenty-five members stay, including the same top three. The cores are stable; the tail is fungible — which is exactly what the leave-one-out said from the other direction. ([n=40](./pivot_attribution_n40.json) vs [n=100](./pivot_attribution_n100.json).)
 
@@ -274,7 +272,7 @@ I want to be specific about this, because a friend with mech-interp credentials 
 
 **Several of the supporting numbers are in-sample, and I've labelled which.** The mechanism-level numbers — the ladder, the leave-one-out, the matched null, the cross-layer test — are all measured on the same 80 truncated prompts the attribution scan used. The neutral-prompt behavioural eval (the three nets) is the out-of-sample one: those 102 prompts never touched selection. The primed eval is 40% in-sample, but its held-out half shows the same drop (50% vs 51%). The two-feature demo number is fully in-sample. And my own protocol's reserved 26-prompt confirmation slice is underpowered on its own — seven baseline events, a non-significant 29% union drop, though even there the strict form goes 5 → 0. ([Re-slices.](./heldout_reslice.md))
 
-**I then ran the pre-registered confirmation, and by its own frozen gates it killed.** Fifty brand-new prompts written after the coalition and detector were frozen, six seeds each, one analysis at n = 300, gates committed in advance ([pre-registration](./confirmation_prereg.md) · [verdict](./confirmation_run.md)). The phrase I committed to print for this outcome, verbatim: *the pre-registered confirmation failed; the coalition's effect on fresh prompts is smaller than the exploratory data suggested, and the headline should be read accordingly.* Now the part the gates can't say but the data can: the failure mode wasn't reversal — baseline 3 hits, silenced 1, three of the four pairs that changed moved in the kill direction — it was that the fresh prompts barely elicit the construction *at all*: **1.0% baseline, a fifth of the exploratory rate**, so the eighteen baseline events my power note predicted never materialized and the test couldn't conclude anything. Why did the baseline collapse? I wrote the new prompts to be topically disjoint from the old ones, and they came out concrete and descriptive — bakeries, ferries, lighthouse logbooks — where the exploratory set leaned abstract and discursive (*"discuss the role of mentorship"*). The model reaches for contrastive correction when there's a stake to adjudicate, which is precisely what the coalition's topical labels said all along. So the kill teaches two things at once: the headline rates in this piece are a property of *discussion-register* prompts, not of "neutral prompts" in general — and the tic itself is topic-conditional, which is the coalition-as-rhetorical-context-detector story confirmed from an angle I didn't plan.
+**I then ran the pre-registered confirmation, and by its own frozen gates it killed.** Fifty brand-new prompts written after the coalition and detector were frozen, six seeds each, one analysis at n = 300, gates committed in advance ([pre-registration](./confirmation_prereg.md) · [verdict](./confirmation_run.md)). The phrase I committed to print for this outcome, verbatim: *the pre-registered confirmation failed; the coalition's effect on fresh prompts is smaller than the exploratory data suggested, and the headline should be read accordingly.* Now the part the gates can't say but the data can: the failure mode was a vanishing baseline rather than a reversal — 3 hits at baseline, 1 silenced, three of the four changed pairs moving in the kill direction — because the fresh prompts barely elicit the construction *at all*: **1.0% baseline, a fifth of the exploratory rate**. The eighteen baseline events my power note predicted never materialized, and the test couldn't conclude anything. Why did the baseline collapse? I wrote the new prompts to be topically disjoint from the old ones, and they came out concrete and descriptive — bakeries, ferries, lighthouse logbooks — where the exploratory set leaned abstract and discursive (*"discuss the role of mentorship"*). The model reaches for contrastive correction when there's a stake to adjudicate, which is precisely what the coalition's topical labels said all along. So the kill teaches two things at once: the headline rates in this piece are a property of *discussion-register* prompts, not of "neutral prompts" in general — and the tic itself is topic-conditional, which is the coalition-as-rhetorical-context-detector story confirmed from an angle I didn't plan.
 
 **Sufficiency is still asymmetric and I haven't fully retried it.** Clamping the coalition's activations to high values doesn't reliably *produce* the construction in cases where the model wouldn't have used it. The pre-registration committed to one method of sufficiency retrial — interchange patching from a construction-bearing source — and that hasn't been done yet either. The honest reading is that necessity is clean and sufficiency is murky; the murkiness may be a real fact about coalitions, or may be a not-yet-run experiment away from resolving.
 
@@ -294,7 +292,7 @@ I built three demos into the playground to make this concrete. Each one is a Cyp
 
 The full coalition has twenty-five features. But for any given prompt, only a handful of them are *topically* relevant. The graph lets you intersect a prompt's semantic content (via vector search over the 16,384 SAE feature labels) with a named behaviour's feature set — and silence only the overlap.
 
-Type a prompt, click `✨ Surgical de-slop`, and the playground:
+Type a prompt, click **Smart silence**, and the playground:
 
 1. Embeds your prompt and finds the top-K labels whose meaning matches it
 2. Cypher-intersects those features with the `ai-ism` `:Behaviour`'s `INCLUDES` edges
@@ -356,13 +354,13 @@ Vector DBs can do retrieval. SQL can do joins. What you can't do without a graph
 
 - **First-class coalition membership** — *"these twenty-five features collectively implement that behaviour"* as a queryable node with weighted edges. Demo 1's intersection wouldn't work — there's nothing to intersect retrieval *with*.
 - **Composable behaviour subgraphs** — Demo 2's union is one Cypher query over arbitrary named coalitions. Without typed edges between behaviours and features, you'd be rebuilding the union in application code per request.
-- **Lineage as paths** — Demo 3's audit isn't a join, it's a *traversal* across `(intervention) → (source) → (feature) → (label) → (community)`. Path queries are what graphs are for.
+- **Lineage as paths** — Demo 3's audit is a *traversal* rather than a join, across `(intervention) → (source) → (feature) → (label) → (community)`. Path queries are what graphs are for.
 
-Each demo is one Cypher query of fewer than twelve lines. The graph isn't the visualisation layer; it's the substrate.
+Each demo is one Cypher query of fewer than twelve lines. The graph here is the substrate; the visualisation merely rides on top of it.
 
 ## Try it
 
-**The story demo** (hosted, nothing to install — link in the [repo README](https://github.com/ho3h/not-this-but-that)) is an interactive version of what you just read: side-by-side baseline-vs-ablated playbacks you can click through, token by token, with the construction highlighted as it forms — or doesn't. There's also a **slop-o-meter**: paste your own prose and see exactly what the detector in this piece sees, plus a thirty-second spot-the-AI-ism quiz.
+**The story demo** (hosted, nothing to install — link in the [repo README](https://github.com/ho3h/not-this-but-that)) is an interactive version of what you just read: side-by-side baseline-vs-ablated playbacks you can click through, token by token, with the construction highlighted as it forms — or doesn't.
 
 **The playground** is the full instrument, and it runs locally (it needs the live model): the three demos above plus everything else — type a concept like "negation" or "code" into the search box and the matching features light up on the 16,384-dot map. Click communities to navigate by meaning. Shift-drag to lasso. Alt-click for graph neighbours. Hover any dot for its auto-interp label. One Python daemon (`scripts/probe_run.sh start`), one local Neo4j for the graph features; setup is in the README.
 

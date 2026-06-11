@@ -57,8 +57,8 @@ Then open `http://127.0.0.1:8765/demo/playground.html`.
 2. **Statistical hardening** — Q5b at n=300, Q5c at n=306, Q5d at n=120; bootstrap CIs + McNemar mid-p paired exact test on all three; matched-activation null at n=20 (coalition exceeds largest matched-null draw by 0.199).
 
 3. **Three demos on the graph substrate:**
-   - **Demo 1 — Surgical de-slop** (`✨ Surgical de-slop` button) — vector retrieval ∩ named :Behaviour via Cypher set intersection
-   - **Demo 2 — Mix your own chatbot** (`🎚 Mix your own chatbot` collapsible) — 4 sliders, each a 25-feature :Behaviour subgraph, composed via weighted Cypher UNION
+   - **Demo 1 — Surgical de-slop** (Smart silence button) — vector retrieval ∩ named :Behaviour via Cypher set intersection
+   - **Demo 2 — Mix your own chatbot** (behaviour mixer collapsible) — 4 sliders, each a 25-feature :Behaviour subgraph, composed via weighted Cypher UNION
    - **Demo 3 — Audit trail** (`Why did the model say that?` panel) — every silenced feature gets a graph-traceable provenance via `(intervention)-[:USED_SOURCE]->(source)-[:SELECTED]->(feature)` paths
 
 4. **Playground v5+** — drastically simplified UX, three preset cards, regions sidebar, loud alt-click neighbours, lasso select, search-by-concept.

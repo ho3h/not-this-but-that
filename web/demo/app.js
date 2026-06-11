@@ -74,7 +74,7 @@
     if (apill) {
       if (EXAMPLES && daemonOk) {
         apill.setAttribute("data-status", "up");
-        apill.textContent = "Live data · 4 baked examples + daemon connected";
+        apill.textContent = `Live data · ${EXAMPLES.examples.length} baked examples + daemon connected`;
       } else if (EXAMPLES) {
         apill.setAttribute("data-status", "up");
         apill.textContent = "Baked examples loaded · daemon offline";

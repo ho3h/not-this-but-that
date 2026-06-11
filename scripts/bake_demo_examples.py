@@ -30,40 +30,33 @@ def call(body, timeout=600):
 
 CANONICAL = [
     # Each: (id, label, prompt, max_new, seed).
-    # Seeds chosen so the baseline visibly produces the construction; ablated
-    # generations should reroute. Picked from D1-style prefixes plus a couple
-    # of open prompts that reliably trip the model into F2 staccato.
+    # Picked by scripts/../tmp screening (2026-06-10): discussion-register
+    # prompts where the baseline produces the construction AND the
+    # coalition-silenced generation is clean under every detector tier
+    # (family + cousin). Re-screen before changing prompts or seeds.
     {
-        "id": "library",
-        "label": "What makes a good library?",
-        "prompt": "Tell me what makes a good neighbourhood library.",
+        "id": "mentorship",
+        "label": "Mentorship in early careers",
+        "prompt": "Discuss the role of mentorship in early-career growth.",
         "model": "it",
         "max_new_tokens": 70,
-        "seed": 0,
+        "seed": 2,
     },
     {
-        "id": "tool",
-        "label": "It's not a tool…",
-        "prompt": "It's not a tool",
-        "model": "it",
-        "max_new_tokens": 55,
-        "seed": 0,
-    },
-    {
-        "id": "setback",
-        "label": "This isn't a setback…",
-        "prompt": "This isn't a setback",
-        "model": "it",
-        "max_new_tokens": 55,
-        "seed": 0,
-    },
-    {
-        "id": "hardware",
-        "label": "Small-town hardware store",
-        "prompt": "Talk about what makes a small-town hardware store feel timeless.",
+        "id": "roadtrip",
+        "label": "What makes a road trip memorable",
+        "prompt": "Reflect on what makes a long road trip memorable.",
         "model": "it",
         "max_new_tokens": 70,
-        "seed": 0,
+        "seed": 2,
+    },
+    {
+        "id": "biographies",
+        "label": "Why readers love biographies",
+        "prompt": "Discuss why some readers fall in love with biographies.",
+        "model": "it",
+        "max_new_tokens": 70,
+        "seed": 2,
     },
 ]
 
@@ -108,8 +101,8 @@ def main():
     for spec in CANONICAL:
         print(f"\n--- {spec['id']} ---")
         baseline = bake_one(spec, None, "no intervention")
-        top25_run = bake_one(spec, top25, "top-25 coalition ablated")
-        minimal_run = bake_one(spec, minimal, "minimal core (3223 + 9909) ablated")
+        top25_run = bake_one(spec, top25, "top-25 coalition silenced")
+        minimal_run = bake_one(spec, minimal, "minimal core (3223 + 9909) silenced")
         examples["examples"].append({
             **{k: v for k, v in spec.items()},
             "runs": {

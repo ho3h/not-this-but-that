@@ -10,21 +10,19 @@
 <body>
 
 <header class="site">
-  <div class="brand"><span class="dot"></span>not-this-but-that</div>
+  <div class="brand">Not this, but that</div>
   <nav class="mode-switch">
-    <a href="/demo" class="active">📖 Story</a>
-    <a href="/demo/playground.html">🎛 Playground</a>
-    <a href="/demo/slopometer.html">🔍 Slop-o-meter</a>
+    <a href="/demo" class="active">Story</a>
+    <a href="/demo/playground.html">Playground</a>
   </nav>
-  <div class="credit">feature map by <span class="badge">◆ Neo4j</span></div>
+  <div class="credit">feature map powered by Neo4j</div>
 </header>
 
 <div class="article-head">
   <p class="kicker">Mechanistic interpretability · Neograph project · May 2026</p>
   <h1>I found the neuron that makes AI write like AI.<br/>Then I tried to kill it.</h1>
   <p class="dek">
-    <em>Spoiler: it isn't one neuron. It's twenty-five. And they don't really
-    want to die.</em>
+    <em>Spoiler: it took twenty-five of them, and they did not go quietly.</em>
   </p>
   <p class="status-line">
     <span class="status-pill" id="status-pill" data-status="load">Loading…</span>
@@ -75,8 +73,8 @@
 <section class="panel narrow">
   <h2>A digression into 1753</h2>
   <p>
-    The construction isn't a chatbot invention. It's a 2,800-year-old
-    rhetorical move.
+    The construction is no chatbot invention — the rhetorical move is
+    2,800 years old, and it has a name.
   </p>
   <p>
     In 1741 the Oxford Professor of Poetry, a thirty-one-year-old clergyman
@@ -129,7 +127,7 @@
       patterns (decoder cosine), which fire together (co-activation), and
       which automatic-cluster they belong to. Without the graph you can't
       reason about the features by hand — it's a 16k-element pile.
-      <span class="neo-tag">◆ Neo4j</span>
+      <span class="neo-tag">via Neo4j</span>
     </li>
     <li>
       <strong>The probe.</strong> Take a prompt the model is about to commit
@@ -213,7 +211,7 @@
     But there's no reason that has to be true. A behaviour can be
     <em>necessary</em> in one feature and <em>not sufficient</em> — the
     model needs the feature, <em>and</em> the model has other ways of
-    getting the same effect when the feature isn't available. That's what
+    getting the same effect when the feature is unavailable. That's what
     3223 looks like. The model is, in some sense, hedging. The construction
     is implemented redundantly. A coalition of features cooperates to
     produce it, and the coalition is robust to losing any one member.
@@ -266,14 +264,13 @@
   </p>
   <p>
     The control: ablating a hundred <em>random</em> features moves P(pivot)
-    by under 0.001. The 79% drop isn't an artefact of mass ablation. It's
-    specific to this set.
+    by under 0.001. The 79% drop is specific to this set rather than an
+    artefact of mass ablation.
   </p>
   <p>
-    The model wasn't being a Hydra against the coalition. It was being a
-    Hydra against my attempts to find one node of the coalition at a time.
-    Hit it from all twenty-five directions simultaneously and it loses
-    three-quarters of its grip.
+    The model had only ever been a Hydra against my attempts to find one
+    node at a time; hit from all twenty-five directions simultaneously, it
+    loses three-quarters of its grip.
   </p>
 </section>
 
@@ -304,7 +301,7 @@
     </div>
     <div class="col">
       <div class="ck">Right</div>
-      <div class="name ablated" id="ablated-label">top-25 coalition ablated</div>
+      <div class="name ablated" id="ablated-label">top-25 coalition silenced</div>
       <div class="text" id="text-right"></div>
       <div class="verdict" id="verdict-right"></div>
     </div>
@@ -356,7 +353,7 @@
       <p class="kicker">top-25 coalition silenced</p>
       <div class="name">construction rate</div>
       <div class="big">6%</div>
-      <div class="foot">18 of 300. Drop CI [+21%, +73%]. McNemar mid-p ≈ 0.005.</div>
+      <div class="foot">18 of 300. Plausible range of the true drop: 21–73%. Odds of luck ≈ 1 in 200 (McNemar mid-p 0.005).</div>
     </div>
     <div class="headline-stat">
       <p class="kicker">absolute drop</p>
@@ -387,7 +384,7 @@
       <p class="kicker">top-25 coalition silenced</p>
       <div class="name">construction rate</div>
       <div class="big">3.3%</div>
-      <div class="foot">10 of 306. Drop CI [+14%, +70%]. McNemar mid-p ≈ 0.012 — about 1 in 85 by luck.</div>
+      <div class="foot">10 of 306. Plausible range of the true drop: 14–70%. Odds of luck ≈ 1 in 85 (McNemar mid-p 0.012).</div>
     </div>
     <div class="headline-stat">
       <p class="kicker">absolute drop</p>
@@ -402,7 +399,7 @@
     completions 89% → 40%, neutral prose family −44% — with the strict
     textbook form down 82–93% everywhere. One more tell about what was actually removed: the
     share of generations containing <em>"but"</em> collapses from 13.4% to
-    1.3%. The coalition isn't a slop switch; it's the model's <em>contrast
+    1.3%. What the coalition controls is the model's <em>contrast
     machinery</em>, and the AI-ism is what that machinery over-produces.
   </p>
 </section>
@@ -497,10 +494,10 @@
   <p>
     Structural similarity in the SAE doesn't predict causal-coalition
     membership for this behaviour. The features that <em>do</em> the
-    construction with 3223 aren't its decoder neighbours, aren't its
-    co-activators, and aren't its community-mates. They're a heterogeneous
-    set the SAE didn't cluster — findable only by asking the causal
-    question directly. <span class="neo-tag">◆ Negative result, generated by Neo4j</span>
+    construction with 3223 sit nowhere the graph expected —
+    outside its decoder neighbours, outside its co-activators, outside its
+    community-mates. They're a heterogeneous set the SAE never clustered,
+    findable only by asking the causal question directly. <span class="neo-tag">Negative result — via Neo4j</span>
   </p>
   <p class="aside">
     <strong>This is what the graph was for.</strong> Three Cypher queries,
@@ -547,8 +544,8 @@
     And the kicker: joint ablation across <strong>L12 + L20 + L25
     simultaneously</strong> (75 features across three layers) reached the
     <em>same</em> absolute floor as L20 alone — 0.079 vs 0.077. The
-    late-layer coalition isn't an independent mechanism. It's the same
-    mechanism, watched from downstream. There's one place to intervene on
+    late-layer coalition turns out to be the same mechanism watched from
+    downstream rather than an independent implementation. There's one place to intervene on
     the construction, and it's layer 20.
   </p>
 </section>
@@ -562,7 +559,7 @@
     their decoder vectors. Hover any dot for the feature's label. Click to
     flag for ablation. The coloured regions are <em>Leiden communities</em>
     — automatically-discovered clusters of related features, written into
-    the graph at ingestion. <span class="neo-tag">◆ Neo4j</span>
+    the graph at ingestion. <span class="neo-tag">via Neo4j</span>
   </p>
   <div class="map-stage">
     <canvas id="canvas"></canvas>
@@ -739,8 +736,8 @@ RETURN DISTINCT f.index AS idx, collect(b.name) AS sources</pre>
 RETURN s.kind, s.label, collect({idx: f.index, label: l.text}) AS features
 ORDER BY s.ts</pre>
     <p class="demo-card-foot">
-      <strong>Why this needs a graph:</strong> the audit isn't a join,
-      it's a <em>traversal</em> across
+      <strong>Why this needs a graph:</strong> the audit is a
+      <em>traversal</em> rather than a join, across
       <code>(intervention) → (source) → (feature) → (label) → (community)</code>.
       Path queries are what graphs are for. Glass-box governance — <em>show
       me which features your AI silenced, and which lineage decided to
