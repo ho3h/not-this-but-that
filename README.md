@@ -110,7 +110,7 @@ Every claim, with the artifact that backs it. All paths under `reports/`.
 
 | Claim | Receipt |
 |---|---|
-| News: "isn't just" per 1,000 English-language GDELT articles containing "according to", 1.20 (2019–22) to 3.08 (2025–26), peaking in July 2025 at 3.5× and falling by more than half since; the "not only" control stays flat | [`trend.md`](reports/trend.md), `scripts/trend_gdelt.py`, `scripts/trend_analysis.py`, `data/trend/` |
+| News: "isn't just" per 1,000 English-language GDELT articles containing "according to", 12.0 (2019–22) to 30.8 (2025–26), peaking in July 2025 at 3.5× and falling by more than half since; the "not only" control stays flat | [`trend.md`](reports/trend.md), `scripts/trend_gdelt.py`, `scripts/trend_analysis.py`, `data/trend/` |
 | Books: "is not just" 0.32 (1920) to 5.08 (2019) per million words, Google Books Ngram | [`trend.md`](reports/trend.md), `data/trend/ngram/` |
 | Training stages, OLMo 2 1B base / SFT / DPO / Instruct on the same 152 questions: SFT makes about 5× as many answers use it, in answers about 6× longer (flat per word); on meaning questions the per-word rate rises 1.72× from SFT to Instruct (95% CI 1.09–2.92) | [`why_stages.md`](reports/why_stages.md), `scripts/why_stages.py` |
 | People: 4,917 one-sided LMArena battles, 55.9% raw, odds ratio 1.01 once length is accounted for | [`why_arena.md`](reports/why_arena.md), `scripts/why_arena.py` |
