@@ -2,7 +2,7 @@
 
 Chatbots keep writing "It isn't just X, it's Y". This repository looks for the machinery behind that habit inside Gemma 2 2B (and then Gemma 3 4B), using Google DeepMind's Gemma Scope sparse autoencoders (SAEs). It tests what happens when you ablate that machinery, when you amplify it, and where the habit came from in the first place.
 
-**Read it:** [the post on Medium](https://medium.com/@theohopkinson/00fbd8453c74) · [interactive version](https://not-this-but-that.vercel.app/demo/)
+**Read it:** [the post on Medium](https://medium.com/@theohopkinson/00fbd8453c74) · [interactive version](https://notthisbutthat.hopski.co/demo/)
 
 ## In short
 
@@ -38,7 +38,7 @@ Every number links to a receipt below, including the pre-registered tests that f
 
 ## See it
 
-The [interactive version](https://not-this-but-that.vercel.app/demo/) replays recorded answers with and without the 25, word by word, and shows the 16,384-feature map. The full playground (your own prompts, switching features off, concept search, lasso, the graph tools) needs the model, so it runs locally. Requirements: a Hugging Face account with access to the gated Gemma 2 weights, ~10 GB of downloads on first run, and about 22 GB of memory (both Gemma 2 2B variants load in fp32, plus the SAE). Developed on Apple Silicon (MPS); everything else, CUDA machines included, falls back to CPU because the device check only knows MPS. The graph-backed tools also need a local Neo4j (below).
+The [interactive version](https://notthisbutthat.hopski.co/demo/) replays recorded answers with and without the 25, word by word, and shows the 16,384-feature map. The full playground (your own prompts, switching features off, concept search, lasso, the graph tools) needs the model, so it runs locally. Requirements: a Hugging Face account with access to the gated Gemma 2 weights, ~10 GB of downloads on first run, and about 22 GB of memory (both Gemma 2 2B variants load in fp32, plus the SAE). Developed on Apple Silicon (MPS); everything else, CUDA machines included, falls back to CPU because the device check only knows MPS. The graph-backed tools also need a local Neo4j (below).
 
 ## Quickstart
 
