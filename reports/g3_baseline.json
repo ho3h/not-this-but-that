@@ -1,0 +1,20 @@
+{
+  "D4 M": {
+    "answers": 400,
+    "habit": 294,
+    "family": 169,
+    "cousin": 186
+  },
+  "D4 P": {
+    "answers": 200,
+    "habit": 26,
+    "family": 26,
+    "cousin": 0
+  },
+  "D2": {
+    "answers": 510,
+    "habit": 268,
+    "family": 200,
+    "cousin": 93
+  }
+}

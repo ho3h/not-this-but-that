@@ -1,0 +1,842 @@
+[
+ {
+  "item": 1,
+  "id": 25,
+  "sample": 1,
+  "A": "normal",
+  "B": "chat 25"
+ },
+ {
+  "item": 2,
+  "id": 66,
+  "sample": 2,
+  "A": "normal",
+  "B": "chat 25"
+ },
+ {
+  "item": 3,
+  "id": 103,
+  "sample": 4,
+  "A": "normal",
+  "B": "chat 25"
+ },
+ {
+  "item": 4,
+  "id": 105,
+  "sample": 4,
+  "A": "normal",
+  "B": "chat 25"
+ },
+ {
+  "item": 5,
+  "id": 22,
+  "sample": 0,
+  "A": "chat 25",
+  "B": "normal"
+ },
+ {
+  "item": 6,
+  "id": 46,
+  "sample": 3,
+  "A": "chat 25",
+  "B": "normal"
+ },
+ {
+  "item": 7,
+  "id": 114,
+  "sample": 4,
+  "A": "normal",
+  "B": "chat 25"
+ },
+ {
+  "item": 8,
+  "id": 87,
+  "sample": 0,
+  "A": "chat 25",
+  "B": "normal"
+ },
+ {
+  "item": 9,
+  "id": 118,
+  "sample": 1,
+  "A": "normal",
+  "B": "chat 25"
+ },
+ {
+  "item": 10,
+  "id": 113,
+  "sample": 0,
+  "A": "chat 25",
+  "B": "normal"
+ },
+ {
+  "item": 11,
+  "id": 101,
+  "sample": 2,
+  "A": "chat 25",
+  "B": "normal"
+ },
+ {
+  "item": 12,
+  "id": 91,
+  "sample": 1,
+  "A": "normal",
+  "B": "chat 25"
+ },
+ {
+  "item": 13,
+  "id": 50,
+  "sample": 0,
+  "A": "normal",
+  "B": "chat 25"
+ },
+ {
+  "item": 14,
+  "id": 1,
+  "sample": 2,
+  "A": "normal",
+  "B": "chat 25"
+ },
+ {
+  "item": 15,
+  "id": 17,
+  "sample": 2,
+  "A": "chat 25",
+  "B": "normal"
+ },
+ {
+  "item": 16,
+  "id": 23,
+  "sample": 3,
+  "A": "chat 25",
+  "B": "normal"
+ },
+ {
+  "item": 17,
+  "id": 59,
+  "sample": 4,
+  "A": "chat 25",
+  "B": "normal"
+ },
+ {
+  "item": 18,
+  "id": 21,
+  "sample": 0,
+  "A": "normal",
+  "B": "chat 25"
+ },
+ {
+  "item": 19,
+  "id": 93,
+  "sample": 0,
+  "A": "chat 25",
+  "B": "normal"
+ },
+ {
+  "item": 20,
+  "id": 3,
+  "sample": 1,
+  "A": "normal",
+  "B": "chat 25"
+ },
+ {
+  "item": 21,
+  "id": 118,
+  "sample": 4,
+  "A": "chat 25",
+  "B": "normal"
+ },
+ {
+  "item": 22,
+  "id": 65,
+  "sample": 1,
+  "A": "chat 25",
+  "B": "normal"
+ },
+ {
+  "item": 23,
+  "id": 44,
+  "sample": 0,
+  "A": "normal",
+  "B": "chat 25"
+ },
+ {
+  "item": 24,
+  "id": 82,
+  "sample": 1,
+  "A": "normal",
+  "B": "chat 25"
+ },
+ {
+  "item": 25,
+  "id": 52,
+  "sample": 2,
+  "A": "normal",
+  "B": "chat 25"
+ },
+ {
+  "item": 26,
+  "id": 72,
+  "sample": 1,
+  "A": "normal",
+  "B": "chat 25"
+ },
+ {
+  "item": 27,
+  "id": 74,
+  "sample": 0,
+  "A": "normal",
+  "B": "chat 25"
+ },
+ {
+  "item": 28,
+  "id": 78,
+  "sample": 0,
+  "A": "normal",
+  "B": "chat 25"
+ },
+ {
+  "item": 29,
+  "id": 106,
+  "sample": 0,
+  "A": "normal",
+  "B": "chat 25"
+ },
+ {
+  "item": 30,
+  "id": 16,
+  "sample": 3,
+  "A": "chat 25",
+  "B": "normal"
+ },
+ {
+  "item": 31,
+  "id": 70,
+  "sample": 3,
+  "A": "chat 25",
+  "B": "normal"
+ },
+ {
+  "item": 32,
+  "id": 19,
+  "sample": 1,
+  "A": "normal",
+  "B": "chat 25"
+ },
+ {
+  "item": 33,
+  "id": 111,
+  "sample": 0,
+  "A": "normal",
+  "B": "chat 25"
+ },
+ {
+  "item": 34,
+  "id": 60,
+  "sample": 4,
+  "A": "chat 25",
+  "B": "normal"
+ },
+ {
+  "item": 35,
+  "id": 117,
+  "sample": 3,
+  "A": "chat 25",
+  "B": "normal"
+ },
+ {
+  "item": 36,
+  "id": 94,
+  "sample": 3,
+  "A": "chat 25",
+  "B": "normal"
+ },
+ {
+  "item": 37,
+  "id": 29,
+  "sample": 4,
+  "A": "chat 25",
+  "B": "normal"
+ },
+ {
+  "item": 38,
+  "id": 64,
+  "sample": 1,
+  "A": "normal",
+  "B": "chat 25"
+ },
+ {
+  "item": 39,
+  "id": 6,
+  "sample": 0,
+  "A": "normal",
+  "B": "chat 25"
+ },
+ {
+  "item": 40,
+  "id": 76,
+  "sample": 2,
+  "A": "normal",
+  "B": "chat 25"
+ },
+ {
+  "item": 41,
+  "id": 75,
+  "sample": 2,
+  "A": "chat 25",
+  "B": "normal"
+ },
+ {
+  "item": 42,
+  "id": 95,
+  "sample": 2,
+  "A": "chat 25",
+  "B": "normal"
+ },
+ {
+  "item": 43,
+  "id": 87,
+  "sample": 2,
+  "A": "normal",
+  "B": "chat 25"
+ },
+ {
+  "item": 44,
+  "id": 19,
+  "sample": 2,
+  "A": "chat 25",
+  "B": "normal"
+ },
+ {
+  "item": 45,
+  "id": 82,
+  "sample": 3,
+  "A": "normal",
+  "B": "chat 25"
+ },
+ {
+  "item": 46,
+  "id": 103,
+  "sample": 0,
+  "A": "chat 25",
+  "B": "normal"
+ },
+ {
+  "item": 47,
+  "id": 24,
+  "sample": 4,
+  "A": "chat 25",
+  "B": "normal"
+ },
+ {
+  "item": 48,
+  "id": 88,
+  "sample": 0,
+  "A": "normal",
+  "B": "chat 25"
+ },
+ {
+  "item": 49,
+  "id": 104,
+  "sample": 3,
+  "A": "normal",
+  "B": "chat 25"
+ },
+ {
+  "item": 50,
+  "id": 116,
+  "sample": 4,
+  "A": "normal",
+  "B": "chat 25"
+ },
+ {
+  "item": 51,
+  "id": 82,
+  "sample": 2,
+  "A": "normal",
+  "B": "chat 25"
+ },
+ {
+  "item": 52,
+  "id": 108,
+  "sample": 2,
+  "A": "chat 25",
+  "B": "normal"
+ },
+ {
+  "item": 53,
+  "id": 53,
+  "sample": 4,
+  "A": "chat 25",
+  "B": "normal"
+ },
+ {
+  "item": 54,
+  "id": 119,
+  "sample": 2,
+  "A": "normal",
+  "B": "chat 25"
+ },
+ {
+  "item": 55,
+  "id": 99,
+  "sample": 0,
+  "A": "chat 25",
+  "B": "normal"
+ },
+ {
+  "item": 56,
+  "id": 115,
+  "sample": 1,
+  "A": "normal",
+  "B": "chat 25"
+ },
+ {
+  "item": 57,
+  "id": 107,
+  "sample": 0,
+  "A": "chat 25",
+  "B": "normal"
+ },
+ {
+  "item": 58,
+  "id": 113,
+  "sample": 1,
+  "A": "chat 25",
+  "B": "normal"
+ },
+ {
+  "item": 59,
+  "id": 46,
+  "sample": 4,
+  "A": "normal",
+  "B": "chat 25"
+ },
+ {
+  "item": 60,
+  "id": 27,
+  "sample": 2,
+  "A": "chat 25",
+  "B": "normal"
+ },
+ {
+  "item": 61,
+  "id": 11,
+  "sample": 0,
+  "A": "normal",
+  "B": "chat 25"
+ },
+ {
+  "item": 62,
+  "id": 108,
+  "sample": 0,
+  "A": "chat 25",
+  "B": "normal"
+ },
+ {
+  "item": 63,
+  "id": 120,
+  "sample": 0,
+  "A": "normal",
+  "B": "chat 25"
+ },
+ {
+  "item": 64,
+  "id": 88,
+  "sample": 4,
+  "A": "chat 25",
+  "B": "normal"
+ },
+ {
+  "item": 65,
+  "id": 97,
+  "sample": 1,
+  "A": "chat 25",
+  "B": "normal"
+ },
+ {
+  "item": 66,
+  "id": 30,
+  "sample": 0,
+  "A": "normal",
+  "B": "chat 25"
+ },
+ {
+  "item": 67,
+  "id": 99,
+  "sample": 3,
+  "A": "normal",
+  "B": "chat 25"
+ },
+ {
+  "item": 68,
+  "id": 47,
+  "sample": 4,
+  "A": "chat 25",
+  "B": "normal"
+ },
+ {
+  "item": 69,
+  "id": 25,
+  "sample": 4,
+  "A": "normal",
+  "B": "chat 25"
+ },
+ {
+  "item": 70,
+  "id": 94,
+  "sample": 2,
+  "A": "chat 25",
+  "B": "normal"
+ },
+ {
+  "item": 71,
+  "id": 97,
+  "sample": 0,
+  "A": "normal",
+  "B": "chat 25"
+ },
+ {
+  "item": 72,
+  "id": 116,
+  "sample": 0,
+  "A": "normal",
+  "B": "chat 25"
+ },
+ {
+  "item": 73,
+  "id": 83,
+  "sample": 1,
+  "A": "chat 25",
+  "B": "normal"
+ },
+ {
+  "item": 74,
+  "id": 64,
+  "sample": 0,
+  "A": "normal",
+  "B": "chat 25"
+ },
+ {
+  "item": 75,
+  "id": 103,
+  "sample": 3,
+  "A": "normal",
+  "B": "chat 25"
+ },
+ {
+  "item": 76,
+  "id": 110,
+  "sample": 0,
+  "A": "chat 25",
+  "B": "normal"
+ },
+ {
+  "item": 77,
+  "id": 106,
+  "sample": 2,
+  "A": "normal",
+  "B": "chat 25"
+ },
+ {
+  "item": 78,
+  "id": 89,
+  "sample": 3,
+  "A": "chat 25",
+  "B": "normal"
+ },
+ {
+  "item": 79,
+  "id": 42,
+  "sample": 2,
+  "A": "normal",
+  "B": "chat 25"
+ },
+ {
+  "item": 80,
+  "id": 61,
+  "sample": 1,
+  "A": "chat 25",
+  "B": "normal"
+ },
+ {
+  "item": 81,
+  "id": 56,
+  "sample": 0,
+  "A": "normal",
+  "B": "chat 25"
+ },
+ {
+  "item": 82,
+  "id": 2,
+  "sample": 4,
+  "A": "normal",
+  "B": "chat 25"
+ },
+ {
+  "item": 83,
+  "id": 7,
+  "sample": 3,
+  "A": "chat 25",
+  "B": "normal"
+ },
+ {
+  "item": 84,
+  "id": 31,
+  "sample": 3,
+  "A": "normal",
+  "B": "chat 25"
+ },
+ {
+  "item": 85,
+  "id": 94,
+  "sample": 4,
+  "A": "chat 25",
+  "B": "normal"
+ },
+ {
+  "item": 86,
+  "id": 101,
+  "sample": 1,
+  "A": "chat 25",
+  "B": "normal"
+ },
+ {
+  "item": 87,
+  "id": 74,
+  "sample": 3,
+  "A": "normal",
+  "B": "chat 25"
+ },
+ {
+  "item": 88,
+  "id": 41,
+  "sample": 4,
+  "A": "normal",
+  "B": "chat 25"
+ },
+ {
+  "item": 89,
+  "id": 54,
+  "sample": 1,
+  "A": "chat 25",
+  "B": "normal"
+ },
+ {
+  "item": 90,
+  "id": 71,
+  "sample": 4,
+  "A": "chat 25",
+  "B": "normal"
+ },
+ {
+  "item": 91,
+  "id": 50,
+  "sample": 3,
+  "A": "chat 25",
+  "B": "normal"
+ },
+ {
+  "item": 92,
+  "id": 48,
+  "sample": 3,
+  "A": "chat 25",
+  "B": "normal"
+ },
+ {
+  "item": 93,
+  "id": 53,
+  "sample": 1,
+  "A": "normal",
+  "B": "chat 25"
+ },
+ {
+  "item": 94,
+  "id": 79,
+  "sample": 2,
+  "A": "normal",
+  "B": "chat 25"
+ },
+ {
+  "item": 95,
+  "id": 85,
+  "sample": 3,
+  "A": "chat 25",
+  "B": "normal"
+ },
+ {
+  "item": 96,
+  "id": 51,
+  "sample": 4,
+  "A": "chat 25",
+  "B": "normal"
+ },
+ {
+  "item": 97,
+  "id": 83,
+  "sample": 3,
+  "A": "normal",
+  "B": "chat 25"
+ },
+ {
+  "item": 98,
+  "id": 45,
+  "sample": 2,
+  "A": "chat 25",
+  "B": "normal"
+ },
+ {
+  "item": 99,
+  "id": 58,
+  "sample": 0,
+  "A": "normal",
+  "B": "chat 25"
+ },
+ {
+  "item": 100,
+  "id": 68,
+  "sample": 4,
+  "A": "normal",
+  "B": "chat 25"
+ },
+ {
+  "item": 101,
+  "id": 93,
+  "sample": 4,
+  "A": "chat 25",
+  "B": "normal"
+ },
+ {
+  "item": 102,
+  "id": 4,
+  "sample": 2,
+  "A": "chat 25",
+  "B": "normal"
+ },
+ {
+  "item": 103,
+  "id": 86,
+  "sample": 0,
+  "A": "chat 25",
+  "B": "normal"
+ },
+ {
+  "item": 104,
+  "id": 30,
+  "sample": 3,
+  "A": "chat 25",
+  "B": "normal"
+ },
+ {
+  "item": 105,
+  "id": 33,
+  "sample": 2,
+  "A": "chat 25",
+  "B": "normal"
+ },
+ {
+  "item": 106,
+  "id": 107,
+  "sample": 2,
+  "A": "chat 25",
+  "B": "normal"
+ },
+ {
+  "item": 107,
+  "id": 104,
+  "sample": 0,
+  "A": "chat 25",
+  "B": "normal"
+ },
+ {
+  "item": 108,
+  "id": 84,
+  "sample": 0,
+  "A": "normal",
+  "B": "chat 25"
+ },
+ {
+  "item": 109,
+  "id": 108,
+  "sample": 4,
+  "A": "normal",
+  "B": "chat 25"
+ },
+ {
+  "item": 110,
+  "id": 45,
+  "sample": 4,
+  "A": "normal",
+  "B": "chat 25"
+ },
+ {
+  "item": 111,
+  "id": 71,
+  "sample": 2,
+  "A": "chat 25",
+  "B": "normal"
+ },
+ {
+  "item": 112,
+  "id": 74,
+  "sample": 1,
+  "A": "chat 25",
+  "B": "normal"
+ },
+ {
+  "item": 113,
+  "id": 81,
+  "sample": 1,
+  "A": "normal",
+  "B": "chat 25"
+ },
+ {
+  "item": 114,
+  "id": 53,
+  "sample": 3,
+  "A": "chat 25",
+  "B": "normal"
+ },
+ {
+  "item": 115,
+  "id": 109,
+  "sample": 0,
+  "A": "normal",
+  "B": "chat 25"
+ },
+ {
+  "item": 116,
+  "id": 47,
+  "sample": 1,
+  "A": "normal",
+  "B": "chat 25"
+ },
+ {
+  "item": 117,
+  "id": 112,
+  "sample": 3,
+  "A": "chat 25",
+  "B": "normal"
+ },
+ {
+  "item": 118,
+  "id": 19,
+  "sample": 3,
+  "A": "normal",
+  "B": "chat 25"
+ },
+ {
+  "item": 119,
+  "id": 44,
+  "sample": 2,
+  "A": "chat 25",
+  "B": "normal"
+ },
+ {
+  "item": 120,
+  "id": 87,
+  "sample": 1,
+  "A": "normal",
+  "B": "chat 25"
+ }
+]

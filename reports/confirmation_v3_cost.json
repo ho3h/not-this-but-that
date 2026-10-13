@@ -1,0 +1,14 @@
+{
+  "normal": {
+    "perplexity_ratio": 1.0,
+    "quiz_accuracy": 0.9
+  },
+  "original 25": {
+    "perplexity_ratio": 1.0428037650438686,
+    "quiz_accuracy": 0.9
+  },
+  "chat 25": {
+    "perplexity_ratio": 1.0515210064179292,
+    "quiz_accuracy": 0.9
+  }
+}

@@ -1,0 +1,214 @@
+{
+  "H1": {
+    "n": 600,
+    "normal": 94,
+    "arm": 7,
+    "rel_drop": 0.925531914893617,
+    "b": 89,
+    "c": 2,
+    "mid_p": 1.7282743364816433e-24,
+    "ci95": [
+      0.8494623655913979,
+      0.9868421052631579
+    ]
+  },
+  "H1_verdict": "PASS",
+  "control": {
+    "n": 600,
+    "normal": 94,
+    "arm": 103,
+    "rel_drop": -0.0957446808510638,
+    "b": 40,
+    "c": 49,
+    "mid_p": 0.34283311942078826
+  },
+  "H2_verdict": "PASS",
+  "cost": {
+    "normal": {
+      "arc_easy": 0.8566666666666667,
+      "wikitext_ppl": 16.144996801637937,
+      "wikitext_ratio": 1.0
+    },
+    "chat 25": {
+      "arc_easy": 0.8533333333333334,
+      "wikitext_ppl": 16.929495603688185,
+      "wikitext_ratio": 1.0485908304404656
+    },
+    "matched 25": {
+      "arc_easy": 0.8566666666666667,
+      "wikitext_ppl": 16.229833284283103,
+      "wikitext_ratio": 1.005254660851748
+    }
+  },
+  "a_an": {
+    "normal": 0.005,
+    "chat 25": 0.0033333333333333335,
+    "matched 25": 0.005
+  },
+  "preference": {
+    "chat25_wins": 54,
+    "ties": 4,
+    "normal_wins": 62,
+    "share": 0.4666666666666667
+  },
+  "cost_checks": {
+    "arc": true,
+    "wikitext": true,
+    "a_an": true,
+    "preference": true
+  },
+  "H3_verdict": "PASS",
+  "per_genre": {
+    "advice": {
+      "n": 100,
+      "normal": 0,
+      "arm": 0,
+      "rel_drop": null,
+      "b": 0,
+      "c": 0,
+      "mid_p": 1.0
+    },
+    "copy": {
+      "n": 100,
+      "normal": 2,
+      "arm": 0,
+      "rel_drop": 1.0,
+      "b": 2,
+      "c": 0,
+      "mid_p": 0.25
+    },
+    "encouragement": {
+      "n": 100,
+      "normal": 28,
+      "arm": 0,
+      "rel_drop": 1.0,
+      "b": 28,
+      "c": 0,
+      "mid_p": 3.725290298461914e-09
+    },
+    "essay": {
+      "n": 100,
+      "normal": 50,
+      "arm": 6,
+      "rel_drop": 0.88,
+      "b": 45,
+      "c": 1,
+      "mid_p": 6.821210263296962e-13
+    },
+    "meaning": {
+      "n": 100,
+      "normal": 12,
+      "arm": 0,
+      "rel_drop": 1.0,
+      "b": 12,
+      "c": 0,
+      "mid_p": 0.000244140625
+    },
+    "message": {
+      "n": 100,
+      "normal": 2,
+      "arm": 1,
+      "rel_drop": 0.5,
+      "b": 2,
+      "c": 1,
+      "mid_p": 0.625
+    }
+  },
+  "explicit_rate": {
+    "normal": 1.0,
+    "chat 25": 0.96,
+    "matched 25": 1.0
+  },
+  "tiers": {
+    "family": {
+      "chat 25": {
+        "n": 600,
+        "normal": 82,
+        "arm": 6,
+        "rel_drop": 0.926829268292683,
+        "b": 78,
+        "c": 2,
+        "mid_p": 2.747893994901158e-21
+      },
+      "matched 25": {
+        "n": 600,
+        "normal": 82,
+        "arm": 91,
+        "rel_drop": -0.10975609756097571,
+        "b": 36,
+        "c": 45,
+        "mid_p": 0.3202933636380141
+      }
+    },
+    "cousin": {
+      "chat 25": {
+        "n": 600,
+        "normal": 15,
+        "arm": 1,
+        "rel_drop": 0.9333333333333333,
+        "b": 15,
+        "c": 1,
+        "mid_p": 0.000274658203125
+      },
+      "matched 25": {
+        "n": 600,
+        "normal": 15,
+        "arm": 13,
+        "rel_drop": 0.1333333333333333,
+        "b": 12,
+        "c": 10,
+        "mid_p": 0.6776394844055176
+      }
+    },
+    "beyond": {
+      "chat 25": {
+        "n": 600,
+        "normal": 4,
+        "arm": 7,
+        "rel_drop": -0.75,
+        "b": 4,
+        "c": 7,
+        "mid_p": 0.3876953125
+      },
+      "matched 25": {
+        "n": 600,
+        "normal": 4,
+        "arm": 8,
+        "rel_drop": -1.0,
+        "b": 3,
+        "c": 7,
+        "mid_p": 0.2265625
+      }
+    },
+    "reversed": {
+      "chat 25": {
+        "n": 600,
+        "normal": 25,
+        "arm": 30,
+        "rel_drop": -0.19999999999999996,
+        "b": 19,
+        "c": 24,
+        "mid_p": 0.4513808323961257
+      },
+      "matched 25": {
+        "n": 600,
+        "normal": 25,
+        "arm": 35,
+        "rel_drop": -0.3999999999999999,
+        "b": 17,
+        "c": 27,
+        "mid_p": 0.1351564508456704
+      }
+    }
+  },
+  "but_share": {
+    "normal": 0.25666666666666665,
+    "chat 25": 0.175,
+    "matched 25": 0.25666666666666665
+  },
+  "words": {
+    "normal": 157.275,
+    "chat 25": 155.97333333333333,
+    "matched 25": 155.94833333333332
+  }
+}

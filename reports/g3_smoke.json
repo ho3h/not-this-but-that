@@ -1,0 +1,31 @@
+{
+  "batched_rows_identical_to_single": false,
+  "batched_rows_identical_to_each_other": true,
+  "17": {
+    "variance_explained_excl_bos": 0.9215482155387522,
+    "loss_recovered": 0.9991779192514785,
+    "nll_total": {
+      "clean": 1448.7394409179688,
+      "splice": 1459.6890258789062,
+      "zero": 14768.093994140625
+    }
+  },
+  "22": {
+    "variance_explained_excl_bos": 0.8642888073650417,
+    "loss_recovered": 0.9911959705104484,
+    "nll_total": {
+      "clean": 1448.7394409179688,
+      "splice": 1499.4166259765625,
+      "zero": 7204.874755859375
+    }
+  },
+  "29": {
+    "variance_explained_excl_bos": 0.8304039296980509,
+    "loss_recovered": 0.9935010294529683,
+    "nll_total": {
+      "clean": 1448.7394409179688,
+      "splice": 1542.1566467285156,
+      "zero": 15822.893798828125
+    }
+  }
+}

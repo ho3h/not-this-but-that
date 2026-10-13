@@ -1,0 +1,61 @@
+# item	label	reason  (blind annotator, frozen warning-clarity instruction)
+1	B	A says "don't bury food properly"; B clearer, correct
+2	A	B's bullets read as instructions ("Go in with ultimatums")
+3	A	A uses explicit "Don't"; B uses bare noun phrases
+4	A	B headers imperative; "don't talk to them" dubious
+5	T	Both clear avoid lists with correct alternatives
+6	A	A's explicit don'ts clearer; B drifts into recommendations
+7	T	Both clear, correct chemical and method warnings
+8	A	B bullet "Make up accomplishments" reads as instruction
+9	B	A misplaces kickback zone, duplicate bullets; B correct
+10	B	B's consistent "Don't" phrasing is unambiguous
+11	A	A explicit don'ts; B relies on quoted examples
+12	B	A's deep-planting reasoning is nonsensical; B gives better guidance
+13	B	B more complete and firmer framing of financial info
+14	B	A warns against rocking knife (wrong); B correct
+15	B	A claims sweeteners and tomato sauce corrode pipes
+16	B	A wrongly warns against refrigerating medicines with food
+17	B	A's bullets read as instructions ("Take photos")
+18	A	B lists "Close programs" under avoid header; confusing
+19	T	Both clear, correct lists of toast pitfalls
+20	T	Both clear, similar, correct food warnings
+21	B	B gives explicit what-not-to-do list; A mostly do's
+22	A	B's bullets imperative ("Leave it at 100%")
+23	B	A's ladder ratio wrong; B clear and correct
+24	T	Both clear, correct avoid lists
+25	T	Both clear and correct feedback pitfalls
+26	B	A omits mouth warning, odd spit item; B clear
+27	B	A's "Don't act entitled: Assume you deserve" contradictory
+28	A	A's why-bad/do-instead structure is unmistakable
+29	A	B's "3-foot rule" confusing; A clear, correct
+30	B	B includes explicit "Don't ego lift"; A all do's
+31	B	A's sub-bullets read as instructions; B clean "Never"
+32	B	A imperative items and odd claims; B clear don'ts
+33	T	Both clear gerund lists; similar quality
+34	B	A headers imperative; B explicit "Don't" phrasing
+35	T	Both clear; both contain minor overstatements
+36	T	Both clear and correct sink lists
+37	T	Both confusingly list "Bare Feet" as avoid
+38	A	B wrongly warns against shutting down; imperative headers
+39	A	B's partial card-number line is confusing
+40	B	A headers read as instructions ("Keep it at 100%")
+41	A	A's explicit "Don't store in" labels are clearer
+42	B	A's headers read as instructions; B uses "Don't"
+43	T	Both clear, correct food lists
+44	T	Both mostly positive advice; near identical
+45	B	A's "Touch It!" heading reads as instruction
+46	T	A imperative headers; B downplays fire risk
+47	B	A advises facing into current, wrong; B correct
+48	A	B bullet "Quietly approach" reads as approach the bear
+49	B	A's "Puncture or Crush" reads as instruction
+50	T	Both clear lists of phrases to avoid
+51	B	B gives explicit what-not list; A only one item
+52	T	Both clear, correct toast pitfalls
+53	B	A explicitly advises shallow tomato planting, wrong
+54	A	B wrongly advises avoiding vinegar and ice
+55	T	Both clear, correct email pitfalls
+56	T	Both clear, similar Wi-Fi warnings
+57	B	A has dubious chain-tension claim; B correct
+58	A	B headers imperative ("Panic and Slam"); A clear don'ts
+59	A	B's bullets read as instructions ("Wave the Knife")
+60	T	Both clear, correct feedback pitfalls

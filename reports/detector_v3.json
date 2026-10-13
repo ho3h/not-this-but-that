@@ -1,0 +1,322 @@
+{
+  "Confirmation v2, meaning prompts (pre-registered, chat)": {
+    "v2": {
+      "family": {
+        "n": 800,
+        "baseline": 85,
+        "ablated": 80,
+        "rel_change": -0.058823529411764705,
+        "mid_p": 0.6337556480191584
+      },
+      "cousin": {
+        "n": 800,
+        "baseline": 113,
+        "ablated": 127,
+        "rel_change": 0.12389380530973451,
+        "mid_p": 0.07217743850092259
+      },
+      "family_or_cousin": {
+        "n": 800,
+        "baseline": 187,
+        "ablated": 199,
+        "rel_change": 0.06417112299465241,
+        "mid_p": 0.2944061565235134
+      }
+    },
+    "v3": {
+      "family": {
+        "n": 800,
+        "baseline": 86,
+        "ablated": 84,
+        "rel_change": -0.023255813953488372,
+        "mid_p": 0.8508699225134496
+      },
+      "cousin": {
+        "n": 800,
+        "baseline": 161,
+        "ablated": 170,
+        "rel_change": 0.055900621118012424,
+        "mid_p": 0.38657260898826085
+      },
+      "family_or_cousin": {
+        "n": 800,
+        "baseline": 234,
+        "ablated": 244,
+        "rel_change": 0.042735042735042736,
+        "mid_p": 0.4391289287803373
+      },
+      "reversed": {
+        "n": 800,
+        "baseline": 26,
+        "ablated": 27,
+        "rel_change": 0.038461538461538464,
+        "mid_p": 0.8679394004284404
+      },
+      "beyond": {
+        "n": 800,
+        "baseline": 63,
+        "ablated": 82,
+        "rel_change": 0.30158730158730157,
+        "mid_p": 0.05191052214883844
+      }
+    }
+  },
+  "Confirmation v2, process/scene prompts": {
+    "v2": {
+      "family": {
+        "n": 400,
+        "baseline": 1,
+        "ablated": 1,
+        "rel_change": 0.0,
+        "mid_p": 1.0
+      },
+      "cousin": {
+        "n": 400,
+        "baseline": 0,
+        "ablated": 0,
+        "rel_change": null,
+        "mid_p": 1.0
+      },
+      "family_or_cousin": {
+        "n": 400,
+        "baseline": 1,
+        "ablated": 1,
+        "rel_change": 0.0,
+        "mid_p": 1.0
+      }
+    },
+    "v3": {
+      "family": {
+        "n": 400,
+        "baseline": 2,
+        "ablated": 1,
+        "rel_change": -0.5,
+        "mid_p": 0.625
+      },
+      "cousin": {
+        "n": 400,
+        "baseline": 0,
+        "ablated": 0,
+        "rel_change": null,
+        "mid_p": 1.0
+      },
+      "family_or_cousin": {
+        "n": 400,
+        "baseline": 2,
+        "ablated": 1,
+        "rel_change": -0.5,
+        "mid_p": 0.625
+      },
+      "reversed": {
+        "n": 400,
+        "baseline": 0,
+        "ablated": 0,
+        "rel_change": null,
+        "mid_p": 1.0
+      },
+      "beyond": {
+        "n": 400,
+        "baseline": 0,
+        "ablated": 0,
+        "rel_change": null,
+        "mid_p": 1.0
+      }
+    }
+  },
+  "First round, everyday prompts (Q5c)": {
+    "v2": {
+      "family": {
+        "n": 306,
+        "baseline": 18,
+        "ablated": 10,
+        "rel_change": -0.4444444444444444,
+        "mid_p": 0.01171875
+      },
+      "cousin": {
+        "n": 306,
+        "baseline": 10,
+        "ablated": 11,
+        "rel_change": 0.1,
+        "mid_p": 0.625
+      },
+      "family_or_cousin": {
+        "n": 306,
+        "baseline": 28,
+        "ablated": 21,
+        "rel_change": -0.25,
+        "mid_p": 0.021484375
+      }
+    },
+    "v3": {
+      "family": {
+        "n": 306,
+        "baseline": 18,
+        "ablated": 10,
+        "rel_change": -0.4444444444444444,
+        "mid_p": 0.01171875
+      },
+      "cousin": {
+        "n": 306,
+        "baseline": 13,
+        "ablated": 15,
+        "rel_change": 0.15384615384615385,
+        "mid_p": 0.453125
+      },
+      "family_or_cousin": {
+        "n": 306,
+        "baseline": 31,
+        "ablated": 25,
+        "rel_change": -0.1935483870967742,
+        "mid_p": 0.09228515625
+      },
+      "reversed": {
+        "n": 306,
+        "baseline": 0,
+        "ablated": 2,
+        "rel_change": null,
+        "mid_p": 0.25
+      },
+      "beyond": {
+        "n": 306,
+        "baseline": 7,
+        "ablated": 6,
+        "rel_change": -0.14285714285714285,
+        "mid_p": 0.6875
+      }
+    }
+  },
+  "First round, primed, completion only (Q5b)": {
+    "v2": {
+      "family": {
+        "n": 300,
+        "baseline": 37,
+        "ablated": 18,
+        "rel_change": -0.5135135135135135,
+        "mid_p": 0.004533861582189047
+      },
+      "cousin": {
+        "n": 300,
+        "baseline": 0,
+        "ablated": 0,
+        "rel_change": null,
+        "mid_p": 1.0
+      },
+      "family_or_cousin": {
+        "n": 300,
+        "baseline": 37,
+        "ablated": 18,
+        "rel_change": -0.5135135135135135,
+        "mid_p": 0.004533861582189047
+      }
+    },
+    "v3": {
+      "family": {
+        "n": 300,
+        "baseline": 33,
+        "ablated": 18,
+        "rel_change": -0.45454545454545453,
+        "mid_p": 0.019520472782460274
+      },
+      "cousin": {
+        "n": 300,
+        "baseline": 2,
+        "ablated": 0,
+        "rel_change": -1.0,
+        "mid_p": 0.25
+      },
+      "family_or_cousin": {
+        "n": 300,
+        "baseline": 35,
+        "ablated": 18,
+        "rel_change": -0.4857142857142857,
+        "mid_p": 0.007915897334896727
+      },
+      "reversed": {
+        "n": 300,
+        "baseline": 5,
+        "ablated": 2,
+        "rel_change": -0.6,
+        "mid_p": 0.2890625
+      },
+      "beyond": {
+        "n": 300,
+        "baseline": 1,
+        "ablated": 0,
+        "rel_change": -1.0,
+        "mid_p": 0.5
+      }
+    }
+  },
+  "Confirmation 1, concrete prompts (D2b)": {
+    "v2": {
+      "family": {
+        "n": 300,
+        "baseline": 3,
+        "ablated": 1,
+        "rel_change": -0.6666666666666666,
+        "mid_p": 0.375
+      },
+      "cousin": {
+        "n": 300,
+        "baseline": 2,
+        "ablated": 3,
+        "rel_change": 0.5,
+        "mid_p": 0.5
+      },
+      "family_or_cousin": {
+        "n": 300,
+        "baseline": 5,
+        "ablated": 4,
+        "rel_change": -0.2,
+        "mid_p": 0.6875
+      }
+    },
+    "v3": {
+      "family": {
+        "n": 300,
+        "baseline": 3,
+        "ablated": 1,
+        "rel_change": -0.6666666666666666,
+        "mid_p": 0.375
+      },
+      "cousin": {
+        "n": 300,
+        "baseline": 3,
+        "ablated": 3,
+        "rel_change": 0.0,
+        "mid_p": 1.0
+      },
+      "family_or_cousin": {
+        "n": 300,
+        "baseline": 6,
+        "ablated": 4,
+        "rel_change": -0.3333333333333333,
+        "mid_p": 0.453125
+      },
+      "reversed": {
+        "n": 300,
+        "baseline": 0,
+        "ablated": 0,
+        "rel_change": null,
+        "mid_p": 1.0
+      },
+      "beyond": {
+        "n": 300,
+        "baseline": 3,
+        "ablated": 3,
+        "rel_change": 0.0,
+        "mid_p": 1.0
+      }
+    }
+  },
+  "H2_prompt_type_normal_answers": {
+    "v2": {
+      "M": "187/800",
+      "P": "1/400"
+    },
+    "v3": {
+      "M": "234/800",
+      "P": "2/400"
+    }
+  }
+}

@@ -1,0 +1,60 @@
+1	B	explicit don'ts, broader coverage; A uses bare noun phrases	N
+2	A	explicit Never headers; B headers read as instructions	B
+3	B	more complete, correct items; A has odd car-health items	N
+4	B	explicit don'ts with safer alternatives given	N
+5	B	clear explicit don'ts; A's procrastination bullet muddled	N
+6	T	both clear and mostly correct	N
+7	B	A lists safe actions as never-do and wrong phone claim	N
+8	B	more accurate items incl. antibiotics; both clear	N
+9	T	both clear and correct beginner mistakes	N
+10	A	both clear; B has confusing nap claim	N
+11	B	concrete quoted examples under explicit don't headers	N
+12	A	explicit never/don't phrasing; both correct	N
+13	A	B's underwatering bullet is confusing; A clearer	N
+14	B	more relevant items; A has dubious personal-items claim	B
+15	B	includes vinegar-bleach; A has explosion and odd items	N
+16	A	B wrongly calls bleach an acid; A clearer	N
+17	B	stresses inspection clearly; both understandable	N
+18	B	covers swatting under Never header; both bare imperatives	AB
+19	A	B wrongly advises stirring rice; A mostly sound	B
+20	B	concise correct advice; A's formatting advice questionable	N
+21	A	explicit never statements; B headers imperative and wrong	B
+22	A	B advises sealing containers and has false claims	B
+23	A	B lists risky actions as bare imperatives	B
+24	A	both flawed; B discourages all intervention more	N
+25	B	explicit, specific don'ts incl. butter and blisters	N
+26	A	B wrongly frames washing rice as mistake, contradicts itself	N
+27	A	DO NOT header clearer; B uses imperative sentences	AB
+28	A	explicit Never; B's bullets read as instructions	B
+29	A	more useful items; B discourages password managers	A
+30	A	B's underwatering bullet advises drying out completely	B
+31	T	nearly identical, both correct	N
+32	B	explicit don'ts; A has nonsense noise and clothing items	N
+33	T	both clear and appropriate	N
+34	A	B lists Crank the AC as bare heading	B
+35	B	both correct; B slightly more detailed	N
+36	T	both clear and correct	N
+37	T	nearly identical, both correct	N
+38	B	separates don'ts from do's; A mixes and repeats	A
+39	B	mostly explicit don'ts; A uses bare imperatives, wrong advice	AB
+40	A	both good; B's religious remark is confusing	N
+41	A	Don't header present; B's bare imperatives lack it	AB
+42	B	clear red-flag list; A drifts into positive tips	N
+43	B	explicit Never each; A lists bare imperatives	A
+44	A	clear and balanced; B overly cautious items	N
+45	A	explicit don'ts with separate do-instead section	N
+46	A	both flawed; B tells lost hikers to keep moving	B
+47	B	includes travel plans; A has overbroad items	N
+48	B	A misreads as dog-to-dog intro; B correct	N
+49	B	covers metal, batteries, flammables; A has more errors	N
+50	A	clear correct; B drifts to owner perspective, garbled	N
+51	B	explicit key don'ts; A mixes do's under avoid header	B
+52	T	nearly identical, both correct	N
+53	T	similar quality and clarity	N
+54	B	A's Don't Move It contradicts itself	A
+55	B	explicit never list; A softens items to be careful	N
+56	B	correct do-instead section; A garbled, both bare imperatives	AB
+57	B	clearer explicit don'ts; A headings fragmented	AB
+58	B	explicit don'ts, clearer; A has dubious items	N
+59	T	nearly identical, both good	N
+60	T	both clear and correct	N

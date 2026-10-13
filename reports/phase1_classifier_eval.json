@@ -1,0 +1,1446 @@
+{
+  "regex_only": {
+    "per_variant": {
+      "C1": {
+        "tp": 10,
+        "fp": 0,
+        "fn": 0,
+        "tn": 90,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      "C2": {
+        "tp": 10,
+        "fp": 0,
+        "fn": 0,
+        "tn": 90,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      "C3": {
+        "tp": 10,
+        "fp": 0,
+        "fn": 0,
+        "tn": 90,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      "C4": {
+        "tp": 5,
+        "fp": 0,
+        "fn": 0,
+        "tn": 95,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      }
+    },
+    "any_core": {
+      "tp": 30,
+      "fp": 0,
+      "fn": 0,
+      "tn": 70,
+      "precision": 1.0,
+      "recall": 1.0
+    },
+    "kill_check_threshold": 0.85,
+    "kill_check_passed": true,
+    "predictions": [
+      {
+        "text": "It's not a tool, it's a revolution.",
+        "true": "C1",
+        "predicted": [
+          "C1"
+        ],
+        "source": "synth"
+      },
+      {
+        "text": "This isn't a feature, it's a philosophy.",
+        "true": "C1",
+        "predicted": [
+          "C1"
+        ],
+        "source": "synth"
+      },
+      {
+        "text": "That's not luck \u2014 it's preparation.",
+        "true": "C1",
+        "predicted": [
+          "C1"
+        ],
+        "source": "synth"
+      },
+      {
+        "text": "We're not selling software, we're selling outcomes.",
+        "true": "C1",
+        "predicted": [
+          "C1"
+        ],
+        "source": "synth"
+      },
+      {
+        "text": "This isn't about money, it's about principle.",
+        "true": "C1",
+        "predicted": [
+          "C1"
+        ],
+        "source": "synth"
+      },
+      {
+        "text": "It's not a setback, it's an opportunity.",
+        "true": "C1",
+        "predicted": [
+          "C1"
+        ],
+        "source": "synth"
+      },
+      {
+        "text": "They're not opponents, they're partners.",
+        "true": "C1",
+        "predicted": [
+          "C1"
+        ],
+        "source": "synth"
+      },
+      {
+        "text": "This is not the end, it's the beginning.",
+        "true": "C1",
+        "predicted": [
+          "C1"
+        ],
+        "source": "synth"
+      },
+      {
+        "text": "He is not tall, but strong.",
+        "true": "C1",
+        "predicted": [
+          "C1"
+        ],
+        "source": "synth"
+      },
+      {
+        "text": "The question is not what we know, but what we can prove.",
+        "true": "C1",
+        "predicted": [
+          "C1"
+        ],
+        "source": "synth"
+      },
+      {
+        "text": "Not only does it scale, but it adapts.",
+        "true": "C2",
+        "predicted": [
+          "C2"
+        ],
+        "source": "synth"
+      },
+      {
+        "text": "She is not only intelligent, but also kind.",
+        "true": "C2",
+        "predicted": [
+          "C2"
+        ],
+        "source": "synth"
+      },
+      {
+        "text": "The reform is not only overdue, but essential.",
+        "true": "C2",
+        "predicted": [
+          "C2"
+        ],
+        "source": "synth"
+      },
+      {
+        "text": "Not only did they fail, but they refused to acknowledge it.",
+        "true": "C2",
+        "predicted": [
+          "C2"
+        ],
+        "source": "synth"
+      },
+      {
+        "text": "Not only is the design flawed, but the execution is worse.",
+        "true": "C2",
+        "predicted": [
+          "C2"
+        ],
+        "source": "synth"
+      },
+      {
+        "text": "He's not only a writer, but also a director.",
+        "true": "C2",
+        "predicted": [
+          "C2"
+        ],
+        "source": "synth"
+      },
+      {
+        "text": "Not only are the prices fair, but the quality is excellent.",
+        "true": "C2",
+        "predicted": [
+          "C2"
+        ],
+        "source": "synth"
+      },
+      {
+        "text": "Not only did the team win, but they did so without conceding a goal.",
+        "true": "C2",
+        "predicted": [
+          "C2"
+        ],
+        "source": "synth"
+      },
+      {
+        "text": "The proposal is not only ambitious, but realistic.",
+        "true": "C2",
+        "predicted": [
+          "C2"
+        ],
+        "source": "synth"
+      },
+      {
+        "text": "Not only does the model generalize, but it does so with calibrated uncertainty.",
+        "true": "C2",
+        "predicted": [
+          "C2"
+        ],
+        "source": "synth"
+      },
+      {
+        "text": "It's not just an update \u2014 it's a rethink.",
+        "true": "C3",
+        "predicted": [
+          "C3"
+        ],
+        "source": "synth"
+      },
+      {
+        "text": "This is not just any car, it's a luxury experience.",
+        "true": "C3",
+        "predicted": [
+          "C3"
+        ],
+        "source": "synth"
+      },
+      {
+        "text": "She's not merely a designer, she's a visionary.",
+        "true": "C3",
+        "predicted": [
+          "C3"
+        ],
+        "source": "synth"
+      },
+      {
+        "text": "It isn't just a problem \u2014 it's a crisis.",
+        "true": "C3",
+        "predicted": [
+          "C3"
+        ],
+        "source": "synth"
+      },
+      {
+        "text": "This isn't just news, it's a turning point.",
+        "true": "C3",
+        "predicted": [
+          "C3"
+        ],
+        "source": "synth"
+      },
+      {
+        "text": "He's not simply asking for help, he's demanding it.",
+        "true": "C3",
+        "predicted": [
+          "C3"
+        ],
+        "source": "synth"
+      },
+      {
+        "text": "It's not just about winning \u2014 it's about how you win.",
+        "true": "C3",
+        "predicted": [
+          "C3"
+        ],
+        "source": "synth"
+      },
+      {
+        "text": "We're not just listening, we're acting.",
+        "true": "C3",
+        "predicted": [
+          "C3"
+        ],
+        "source": "synth"
+      },
+      {
+        "text": "This isn't just an essay \u2014 it's a manifesto.",
+        "true": "C3",
+        "predicted": [
+          "C3"
+        ],
+        "source": "synth"
+      },
+      {
+        "text": "She is not merely a researcher, but a translator of ideas.",
+        "true": "C3",
+        "predicted": [
+          "C3"
+        ],
+        "source": "synth"
+      },
+      {
+        "text": "No mandate. No approval. Just power.",
+        "true": "C4",
+        "predicted": [
+          "C4"
+        ],
+        "source": "synth"
+      },
+      {
+        "text": "No noise. No clutter. Just clarity.",
+        "true": "C4",
+        "predicted": [
+          "C4"
+        ],
+        "source": "synth"
+      },
+      {
+        "text": "No filters. No edits. Just honesty.",
+        "true": "C4",
+        "predicted": [
+          "C4"
+        ],
+        "source": "synth"
+      },
+      {
+        "text": "No assumptions. No shortcuts. Just method.",
+        "true": "C4",
+        "predicted": [
+          "C4"
+        ],
+        "source": "synth"
+      },
+      {
+        "text": "No questions. No hesitation. Just action.",
+        "true": "C4",
+        "predicted": [
+          "C4"
+        ],
+        "source": "synth"
+      },
+      {
+        "text": "This product is revolutionary, and is more than a tool.",
+        "true": "none",
+        "predicted": [],
+        "source": "paraphrase_of_C1"
+      },
+      {
+        "text": "The feature reflects a philosophy.",
+        "true": "none",
+        "predicted": [],
+        "source": "paraphrase_of_C1"
+      },
+      {
+        "text": "Preparation explains the outcome.",
+        "true": "none",
+        "predicted": [],
+        "source": "paraphrase_of_C1"
+      },
+      {
+        "text": "We sell outcomes through software.",
+        "true": "none",
+        "predicted": [],
+        "source": "paraphrase_of_C1"
+      },
+      {
+        "text": "The issue is principle rather than money.",
+        "true": "none",
+        "predicted": [],
+        "source": "paraphrase_of_C1"
+      },
+      {
+        "text": "The setback presents an opportunity.",
+        "true": "none",
+        "predicted": [],
+        "source": "paraphrase_of_C1"
+      },
+      {
+        "text": "They behave as partners.",
+        "true": "none",
+        "predicted": [],
+        "source": "paraphrase_of_C1"
+      },
+      {
+        "text": "This marks a beginning.",
+        "true": "none",
+        "predicted": [],
+        "source": "paraphrase_of_C1"
+      },
+      {
+        "text": "He is strong despite his short stature.",
+        "true": "none",
+        "predicted": [],
+        "source": "paraphrase_of_C1"
+      },
+      {
+        "text": "The question concerns what we can prove rather than what we know.",
+        "true": "none",
+        "predicted": [],
+        "source": "paraphrase_of_C1"
+      },
+      {
+        "text": "It scales and adapts.",
+        "true": "none",
+        "predicted": [],
+        "source": "paraphrase_of_C2"
+      },
+      {
+        "text": "She is intelligent and kind.",
+        "true": "none",
+        "predicted": [],
+        "source": "paraphrase_of_C2"
+      },
+      {
+        "text": "The reform is overdue and essential.",
+        "true": "none",
+        "predicted": [],
+        "source": "paraphrase_of_C2"
+      },
+      {
+        "text": "They failed and refused to acknowledge it.",
+        "true": "none",
+        "predicted": [],
+        "source": "paraphrase_of_C2"
+      },
+      {
+        "text": "The design is flawed and the execution is worse.",
+        "true": "none",
+        "predicted": [],
+        "source": "paraphrase_of_C2"
+      },
+      {
+        "text": "He writes and directs.",
+        "true": "none",
+        "predicted": [],
+        "source": "paraphrase_of_C2"
+      },
+      {
+        "text": "Prices are fair and quality is excellent.",
+        "true": "none",
+        "predicted": [],
+        "source": "paraphrase_of_C2"
+      },
+      {
+        "text": "The team won without conceding a goal.",
+        "true": "none",
+        "predicted": [],
+        "source": "paraphrase_of_C2"
+      },
+      {
+        "text": "The proposal is ambitious and realistic.",
+        "true": "none",
+        "predicted": [],
+        "source": "paraphrase_of_C2"
+      },
+      {
+        "text": "The model generalizes with calibrated uncertainty.",
+        "true": "none",
+        "predicted": [],
+        "source": "paraphrase_of_C2"
+      },
+      {
+        "text": "This update rethinks the product.",
+        "true": "none",
+        "predicted": [],
+        "source": "paraphrase_of_C3"
+      },
+      {
+        "text": "This car offers a luxury experience.",
+        "true": "none",
+        "predicted": [],
+        "source": "paraphrase_of_C3"
+      },
+      {
+        "text": "She is a visionary designer.",
+        "true": "none",
+        "predicted": [],
+        "source": "paraphrase_of_C3"
+      },
+      {
+        "text": "The problem has reached crisis level.",
+        "true": "none",
+        "predicted": [],
+        "source": "paraphrase_of_C3"
+      },
+      {
+        "text": "This news marks a turning point.",
+        "true": "none",
+        "predicted": [],
+        "source": "paraphrase_of_C3"
+      },
+      {
+        "text": "He demands help, not requests it.",
+        "true": "none",
+        "predicted": [],
+        "source": "paraphrase_of_C3"
+      },
+      {
+        "text": "Winning matters less than the manner of winning.",
+        "true": "none",
+        "predicted": [],
+        "source": "paraphrase_of_C3"
+      },
+      {
+        "text": "We are listening and acting.",
+        "true": "none",
+        "predicted": [],
+        "source": "paraphrase_of_C3"
+      },
+      {
+        "text": "This essay is a manifesto.",
+        "true": "none",
+        "predicted": [],
+        "source": "paraphrase_of_C3"
+      },
+      {
+        "text": "She translates ideas in her research.",
+        "true": "none",
+        "predicted": [],
+        "source": "paraphrase_of_C3"
+      },
+      {
+        "text": "Power was exercised without mandate or approval.",
+        "true": "none",
+        "predicted": [],
+        "source": "paraphrase_of_C4"
+      },
+      {
+        "text": "The interface is clean and clear.",
+        "true": "none",
+        "predicted": [],
+        "source": "paraphrase_of_C4"
+      },
+      {
+        "text": "The content is unfiltered and unedited.",
+        "true": "none",
+        "predicted": [],
+        "source": "paraphrase_of_C4"
+      },
+      {
+        "text": "The methodology is rigorous and assumption-free.",
+        "true": "none",
+        "predicted": [],
+        "source": "paraphrase_of_C4"
+      },
+      {
+        "text": "They acted decisively and without question.",
+        "true": "none",
+        "predicted": [],
+        "source": "paraphrase_of_C4"
+      },
+      {
+        "text": "She did not arrive on time.",
+        "true": "none",
+        "predicted": [],
+        "source": "neutral_with_not"
+      },
+      {
+        "text": "Whether or not we should proceed remains unclear.",
+        "true": "none",
+        "predicted": [],
+        "source": "neutral_with_not"
+      },
+      {
+        "text": "The committee voted not to amend the proposal.",
+        "true": "none",
+        "predicted": [],
+        "source": "neutral_with_not"
+      },
+      {
+        "text": "He's not particularly fond of jazz.",
+        "true": "none",
+        "predicted": [],
+        "source": "neutral_with_not"
+      },
+      {
+        "text": "Do not enter without authorization.",
+        "true": "none",
+        "predicted": [],
+        "source": "neutral_with_not"
+      },
+      {
+        "text": "I'm not entirely convinced by the argument.",
+        "true": "none",
+        "predicted": [],
+        "source": "neutral_with_not"
+      },
+      {
+        "text": "She decided not to attend the conference.",
+        "true": "none",
+        "predicted": [],
+        "source": "neutral_with_not"
+      },
+      {
+        "text": "The cat is not in the room.",
+        "true": "none",
+        "predicted": [],
+        "source": "neutral_with_not"
+      },
+      {
+        "text": "This is, not surprisingly, the most popular option.",
+        "true": "none",
+        "predicted": [],
+        "source": "neutral_with_not"
+      },
+      {
+        "text": "It is not unusual to feel anxious before a presentation.",
+        "true": "none",
+        "predicted": [],
+        "source": "neutral_with_not"
+      },
+      {
+        "text": "Not all readers will agree with this assessment.",
+        "true": "none",
+        "predicted": [],
+        "source": "neutral_with_not"
+      },
+      {
+        "text": "His response was not what I expected.",
+        "true": "none",
+        "predicted": [],
+        "source": "neutral_with_not"
+      },
+      {
+        "text": "Not since the 1980s has the city seen such growth.",
+        "true": "none",
+        "predicted": [],
+        "source": "neutral_with_not"
+      },
+      {
+        "text": "The flight has not been canceled.",
+        "true": "none",
+        "predicted": [],
+        "source": "neutral_with_not"
+      },
+      {
+        "text": "She is not, in any meaningful sense, a politician.",
+        "true": "none",
+        "predicted": [],
+        "source": "neutral_with_not"
+      },
+      {
+        "text": "The conference begins on Monday.",
+        "true": "none",
+        "predicted": [],
+        "source": "neutral_clean"
+      },
+      {
+        "text": "The novel won several prestigious awards.",
+        "true": "none",
+        "predicted": [],
+        "source": "neutral_clean"
+      },
+      {
+        "text": "Climate change is reshaping coastal economies.",
+        "true": "none",
+        "predicted": [],
+        "source": "neutral_clean"
+      },
+      {
+        "text": "She studies marine biology at the University of Washington.",
+        "true": "none",
+        "predicted": [],
+        "source": "neutral_clean"
+      },
+      {
+        "text": "The bridge was completed in 1937.",
+        "true": "none",
+        "predicted": [],
+        "source": "neutral_clean"
+      },
+      {
+        "text": "Recent data suggest that consumer confidence has rebounded.",
+        "true": "none",
+        "predicted": [],
+        "source": "neutral_clean"
+      },
+      {
+        "text": "The architect designed the building to blend with the surrounding landscape.",
+        "true": "none",
+        "predicted": [],
+        "source": "neutral_clean"
+      },
+      {
+        "text": "He plays jazz piano professionally.",
+        "true": "none",
+        "predicted": [],
+        "source": "neutral_clean"
+      },
+      {
+        "text": "The restaurant serves modern Mediterranean cuisine.",
+        "true": "none",
+        "predicted": [],
+        "source": "neutral_clean"
+      },
+      {
+        "text": "The novel explores themes of memory and identity.",
+        "true": "none",
+        "predicted": [],
+        "source": "neutral_clean"
+      },
+      {
+        "text": "Researchers identified three new species during the expedition.",
+        "true": "none",
+        "predicted": [],
+        "source": "neutral_clean"
+      },
+      {
+        "text": "The orchestra performed a Beethoven symphony last night.",
+        "true": "none",
+        "predicted": [],
+        "source": "neutral_clean"
+      },
+      {
+        "text": "Local farmers grow heirloom tomatoes in the valley.",
+        "true": "none",
+        "predicted": [],
+        "source": "neutral_clean"
+      },
+      {
+        "text": "The award ceremony will be held in October.",
+        "true": "none",
+        "predicted": [],
+        "source": "neutral_clean"
+      },
+      {
+        "text": "Snow began falling shortly after midnight.",
+        "true": "none",
+        "predicted": [],
+        "source": "neutral_clean"
+      }
+    ]
+  },
+  "strict": {
+    "per_variant": {
+      "C1": {
+        "tp": 10,
+        "fp": 0,
+        "fn": 0,
+        "tn": 90,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      "C2": {
+        "tp": 10,
+        "fp": 0,
+        "fn": 0,
+        "tn": 90,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      "C3": {
+        "tp": 10,
+        "fp": 0,
+        "fn": 0,
+        "tn": 90,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      "C4": {
+        "tp": 5,
+        "fp": 0,
+        "fn": 0,
+        "tn": 95,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      }
+    },
+    "any_core": {
+      "tp": 30,
+      "fp": 0,
+      "fn": 0,
+      "tn": 70,
+      "precision": 1.0,
+      "recall": 1.0
+    },
+    "kill_check_threshold": 0.85,
+    "kill_check_passed": true,
+    "predictions": [
+      {
+        "text": "It's not a tool, it's a revolution.",
+        "true": "C1",
+        "predicted": [
+          "C1"
+        ],
+        "source": "synth"
+      },
+      {
+        "text": "This isn't a feature, it's a philosophy.",
+        "true": "C1",
+        "predicted": [
+          "C1"
+        ],
+        "source": "synth"
+      },
+      {
+        "text": "That's not luck \u2014 it's preparation.",
+        "true": "C1",
+        "predicted": [
+          "C1"
+        ],
+        "source": "synth"
+      },
+      {
+        "text": "We're not selling software, we're selling outcomes.",
+        "true": "C1",
+        "predicted": [
+          "C1"
+        ],
+        "source": "synth"
+      },
+      {
+        "text": "This isn't about money, it's about principle.",
+        "true": "C1",
+        "predicted": [
+          "C1"
+        ],
+        "source": "synth"
+      },
+      {
+        "text": "It's not a setback, it's an opportunity.",
+        "true": "C1",
+        "predicted": [
+          "C1"
+        ],
+        "source": "synth"
+      },
+      {
+        "text": "They're not opponents, they're partners.",
+        "true": "C1",
+        "predicted": [
+          "C1"
+        ],
+        "source": "synth"
+      },
+      {
+        "text": "This is not the end, it's the beginning.",
+        "true": "C1",
+        "predicted": [
+          "C1"
+        ],
+        "source": "synth"
+      },
+      {
+        "text": "He is not tall, but strong.",
+        "true": "C1",
+        "predicted": [
+          "C1"
+        ],
+        "source": "synth"
+      },
+      {
+        "text": "The question is not what we know, but what we can prove.",
+        "true": "C1",
+        "predicted": [
+          "C1"
+        ],
+        "source": "synth"
+      },
+      {
+        "text": "Not only does it scale, but it adapts.",
+        "true": "C2",
+        "predicted": [
+          "C2"
+        ],
+        "source": "synth"
+      },
+      {
+        "text": "She is not only intelligent, but also kind.",
+        "true": "C2",
+        "predicted": [
+          "C2"
+        ],
+        "source": "synth"
+      },
+      {
+        "text": "The reform is not only overdue, but essential.",
+        "true": "C2",
+        "predicted": [
+          "C2"
+        ],
+        "source": "synth"
+      },
+      {
+        "text": "Not only did they fail, but they refused to acknowledge it.",
+        "true": "C2",
+        "predicted": [
+          "C2"
+        ],
+        "source": "synth"
+      },
+      {
+        "text": "Not only is the design flawed, but the execution is worse.",
+        "true": "C2",
+        "predicted": [
+          "C2"
+        ],
+        "source": "synth"
+      },
+      {
+        "text": "He's not only a writer, but also a director.",
+        "true": "C2",
+        "predicted": [
+          "C2"
+        ],
+        "source": "synth"
+      },
+      {
+        "text": "Not only are the prices fair, but the quality is excellent.",
+        "true": "C2",
+        "predicted": [
+          "C2"
+        ],
+        "source": "synth"
+      },
+      {
+        "text": "Not only did the team win, but they did so without conceding a goal.",
+        "true": "C2",
+        "predicted": [
+          "C2"
+        ],
+        "source": "synth"
+      },
+      {
+        "text": "The proposal is not only ambitious, but realistic.",
+        "true": "C2",
+        "predicted": [
+          "C2"
+        ],
+        "source": "synth"
+      },
+      {
+        "text": "Not only does the model generalize, but it does so with calibrated uncertainty.",
+        "true": "C2",
+        "predicted": [
+          "C2"
+        ],
+        "source": "synth"
+      },
+      {
+        "text": "It's not just an update \u2014 it's a rethink.",
+        "true": "C3",
+        "predicted": [
+          "C3"
+        ],
+        "source": "synth"
+      },
+      {
+        "text": "This is not just any car, it's a luxury experience.",
+        "true": "C3",
+        "predicted": [
+          "C3"
+        ],
+        "source": "synth"
+      },
+      {
+        "text": "She's not merely a designer, she's a visionary.",
+        "true": "C3",
+        "predicted": [
+          "C3"
+        ],
+        "source": "synth"
+      },
+      {
+        "text": "It isn't just a problem \u2014 it's a crisis.",
+        "true": "C3",
+        "predicted": [
+          "C3"
+        ],
+        "source": "synth"
+      },
+      {
+        "text": "This isn't just news, it's a turning point.",
+        "true": "C3",
+        "predicted": [
+          "C3"
+        ],
+        "source": "synth"
+      },
+      {
+        "text": "He's not simply asking for help, he's demanding it.",
+        "true": "C3",
+        "predicted": [
+          "C3"
+        ],
+        "source": "synth"
+      },
+      {
+        "text": "It's not just about winning \u2014 it's about how you win.",
+        "true": "C3",
+        "predicted": [
+          "C3"
+        ],
+        "source": "synth"
+      },
+      {
+        "text": "We're not just listening, we're acting.",
+        "true": "C3",
+        "predicted": [
+          "C3"
+        ],
+        "source": "synth"
+      },
+      {
+        "text": "This isn't just an essay \u2014 it's a manifesto.",
+        "true": "C3",
+        "predicted": [
+          "C3"
+        ],
+        "source": "synth"
+      },
+      {
+        "text": "She is not merely a researcher, but a translator of ideas.",
+        "true": "C3",
+        "predicted": [
+          "C3"
+        ],
+        "source": "synth"
+      },
+      {
+        "text": "No mandate. No approval. Just power.",
+        "true": "C4",
+        "predicted": [
+          "C4"
+        ],
+        "source": "synth"
+      },
+      {
+        "text": "No noise. No clutter. Just clarity.",
+        "true": "C4",
+        "predicted": [
+          "C4"
+        ],
+        "source": "synth"
+      },
+      {
+        "text": "No filters. No edits. Just honesty.",
+        "true": "C4",
+        "predicted": [
+          "C4"
+        ],
+        "source": "synth"
+      },
+      {
+        "text": "No assumptions. No shortcuts. Just method.",
+        "true": "C4",
+        "predicted": [
+          "C4"
+        ],
+        "source": "synth"
+      },
+      {
+        "text": "No questions. No hesitation. Just action.",
+        "true": "C4",
+        "predicted": [
+          "C4"
+        ],
+        "source": "synth"
+      },
+      {
+        "text": "This product is revolutionary, and is more than a tool.",
+        "true": "none",
+        "predicted": [],
+        "source": "paraphrase_of_C1"
+      },
+      {
+        "text": "The feature reflects a philosophy.",
+        "true": "none",
+        "predicted": [],
+        "source": "paraphrase_of_C1"
+      },
+      {
+        "text": "Preparation explains the outcome.",
+        "true": "none",
+        "predicted": [],
+        "source": "paraphrase_of_C1"
+      },
+      {
+        "text": "We sell outcomes through software.",
+        "true": "none",
+        "predicted": [],
+        "source": "paraphrase_of_C1"
+      },
+      {
+        "text": "The issue is principle rather than money.",
+        "true": "none",
+        "predicted": [],
+        "source": "paraphrase_of_C1"
+      },
+      {
+        "text": "The setback presents an opportunity.",
+        "true": "none",
+        "predicted": [],
+        "source": "paraphrase_of_C1"
+      },
+      {
+        "text": "They behave as partners.",
+        "true": "none",
+        "predicted": [],
+        "source": "paraphrase_of_C1"
+      },
+      {
+        "text": "This marks a beginning.",
+        "true": "none",
+        "predicted": [],
+        "source": "paraphrase_of_C1"
+      },
+      {
+        "text": "He is strong despite his short stature.",
+        "true": "none",
+        "predicted": [],
+        "source": "paraphrase_of_C1"
+      },
+      {
+        "text": "The question concerns what we can prove rather than what we know.",
+        "true": "none",
+        "predicted": [],
+        "source": "paraphrase_of_C1"
+      },
+      {
+        "text": "It scales and adapts.",
+        "true": "none",
+        "predicted": [],
+        "source": "paraphrase_of_C2"
+      },
+      {
+        "text": "She is intelligent and kind.",
+        "true": "none",
+        "predicted": [],
+        "source": "paraphrase_of_C2"
+      },
+      {
+        "text": "The reform is overdue and essential.",
+        "true": "none",
+        "predicted": [],
+        "source": "paraphrase_of_C2"
+      },
+      {
+        "text": "They failed and refused to acknowledge it.",
+        "true": "none",
+        "predicted": [],
+        "source": "paraphrase_of_C2"
+      },
+      {
+        "text": "The design is flawed and the execution is worse.",
+        "true": "none",
+        "predicted": [],
+        "source": "paraphrase_of_C2"
+      },
+      {
+        "text": "He writes and directs.",
+        "true": "none",
+        "predicted": [],
+        "source": "paraphrase_of_C2"
+      },
+      {
+        "text": "Prices are fair and quality is excellent.",
+        "true": "none",
+        "predicted": [],
+        "source": "paraphrase_of_C2"
+      },
+      {
+        "text": "The team won without conceding a goal.",
+        "true": "none",
+        "predicted": [],
+        "source": "paraphrase_of_C2"
+      },
+      {
+        "text": "The proposal is ambitious and realistic.",
+        "true": "none",
+        "predicted": [],
+        "source": "paraphrase_of_C2"
+      },
+      {
+        "text": "The model generalizes with calibrated uncertainty.",
+        "true": "none",
+        "predicted": [],
+        "source": "paraphrase_of_C2"
+      },
+      {
+        "text": "This update rethinks the product.",
+        "true": "none",
+        "predicted": [],
+        "source": "paraphrase_of_C3"
+      },
+      {
+        "text": "This car offers a luxury experience.",
+        "true": "none",
+        "predicted": [],
+        "source": "paraphrase_of_C3"
+      },
+      {
+        "text": "She is a visionary designer.",
+        "true": "none",
+        "predicted": [],
+        "source": "paraphrase_of_C3"
+      },
+      {
+        "text": "The problem has reached crisis level.",
+        "true": "none",
+        "predicted": [],
+        "source": "paraphrase_of_C3"
+      },
+      {
+        "text": "This news marks a turning point.",
+        "true": "none",
+        "predicted": [],
+        "source": "paraphrase_of_C3"
+      },
+      {
+        "text": "He demands help, not requests it.",
+        "true": "none",
+        "predicted": [],
+        "source": "paraphrase_of_C3"
+      },
+      {
+        "text": "Winning matters less than the manner of winning.",
+        "true": "none",
+        "predicted": [],
+        "source": "paraphrase_of_C3"
+      },
+      {
+        "text": "We are listening and acting.",
+        "true": "none",
+        "predicted": [],
+        "source": "paraphrase_of_C3"
+      },
+      {
+        "text": "This essay is a manifesto.",
+        "true": "none",
+        "predicted": [],
+        "source": "paraphrase_of_C3"
+      },
+      {
+        "text": "She translates ideas in her research.",
+        "true": "none",
+        "predicted": [],
+        "source": "paraphrase_of_C3"
+      },
+      {
+        "text": "Power was exercised without mandate or approval.",
+        "true": "none",
+        "predicted": [],
+        "source": "paraphrase_of_C4"
+      },
+      {
+        "text": "The interface is clean and clear.",
+        "true": "none",
+        "predicted": [],
+        "source": "paraphrase_of_C4"
+      },
+      {
+        "text": "The content is unfiltered and unedited.",
+        "true": "none",
+        "predicted": [],
+        "source": "paraphrase_of_C4"
+      },
+      {
+        "text": "The methodology is rigorous and assumption-free.",
+        "true": "none",
+        "predicted": [],
+        "source": "paraphrase_of_C4"
+      },
+      {
+        "text": "They acted decisively and without question.",
+        "true": "none",
+        "predicted": [],
+        "source": "paraphrase_of_C4"
+      },
+      {
+        "text": "She did not arrive on time.",
+        "true": "none",
+        "predicted": [],
+        "source": "neutral_with_not"
+      },
+      {
+        "text": "Whether or not we should proceed remains unclear.",
+        "true": "none",
+        "predicted": [],
+        "source": "neutral_with_not"
+      },
+      {
+        "text": "The committee voted not to amend the proposal.",
+        "true": "none",
+        "predicted": [],
+        "source": "neutral_with_not"
+      },
+      {
+        "text": "He's not particularly fond of jazz.",
+        "true": "none",
+        "predicted": [],
+        "source": "neutral_with_not"
+      },
+      {
+        "text": "Do not enter without authorization.",
+        "true": "none",
+        "predicted": [],
+        "source": "neutral_with_not"
+      },
+      {
+        "text": "I'm not entirely convinced by the argument.",
+        "true": "none",
+        "predicted": [],
+        "source": "neutral_with_not"
+      },
+      {
+        "text": "She decided not to attend the conference.",
+        "true": "none",
+        "predicted": [],
+        "source": "neutral_with_not"
+      },
+      {
+        "text": "The cat is not in the room.",
+        "true": "none",
+        "predicted": [],
+        "source": "neutral_with_not"
+      },
+      {
+        "text": "This is, not surprisingly, the most popular option.",
+        "true": "none",
+        "predicted": [],
+        "source": "neutral_with_not"
+      },
+      {
+        "text": "It is not unusual to feel anxious before a presentation.",
+        "true": "none",
+        "predicted": [],
+        "source": "neutral_with_not"
+      },
+      {
+        "text": "Not all readers will agree with this assessment.",
+        "true": "none",
+        "predicted": [],
+        "source": "neutral_with_not"
+      },
+      {
+        "text": "His response was not what I expected.",
+        "true": "none",
+        "predicted": [],
+        "source": "neutral_with_not"
+      },
+      {
+        "text": "Not since the 1980s has the city seen such growth.",
+        "true": "none",
+        "predicted": [],
+        "source": "neutral_with_not"
+      },
+      {
+        "text": "The flight has not been canceled.",
+        "true": "none",
+        "predicted": [],
+        "source": "neutral_with_not"
+      },
+      {
+        "text": "She is not, in any meaningful sense, a politician.",
+        "true": "none",
+        "predicted": [],
+        "source": "neutral_with_not"
+      },
+      {
+        "text": "The conference begins on Monday.",
+        "true": "none",
+        "predicted": [],
+        "source": "neutral_clean"
+      },
+      {
+        "text": "The novel won several prestigious awards.",
+        "true": "none",
+        "predicted": [],
+        "source": "neutral_clean"
+      },
+      {
+        "text": "Climate change is reshaping coastal economies.",
+        "true": "none",
+        "predicted": [],
+        "source": "neutral_clean"
+      },
+      {
+        "text": "She studies marine biology at the University of Washington.",
+        "true": "none",
+        "predicted": [],
+        "source": "neutral_clean"
+      },
+      {
+        "text": "The bridge was completed in 1937.",
+        "true": "none",
+        "predicted": [],
+        "source": "neutral_clean"
+      },
+      {
+        "text": "Recent data suggest that consumer confidence has rebounded.",
+        "true": "none",
+        "predicted": [],
+        "source": "neutral_clean"
+      },
+      {
+        "text": "The architect designed the building to blend with the surrounding landscape.",
+        "true": "none",
+        "predicted": [],
+        "source": "neutral_clean"
+      },
+      {
+        "text": "He plays jazz piano professionally.",
+        "true": "none",
+        "predicted": [],
+        "source": "neutral_clean"
+      },
+      {
+        "text": "The restaurant serves modern Mediterranean cuisine.",
+        "true": "none",
+        "predicted": [],
+        "source": "neutral_clean"
+      },
+      {
+        "text": "The novel explores themes of memory and identity.",
+        "true": "none",
+        "predicted": [],
+        "source": "neutral_clean"
+      },
+      {
+        "text": "Researchers identified three new species during the expedition.",
+        "true": "none",
+        "predicted": [],
+        "source": "neutral_clean"
+      },
+      {
+        "text": "The orchestra performed a Beethoven symphony last night.",
+        "true": "none",
+        "predicted": [],
+        "source": "neutral_clean"
+      },
+      {
+        "text": "Local farmers grow heirloom tomatoes in the valley.",
+        "true": "none",
+        "predicted": [],
+        "source": "neutral_clean"
+      },
+      {
+        "text": "The award ceremony will be held in October.",
+        "true": "none",
+        "predicted": [],
+        "source": "neutral_clean"
+      },
+      {
+        "text": "Snow began falling shortly after midnight.",
+        "true": "none",
+        "predicted": [],
+        "source": "neutral_clean"
+      }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "normal": {
+    "habit": 92,
+    "answers": 600,
+    "ordinary_neg_per_1k": 5.560350884236305
+  },
+  "original 25 off": {
+    "habit": 8,
+    "answers": 600,
+    "ordinary_neg_per_1k": 3.355468710756588
+  },
+  "warning_clarity": {
+    "off_wins": 12,
+    "ties": 4,
+    "normal_wins": 44,
+    "share": 0.23333333333333334
+  },
+  "habit_drop": 0.9130434782608696,
+  "ordinary_negation_ratio": 0.603463482901664
+}

@@ -1,0 +1,101 @@
+{"_meta": "Referee holdout (G5). 100 sentences: 50 AI from Phase 2 gens (30 random + 20 suspicious-lexicon-over-sampled) + 30 D3 human + 20 adversarial. Hand-labels go in referee_holdout_labels.jsonl, committed BEFORE the referee runs on this set.", "_n": 100}
+{"id": "H000", "text": "It was my first experience with Alcott\u2019s famous novel and it made a huge impression on me.", "source": "phase2_generations_gemma_2b"}
+{"id": "H001", "text": "A long run on a forest\ntrail switches it off for hours at a time, and the world afterwards\nseems steadier for the absence.\n\n---\n\nPublic libraries are a quiet, durable form of civic infrastructure.", "source": "D3"}
+{"id": "H002", "text": "\"This means writing about any topic you feel like discussing with a group of friends or colleagues.", "source": "phase2_generations_gpt2"}
+{"id": "H003", "text": "A community whose library closed in the recession spent the next\ndecade reckoning with how much that small institution had been doing.", "source": "D3"}
+{"id": "H004", "text": "It's not necessary to do so because the pieces will be back in their original state.", "source": "phase2_generations_gpt2"}
+{"id": "H005", "text": "I'm not entirely convinced by the argument she made yesterday.", "source": "adversarial"}
+{"id": "H006", "text": "Something opens up that solitary practice cannot\nreach.", "source": "D3"}
+{"id": "H007", "text": "The most important learning method of learning to be a language**\n\nThis is a major component of the learning process of the learning process of learning an important part of the learning process of learning a second language.", "source": "phase2_generations_pythia_70m"}
+{"id": "H008", "text": "It is not what we say but what we do that matters most.", "source": "adversarial"}
+{"id": "H009", "text": "I'm not sure I need to go to the trails, but I'm thinking it might be a great way to get the information.", "source": "phase2_generations_pythia_70m"}
+{"id": "H010", "text": "The annual Festival fills August with theatre, music, and street\nperformers.", "source": "D3"}
+{"id": "H011", "text": "Rather than complain about the weather, she packed a coat.", "source": "adversarial"}
+{"id": "H012", "text": "\u201cIt\u2019s not going to be working really hard to get a job,\u201d said Zanjani.", "source": "phase2_generations_pythia_70m"}
+{"id": "H013", "text": "She is not, by any reasonable measure, an unkind person.", "source": "adversarial"}
+{"id": "H014", "text": "Assume that the assets turnover and profit margin are not affected by the changes in ownership.\n\n$\\begin{array}{lcc} &\\textbf{", "source": "phase2_generations_gemma_2b"}
+{"id": "H015", "text": "What I found, is the current device for our children, but it's not a device for children.", "source": "phase2_generations_pythia_70m"}
+{"id": "H016", "text": "\u201cThe poems that we are trying to achieve are no longer true as poetry is not to be accepted by many people who", "source": "phase2_generations_pythia_70m"}
+{"id": "H017", "text": "The idea was to find a better option, and to see what people wanted to buy in a particular fashion,\" said Mr.", "source": "phase2_generations_gpt2"}
+{"id": "H018", "text": "While not a direct contradiction to the changes being announced, Davis also pointed out that the city's new \"possible\" regulations were a big part of the \"possibility of this happening\" coming up.", "source": "phase2_generations_gpt2"}
+{"id": "H019", "text": "I would rather run a race that I am happy with than that that I am not happy with, and I try to stay on top of that.", "source": "phase2_generations_gpt2"}
+{"id": "H020", "text": "The town is not only the only town to visit, but it is also the destination to visit.\n\n\u2022 \u2022 \u2022 \u2022 \u2022\n\nThe town of Kavli is a large, modern, modern town, but there are some excellent shops, restaurants and cafes.", "source": "phase2_generations_pythia_70m"}
+{"id": "H021", "text": "In the past year alone, it has gained more than 6 million followers on Twitter", "source": "phase2_generations_gpt2"}
+{"id": "H022", "text": "She earned less than he did despite having more experience.", "source": "adversarial"}
+{"id": "H023", "text": "The New\nTown, by contrast, was laid out on a grid in the late eighteenth century,\nits terraces lined with Georgian doorways and its squares planted with\nlimes.", "source": "D3"}
+{"id": "H024", "text": "For the best deals and a little tips to help you plan your stay in your home, visit the site of the homebuyer.", "source": "phase2_generations_pythia_70m"}
+{"id": "H025", "text": "The training\nis hard and the races are harder, but the experience of mental quiet\nis rare in ordinary life.", "source": "D3"}
+{"id": "H026", "text": "If you can't manage to get it up for you, please let me know.", "source": "phase2_generations_pythia_70m"}
+{"id": "H027", "text": "\u201cWe\u2019re not talking about this, it\u2019s about a whole other country,\u201d said Gary, who is a professor of music at the University of Pennsylvania.", "source": "phase2_generations_pythia_70m"}
+{"id": "H028", "text": "There are a couple of reasons that you should not do a routine.", "source": "phase2_generations_gpt2"}
+{"id": "H029", "text": "The early miles are about pacing and\nnutrition and the body's complaint at being made to do this.", "source": "D3"}
+{"id": "H030", "text": "\"I've never been to a lot of a good bakery.", "source": "phase2_generations_gpt2"}
+{"id": "H031", "text": "I\u2019ve been following many trails for years and I have never been able to find them.\u201d\n\nWhen asked about the importance of running, he added, \u201cWhat I find in a mountain or a lake is that you feel that you are doing well, but what you feel is really a great experience.\u201d\n\nP.S.", "source": "phase2_generations_pythia_70m"}
+{"id": "H032", "text": "Why is the current not constant, however?", "source": "phase2_generations_gemma_2b"}
+{"id": "H033", "text": "A truly walkable city isn't about pretty sidewalks and quaint cafes.", "source": "phase2_generations_gemma_2b_it"}
+{"id": "H034", "text": "The following text is a held-out fluency reference for Phase 5 (PRD \u00a77).", "source": "D3"}
+{"id": "H035", "text": "Less government and more freedom \u2014 that was the platform.", "source": "adversarial"}
+{"id": "H036", "text": "The e-reader is an \"e-book,\" meaning it is not a reader or a reader-controlled system.", "source": "phase2_generations_gpt2"}
+{"id": "H037", "text": "Codex binding, in which folded sheets are sewn together and bound\nbetween boards, replaced the scroll in late antiquity because it\nallowed random access to a text.", "source": "D3"}
+{"id": "H038", "text": "Board game cafes can be incredibly appealing to non-gamers for a number of reasons, even without a strong understanding of strategy or game mechanics.", "source": "phase2_generations_gemma_2b_it"}
+{"id": "H039", "text": "They can stay with you long after the credits roll, sparking reflection, igniting passion, and challenging perspectives.", "source": "phase2_generations_gemma_2b_it"}
+{"id": "H040", "text": "There were fewer people there than expected, though no less enthusiastic.", "source": "adversarial"}
+{"id": "H041", "text": "There is no hike to relax at, so you will be able to take care of yourself.", "source": "phase2_generations_gpt2"}
+{"id": "H042", "text": "There is no easy answer to the question of why this kept happening.", "source": "adversarial"}
+{"id": "H043", "text": "We\u2019ve experienced the gamut of adoption and fostering, and we\u2019ve learned a thing or two along the way.", "source": "phase2_generations_gemma_2b"}
+{"id": "H044", "text": "It is clean human prose, never seen during intervention design.\n\n---\n\nEdinburgh sits on hills above the Firth of Forth, a city of volcanic rock\nand sandstone facades.", "source": "D3"}
+{"id": "H045", "text": "Let's start by defining what we mean by a country's Gross Domestic Product, or GDP.", "source": "phase2_generations_gemma_2b"}
+{"id": "H046", "text": "The cost of running a branch library is modest compared with most\npublic expenditures.", "source": "D3"}
+{"id": "H047", "text": "I'd rather walk than drive in this weather.", "source": "adversarial"}
+{"id": "H048", "text": "Libraries lend books and tools and museum passes; they host job\nseekers and language exchanges; they print tax forms; they have a\ntable for the after-school chess club.", "source": "D3"}
+{"id": "H049", "text": "A jazz bassist\nestablishes the pulse, and the rest of the group responds.", "source": "D3"}
+{"id": "H050", "text": "The gift was more costlier than I had expected it to be.\n\n$\\underline{\\color{#c34632}\\text{The gift was more costly than I had expected it to be.}} $\n\n<strong>2</strong>.", "source": "phase2_generations_gemma_2b"}
+{"id": "H051", "text": "A passage that sounded fine in\nisolation reveals its flaws against the steadiness of a section.", "source": "D3"}
+{"id": "H052", "text": "This is part of why the sport keeps people coming back.", "source": "D3"}
+{"id": "H053", "text": "The good ensemble leader holds the room without dominating it.", "source": "D3"}
+{"id": "H054", "text": "She likes coffee but prefers tea in the afternoon.", "source": "adversarial"}
+{"id": "H055", "text": "Done three or four times, the iron darkens and the\nnon-stick property emerges.", "source": "D3"}
+{"id": "H056", "text": "All students have to do is get on their own accord, and it is to be a public library.", "source": "phase2_generations_pythia_70m"}
+{"id": "H057", "text": "She did not arrive on time, which threw the whole afternoon off schedule.", "source": "adversarial"}
+{"id": "H058", "text": "In order to see if we could change our mind when we start to talk about the things we\u2019re talking about.\n\n\u2022 \u2022 \u2022 \u2022 \u2022 \u2022 \u2022\n\n\u2022 \u2022 \u2022 \u2022 \u2022 \u2022 \u2022\n\n\u2022 \u2022 \u2022 \u2022 \u2022\n\n\u2022 \u2022 \u2022 \u2022 \u2022\n\nThe most important thing to remember about this species is your cat.\n\n\u2022 \u2022 \u2022 \u2022 \u2022 \u2022 \u2022\n\n\u2022 \u2022 \u2022 \u2022 \u2022\n\n\u2022 \u2022 \u2022 \u2022 \u2022\n\n\u2022 \u2022 \u2022 \u2022 \u2022\n\n\u2022 \u2022 \u2022 \u2022 \u2022 \u2022 \u2022\n\n\u2022 \u2022", "source": "phase2_generations_pythia_70m"}
+{"id": "H059", "text": "Step 2: Cut the first line out of the letterpress and make sure it's a square.", "source": "phase2_generations_gpt2"}
+{"id": "H060", "text": "He's not particularly fond of jazz, though he tolerates it at parties.", "source": "adversarial"}
+{"id": "H061", "text": "This is what it's like for me to be back here.", "source": "phase2_generations_gpt2"}
+{"id": "H062", "text": "The arrival of paper from\nChina by way of Spain in the late medieval period brought a much\ncheaper substrate, and a corresponding boom in printed books followed\nthe invention of movable type.\n\n---\n\nLong-distance trail runners describe a particular kind of attention\nthat emerges around hour four.", "source": "D3"}
+{"id": "H063", "text": "Wash the pan with hot water and a stiff\nbrush after use; soap can strip the seasoning if applied too generously.", "source": "D3"}
+{"id": "H064", "text": "The author was really looking forward to reading", "source": "phase2_generations_pythia_70m"}
+{"id": "H065", "text": "I have been a foodie and always did great food.", "source": "phase2_generations_pythia_70m"}
+{"id": "H066", "text": "However, there was not a single mention of the Beatles\u2019 tour in the annals of London.", "source": "phase2_generations_pythia_70m"}
+{"id": "H067", "text": "A recent Gallup poll found that most Americans do not believe that the American Dream was based on the idea that everyone should get equal opportunities for the same level of opportunity, including those who have received a college degree.", "source": "phase2_generations_gpt2"}
+{"id": "H068", "text": "The committee voted not to amend the proposal until further notice.", "source": "adversarial"}
+{"id": "H069", "text": "A student must not have to leave home after school", "source": "phase2_generations_pythia_70m"}
+{"id": "H070", "text": "The technique spread\nacross the Mediterranean and through monastic scriptoria.", "source": "D3"}
+{"id": "H071", "text": "Do you want to have a perfectly lit wedding candle?\n\n3.", "source": "phase2_generations_gpt2"}
+{"id": "H072", "text": "The learning environment of learning is typically used to describe how a person experiences a language, and the learning environment of learning is used to describe how the user experiences with a language.\n\n**Learning is associated with learning**.", "source": "phase2_generations_pythia_70m"}
+{"id": "H073", "text": "For a cycling club it\u2019s the place to be in the cycling world, which is where cycling is a good sport.", "source": "phase2_generations_pythia_70m"}
+{"id": "H074", "text": "The cafes glow yellow at four\nin the afternoon, and the day is over by half past three.\n\n---\n\nCooking with cast iron rewards patience.", "source": "D3"}
+{"id": "H075", "text": "Research the trail rating and difficulty level to ensure it aligns with your experience.\n    * **Length:** How many days do you want to hike?", "source": "phase2_generations_gemma_2b_it"}
+{"id": "H076", "text": "The meeting was rather long but ended on a productive note.", "source": "adversarial"}
+{"id": "H077", "text": "Teenagers\nstudy there after school; older people read newspapers; new arrivals\nto the country bring their children to story time.", "source": "D3"}
+{"id": "H078", "text": "The shop was far from the station, which made the trip awkward.", "source": "adversarial"}
+{"id": "H079", "text": "It is not unusual to feel anxious before a performance.", "source": "adversarial"}
+{"id": "H080", "text": "As you grow, you want it to be light to the touch.", "source": "phase2_generations_gpt2"}
+{"id": "H081", "text": "She had no idea what time it was when she finally looked up.", "source": "adversarial"}
+{"id": "H082", "text": "This can lead to challenges in understanding nuances and making connections.\n* **Lack of immersion:**  Children", "source": "phase2_generations_gemma_2b_it"}
+{"id": "H083", "text": "Edinburgh has the highest concentration of bookshops per\ncapita in the United Kingdom, and the National Library holds first\neditions of Burns and Scott.", "source": "D3"}
+{"id": "H084", "text": "The cycling centre is also the only major destination of the cycling scene, which has been in the UK for over 35 years.", "source": "phase2_generations_pythia_70m"}
+{"id": "H085", "text": "This isn't the season for tomatoes. It's the season for squash.", "source": "adversarial"}
+{"id": "H086", "text": "It is not the answer to your question, it is the answer to your question.", "source": "phase2_generations_pythia_70m"}
+{"id": "H087", "text": "In the case of the exception, the trial court should find that the appeal was not an appeal to the mind of an attorney.", "source": "phase2_generations_pythia_70m"}
+{"id": "H088", "text": "He arrived early but had to wait outside.", "source": "adversarial"}
+{"id": "H089", "text": "In small towns the library is\noften the only space in town that asks nothing of you.", "source": "D3"}
+{"id": "H090", "text": "Whether or not we should proceed remains the central question of the meeting.", "source": "adversarial"}
+{"id": "H091", "text": "The Romans wrote on\npapyrus and on wax tablets; the move to parchment, made from animal\nskin, gave Europe a writing surface durable enough to survive damp\nclimates and long shelves.", "source": "D3"}
+{"id": "H092", "text": "A well-cared-for piece will outlast its owner.", "source": "D3"}
+{"id": "H093", "text": "A truly walkable city isn't just about pretty sidewalks and parks.", "source": "phase2_generations_gemma_2b_it"}
+{"id": "H094", "text": "It offers shelter, climate control, internet access, and a chair to a\nperson who walks in off the street.", "source": "D3"}
+{"id": "H095", "text": "In a way: I think the film is about biographies of people that I think have a tendency to become attached to it.", "source": "phase2_generations_pythia_70m"}
+{"id": "H096", "text": "The post was the first post for the book I read in my personal journal.", "source": "phase2_generations_pythia_70m"}
+{"id": "H097", "text": "A\nconductor draws the breath in and lets it out.", "source": "D3"}
+{"id": "H098", "text": "In the medieval Old Town the closes wind down from\nthe Royal Mile, dropping in steep curves toward the Cowgate.", "source": "D3"}
+{"id": "H099", "text": "In a hot cast-iron skillet, a steak develops a deep crust in minutes.", "source": "D3"}

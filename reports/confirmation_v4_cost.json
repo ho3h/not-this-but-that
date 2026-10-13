@@ -1,0 +1,17 @@
+{
+  "normal": {
+    "arc_easy": 0.8566666666666667,
+    "wikitext_ppl": 16.144996801637937,
+    "wikitext_ratio": 1.0
+  },
+  "chat 25": {
+    "arc_easy": 0.8533333333333334,
+    "wikitext_ppl": 16.929495603688185,
+    "wikitext_ratio": 1.0485908304404656
+  },
+  "matched 25": {
+    "arc_easy": 0.8566666666666667,
+    "wikitext_ppl": 16.229833284283103,
+    "wikitext_ratio": 1.005254660851748
+  }
+}

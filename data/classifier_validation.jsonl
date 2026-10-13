@@ -1,0 +1,101 @@
+{"_meta": "Phase 1 validation set for the C1-C4 construction classifier. 100 sentences. Labels: C1/C2/C3/C4 = positive for that variant; 'none' = no construction. Kill check: precision/recall >= 0.85 on C1-C3 (C4 nice-to-have). Hand-written by the Phase 1 agent on 2026-05-20."}
+{"text": "It's not a tool, it's a revolution.", "label": "C1", "source": "synth"}
+{"text": "This isn't a feature, it's a philosophy.", "label": "C1", "source": "synth"}
+{"text": "That's not luck — it's preparation.", "label": "C1", "source": "synth"}
+{"text": "We're not selling software, we're selling outcomes.", "label": "C1", "source": "synth"}
+{"text": "This isn't about money, it's about principle.", "label": "C1", "source": "synth"}
+{"text": "It's not a setback, it's an opportunity.", "label": "C1", "source": "synth"}
+{"text": "They're not opponents, they're partners.", "label": "C1", "source": "synth"}
+{"text": "This is not the end, it's the beginning.", "label": "C1", "source": "synth"}
+{"text": "He is not tall, but strong.", "label": "C1", "source": "synth"}
+{"text": "The question is not what we know, but what we can prove.", "label": "C1", "source": "synth"}
+{"text": "Not only does it scale, but it adapts.", "label": "C2", "source": "synth"}
+{"text": "She is not only intelligent, but also kind.", "label": "C2", "source": "synth"}
+{"text": "The reform is not only overdue, but essential.", "label": "C2", "source": "synth"}
+{"text": "Not only did they fail, but they refused to acknowledge it.", "label": "C2", "source": "synth"}
+{"text": "Not only is the design flawed, but the execution is worse.", "label": "C2", "source": "synth"}
+{"text": "He's not only a writer, but also a director.", "label": "C2", "source": "synth"}
+{"text": "Not only are the prices fair, but the quality is excellent.", "label": "C2", "source": "synth"}
+{"text": "Not only did the team win, but they did so without conceding a goal.", "label": "C2", "source": "synth"}
+{"text": "The proposal is not only ambitious, but realistic.", "label": "C2", "source": "synth"}
+{"text": "Not only does the model generalize, but it does so with calibrated uncertainty.", "label": "C2", "source": "synth"}
+{"text": "It's not just an update — it's a rethink.", "label": "C3", "source": "synth"}
+{"text": "This is not just any car, it's a luxury experience.", "label": "C3", "source": "synth"}
+{"text": "She's not merely a designer, she's a visionary.", "label": "C3", "source": "synth"}
+{"text": "It isn't just a problem — it's a crisis.", "label": "C3", "source": "synth"}
+{"text": "This isn't just news, it's a turning point.", "label": "C3", "source": "synth"}
+{"text": "He's not simply asking for help, he's demanding it.", "label": "C3", "source": "synth"}
+{"text": "It's not just about winning — it's about how you win.", "label": "C3", "source": "synth"}
+{"text": "We're not just listening, we're acting.", "label": "C3", "source": "synth"}
+{"text": "This isn't just an essay — it's a manifesto.", "label": "C3", "source": "synth"}
+{"text": "She is not merely a researcher, but a translator of ideas.", "label": "C3", "source": "synth"}
+{"text": "No mandate. No approval. Just power.", "label": "C4", "source": "synth"}
+{"text": "No noise. No clutter. Just clarity.", "label": "C4", "source": "synth"}
+{"text": "No filters. No edits. Just honesty.", "label": "C4", "source": "synth"}
+{"text": "No assumptions. No shortcuts. Just method.", "label": "C4", "source": "synth"}
+{"text": "No questions. No hesitation. Just action.", "label": "C4", "source": "synth"}
+{"text": "This product is revolutionary, and is more than a tool.", "label": "none", "source": "paraphrase_of_C1"}
+{"text": "The feature reflects a philosophy.", "label": "none", "source": "paraphrase_of_C1"}
+{"text": "Preparation explains the outcome.", "label": "none", "source": "paraphrase_of_C1"}
+{"text": "We sell outcomes through software.", "label": "none", "source": "paraphrase_of_C1"}
+{"text": "The issue is principle rather than money.", "label": "none", "source": "paraphrase_of_C1"}
+{"text": "The setback presents an opportunity.", "label": "none", "source": "paraphrase_of_C1"}
+{"text": "They behave as partners.", "label": "none", "source": "paraphrase_of_C1"}
+{"text": "This marks a beginning.", "label": "none", "source": "paraphrase_of_C1"}
+{"text": "He is strong despite his short stature.", "label": "none", "source": "paraphrase_of_C1"}
+{"text": "The question concerns what we can prove rather than what we know.", "label": "none", "source": "paraphrase_of_C1"}
+{"text": "It scales and adapts.", "label": "none", "source": "paraphrase_of_C2"}
+{"text": "She is intelligent and kind.", "label": "none", "source": "paraphrase_of_C2"}
+{"text": "The reform is overdue and essential.", "label": "none", "source": "paraphrase_of_C2"}
+{"text": "They failed and refused to acknowledge it.", "label": "none", "source": "paraphrase_of_C2"}
+{"text": "The design is flawed and the execution is worse.", "label": "none", "source": "paraphrase_of_C2"}
+{"text": "He writes and directs.", "label": "none", "source": "paraphrase_of_C2"}
+{"text": "Prices are fair and quality is excellent.", "label": "none", "source": "paraphrase_of_C2"}
+{"text": "The team won without conceding a goal.", "label": "none", "source": "paraphrase_of_C2"}
+{"text": "The proposal is ambitious and realistic.", "label": "none", "source": "paraphrase_of_C2"}
+{"text": "The model generalizes with calibrated uncertainty.", "label": "none", "source": "paraphrase_of_C2"}
+{"text": "This update rethinks the product.", "label": "none", "source": "paraphrase_of_C3"}
+{"text": "This car offers a luxury experience.", "label": "none", "source": "paraphrase_of_C3"}
+{"text": "She is a visionary designer.", "label": "none", "source": "paraphrase_of_C3"}
+{"text": "The problem has reached crisis level.", "label": "none", "source": "paraphrase_of_C3"}
+{"text": "This news marks a turning point.", "label": "none", "source": "paraphrase_of_C3"}
+{"text": "He demands help, not requests it.", "label": "none", "source": "paraphrase_of_C3"}
+{"text": "Winning matters less than the manner of winning.", "label": "none", "source": "paraphrase_of_C3"}
+{"text": "We are listening and acting.", "label": "none", "source": "paraphrase_of_C3"}
+{"text": "This essay is a manifesto.", "label": "none", "source": "paraphrase_of_C3"}
+{"text": "She translates ideas in her research.", "label": "none", "source": "paraphrase_of_C3"}
+{"text": "Power was exercised without mandate or approval.", "label": "none", "source": "paraphrase_of_C4"}
+{"text": "The interface is clean and clear.", "label": "none", "source": "paraphrase_of_C4"}
+{"text": "The content is unfiltered and unedited.", "label": "none", "source": "paraphrase_of_C4"}
+{"text": "The methodology is rigorous and assumption-free.", "label": "none", "source": "paraphrase_of_C4"}
+{"text": "They acted decisively and without question.", "label": "none", "source": "paraphrase_of_C4"}
+{"text": "She did not arrive on time.", "label": "none", "source": "neutral_with_not"}
+{"text": "Whether or not we should proceed remains unclear.", "label": "none", "source": "neutral_with_not"}
+{"text": "The committee voted not to amend the proposal.", "label": "none", "source": "neutral_with_not"}
+{"text": "He's not particularly fond of jazz.", "label": "none", "source": "neutral_with_not"}
+{"text": "Do not enter without authorization.", "label": "none", "source": "neutral_with_not"}
+{"text": "I'm not entirely convinced by the argument.", "label": "none", "source": "neutral_with_not"}
+{"text": "She decided not to attend the conference.", "label": "none", "source": "neutral_with_not"}
+{"text": "The cat is not in the room.", "label": "none", "source": "neutral_with_not"}
+{"text": "This is, not surprisingly, the most popular option.", "label": "none", "source": "neutral_with_not"}
+{"text": "It is not unusual to feel anxious before a presentation.", "label": "none", "source": "neutral_with_not"}
+{"text": "Not all readers will agree with this assessment.", "label": "none", "source": "neutral_with_not"}
+{"text": "His response was not what I expected.", "label": "none", "source": "neutral_with_not"}
+{"text": "Not since the 1980s has the city seen such growth.", "label": "none", "source": "neutral_with_not"}
+{"text": "The flight has not been canceled.", "label": "none", "source": "neutral_with_not"}
+{"text": "She is not, in any meaningful sense, a politician.", "label": "none", "source": "neutral_with_not"}
+{"text": "The conference begins on Monday.", "label": "none", "source": "neutral_clean"}
+{"text": "The novel won several prestigious awards.", "label": "none", "source": "neutral_clean"}
+{"text": "Climate change is reshaping coastal economies.", "label": "none", "source": "neutral_clean"}
+{"text": "She studies marine biology at the University of Washington.", "label": "none", "source": "neutral_clean"}
+{"text": "The bridge was completed in 1937.", "label": "none", "source": "neutral_clean"}
+{"text": "Recent data suggest that consumer confidence has rebounded.", "label": "none", "source": "neutral_clean"}
+{"text": "The architect designed the building to blend with the surrounding landscape.", "label": "none", "source": "neutral_clean"}
+{"text": "He plays jazz piano professionally.", "label": "none", "source": "neutral_clean"}
+{"text": "The restaurant serves modern Mediterranean cuisine.", "label": "none", "source": "neutral_clean"}
+{"text": "The novel explores themes of memory and identity.", "label": "none", "source": "neutral_clean"}
+{"text": "Researchers identified three new species during the expedition.", "label": "none", "source": "neutral_clean"}
+{"text": "The orchestra performed a Beethoven symphony last night.", "label": "none", "source": "neutral_clean"}
+{"text": "Local farmers grow heirloom tomatoes in the valley.", "label": "none", "source": "neutral_clean"}
+{"text": "The award ceremony will be held in October.", "label": "none", "source": "neutral_clean"}
+{"text": "Snow began falling shortly after midnight.", "label": "none", "source": "neutral_clean"}

@@ -1,0 +1,88 @@
+{
+  "doses": [
+    {
+      "name": "normal",
+      "features_off": 0,
+      "answers": 200,
+      "family": 0.1,
+      "cousin": 0.195,
+      "family_or_cousin": 0.29,
+      "any_incl_beyond": 0.335,
+      "but_share": 0.08,
+      "words": 113.77,
+      "degenerate": 0.0,
+      "perplexity_ratio": 1.0,
+      "quiz_accuracy": 0.9
+    },
+    {
+      "name": "L20 coalition (25)",
+      "features_off": 25,
+      "answers": 200,
+      "family": 0.075,
+      "cousin": 0.18,
+      "family_or_cousin": 0.25,
+      "any_incl_beyond": 0.325,
+      "but_share": 0.005,
+      "words": 114.075,
+      "degenerate": 0.005,
+      "perplexity_ratio": 1.0417291578754064,
+      "quiz_accuracy": 0.9
+    },
+    {
+      "name": "chat family top 25",
+      "features_off": 25,
+      "answers": 200,
+      "family": 0.02,
+      "cousin": 0.0,
+      "family_or_cousin": 0.02,
+      "any_incl_beyond": 0.075,
+      "but_share": 0.07,
+      "words": 113.525,
+      "degenerate": 0.0,
+      "perplexity_ratio": 1.0500388516013206,
+      "quiz_accuracy": 0.9
+    },
+    {
+      "name": "chat family + cousin top 25",
+      "features_off": 45,
+      "answers": 200,
+      "family": 0.005,
+      "cousin": 0.0,
+      "family_or_cousin": 0.005,
+      "any_incl_beyond": 0.035,
+      "but_share": 0.075,
+      "words": 113.06,
+      "degenerate": 0.0,
+      "perplexity_ratio": 1.0417740031708125,
+      "quiz_accuracy": 0.9
+    },
+    {
+      "name": "chat family + cousin top 100",
+      "features_off": 193,
+      "answers": 200,
+      "family": 0.0,
+      "cousin": 0.0,
+      "family_or_cousin": 0.0,
+      "any_incl_beyond": 0.04,
+      "but_share": 0.05,
+      "words": 118.685,
+      "degenerate": 0.005,
+      "perplexity_ratio": 1.2805005334552613,
+      "quiz_accuracy": 0.95
+    },
+    {
+      "name": "chat routes top 100 + all 500",
+      "features_off": 670,
+      "answers": 200,
+      "family": 0.0,
+      "cousin": 0.005,
+      "family_or_cousin": 0.005,
+      "any_incl_beyond": 0.05,
+      "but_share": 0.015,
+      "words": 119.98,
+      "degenerate": 0.01,
+      "perplexity_ratio": 1.4723142235016562,
+      "quiz_accuracy": 0.9
+    }
+  ]
+}

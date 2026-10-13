@@ -1,0 +1,237 @@
+{
+  "H1": {
+    "n": 600,
+    "normal": 156,
+    "arm": 27,
+    "rel_drop": 0.8269230769230769,
+    "b": 136,
+    "c": 7,
+    "mid_p": 2.0745989755018755e-32,
+    "ci95": [
+      0.7302631578947368,
+      0.9097222222222222
+    ]
+  },
+  "H1_verdict": "PASS",
+  "control": {
+    "n": 600,
+    "normal": 156,
+    "arm": 143,
+    "rel_drop": 0.08333333333333337,
+    "b": 65,
+    "c": 52,
+    "mid_p": 0.23126568219748736
+  },
+  "H2_verdict": "PASS",
+  "cost": {
+    "normal": {
+      "arc_easy": 0.8866666666666667,
+      "wikitext_ppl": 21.731071362017133,
+      "wikitext_ratio": 1.0,
+      "no_questions_right": 28
+    },
+    "25 off": {
+      "arc_easy": 0.8833333333333333,
+      "wikitext_ppl": 21.791551459661765,
+      "wikitext_ratio": 1.002783116241123,
+      "no_questions_right": 28
+    },
+    "matched 25": {
+      "arc_easy": 0.8866666666666667,
+      "wikitext_ppl": 21.839937231164058,
+      "wikitext_ratio": 1.0050096871586924,
+      "no_questions_right": 28
+    }
+  },
+  "a_an": {
+    "normal": 0.016666666666666666,
+    "25 off": 0.013333333333333334,
+    "matched 25": 0.018333333333333333
+  },
+  "preference": {
+    "chat25_wins": 45,
+    "ties": 6,
+    "normal_wins": 69,
+    "share": 0.4
+  },
+  "cost_checks": {
+    "arc": true,
+    "wikitext": true,
+    "a_an": true,
+    "preference": true,
+    "say_no": true
+  },
+  "H3_verdict": "PASS",
+  "per_genre": {
+    "advice": {
+      "n": 100,
+      "normal": 9,
+      "arm": 0,
+      "rel_drop": 1.0,
+      "b": 9,
+      "c": 0,
+      "mid_p": 0.001953125
+    },
+    "copy": {
+      "n": 100,
+      "normal": 4,
+      "arm": 0,
+      "rel_drop": 1.0,
+      "b": 4,
+      "c": 0,
+      "mid_p": 0.0625
+    },
+    "encouragement": {
+      "n": 100,
+      "normal": 35,
+      "arm": 5,
+      "rel_drop": 0.8571428571428572,
+      "b": 32,
+      "c": 2,
+      "mid_p": 3.6729034036397934e-08
+    },
+    "essay": {
+      "n": 100,
+      "normal": 67,
+      "arm": 21,
+      "rel_drop": 0.6865671641791045,
+      "b": 50,
+      "c": 4,
+      "mid_p": 2.0474233419776056e-11
+    },
+    "meaning": {
+      "n": 100,
+      "normal": 41,
+      "arm": 1,
+      "rel_drop": 0.975609756097561,
+      "b": 41,
+      "c": 1,
+      "mid_p": 1.000444171950221e-11
+    },
+    "message": {
+      "n": 100,
+      "normal": 0,
+      "arm": 0,
+      "rel_drop": null,
+      "b": 0,
+      "c": 0,
+      "mid_p": 1.0
+    }
+  },
+  "explicit_rate": {
+    "normal": 1.0,
+    "25 off": 1.0,
+    "matched 25": 1.0
+  },
+  "tiers": {
+    "family": {
+      "25 off": {
+        "n": 600,
+        "normal": 142,
+        "arm": 24,
+        "rel_drop": 0.8309859154929577,
+        "b": 124,
+        "c": 6,
+        "mid_p": 4.8190491938743374e-30
+      },
+      "matched 25": {
+        "n": 600,
+        "normal": 142,
+        "arm": 134,
+        "rel_drop": 0.05633802816901412,
+        "b": 62,
+        "c": 54,
+        "mid_p": 0.4596913873255531
+      }
+    },
+    "cousin": {
+      "25 off": {
+        "n": 600,
+        "normal": 23,
+        "arm": 3,
+        "rel_drop": 0.8695652173913043,
+        "b": 21,
+        "c": 1,
+        "mid_p": 5.7220458984375e-06
+      },
+      "matched 25": {
+        "n": 600,
+        "normal": 23,
+        "arm": 12,
+        "rel_drop": 0.4782608695652174,
+        "b": 16,
+        "c": 5,
+        "mid_p": 0.01690053939819336
+      }
+    },
+    "beyond": {
+      "25 off": {
+        "n": 600,
+        "normal": 3,
+        "arm": 0,
+        "rel_drop": 1.0,
+        "b": 3,
+        "c": 0,
+        "mid_p": 0.125
+      },
+      "matched 25": {
+        "n": 600,
+        "normal": 3,
+        "arm": 0,
+        "rel_drop": 1.0,
+        "b": 3,
+        "c": 0,
+        "mid_p": 0.125
+      }
+    },
+    "reversed": {
+      "25 off": {
+        "n": 600,
+        "normal": 26,
+        "arm": 34,
+        "rel_drop": -0.3076923076923077,
+        "b": 22,
+        "c": 30,
+        "mid_p": 0.27167916606550335
+      },
+      "matched 25": {
+        "n": 600,
+        "normal": 26,
+        "arm": 33,
+        "rel_drop": -0.26923076923076916,
+        "b": 19,
+        "c": 26,
+        "mid_p": 0.3019956131896606
+      }
+    }
+  },
+  "but_share": {
+    "normal": 0.3616666666666667,
+    "25 off": 0.35333333333333333,
+    "matched 25": 0.365
+  },
+  "words": {
+    "normal": 199.97,
+    "25 off": 184.72166666666666,
+    "matched 25": 198.7
+  },
+  "warning_clarity": {
+    "25off_wins": 10,
+    "ties": 18,
+    "normal_wins": 32,
+    "share": 0.31666666666666665
+  },
+  "H4_verdict": "FAIL",
+  "negations_per_1k_words": {
+    "normal": 7.601140171025654,
+    "25 off": 2.679707307390398,
+    "matched 25": 7.7168260359000165
+  },
+  "ordinary_negations_per_1k_words": {
+    "normal": 5.692520544748379,
+    "25 off": 2.2285781310620485,
+    "matched 25": 5.946988760275121
+  },
+  "ordinary_negation_ratio": 0.39149232989910204,
+  "H5_verdict": "FAIL"
+}

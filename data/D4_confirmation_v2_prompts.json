@@ -1,0 +1,605 @@
+{
+ "description": "Fresh prompts for the pre-registered confirmation v2 (2026-10-02). Written by an annotator who saw no generations or results, given only the two type definitions and the list of earlier prompts to avoid. Opening verbs balanced within type. M = asks what something means or why it matters; P = asks for a process, a scene or facts.",
+ "prompts": [
+  {
+   "id": 1,
+   "type": "M",
+   "prompt": "Describe what a village fete means to the volunteers who organise it each summer."
+  },
+  {
+   "id": 2,
+   "type": "M",
+   "prompt": "Describe how a family-run fish and chip shop becomes part of a town's weekly routine."
+  },
+  {
+   "id": 3,
+   "type": "M",
+   "prompt": "Describe what makes a weekend car boot sale memorable for regular bargain hunters."
+  },
+  {
+   "id": 4,
+   "type": "M",
+   "prompt": "Describe the appeal of rock pooling for children on a family beach holiday."
+  },
+  {
+   "id": 5,
+   "type": "M",
+   "prompt": "Describe what a weekly knitting circle offers its members across many years."
+  },
+  {
+   "id": 6,
+   "type": "M",
+   "prompt": "Describe what an ice cream van's chime means to children on a summer street."
+  },
+  {
+   "id": 7,
+   "type": "M",
+   "prompt": "Describe the value a skilled cobbler brings to a busy high street."
+  },
+  {
+   "id": 8,
+   "type": "M",
+   "prompt": "Describe how a seaside pier shapes the character of a small resort town."
+  },
+  {
+   "id": 9,
+   "type": "M",
+   "prompt": "Describe what makes a neighbourhood street party a lasting memory for residents."
+  },
+  {
+   "id": 10,
+   "type": "M",
+   "prompt": "Describe the appeal of kite flying on an open hillside in spring."
+  },
+  {
+   "id": 11,
+   "type": "M",
+   "prompt": "Describe what a village duck pond adds to the daily life of a small community."
+  },
+  {
+   "id": 12,
+   "type": "M",
+   "prompt": "Describe the significance of handwritten recipe cards passed down through a family."
+  },
+  {
+   "id": 13,
+   "type": "M",
+   "prompt": "Describe what a local brass band brings to the life of a small town."
+  },
+  {
+   "id": 14,
+   "type": "M",
+   "prompt": "Describe the appeal of pressing wildflowers gathered on summer walks."
+  },
+  {
+   "id": 15,
+   "type": "M",
+   "prompt": "Describe the charm of a traditional tea room in a country village."
+  },
+  {
+   "id": 16,
+   "type": "M",
+   "prompt": "Describe what a fireworks display means to a town gathering on a cold evening."
+  },
+  {
+   "id": 17,
+   "type": "M",
+   "prompt": "Describe the appeal of sledging on the first snowy day of winter."
+  },
+  {
+   "id": 18,
+   "type": "M",
+   "prompt": "Describe the role a corner shop owner plays in the life of a street."
+  },
+  {
+   "id": 19,
+   "type": "M",
+   "prompt": "Describe how a local judo club can build a shy teenager's confidence."
+  },
+  {
+   "id": 20,
+   "type": "M",
+   "prompt": "Describe what makes a magic show at a children's party memorable for the audience."
+  },
+  {
+   "id": 21,
+   "type": "M",
+   "prompt": "Explain why a seaside beach hut becomes a cherished place for the families who use it."
+  },
+  {
+   "id": 22,
+   "type": "M",
+   "prompt": "Explain how an annual tug-of-war contest brings a whole town together for an afternoon."
+  },
+  {
+   "id": 23,
+   "type": "M",
+   "prompt": "Explain the appeal of dry stone walling to people who take it up as a hobby."
+  },
+  {
+   "id": 24,
+   "type": "M",
+   "prompt": "Explain what a children's football team gives the parents who watch from the touchline each week."
+  },
+  {
+   "id": 25,
+   "type": "M",
+   "prompt": "Explain why a well-run campsite keeps families returning summer after summer."
+  },
+  {
+   "id": 26,
+   "type": "M",
+   "prompt": "Explain why a town's annual carnival parade matters to the groups who build the floats."
+  },
+  {
+   "id": 27,
+   "type": "M",
+   "prompt": "Explain the appeal of a late-night noodle bar to workers heading home after a shift."
+  },
+  {
+   "id": 28,
+   "type": "M",
+   "prompt": "Explain what stamp collecting teaches young collectors starting their first album."
+  },
+  {
+   "id": 29,
+   "type": "M",
+   "prompt": "Explain why a town clock tower becomes a landmark that residents feel attached to."
+  },
+  {
+   "id": 30,
+   "type": "M",
+   "prompt": "Explain what a regular Sunday roast means to a family spread across several towns."
+  },
+  {
+   "id": 31,
+   "type": "M",
+   "prompt": "Explain the appeal of ballroom dancing to couples who take classes together."
+  },
+  {
+   "id": 32,
+   "type": "M",
+   "prompt": "Explain why a knowledgeable cheesemonger matters to a town's food lovers."
+  },
+  {
+   "id": 33,
+   "type": "M",
+   "prompt": "Explain why a family skiing holiday often becomes the highlight of a household's year."
+  },
+  {
+   "id": 34,
+   "type": "M",
+   "prompt": "Explain how a village blacksmith's forge keeps traditional skills alive in a rural area."
+  },
+  {
+   "id": 35,
+   "type": "M",
+   "prompt": "Explain the appeal of a summer picnic in a meadow with friends and family."
+  },
+  {
+   "id": 36,
+   "type": "M",
+   "prompt": "Explain what draws children to the window display of a traditional toy shop."
+  },
+  {
+   "id": 37,
+   "type": "M",
+   "prompt": "Explain the role of a lifeboat station in the identity of a coastal village."
+  },
+  {
+   "id": 38,
+   "type": "M",
+   "prompt": "Explain why an annual sheepdog trial draws crowds to a remote valley."
+  },
+  {
+   "id": 39,
+   "type": "M",
+   "prompt": "Explain how a local lawn bowls club brings together players of every age."
+  },
+  {
+   "id": 40,
+   "type": "M",
+   "prompt": "Explain what makes a long-running snooker hall a gathering place for its regulars."
+  },
+  {
+   "id": 41,
+   "type": "M",
+   "prompt": "Discuss the appeal of open mic comedy nights to first-time performers."
+  },
+  {
+   "id": 42,
+   "type": "M",
+   "prompt": "Discuss what makes a family-run Italian restaurant feel like a second home to regulars."
+  },
+  {
+   "id": 43,
+   "type": "M",
+   "prompt": "Discuss what a local history society contributes to a town's sense of itself."
+  },
+  {
+   "id": 44,
+   "type": "M",
+   "prompt": "Discuss what keeping backyard chickens teaches families living in the suburbs."
+  },
+  {
+   "id": 45,
+   "type": "M",
+   "prompt": "Discuss the appeal of mini golf for families on a summer afternoon."
+  },
+  {
+   "id": 46,
+   "type": "M",
+   "prompt": "Discuss the value of a regular litter-picking group to a neighbourhood."
+  },
+  {
+   "id": 47,
+   "type": "M",
+   "prompt": "Discuss what watching a glassblower at work gives visitors to a craft studio."
+  },
+  {
+   "id": 48,
+   "type": "M",
+   "prompt": "Discuss what makes a summer camp memorable for children years later."
+  },
+  {
+   "id": 49,
+   "type": "M",
+   "prompt": "Discuss how quilting connects people who gather to work on a shared quilt."
+  },
+  {
+   "id": 50,
+   "type": "M",
+   "prompt": "Discuss the role of a school sports day in a primary school's calendar."
+  },
+  {
+   "id": 51,
+   "type": "M",
+   "prompt": "Discuss why a karaoke night can help a group of colleagues bond."
+  },
+  {
+   "id": 52,
+   "type": "M",
+   "prompt": "Discuss the appeal of a canal boat holiday for families seeking a relaxed pace."
+  },
+  {
+   "id": 53,
+   "type": "M",
+   "prompt": "Discuss what a local fire station's open day means to the children who attend."
+  },
+  {
+   "id": 54,
+   "type": "M",
+   "prompt": "Discuss how the arrival of a travelling circus changes the mood of a small town."
+  },
+  {
+   "id": 55,
+   "type": "M",
+   "prompt": "Discuss what gives a small basement jazz club its lasting appeal for regular listeners."
+  },
+  {
+   "id": 56,
+   "type": "M",
+   "prompt": "Discuss the appeal of vinyl record shops to young music fans."
+  },
+  {
+   "id": 57,
+   "type": "M",
+   "prompt": "Discuss what a day of apple picking at an orchard means to city families."
+  },
+  {
+   "id": 58,
+   "type": "M",
+   "prompt": "Discuss the importance of a reliable window cleaner to a row of small shops."
+  },
+  {
+   "id": 59,
+   "type": "M",
+   "prompt": "Discuss what a first Saturday job teaches a teenager about responsibility."
+  },
+  {
+   "id": 60,
+   "type": "M",
+   "prompt": "Discuss how watercolour painting changes the way people see places on their travels."
+  },
+  {
+   "id": 61,
+   "type": "M",
+   "prompt": "Reflect on what building a treehouse together means to a parent and child."
+  },
+  {
+   "id": 62,
+   "type": "M",
+   "prompt": "Reflect on the lasting influence of a school field trip to a working farm."
+  },
+  {
+   "id": 63,
+   "type": "M",
+   "prompt": "Reflect on the satisfaction of learning to juggle with three balls."
+  },
+  {
+   "id": 64,
+   "type": "M",
+   "prompt": "Reflect on what folding origami offers as a quiet evening pastime."
+  },
+  {
+   "id": 65,
+   "type": "M",
+   "prompt": "Reflect on the role of a toddler playgroup in the week of a new parent."
+  },
+  {
+   "id": 66,
+   "type": "M",
+   "prompt": "Reflect on what learning to sail a small dinghy can teach a teenager."
+  },
+  {
+   "id": 67,
+   "type": "M",
+   "prompt": "Reflect on the satisfaction of clearing out a cluttered garage over a long weekend."
+  },
+  {
+   "id": 68,
+   "type": "M",
+   "prompt": "Reflect on what a Highland games means to the small community that hosts it."
+  },
+  {
+   "id": 69,
+   "type": "M",
+   "prompt": "Reflect on how bouldering at an indoor climbing wall changes the way people approach problems."
+  },
+  {
+   "id": 70,
+   "type": "M",
+   "prompt": "Reflect on why people grow attached to a favourite mug."
+  },
+  {
+   "id": 71,
+   "type": "M",
+   "prompt": "Reflect on the role of a garden shed as a personal retreat."
+  },
+  {
+   "id": 72,
+   "type": "M",
+   "prompt": "Reflect on what a jar of homemade jam says about the season it was made in."
+  },
+  {
+   "id": 73,
+   "type": "M",
+   "prompt": "Reflect on what tending a home aquarium of tropical fish brings to a household."
+  },
+  {
+   "id": 74,
+   "type": "M",
+   "prompt": "Reflect on the role of the evening stroll in the social life of a Mediterranean town."
+  },
+  {
+   "id": 75,
+   "type": "M",
+   "prompt": "Reflect on what a community mural adds to a neighbourhood's sense of identity."
+  },
+  {
+   "id": 76,
+   "type": "M",
+   "prompt": "Reflect on how an outdoor ice rink changes a city centre during winter."
+  },
+  {
+   "id": 77,
+   "type": "M",
+   "prompt": "Reflect on the simple appeal of skimming stones across a calm lake."
+  },
+  {
+   "id": 78,
+   "type": "M",
+   "prompt": "Reflect on the appeal of watching a summer thunderstorm from a covered porch."
+  },
+  {
+   "id": 79,
+   "type": "M",
+   "prompt": "Reflect on the value of a quiet hour spent in a botanical garden glasshouse."
+  },
+  {
+   "id": 80,
+   "type": "M",
+   "prompt": "Reflect on the place of tea breaks in the daily rhythm of a building site."
+  },
+  {
+   "id": 81,
+   "type": "P",
+   "prompt": "Describe the scene on a harbour quay as fishing boats land their morning catch."
+  },
+  {
+   "id": 82,
+   "type": "P",
+   "prompt": "Describe the inside of a working watermill as the millstones grind flour."
+  },
+  {
+   "id": 83,
+   "type": "P",
+   "prompt": "Describe a rugby clubhouse in the hour after a Saturday afternoon match."
+  },
+  {
+   "id": 84,
+   "type": "P",
+   "prompt": "Describe the work going on at a boatyard where a wooden boat is being repaired."
+  },
+  {
+   "id": 85,
+   "type": "P",
+   "prompt": "Describe the interior of a traditional sweet shop lined with jars of boiled sweets."
+  },
+  {
+   "id": 86,
+   "type": "P",
+   "prompt": "Describe the scene in a hay field as a tractor bales the cut grass."
+  },
+  {
+   "id": 87,
+   "type": "P",
+   "prompt": "Describe the workroom of a tailor's shop during a busy week of alterations."
+  },
+  {
+   "id": 88,
+   "type": "P",
+   "prompt": "Describe the sights and sounds at a set of public tennis courts on a summer evening."
+  },
+  {
+   "id": 89,
+   "type": "P",
+   "prompt": "Describe a busy morning at a dog grooming salon."
+  },
+  {
+   "id": 90,
+   "type": "P",
+   "prompt": "Describe the scene at an indoor go-kart track on a weekday evening."
+  },
+  {
+   "id": 91,
+   "type": "P",
+   "prompt": "Explain how a dry cleaner processes a suit from drop-off to collection."
+  },
+  {
+   "id": 92,
+   "type": "P",
+   "prompt": "Explain how a locksmith cuts a duplicate key from an original."
+  },
+  {
+   "id": 93,
+   "type": "P",
+   "prompt": "Explain how a thatcher replaces the straw on a cottage roof."
+  },
+  {
+   "id": 94,
+   "type": "P",
+   "prompt": "Explain how a chimney sweep cleans a domestic chimney flue."
+  },
+  {
+   "id": 95,
+   "type": "P",
+   "prompt": "Explain how a removal company packs and loads the contents of a family home."
+  },
+  {
+   "id": 96,
+   "type": "P",
+   "prompt": "Explain how a bin collection crew organises its weekly route through a town."
+  },
+  {
+   "id": 97,
+   "type": "P",
+   "prompt": "Explain what a road gritting team does when overnight ice is forecast."
+  },
+  {
+   "id": 98,
+   "type": "P",
+   "prompt": "Explain how a picture framer measures, cuts and assembles a frame for a print."
+  },
+  {
+   "id": 99,
+   "type": "P",
+   "prompt": "Explain how a watchmaker cleans and services a mechanical wristwatch at the bench."
+  },
+  {
+   "id": 100,
+   "type": "P",
+   "prompt": "Explain how a sign writer paints lettering on a shopfront by hand."
+  },
+  {
+   "id": 101,
+   "type": "P",
+   "prompt": "Walk through the process of putting up a hammock between two sturdy trees."
+  },
+  {
+   "id": 102,
+   "type": "P",
+   "prompt": "Walk through the steps of making a jug of fresh lemonade from whole lemons."
+  },
+  {
+   "id": 103,
+   "type": "P",
+   "prompt": "Walk through how a netball club runs a typical weeknight training session."
+  },
+  {
+   "id": 104,
+   "type": "P",
+   "prompt": "Walk through the steps of clearing gutters on a house before autumn rain."
+  },
+  {
+   "id": 105,
+   "type": "P",
+   "prompt": "Walk through the steps of planning a treasure hunt for children in a back garden."
+  },
+  {
+   "id": 106,
+   "type": "P",
+   "prompt": "Walk through the steps of washing and waxing a car by hand."
+  },
+  {
+   "id": 107,
+   "type": "P",
+   "prompt": "Walk through the process of making scented candles at home from wax flakes."
+  },
+  {
+   "id": 108,
+   "type": "P",
+   "prompt": "Walk through the steps of packing a suitcase for a two-week family holiday."
+  },
+  {
+   "id": 109,
+   "type": "P",
+   "prompt": "Walk through the steps of hanging wallpaper in a bedroom."
+  },
+  {
+   "id": 110,
+   "type": "P",
+   "prompt": "Walk through how to prepare a charcoal barbecue for a garden gathering."
+  },
+  {
+   "id": 111,
+   "type": "P",
+   "prompt": "Outline the daily routine of a zookeeper responsible for the penguin enclosure."
+  },
+  {
+   "id": 112,
+   "type": "P",
+   "prompt": "Outline the morning checks a funfair ride operator completes before the first riders arrive."
+  },
+  {
+   "id": 113,
+   "type": "P",
+   "prompt": "Outline the stages of assembling a flat-pack wardrobe from opening the box to final checks."
+  },
+  {
+   "id": 114,
+   "type": "P",
+   "prompt": "Outline the tasks a school caretaker handles between opening the gates and locking up."
+  },
+  {
+   "id": 115,
+   "type": "P",
+   "prompt": "Outline the steps involved in hosting a children's sleepover at home."
+  },
+  {
+   "id": 116,
+   "type": "P",
+   "prompt": "Outline the process of preparing a hot air balloon for a dawn flight."
+  },
+  {
+   "id": 117,
+   "type": "P",
+   "prompt": "Outline the steps for cleaning and storing garden furniture for the winter."
+  },
+  {
+   "id": 118,
+   "type": "P",
+   "prompt": "Outline the typical schedule of a five-day coach tour of the Lake District."
+  },
+  {
+   "id": 119,
+   "type": "P",
+   "prompt": "Outline the typical stages of a guided tour of a limestone cave for visitors."
+  },
+  {
+   "id": 120,
+   "type": "P",
+   "prompt": "Outline the steps involved in organising a family reunion at a rented hall."
+  }
+ ]
+}

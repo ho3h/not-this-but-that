@@ -1,0 +1,609 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Why chatbots keep saying “It isn’t just X, it’s Y”</title>
+  <meta name="description" content="I went inside an AI model to find the switch behind its favorite sentence. Then I tried to kill it." />
+  <link rel="stylesheet" href="/demo/style.css" />
+  <link rel="icon" href="data:," />
+</head>
+<body>
+
+<header class="site">
+  <div class="brand">Not this but that</div>
+  <nav class="mode-switch">
+    <a href="/demo/" class="active">Story</a>
+    <a href="/demo/playground.html">Playground</a>
+  </nav>
+  <div class="credit">feature map powered by Neo4j</div>
+</header>
+
+<div class="article-head">
+  <p class="kicker">Interpretability · interactive companion</p>
+  <h1>Why chatbots keep saying “It isn’t just X, it’s Y”</h1>
+  <p class="dek">
+    I went inside an AI model to find the switch behind its favorite
+    sentence. Then I tried to kill it.
+  </p>
+  <p class="companion">
+    This page is the interactive companion to the
+    <a href="https://medium.com/p/b66e378e64fe">full post on Medium</a>.
+    Further down you can replay recorded answers word by word, with the 25
+    features on and ablated, and watch them light up on the map.
+  </p>
+</div>
+
+<!-- ════════════════════════════════════════════════════════════════ -->
+
+<section class="panel narrow">
+  <h2>Know thy enemy</h2>
+  <p>If you’re anything like me, you have read this sentence more times than you’d like:</p>
+  <blockquote class="specimen">“This isn’t just a problem, it’s an epidemic.”</blockquote>
+  <p>
+    You have read it in product launches and cover letters, and heard it in
+    at least one wedding speech. If you’ve never noticed it before, I’m
+    sorry: I’ve now cursed you. You will see it everywhere from here on.
+  </p>
+  <p>
+    It works like this. You take a small, sensible idea. You knock it over.
+    Then you put a larger idea where the small one used to stand, and the
+    reader experiences something very like insight.
+  </p>
+  <p>
+    People have been writing like this for a long time. In 1753 the Oxford
+    scholar Robert Lowth gave this sentence construction a name:
+    <a href="https://en.wikipedia.org/wiki/Antithetic_parallelism"><em>antithetic parallelism</em></a>.
+  </p>
+  <p>
+    I’ll call it “not X but Y”. That name covers all of its pernicious
+    variants: “It’s not X, it’s Y”, “This isn’t just X. It’s Y”, and “X is
+    more than just Y”.
+  </p>
+  <p>
+    Large language models (LLMs) adore this sentence construction. I wanted
+    to know why, and whether there’s a switch inside the model to (please,
+    dear lord) turn it off.
+  </p>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════════ -->
+
+<section class="panel narrow">
+  <h2>Mapping a mind</h2>
+  <p>
+    <a href="https://huggingface.co/google/gemma-2-2b-it">Gemma 2 2B</a> is a
+    small language model that Google released openly. Its insides are mostly
+    numbers, about as readable as a phone book in a language you don’t speak.
+    <a href="https://deepmind.google/discover/blog/gemma-scope-helping-the-safety-community-shed-light-on-the-inner-workings-of-language-models/">Researchers at Google DeepMind</a>
+    have helpfully translated these numbers into vocabulary: a map of about
+    16,000 <em>features</em>.
+  </p>
+  <p>
+    A feature is a pattern the model has learned to detect. Each one comes
+    with a short label, written by another AI from the text that sets it off.
+    One feature fires on legal language. Another on the word “this”. Another
+    on cooking. Features are the filing cabinet of the LLM mind, labelled by
+    a confident intern.
+  </p>
+  <figure>
+    <img src="/demo/img/map.png" width="1980" height="1540" loading="lazy"
+         alt="A cloud of 16,384 coloured dots, one per feature, with 25 orange dots joined by lines." />
+    <figcaption>The 16,384 features of Gemma 2 2B. Each dot is one feature; colour shows its cluster. The 25 features behind “not X but Y” are in orange, with lines between the pairs that most often fire together. Positions are a flattened projection, useful for finding your way around; distances are only a loose guide.</figcaption>
+  </figure>
+  <p>
+    One suspicious feature in Gemma 2,
+    <a href="https://www.neuronpedia.org/gemma-2-2b/20-gemmascope-res-16k/3223">number 3223</a>,
+    is labelled “phrases conveying exceptions or negations”. Eureka, I
+    thought.
+  </p>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════════ -->
+
+<section class="panel narrow">
+  <h2>Setting a trap</h2>
+  <p>
+    LLMs like Gemma write one word at a time. Before each word, the model
+    draws up a shortlist of what could come next, with odds for each, like a
+    very fast and slightly anxious bookmaker.
+  </p>
+  <p>
+    So I set a trap to catch Gemma in the act. Take an answer that begins:
+    <em>“A city’s coffee culture…”</em>
+  </p>
+  <p>
+    The next word could be ordinary: “shapes its character”. Or it could be
+    the start of “not X but Y”: “isn’t just about the beans”.
+  </p>
+  <p>
+    At this turning point I can read Gemma’s odds of heading for “not X but
+    Y”. Then I can turn a feature off, which researchers call
+    <em>ablating</em> the feature, and see whether the odds drop. If they do,
+    that feature is part of the machinery we need to ablate.
+  </p>
+  <figure>
+    <img src="/demo/img/fork_tree.png" width="1980" height="1672" loading="lazy"
+         alt="A branching tree of the roads Gemma took after the words A city’s coffee culture, with the orange roads leading into the construction." />
+    <figcaption>300 times, I let Gemma carry on from “A city’s coffee culture…”. Each band is a road it took; the thicker the band, the more often it went that way. Orange roads lead into “not X but Y”. With the 25 features I found later ablated, every orange road is gone.</figcaption>
+  </figure>
+  <p>
+    Ablating the suspicious feature 3223 seemed like the obvious solution. To
+    my chagrin, it removed only about a quarter of the “not X but Y” answers.
+  </p>
+  <p>
+    The LLM compensates for the lost feature by routing the sentence through
+    other pathways. Researchers have a name for this:
+    <a href="https://arxiv.org/abs/2307.15771">the Hydra effect</a>. Cut off
+    one head of the hydra, and another grows back.
+  </p>
+  <p>Two other approaches didn’t work very well either:</p>
+  <ol class="numbered">
+    <li><strong>Prompt engineering</strong>, otherwise known as asking
+      politely, removed about 40% of “not X but Y”.</li>
+    <li><strong>Brute force</strong>: ablating nearly 1,900 of the 16,384
+      features dented “not X but Y” and turned the prose to mush. One answer
+      opened with “a kale of feeding sessions”, which I have decided is a
+      collective noun.</li>
+  </ol>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════════ -->
+
+<section class="panel narrow">
+  <h2>Expanding the ablation</h2>
+  <p>
+    Ablating one feature only got me a modest 25% drop in “not X but Y”, so I
+    went hunting for the other heads of the hydra.
+  </p>
+  <p>
+    I collected 40 moments where Gemma was about to write “isn’t just”. At
+    each moment I ablated every active feature in turn, one at a time, and
+    watched the odds of “not X but Y”.
+  </p>
+  <p>
+    That gave me a leaderboard of suspicious features. I took the top 25 and
+    ablated them together. The same hunt on 40 “more than just” moments found
+    the feature that runs that variant.
+  </p>
+  <figure>
+    <img src="/demo/img/leaderboard.png" width="1980" height="792" loading="lazy"
+         alt="Bars for hundreds of features ranked by effect. A handful on the left are tall; the long tail is flat." />
+    <figcaption>Every feature active at those 40 moments, ranked by how much ablating it alone lowered the odds of “isn’t just”. A few stand out; hundreds do nothing.</figcaption>
+  </figure>
+  <p>The top of the leaderboard is an odd bunch.</p>
+  <ul class="plain-list">
+    <li><strong><a href="https://www.neuronpedia.org/gemma-2-2b/20-gemmascope-res-16k/15646">“Conditions or exceptions”</a></strong>
+      is the ringleader. Ablating this feature alone halves the odds.</li>
+    <li><strong><a href="https://www.neuronpedia.org/gemma-2-2b/20-gemmascope-res-16k/13565">“Comparison or enhancement”</a></strong>
+      runs the “more than just” variant almost single-handed.</li>
+    <li><strong><a href="https://www.neuronpedia.org/gemma-2-2b/20-gemmascope-res-16k/10655">“Legal processes and court proceedings”</a></strong>
+      is on the list too, a reminder that the labels are an AI’s best guess.
+      Perhaps we have these folks to blame in the training data.</li>
+  </ul>
+  <p>
+    Surprisingly, feature 3223, my original suspect, wasn’t in the top 25 at
+    all.
+  </p>
+  <p>
+    Here are the 25 at work. As Gemma writes one of its favorite sentences,
+    they light up on the map. They flare hardest on “culture”, the word just
+    before it chooses “isn’t”.
+  </p>
+  <figure class="gif">
+    <img src="/demo/img/lightup.gif" width="792" height="682" loading="lazy"
+         alt="Animation of the feature map as Gemma writes a sentence word by word, with the 25 features glowing as they fire." />
+    <figcaption>The 25 features, glowing as they fire while Gemma writes. The word in orange is the one being written.</figcaption>
+  </figure>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════════ -->
+
+<section class="panel narrow">
+  <h2>Ablating 25 features cut “not X but Y” by 97%</h2>
+  <p>
+    Success. Before ablation, 17% of answers used “not X but Y”. After
+    ablation, only 0.6% of answers did: a 97% drop.
+  </p>
+  <div class="headline-stats two">
+    <div class="headline-stat">
+      <p class="kicker">the 25 ablated</p>
+      <div class="big">17%<span class="arrow">→</span><span class="after">0.6%</span></div>
+      <div class="foot">88 → 3 of 510 answers, pre-registered.</div>
+    </div>
+    <div class="headline-stat">
+      <p class="kicker">a second pre-registered test</p>
+      <div class="big">−93%</div>
+      <div class="foot">94 → 7 answers using “not X but Y”.</div>
+    </div>
+  </div>
+  <p>
+    Gemma didn’t get dumber, either. Ablated Gemma scored the same on a
+    general-knowledge quiz, and a blind judge (an AI reviewer who didn’t know
+    which answer was which) rated the answers just as fluent and useful.
+    Gemma simply got to the point:
+  </p>
+  <blockquote class="specimen pair">
+    <span class="lab">Before</span> “A city’s coffee culture isn’t just about the hot beverages; it’s a reflection of its character…”<br/>
+    <span class="lab">Ablated</span> “A city’s coffee culture deeply shapes its character, acting like a silent conductor in the orchestra of urban life.”
+  </blockquote>
+  <p>
+    Gemma used about half as many “not”s, “don’t”s and “never”s overall with
+    the 25 features ablated. Gemma could still say no: it got 28 of 30 “no”
+    questions right in a “yes or no” quiz (“Can penguins fly?”) with the
+    features on and with them ablated.
+  </p>
+  <p>But its warnings became milder. Asked what never to do when jump-starting a car:</p>
+  <blockquote class="specimen pair">
+    <span class="lab">Before</span> “Never connect the positive (red) cable to the negative (black) battery terminal.”<br/>
+    <span class="lab">Ablated</span> “Connect the positive and negative cables to the wrong terminals.”
+  </blockquote>
+  <p>
+    A blind judge preferred the normal warnings 34 times to 16. The 25
+    features belong to the machinery Gemma uses to say “not”, and “not X but
+    Y” is that machinery’s busiest customer. For a chatbot that writes
+    essays, it’s a small price to pay. For a chatbot that gives safety
+    advice, it isn’t.
+  </p>
+  <p>
+    Here are three recorded answers from that test, written both ways. Each
+    pair shares its random numbers, so the two versions match word for word
+    until the ablation changes something. Pick an example and press Play;
+    the highlighting marks “not X but Y”.
+  </p>
+
+  <div class="example-grid" id="example-grid"></div>
+
+  <div class="playback">
+    <div class="col">
+      <div class="ck">Left</div>
+      <div class="name baseline">normal</div>
+      <div class="text" id="text-left">Pick an example and press Play.</div>
+      <div class="verdict" id="verdict-left"></div>
+    </div>
+    <div class="col">
+      <div class="ck">Right</div>
+      <div class="name ablated" id="ablated-label">25 ablated</div>
+      <div class="text" id="text-right"></div>
+      <div class="verdict" id="verdict-right"></div>
+    </div>
+  </div>
+
+  <div class="run-row">
+    <button class="go" id="play">▶ Play</button>
+    <label>speed
+      <input type="range" id="speed" min="20" max="500" value="120" style="width: 110px;" />
+    </label>
+    <span id="play-meta"></span>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════════ -->
+
+<section class="panel">
+  <h2>The map</h2>
+  <p>
+    Each dot is one of the 16,384 features, coloured by cluster. Hover over a
+    dot to read its label. When you play an example above, the map lights up
+    the features firing at each word and marks the 25 that are ablated. The
+    layout is a flat projection, handy for finding your way around;
+    distances on it are only a loose guide.
+    <span class="neo-tag">via Neo4j</span>
+  </p>
+  <div class="map-stage">
+    <canvas id="canvas"></canvas>
+    <div class="map-hud"><strong>16,384 features</strong> · <span id="hud_step">press Play above</span></div>
+    <div class="map-legend">
+      <div><span class="dot" style="background: #c7bfb0"></span>quiet</div>
+      <div><span class="dot" style="background: var(--support)"></span>fired recently</div>
+      <div><span class="dot" style="background: var(--hot)"></span>firing now</div>
+      <div><span class="dot" style="background: var(--oppose)"></span>ablated</div>
+    </div>
+    <div id="tip"></div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════════ -->
+
+<section class="panel narrow">
+  <h2>Building a large language monster</h2>
+  <p>
+    If these 25 features carry “not X but Y”, turning them up should make it
+    worse. Here’s how that works. As Gemma writes, every feature adds a small
+    push to its internal state. Ablating a feature deletes the push.
+    <em>Amplifying</em> it multiplies the push: at double strength, the
+    feature counts twice.
+  </p>
+  <p>
+    Anthropic did the extreme version of this back in 2024. They took a
+    feature for the Golden Gate Bridge inside their Claude model and clamped
+    it at ten times its maximum. For one day,
+    “<a href="https://www.anthropic.com/news/golden-gate-claude">Golden Gate Claude</a>”
+    brought every conversation round to the bridge; asked what it looked
+    like, it said it imagined it looked like the Golden Gate Bridge.
+  </p>
+  <p>Amplifying does the same for “not X but Y”:</p>
+  <figure>
+    <img src="/demo/img/waffle_dial.png" width="1980" height="792" loading="lazy"
+         alt="Four grids of squares, one per setting: ablated, normal, amplified twice and amplified three times, with more orange squares at each step." />
+    <figcaption>Every square is one answer to a question Gemma had never seen. Orange means it used “not X but Y”. From left: the 25 features ablated, normal, then amplified two and three times.</figcaption>
+  </figure>
+  <p>
+    At triple strength, 54% of answers reach for “not X but Y”, up from 12%
+    normally. Ask how to plan a hike and you get:
+  </p>
+  <blockquote class="specimen">“Planning a multi-day hike is more than just packing a backpack. It’s about considering your safety…”</blockquote>
+  <p>
+    Then I built a proper monster, Golden Gate Claude style: one feature,
+    “conditions or exceptions”, clamped on at twice its usual peak, on every
+    word.
+  </p>
+  <p>
+    On ten dull questions, six answers came back with “not X but Y”, and
+    plenty else got negated along the way, like a toddler who has just
+    discovered the word “no”:
+  </p>
+  <blockquote class="specimen oppose">
+    “Not-So-Not-So Simple Scrambled Eggs (not-so-not-so-not-so-not-easy!)”<br/>
+    “A refrigerator isn’t a magical icebox. It’s not magically freezing things.”<br/>
+    “The sun wasn’t quite warm yet, not yet not scorching, but not quite chilling either.”
+  </blockquote>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════════ -->
+
+<section class="panel narrow">
+  <h2>Testing across models</h2>
+  <p>
+    Gemma 2 is from 2024, which in AI years makes it roughly Victorian. So I
+    repeated everything on Gemma 3, using the
+    <a href="https://huggingface.co/google/gemma-scope-2-4b-it">feature map Google DeepMind released for it</a>
+    in December 2025.
+  </p>
+  <p>
+    Gemma 3 is even keener on “not X but Y”: <strong>3 answers in 4</strong>
+    to “why it matters” questions, up from 3 in 10 for Gemma 2. Progress. The
+    same trap found its features, and ablating 24 of them cut “not X but Y”
+    by <strong>83%</strong>.
+  </p>
+  <div class="headline-stats">
+    <div class="headline-stat">
+      <p class="kicker">Gemma 3, 24 features ablated</p>
+      <div class="big">−83%</div>
+      <div class="foot">156 → 27 answers using “not X but Y”.</div>
+    </div>
+  </div>
+  <p>
+    In Gemma 3, the price is steeper. Its strongest feature has no written
+    label. Its effect gives it away: it pushes Gemma 3 towards the word “not”
+    in language after language (<em>nicht</em>, <em>ikke</em>, <em>não</em>,
+    <em>не</em>). Ablating the 24 takes most of Gemma 3’s ordinary “not”s
+    with it, and now and then the model starts to stutter: <em>“…and it it’s
+    a combination of factors”</em>.
+  </p>
+  <p>
+    I wrote that prediction down before running the test. It came out
+    exactly that way, which is the closest a researcher gets to smug.
+  </p>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════════ -->
+
+<section class="panel narrow">
+  <h2>So, why do chatbots say “not X but Y”?</h2>
+  <p>First, some bad news: “not X but Y” is spreading.</p>
+  <p>
+    I counted uses of “isn’t just” in English-language news since 2017,
+    using <a href="https://www.gdeltproject.org/">GDELT</a>, a project that
+    reads the world’s news sites so the rest of us don’t have to. In the
+    autumn of 2023 “isn’t just” started to climb. By July 2025 it was turning
+    up three and a half times as often as it had in 2019 to 2022.
+  </p>
+  <p>
+    Since that peak “isn’t just” has fallen by more than half, possibly
+    because it got recognizable and irritating enough to edit out.
+  </p>
+  <figure>
+    <img src="/demo/img/trend.png" width="1980" height="1408" loading="lazy"
+         alt="Two line charts. Top: a phrase rising slowly in printed books over a century. Bottom: the phrase in news, flat until 2023, peaking in 2025, then falling." />
+    <figcaption>How often “isn’t just” appears in English-language news, per 1,000 articles, set against a century of printed books. The grey line is a control phrase.</figcaption>
+  </figure>
+  <p>
+    By 2026 “isn’t just” had reached the official websites of some of the
+    largest companies on Earth. Word for word:
+  </p>
+  <ul class="quote-list">
+    <li><strong><a href="https://blog.google/company-news/outreach-and-initiatives/google-org/global-impact-challenge-ai-government-2026/">Google</a>:</strong>
+      “Government AI adoption isn't just a technical upgrade, it's a way to solve real world challenges…”</li>
+    <li><strong><a href="https://www.salesforce.com/blog/this-is-who-we-are-celebrating-salesforces-2026-agents-of-change/">Salesforce</a>:</strong>
+      “…giving back isn’t just something we do – it’s who we are.”</li>
+    <li><strong><a href="https://blogs.nvidia.com/blog/gtc-2026-virtual-worlds-physical-ai/">NVIDIA</a>:</strong>
+      “The bottleneck isn’t just data — it’s the entire data factory.”</li>
+    <li><strong><a href="https://www.mckinsey.com/capabilities/m-and-a/our-insights/technology-m-and-a-ai-enters-its-industrial-phase">McKinsey</a>:</strong>
+      “AI investment isn’t just fueling innovation; it’s reshaping competitive dynamics…”</li>
+    <li><strong><a href="https://press.aboutamazon.com/prime-video/2026/9/five-service-streaming-bundle-launches-on-prime-video-in-the-u-s">Amazon</a></strong>,
+      quoting the head of MGM+: “What makes this bundle so compelling isn't just the incredible value—it's the curation.”</li>
+    <li><strong><a href="https://newsroom.spotify.com/2026-01-12/alex-norstrom-gustav-soderstrom-co-ceos-message/">Spotify</a></strong>,
+      from its co-CEOs: “AI isn’t about automation or taking your hands off the wheel; it’s about agency.”</li>
+  </ul>
+  <p>None of this says who or what wrote them.</p>
+  <p>
+    So who taught the LLM to use “not X but Y”? Short answer: incentives,
+    which is the short answer to most things.
+  </p>
+  <p>
+    Here is how a chatbot gets made, roughly, and where the habit gets
+    reinforced at each stage.
+  </p>
+  <p>
+    <strong>First, the LLM reads us.</strong> A chatbot starts life reading
+    an enormous amount of human writing, and human writing, I regret to
+    inform you, has been doing this for a century: “is not just” got about
+    fifteen times as common in
+    <a href="https://books.google.com/ngrams/graph?content=is+not+just&amp;year_start=1900&amp;year_end=2022&amp;corpus=en">printed English</a>
+    between 1920 and 2019.
+  </p>
+  <p>
+    <strong>Then, the LLM gets asked about meaning.</strong> Ask Gemma why a
+    village duck pond matters and 3 answers in 10 use “not X but Y”. Ask it
+    to describe a watermill grinding flour and “not X but Y” is only 1 in
+    200. Questions about meaning demand insight, and “not X but Y” is the
+    cheapest insight money can buy.
+  </p>
+  <figure>
+    <img src="/demo/img/waffle_questions.png" width="1980" height="770" loading="lazy"
+         alt="Two grids of squares. Left, why-does-it-matter questions, with many orange squares. Right, how-does-it-work questions, with two orange squares." />
+    <figcaption>Every square is one of Gemma 2’s answers. Orange means it used “not X but Y”. Left: questions about why something matters. Right: questions about how something works or looks.</figcaption>
+  </figure>
+  <p>
+    <strong>Finally, the LLM gets trained to be helpful.</strong> Gemma’s
+    training recipe is private, so I borrowed a model whose every stage is
+    public: <a href="https://allenai.org/olmo">OLMo 2</a>, from the Allen
+    Institute for AI. I asked each stage of its training the same 152
+    questions.
+  </p>
+  <p>
+    Teaching the raw model to follow instructions made five times as many
+    answers use “not X but Y”, which sounds damning until you notice the
+    answers also got six times longer. Word for word, use of “not X but Y”
+    barely changed; the habit just had more room to stretch its legs.
+  </p>
+  <p>
+    The next stages are where it gets interesting. The Allen Institute for AI
+    then trains the model on preferences: show the LLM two answers, reward
+    the better one, repeat many times.
+  </p>
+  <p>
+    After this training round, 1.7 times as many of its answers to questions
+    about <em>meaning</em> used “not X but Y”. Questions about <em>how things
+    work</em> stayed flat. Something in the grading of LLM answers seemed to
+    like this.
+  </p>
+  <p><strong>So I went to find the grader.</strong></p>
+  <ul class="plain-list">
+    <li><strong>People.</strong> On <a href="https://lmarena.ai/">LMArena</a>,
+      a site where people vote for the better of two chatbot answers, I found
+      nearly 5,000 head-to-heads where only one answer used “not X but Y”.
+      “Not X but Y” won 56% of the time. Suspicious! Except it was usually
+      the longer answer, and people like longer answers. At the same length,
+      it was a coin flip.</li>
+    <li><strong>An AI judge.</strong> This is the automated judge that grades
+      answers during training, because no team of humans could read that
+      many. It has the patience of a saint and the taste of a motivational
+      poster. I took 600 real chatbot answers and rewrote one sentence in each
+      so it said the same thing without the swerve. “Coffee culture isn’t
+      just about drinks; it’s about community” became “Coffee culture is
+      about drinks. It’s also about community.”
+      <a href="https://huggingface.co/Skywork/Skywork-Reward-V2-Qwen3-1.7B">An open reward model</a>
+      preferred the original three times in four. Faced with the bare “Coffee
+      culture is about community”, it shrugged.</li>
+  </ul>
+  <p>
+    The AI judge’s weakness is oddly specific: it marks you down for
+    admitting the boring part. “Not X but Y” lets you mention the boring part
+    and wave it away in one breath, which makes it a safer sentence.
+  </p>
+  <p>
+    So: we wrote it for a century, training gave “not X but Y” room, and an
+    AI judge likely helped to reinforce the construction. You get what you
+    reward, and we rewarded this.
+  </p>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════════ -->
+
+<section class="panel narrow">
+  <h2>What you can do now you know this</h2>
+  <p>
+    <strong>If you write with AI,</strong> ask for the <em>how</em> and the
+    <em>what</em>: steps, scenes, facts. Questions about why something
+    matters are an open invitation to “not X but Y”. Showing the model a
+    couple of examples in the style you want works better than asking it to
+    avoid a phrase; banning a phrase is like banning a weed by name. And when
+    you edit, look for the shape, since deleting one phrase lets another
+    pathway pull it back to life.
+  </p>
+  <p>
+    <strong>If you build with AI,</strong> a writing tic like this can be
+    ablated inside the model, cheaply, if you look in the right place. Then
+    check what else you ablated. And if you train a reward model, maybe let
+    it hear the boring sentence out.
+  </p>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════════ -->
+
+<section class="panel narrow">
+  <h2>Try it</h2>
+  <p>
+    On this page you can play an answer word by word with the 25 features on
+    and ablated, and watch them light up on the map. The
+    <a href="/demo/playground.html">playground</a> shows the full feature map
+    in your browser. Typing your own questions needs the model itself, so
+    that part runs on your own machine.
+  </p>
+  <p>
+    The map lives in Neo4j, where each feature is a node linked to the
+    features it fires alongside. Code, data and every result, including the
+    tests that failed, are at
+    <a href="https://github.com/ho3h/not-this-but-that">github.com/ho3h/not-this-but-that</a>.
+    The full story is in the
+    <a href="https://medium.com/p/b66e378e64fe">post on Medium</a>.
+  </p>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════════ -->
+
+<footer>
+  <p>
+    <strong>Setup.</strong> <code>gemma-2-2b-it</code> with Gemma Scope
+    <code>layer_20/width_16k/canonical</code> (Lieberum et al., 2024);
+    <code>gemma-3-4b-it</code> with Gemma Scope 2
+    (<code>gemma-scope-2-4b-it-res</code>, layer 22, 16k). Chat template
+    throughout. Ablating a feature subtracts only its contribution at that
+    layer and leaves the rest of the model untouched; amplifying multiplies
+    that contribution; clamping replaces it with a fixed value. Each ablated
+    answer shares its random numbers with its normal twin. The recorded
+    examples on this page come from the pre-registered test behind the 97%
+    figure.
+  </p>
+  <p>
+    <strong>Counting.</strong> “Not X but Y” means the negated family (“not
+    just X, it’s Y”, “isn’t X. It’s Y.”, “not only X but also Y”) or “more
+    than just X. It’s Y”, counted with <code>detect_v3.py</code>. The
+    highlighting on this page uses the same patterns. Every number traces to
+    a file in <code>reports/</code> in the repository.
+  </p>
+  <p>
+    <strong>Sources.</strong> Templeton et al.,
+    <a href="https://transformer-circuits.pub/2024/scaling-monosemanticity/">“Scaling Monosemanticity”</a>
+    (Anthropic, 2024) and
+    <a href="https://www.anthropic.com/news/golden-gate-claude">“Golden Gate Claude”</a>
+    (Anthropic, 23 May 2024). McGrath et al.,
+    <a href="https://arxiv.org/abs/2307.15771">“The Hydra Effect”</a> (2023).
+    Paech et al., <a href="https://arxiv.org/abs/2510.15061">“Antislop”</a>
+    (ICLR 2026). Kuznetsov et al.,
+    <a href="https://arxiv.org/abs/2503.03601">“Feature-Level Insights into Artificial Text Detection with Sparse Autoencoders”</a>
+    (2025). Robert Lowth, <em>De sacra poesi Hebraeorum</em> (1753). Team
+    OLMo, <a href="https://arxiv.org/abs/2501.00656">“2 OLMo 2 Furious”</a>
+    (Allen Institute for AI, 2024). Chiang et al.,
+    <a href="https://arxiv.org/abs/2403.04132">“Chatbot Arena”</a> (2024).
+    Cui et al., <a href="https://arxiv.org/abs/2310.01377">“UltraFeedback”</a>
+    (2023).
+    <a href="https://huggingface.co/Skywork/Skywork-Reward-V2-Qwen3-1.7B">Skywork-Reward-V2</a>
+    (Skywork AI, 2025). Michel et al.,
+    <a href="https://doi.org/10.1126/science.1199644">“Quantitative analysis of culture using millions of digitized books”</a>
+    (<em>Science</em>, 2011).
+    <a href="https://www.gdeltproject.org/">The GDELT Project</a>. Juzek and
+    Ward, <a href="https://aclanthology.org/2025.coling-main.426/">“Why Does ChatGPT ‘Delve’ So Much?”</a>
+    (COLING 2025).
+  </p>
+  <p>
+    Post: <a href="https://medium.com/p/b66e378e64fe">medium.com/p/b66e378e64fe</a>.
+    Code and data: <a href="https://github.com/ho3h/not-this-but-that">github.com/ho3h/not-this-but-that</a>.
+  </p>
+</footer>
+
+<script src="/demo/app.js"></script>
+</body>
+</html>

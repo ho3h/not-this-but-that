@@ -1,0 +1,267 @@
+{
+  "battles_one_sided": 4917,
+  "construction_win_rate": 0.559080740288794,
+  "ci95": [
+    0.5444376652430344,
+    0.5729103111653447
+  ],
+  "by_length_ratio_bin": {
+    "-inf..-0.25": {
+      "battles": 951,
+      "win_rate": 0.3270241850683491
+    },
+    "-0.25..+0.25": {
+      "battles": 1456,
+      "win_rate": 0.5144230769230769
+    },
+    "+0.25..+inf": {
+      "battles": 2510,
+      "win_rate": 0.6729083665338645
+    }
+  },
+  "logit_construction": 0.0072716136754323694,
+  "logit_construction_ci95": [
+    -0.0535158744708931,
+    0.06943037161689394
+  ],
+  "odds_ratio_length_adjusted": 1.007298116057571,
+  "logit_loglen": 0.6581783548440848,
+  "models": {
+    "gpt-4-0125-preview": {
+      "rate": 0.20517241379310344,
+      "answers": 1160
+    },
+    "yi-34b-chat": {
+      "rate": 0.15065653075328264,
+      "answers": 1447
+    },
+    "gpt-4-1106-preview": {
+      "rate": 0.14891024773250305,
+      "answers": 7387
+    },
+    "qwen1.5-72b-chat": {
+      "rate": 0.12341197822141561,
+      "answers": 551
+    },
+    "zephyr-7b-beta": {
+      "rate": 0.12036651395251978,
+      "answers": 2401
+    },
+    "nous-hermes-2-mixtral-8x7b-dpo": {
+      "rate": 0.12,
+      "answers": 325
+    },
+    "gpt-4-0613": {
+      "rate": 0.1148418491484185,
+      "answers": 6165
+    },
+    "zephyr-7b-alpha": {
+      "rate": 0.11407766990291263,
+      "answers": 412
+    },
+    "starling-lm-7b-alpha": {
+      "rate": 0.10670194003527336,
+      "answers": 1134
+    },
+    "llama-2-70b-chat": {
+      "rate": 0.1058926487747958,
+      "answers": 3428
+    },
+    "mixtral-8x7b-instruct-v0.1": {
+      "rate": 0.10324400564174895,
+      "answers": 3545
+    },
+    "tulu-2-dpo-70b": {
+      "rate": 0.10166666666666667,
+      "answers": 1200
+    },
+    "llama-2-13b-chat": {
+      "rate": 0.10049865746068277,
+      "answers": 2607
+    },
+    "codellama-34b-instruct": {
+      "rate": 0.10040705563093623,
+      "answers": 1474
+    },
+    "solar-10.7b-instruct-v1.0": {
+      "rate": 0.09788654060066741,
+      "answers": 899
+    },
+    "mistral-medium": {
+      "rate": 0.09502262443438914,
+      "answers": 3315
+    },
+    "wizardlm-13b": {
+      "rate": 0.09430379746835443,
+      "answers": 1580
+    },
+    "wizardlm-70b": {
+      "rate": 0.09367396593673966,
+      "answers": 1644
+    },
+    "llama-2-7b-chat": {
+      "rate": 0.09313998884551032,
+      "answers": 1793
+    },
+    "vicuna-33b": {
+      "rate": 0.08360215053763441,
+      "answers": 3720
+    },
+    "chatglm-6b": {
+      "rate": 0.08009516256938938,
+      "answers": 1261
+    },
+    "llama2-70b-steerlm-chat": {
+      "rate": 0.07796101949025487,
+      "answers": 667
+    },
+    "openhermes-2.5-mistral-7b": {
+      "rate": 0.07352941176470588,
+      "answers": 952
+    },
+    "stripedhyena-nous-7b": {
+      "rate": 0.07221006564551423,
+      "answers": 914
+    },
+    "deepseek-llm-67b-chat": {
+      "rate": 0.07169811320754717,
+      "answers": 795
+    },
+    "vicuna-13b": {
+      "rate": 0.06931554524361949,
+      "answers": 3448
+    },
+    "openchat-3.5": {
+      "rate": 0.06801470588235294,
+      "answers": 1632
+    },
+    "koala-13b": {
+      "rate": 0.06758448060075094,
+      "answers": 1598
+    },
+    "dolphin-2.2.1-mistral-7b": {
+      "rate": 0.06702412868632708,
+      "answers": 373
+    },
+    "pplx-7b-online": {
+      "rate": 0.0664,
+      "answers": 1250
+    },
+    "guanaco-33b": {
+      "rate": 0.06578947368421052,
+      "answers": 684
+    },
+    "chatglm3-6b": {
+      "rate": 0.06572295247724974,
+      "answers": 989
+    },
+    "chatglm2-6b": {
+      "rate": 0.06560283687943262,
+      "answers": 564
+    },
+    "gemini-pro-dev-api": {
+      "rate": 0.06460296096904442,
+      "answers": 1486
+    },
+    "pplx-70b-online": {
+      "rate": 0.06408450704225352,
+      "answers": 1420
+    },
+    "gpt-4-0314": {
+      "rate": 0.06331877729257641,
+      "answers": 4122
+    },
+    "gpt-3.5-turbo-0613": {
+      "rate": 0.06296766906677961,
+      "answers": 7083
+    },
+    "vicuna-7b": {
+      "rate": 0.06285355122564425,
+      "answers": 1591
+    },
+    "mpt-30b-chat": {
+      "rate": 0.06020066889632107,
+      "answers": 598
+    },
+    "qwen-14b-chat": {
+      "rate": 0.058768656716417914,
+      "answers": 1072
+    },
+    "mistral-7b-instruct": {
+      "rate": 0.05875077303648732,
+      "answers": 1617
+    },
+    "stablelm-tuned-alpha-7b": {
+      "rate": 0.058365758754863814,
+      "answers": 771
+    },
+    "palm-2": {
+      "rate": 0.054628224582701064,
+      "answers": 1977
+    },
+    "gpt-3.5-turbo-0314": {
+      "rate": 0.05222734254992319,
+      "answers": 1302
+    },
+    "mpt-7b-chat": {
+      "rate": 0.04849137931034483,
+      "answers": 928
+    },
+    "gemini-pro": {
+      "rate": 0.04659248956884562,
+      "answers": 1438
+    },
+    "claude-1": {
+      "rate": 0.04524886877828054,
+      "answers": 3978
+    },
+    "RWKV-4-Raven-14B": {
+      "rate": 0.04404145077720207,
+      "answers": 1158
+    },
+    "oasst-pythia-12b": {
+      "rate": 0.04350736278447122,
+      "answers": 1494
+    },
+    "gpt-3.5-turbo-0125": {
+      "rate": 0.03948896631823461,
+      "answers": 861
+    },
+    "fastchat-t5-3b": {
+      "rate": 0.03819784524975514,
+      "answers": 1021
+    },
+    "gpt-3.5-turbo-1106": {
+      "rate": 0.0366945107398568,
+      "answers": 3352
+    },
+    "claude-instant-1": {
+      "rate": 0.03433268858800774,
+      "answers": 4136
+    },
+    "gpt4all-13b-snoozy": {
+      "rate": 0.031862745098039214,
+      "answers": 408
+    },
+    "claude-2.0": {
+      "rate": 0.031351791530944625,
+      "answers": 2456
+    },
+    "claude-2.1": {
+      "rate": 0.030807809421458,
+      "answers": 5583
+    },
+    "dolly-v2-12b": {
+      "rate": 0.0275,
+      "answers": 800
+    },
+    "alpaca-13b": {
+      "rate": 0.01496792587312901,
+      "answers": 1403
+    },
+    "llama-13b": {
+      "rate": 0.012797074954296161,
+      "answers": 547
+    }
+  }
+}

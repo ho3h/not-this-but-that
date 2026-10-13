@@ -1,0 +1,27 @@
+{
+  "judge_any_reframe": {
+    "pairs": 150,
+    "normal": 49,
+    "chat25": 27,
+    "b": 32,
+    "c": 10,
+    "mid_p": 0.0006061066312668117
+  },
+  "blind_quality": {
+    "chat 25": {
+      "n": 40,
+      "fluency": 4.875,
+      "quality": 4.75
+    },
+    "normal": {
+      "n": 40,
+      "fluency": 4.9,
+      "quality": 4.725
+    },
+    "original 25": {
+      "n": 40,
+      "fluency": 4.725,
+      "quality": 4.375
+    }
+  }
+}

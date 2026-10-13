@@ -1,0 +1,42 @@
+{
+  "normal": {
+    "no_accuracy": 0.9333333333333333,
+    "yes_accuracy": 0.9333333333333333,
+    "p_right_no": 0.9330813595545351,
+    "p_right_yes": 0.9358584388959571,
+    "never_answers_with_prohibition": 0.9833333333333333,
+    "never_negations_per_1k_words": 29.234737747205504
+  },
+  "A": {
+    "no_accuracy": 0.9333333333333333,
+    "yes_accuracy": 0.9333333333333333,
+    "p_right_no": 0.9331401343558051,
+    "p_right_yes": 0.9339016049906301,
+    "never_answers_with_prohibition": 1.0,
+    "never_negations_per_1k_words": 11.25090733123639
+  },
+  "B": {
+    "no_accuracy": 0.9333333333333333,
+    "yes_accuracy": 0.9333333333333333,
+    "p_right_no": 0.933138373292968,
+    "p_right_yes": 0.9338949094022003,
+    "never_answers_with_prohibition": 0.9833333333333333,
+    "never_negations_per_1k_words": 12.62929997594419
+  },
+  "C": {
+    "no_accuracy": 0.9333333333333333,
+    "yes_accuracy": 0.9333333333333333,
+    "p_right_no": 0.9324154733559453,
+    "p_right_yes": 0.9358718080368514,
+    "never_answers_with_prohibition": 1.0,
+    "never_negations_per_1k_words": 13.786431249244165
+  },
+  "matched 25": {
+    "no_accuracy": 0.9333333333333333,
+    "yes_accuracy": 0.9333333333333333,
+    "p_right_no": 0.9330702103056562,
+    "p_right_yes": 0.9365151365452523,
+    "never_answers_with_prohibition": 0.9666666666666667,
+    "never_negations_per_1k_words": 27.03030303030303
+  }
+}

@@ -1,0 +1,60 @@
+1	A	Don't prefixes clear; B lists bare imperatives like "Turn off the alarm"
+2	B	A's DO list says investigate; B gives real warnings despite errors
+3	A	B wrongly warns against having someone hold ladder
+4	B	A's "using damp cloths" warning muddled; B accurate
+5	A	A keeps all items as avoid; B mixes dos into list
+6	B	B clearly separates mistakes from how-to-avoid steps
+7	A	Clear never-share list; B has garbled explanations
+8	A	B lists "out of reach of children" under avoid
+9	A	B wrongly says add lime for alkaline, plant shallow
+10	A	B includes nonsense item "Churches"
+11	A	B's sting advice contradictory; A's don'ts clear
+12	A	B bullet "Leave all food unattended" reads as instruction
+13	B	Both clear; B more accurate, includes "anything new"
+14	A	B says use body to block running chain
+15	B	B's no-no section crisp; A mixes dos under avoid headings
+16	B	Both clear; B more concrete and correct warnings
+17	A	B's timing advice odd; A cleaner warnings
+18	B	A's reasons wrong, muddled; B mostly correct
+19	A	B's dismissive item says feelings "matter", an error
+20	B	A wrongly warns against surface for airflow; B clear
+21	B	A's "Swim alone" bullet reads as instruction
+22	T	Both clear, correct lists of beginner mistakes
+23	A	B's items muddled (Wi-Fi password, encryption activities)
+24	T	Both clear and correct avoid lists
+25	B	B clearer structure with why and examples
+26	A	B wrongly says don't move person on side
+27	A	A's pitfalls clearer; B mixes dos into pitfalls
+28	A	B's header "Be Constructive" under avoid confusing
+29	A	Both clear; A more focused on safety warnings
+30	B	Explicit "Don't" phrasing slightly clearer
+31	B	A says never cut away from you, dangerous
+32	A	B mixes "always" dos under avoid header
+33	A	B advises delaying helmet use
+34	A	A includes flammable-materials warning, fewer irrelevant items
+35	T	Both mishandle shoes; otherwise comparable
+36	A	A has explicit DO NOT header; B bare imperatives
+37	B	B's "No ..." phrasing clear; A lists dress-appropriately under avoid
+38	A	B says never hold chainsaw by handle
+39	A	A's pitfalls clearer; B's labels confusing
+40	A	A cleaner; B has muddled grease advice, silly items
+41	B	A's bare imperatives ("Directly connect terminals") read as instructions
+42	A	B's bare imperatives like "Stand on the top rung"
+43	A	Clear Don't items; B mixes dos, confusing crate item
+44	A	B's towel-drying warning confusing
+45	A	B doesn't list don'ts clearly, odd swerve advice
+46	A	B combines contradictory hospital items
+47	B	B's explicit Don't phrasing; A's "Criticism" ambiguous
+48	T	Both clear, correct Don't lists
+49	B	A framed as dos; B clear DON'T list
+50	A	B lists "Store food in bear containers" under NEVER
+51	B	A wrongly says plant tomatoes shallow
+52	A	Both fine; A slightly cleaner, fewer mixed dos
+53	A	B lists recommendations under "never", confusing
+54	B	B's explicit Don't items clearer
+55	B	Both contradict on lids; B's phrasing clearer
+56	B	A wrongly says refrigerate painkillers; B has explicit avoids
+57	B	A lists "Use a VPN" under never; discourages password managers
+58	A	Both fine; A more measured and clear
+59	A	B's "Keep Using It" bullet and power advice confusing
+60	A	B advises moving burning pan; contradictions

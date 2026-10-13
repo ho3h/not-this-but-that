@@ -1,0 +1,325 @@
+{
+ "note": "Matched openers for the self-priming test (scripts/priming.py). construction = '{subject} isn't just {x}; it's {y}.'; plain = '{subject} is {y}.'; both = '{subject} is {x}, and it's {y}.' Prompts come from the held-out turn-up set.",
+ "items": [
+  {
+   "id": 0,
+   "type": "P",
+   "prompt": "Walk through the steps of repairing a bicycle puncture at home.",
+   "subject": "Repairing a bicycle puncture at home",
+   "x": "a chore",
+   "y": "a small lesson in self-reliance"
+  },
+  {
+   "id": 1,
+   "type": "P",
+   "prompt": "Walk through the process of planning a small dinner party.",
+   "subject": "Planning a small dinner party",
+   "x": "a list of tasks",
+   "y": "a way of looking after people"
+  },
+  {
+   "id": 2,
+   "type": "P",
+   "prompt": "Describe what a thoughtful condolence letter contains.",
+   "subject": "A thoughtful condolence letter",
+   "x": "a formality",
+   "y": "a gift of attention at a hard time"
+  },
+  {
+   "id": 3,
+   "type": "P",
+   "prompt": "Walk through the considerations for planning a multi-day hike.",
+   "subject": "Planning a multi-day hike",
+   "x": "a matter of logistics",
+   "y": "the first stage of the journey itself"
+  },
+  {
+   "id": 4,
+   "type": "P",
+   "prompt": "Walk through what to consider before starting a backyard vegetable garden.",
+   "subject": "Starting a backyard vegetable garden",
+   "x": "a weekend project",
+   "y": "a long conversation with your soil and climate"
+  },
+  {
+   "id": 5,
+   "type": "P",
+   "prompt": "Walk through the considerations for adopting a senior dog.",
+   "subject": "Adopting a senior dog",
+   "x": "a kind gesture",
+   "y": "a commitment with its own rhythms and rewards"
+  },
+  {
+   "id": 6,
+   "type": "P",
+   "prompt": "Describe the first hour of a night shift at a small bakery.",
+   "subject": "The first hour of a night shift at a small bakery",
+   "x": "preparation",
+   "y": "a quiet ritual of flour, heat and timing"
+  },
+  {
+   "id": 7,
+   "type": "P",
+   "prompt": "Explain how a community garden assigns and maintains its plots.",
+   "subject": "Running a community garden",
+   "x": "a matter of dividing land",
+   "y": "an exercise in shared responsibility"
+  },
+  {
+   "id": 8,
+   "type": "P",
+   "prompt": "Sketch a portrait of a ferry deckhand on a morning commuter run.",
+   "subject": "For Tom, the morning run",
+   "x": "a job",
+   "y": "a daily crossing he knows by heart"
+  },
+  {
+   "id": 9,
+   "type": "P",
+   "prompt": "Walk through how a public swimming pool opens for the day.",
+   "subject": "Opening a public swimming pool for the day",
+   "x": "unlocking the doors",
+   "y": "a careful sequence of checks"
+  },
+  {
+   "id": 10,
+   "type": "P",
+   "prompt": "Describe the atmosphere of a laundromat on a Sunday evening.",
+   "subject": "A laundromat on a Sunday evening",
+   "x": "a place to wash clothes",
+   "y": "a small, humming waiting room for the week ahead"
+  },
+  {
+   "id": 11,
+   "type": "P",
+   "prompt": "Explain how a small town organises its annual agricultural show.",
+   "subject": "A small town's annual agricultural show",
+   "x": "a fair",
+   "y": "a year-long project for dozens of volunteers"
+  },
+  {
+   "id": 12,
+   "type": "P",
+   "prompt": "Explain how a community choir prepares for a winter concert.",
+   "subject": "Preparing a community choir for a winter concert",
+   "x": "rehearsal",
+   "y": "months of patient, shared work"
+  },
+  {
+   "id": 13,
+   "type": "P",
+   "prompt": "Describe a train station waiting room an hour before the first service.",
+   "subject": "A train station waiting room an hour before the first service",
+   "x": "an empty room",
+   "y": "a space holding its breath"
+  },
+  {
+   "id": 14,
+   "type": "P",
+   "prompt": "Explain how a food bank sorts and distributes donations.",
+   "subject": "Sorting donations at a food bank",
+   "x": "a warehouse job",
+   "y": "a system built to get food to people quickly"
+  },
+  {
+   "id": 15,
+   "type": "P",
+   "prompt": "Walk through the key considerations for adopting a rescue dog.",
+   "subject": "Adopting a rescue dog",
+   "x": "bringing home a pet",
+   "y": "taking on an animal with its own history"
+  },
+  {
+   "id": 16,
+   "type": "P",
+   "prompt": "Discuss what visitors should know before a first trip to Tokyo.",
+   "subject": "A first trip to Tokyo",
+   "x": "a holiday",
+   "y": "an introduction to a city with its own unwritten rules"
+  },
+  {
+   "id": 17,
+   "type": "P",
+   "prompt": "Walk through what a first-time homebuyer should learn early.",
+   "subject": "Buying a first home",
+   "x": "a financial transaction",
+   "y": "a long process with many moving parts"
+  },
+  {
+   "id": 18,
+   "type": "P",
+   "prompt": "Describe what a lighthouse keeper's logbook might record in a week.",
+   "subject": "A lighthouse keeper's logbook",
+   "x": "a list of entries",
+   "y": "a week of weather, ships and small repairs"
+  },
+  {
+   "id": 19,
+   "type": "P",
+   "prompt": "Walk through the considerations for adopting an older cat.",
+   "subject": "Adopting an older cat",
+   "x": "a practical decision",
+   "y": "an invitation to a calm, settled companion"
+  },
+  {
+   "id": 20,
+   "type": "M",
+   "prompt": "Explain why a city might invest in public transit infrastructure.",
+   "subject": "Public transit infrastructure",
+   "x": "a way to move people",
+   "y": "a long-term investment in how a city grows"
+  },
+  {
+   "id": 21,
+   "type": "M",
+   "prompt": "Describe what makes a good neighbourhood library.",
+   "subject": "A good neighbourhood library",
+   "x": "a room full of books",
+   "y": "a shared space that belongs to everyone"
+  },
+  {
+   "id": 22,
+   "type": "M",
+   "prompt": "Discuss the role of mentorship in early-career growth.",
+   "subject": "Mentorship in early-career growth",
+   "x": "advice",
+   "y": "a relationship that shapes how someone learns"
+  },
+  {
+   "id": 23,
+   "type": "M",
+   "prompt": "Outline the appeal of slow cooking for a home chef.",
+   "subject": "Slow cooking",
+   "x": "a convenient method",
+   "y": "a way to build deep flavour with little effort"
+  },
+  {
+   "id": 24,
+   "type": "M",
+   "prompt": "Reflect on what newcomers to running tend to underestimate.",
+   "subject": "Running",
+   "x": "putting one foot in front of the other",
+   "y": "a skill that takes patience to build"
+  },
+  {
+   "id": 25,
+   "type": "M",
+   "prompt": "Explain the appeal of long-form podcasting to listeners.",
+   "subject": "Long-form podcasting",
+   "x": "background noise",
+   "y": "a chance to spend real time with ideas and voices"
+  },
+  {
+   "id": 26,
+   "type": "M",
+   "prompt": "Discuss what makes a documentary memorable years after release.",
+   "subject": "A memorable documentary",
+   "x": "a record of events",
+   "y": "a story that changes how you see something"
+  },
+  {
+   "id": 27,
+   "type": "M",
+   "prompt": "Explain why some readers prefer physical books to e-readers.",
+   "subject": "A physical book",
+   "x": "paper and ink",
+   "y": "an object with weight, smell and history"
+  },
+  {
+   "id": 28,
+   "type": "M",
+   "prompt": "Outline the qualities of a useful introductory cookbook.",
+   "subject": "A useful introductory cookbook",
+   "x": "a collection of recipes",
+   "y": "a patient teacher on the kitchen counter"
+  },
+  {
+   "id": 29,
+   "type": "M",
+   "prompt": "Explain the value of taking a year off after high school.",
+   "subject": "A year off after high school",
+   "x": "a break from study",
+   "y": "a chance to learn what you want from the next step"
+  },
+  {
+   "id": 30,
+   "type": "M",
+   "prompt": "Describe the appeal of board game cafes to non-gamers.",
+   "subject": "A board game cafe",
+   "x": "a place to play games",
+   "y": "a relaxed setting for spending time with friends"
+  },
+  {
+   "id": 31,
+   "type": "M",
+   "prompt": "Explain how a city's coffee culture shapes its character.",
+   "subject": "A city's coffee culture",
+   "x": "a habit",
+   "y": "a reflection of how people there like to live"
+  },
+  {
+   "id": 32,
+   "type": "M",
+   "prompt": "Reflect on the influence of soundtracks on film storytelling.",
+   "subject": "A film soundtrack",
+   "x": "background music",
+   "y": "a second voice telling the story"
+  },
+  {
+   "id": 33,
+   "type": "M",
+   "prompt": "Describe what makes a museum exhibit feel alive.",
+   "subject": "A museum exhibit that feels alive",
+   "x": "a display of objects",
+   "y": "an experience that invites you in"
+  },
+  {
+   "id": 34,
+   "type": "M",
+   "prompt": "Outline the case for letting children walk to school.",
+   "subject": "Walking to school",
+   "x": "a way to get there",
+   "y": "a daily lesson in independence"
+  },
+  {
+   "id": 35,
+   "type": "M",
+   "prompt": "Discuss why some readers fall in love with biographies.",
+   "subject": "A good biography",
+   "x": "a record of a life",
+   "y": "a chance to live inside someone else's choices"
+  },
+  {
+   "id": 36,
+   "type": "M",
+   "prompt": "Explain why poetry remains popular despite predictions of decline.",
+   "subject": "Poetry",
+   "x": "an old art form",
+   "y": "a living way to say what plain prose cannot"
+  },
+  {
+   "id": 37,
+   "type": "M",
+   "prompt": "Reflect on what makes a long road trip memorable.",
+   "subject": "A memorable road trip",
+   "x": "a drive",
+   "y": "a string of small surprises shared with others"
+  },
+  {
+   "id": 38,
+   "type": "M",
+   "prompt": "Describe how a coffee shop can become a neighbourhood institution.",
+   "subject": "A neighbourhood coffee shop",
+   "x": "a place to buy coffee",
+   "y": "a meeting point for the people who live nearby"
+  },
+  {
+   "id": 39,
+   "type": "M",
+   "prompt": "Discuss the satisfactions of learning to bake bread from scratch.",
+   "subject": "Baking bread from scratch",
+   "x": "a recipe",
+   "y": "a slow, hands-on practice that rewards patience"
+  }
+ ]
+}

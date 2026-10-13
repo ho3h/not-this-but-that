@@ -1,0 +1,338 @@
+"""Pre-registered confirmation v5: the specific switch, in Gemma 2 2B-it and Gemma 3 4B-it.
+
+One runner for both models. Reads every parameter from the prereg JSON given with
+--prereg and refuses to run or analyse if any frozen file's SHA-256 differs. Three
+conditions per prompt, decoded together with common random numbers: normal, the
+specific set switched off, and a frozen firing-rate-matched set switched off.
+Prompts: the 140 fresh D7 prompts (six everyday genres plus explicit requests).
+Extra checks after the negation finding (reports/negation_check.md): "no"-question
+accuracy (cost gate), H4 warning clarity on the 30 fresh D6 "never" prompts (blind
+pairwise), H5 ordinary negation rate outside the construction.
+
+  .venv/bin/python scripts/confirmation_v5_run.py --prereg reports/confirmation_v5_gemma2_prereg.json
+  .venv/bin/python scripts/confirmation_v5_run.py --prereg ... --pairs
+  .venv/bin/python scripts/confirmation_v5_run.py --prereg ... --analyze
+"""
+
+from __future__ import annotations
+
+import argparse
+import hashlib
+import json
+import random
+import re
+import sys
+import time
+from math import comb
+
+import numpy as np
+import mlx.core as mx
+
+sys.path.insert(0, str(__import__("pathlib").Path(__file__).resolve().parent))
+import cost_evals as CE  # noqa: E402
+import g3_mlx as G  # noqa: E402
+import v2_engine as E  # noqa: E402
+import v2_mlx as M  # noqa: E402
+import v2_mlx_multi as MM  # noqa: E402
+
+sys.path.insert(0, str(E.REPO / "src"))
+from classifier.detect_v3 import detect_v3  # noqa: E402
+
+REPO = E.REPO
+
+
+def set_paths(tag: str) -> None:
+    """All outputs carry the prereg's tag, e.g. confirmation_v5_gemma2."""
+    global GENS, COST, PAIRS, PAIRS_KEY, PAIRS_LABELS, NEVER_GENS, NEVER_PAIRS, NEVER_KEY, NEVER_LABELS, OUT_JSON, OUT_MD
+    GENS = REPO / "reports" / f"{tag}_generations.jsonl"
+    COST = REPO / "reports" / f"{tag}_cost.json"
+    PAIRS = REPO / "data" / f"{tag}_pairs.txt"
+    PAIRS_KEY = REPO / "data" / f"{tag}_pairs_key.json"
+    PAIRS_LABELS = REPO / "data" / f"{tag}_pairs_labels.tsv"
+    NEVER_GENS = REPO / "reports" / f"{tag}_never_generations.jsonl"
+    NEVER_PAIRS = REPO / "data" / f"{tag}_never_pairs.txt"
+    NEVER_KEY = REPO / "data" / f"{tag}_never_pairs_key.json"
+    NEVER_LABELS = REPO / "data" / f"{tag}_never_pairs_labels.tsv"
+    OUT_JSON = REPO / "reports" / f"{tag}_run.json"
+    OUT_MD = REPO / "reports" / f"{tag}_run.md"
+A_AN = re.compile(r"\ba (?:[aeio]\w+|un(?!i|e)\w*)", re.I)
+CONDS = ("normal", "25 off", "matched 25")
+
+
+def check_frozen(prereg: dict) -> None:
+    bad = [rel for rel, want in prereg["frozen_sha256"].items()
+           if hashlib.sha256((REPO / rel).read_bytes()).hexdigest() != want]
+    if bad:
+        sys.exit("frozen files changed since registration: " + ", ".join(bad))
+
+
+def doses(prereg: dict) -> list[dict]:
+    L = prereg["layer"]
+    return [{}, {L: set(prereg["features"])}, {L: set(prereg["matched_control"])}]
+
+
+def generate(prereg: dict) -> None:
+    union = {prereg["layer"]: sorted(set(prereg["features"]) | set(prereg["matched_control"]))}
+    loader = G.load_multi if "gemma-3" in prereg["model"] else MM.load_multi
+    model, tok, wraps = loader(prereg["model"], union)
+    n = prereg["samples_per_prompt"]
+    D = doses(prereg)
+    prompts = json.loads((REPO / prereg["prompts_file"]).read_text())["prompts"]
+    done = set()
+    if GENS.exists():
+        done = {json.loads(l)["id"] for l in GENS.read_text().splitlines() if l.strip()}
+    MM.set_row_masks(wraps, D, n)
+    t0 = time.time()
+    for i, p in enumerate(prompts):
+        if p["id"] in done:
+            continue
+        U = np.random.default_rng(prereg["seed_base"] + p["id"]).random((n, prereg["max_new_tokens"])).astype(np.float32)
+        outs = MM.sample_rows(model, tok, M.chat_tokens(tok, p["prompt"]), mx.array(np.tile(U, (len(D), 1))),
+                              max_new_tokens=prereg["max_new_tokens"], temperature=prereg["temperature"], top_p=prereg["top_p"])
+        with GENS.open("a") as f:
+            for c, name in enumerate(CONDS):
+                for k in range(n):
+                    f.write(json.dumps({"id": p["id"], "genre": p["genre"], "prompt": p["prompt"], "condition": name,
+                                        "sample": k, "text": outs[c * n + k]}) + "\n")
+        print(f"prompt {i + 1}/{len(prompts)} · {(time.time() - t0) / 60:.1f} min", flush=True)
+    arc = CE.arc_accuracy(model, tok, wraps, D)
+    ppl = CE.wikitext_perplexity(model, tok, wraps, D)
+    no_acc = yes_no(model, tok, wraps, D)
+    COST.write_text(json.dumps({name: {"arc_easy": arc[c], "wikitext_ppl": ppl[c], "wikitext_ratio": ppl[c] / ppl[0],
+                                       "no_questions_right": no_acc[c]}
+                                for c, name in enumerate(CONDS)}, indent=2))
+    never = json.loads((REPO / prereg["never_prompts_file"]).read_text())["prompts"]
+    nn = prereg["never_samples"]
+    MM.set_row_masks(wraps, D, nn)
+    with NEVER_GENS.open("w") as f:
+        for i, q in enumerate(never):
+            U = np.random.default_rng(prereg["seed_base"] + 1000 + i).random((nn, prereg["max_new_tokens"])).astype(np.float32)
+            outs = MM.sample_rows(model, tok, M.chat_tokens(tok, q), mx.array(np.tile(U, (len(D), 1))),
+                                  max_new_tokens=prereg["max_new_tokens"], temperature=prereg["temperature"], top_p=prereg["top_p"])
+            for c, name in enumerate(CONDS):
+                for k in range(nn):
+                    f.write(json.dumps({"id": i, "prompt": q, "condition": name, "sample": k, "text": outs[c * nn + k]}) + "\n")
+    print("done. Next: --pairs, then blind preference labels, then --analyze.")
+
+
+def yes_no(model, tok, wraps, D) -> list[int]:
+    """How many of the 30 'no' questions in data/negation_check_questions.json each condition gets right."""
+    qs = [x for x in json.loads((REPO / "data/negation_check_questions.json").read_text())["yes_no"] if x["a"] == "no"]
+    yes_ids = sorted({tok.encode(w, add_special_tokens=False)[0] for w in ("Yes", "yes", " Yes")})
+    no_ids = sorted({tok.encode(w, add_special_tokens=False)[0] for w in ("No", "no", " No")})
+    MM.set_row_masks(wraps, D, 1)
+    right = [0] * len(D)
+    for x in qs:
+        pr = mx.softmax(model(mx.array([M.chat_tokens(tok, x["q"] + " Answer with yes or no.")] * len(D)))[:, -1, :].astype(mx.float32), axis=-1)
+        py, pn = np.array(mx.sum(pr[:, yes_ids], axis=-1)), np.array(mx.sum(pr[:, no_ids], axis=-1))
+        for c in range(len(D)):
+            right[c] += int(pn[c] > py[c])
+    return right
+
+
+def load_pairs():
+    rows = [json.loads(l) for l in GENS.read_text().splitlines() if l.strip()]
+    pairs = {}
+    for r in rows:
+        pairs.setdefault((r["id"], r["sample"]), {"genre": r["genre"], "prompt": r["prompt"]})[r["condition"]] = r["text"]
+    return pairs
+
+
+def write_pairs(prereg: dict) -> None:
+    pairs = load_pairs()
+    keys = sorted(k for k, v in pairs.items() if v["genre"] != "explicit")
+    rng = random.Random(prereg["preference"]["seed"])
+    pick = rng.sample(keys, prereg["preference"]["n_pairs"])
+    lines, key = [], []
+    for i, k in enumerate(pick, 1):
+        flip = rng.random() < 0.5
+        a, b = ("25 off", "normal") if flip else ("normal", "25 off")
+        key.append({"item": i, "id": k[0], "sample": k[1], "A": a, "B": b})
+        lines.append(f"### PAIR {i}\nQUESTION: {pairs[k]['prompt']}\nANSWER A: {pairs[k][a].replace(chr(10), ' ⏎ ')}\n"
+                     f"ANSWER B: {pairs[k][b].replace(chr(10), ' ⏎ ')}\n")
+    PAIRS.write_text("\n".join(lines))
+    PAIRS_KEY.write_text(json.dumps(key, indent=1))
+    print(f"wrote {len(pick)} pairs to {PAIRS.name}")
+    rows = [json.loads(l) for l in NEVER_GENS.read_text().splitlines() if l.strip()]
+    nv = {}
+    for r in rows:
+        nv.setdefault((r["id"], r["sample"]), {"prompt": r["prompt"]})[r["condition"]] = r["text"]
+    nkeys = sorted(nv)
+    rng.shuffle(nkeys)
+    lines, key = [], []
+    for i, k in enumerate(nkeys, 1):
+        flip = rng.random() < 0.5
+        a, b = ("25 off", "normal") if flip else ("normal", "25 off")
+        key.append({"item": i, "id": k[0], "sample": k[1], "A": a, "B": b})
+        lines.append(f"### PAIR {i}\nQUESTION: {nv[k]['prompt']}\nANSWER A: {nv[k][a].replace(chr(10), ' ⏎ ')}\n"
+                     f"ANSWER B: {nv[k][b].replace(chr(10), ' ⏎ ')}\n")
+    NEVER_PAIRS.write_text("\n".join(lines))
+    NEVER_KEY.write_text(json.dumps(key, indent=1))
+    print(f"wrote {len(nkeys)} warning-clarity pairs to {NEVER_PAIRS.name}")
+
+
+def midp(b: int, c: int) -> float:
+    n = b + c
+    if n == 0:
+        return 1.0
+    k = min(b, c)
+    pmf = lambda i: comb(n, i) / 2 ** n  # noqa: E731
+    return float(min(1.0, 2.0 * (sum(pmf(i) for i in range(k)) + 0.5 * pmf(k))))
+
+
+def analyze(prereg: dict) -> None:
+    pairs = load_pairs()
+    cost = json.loads(COST.read_text())
+    g = prereg["gates"]
+    cache = {}
+
+    def hit(t, tier="habit"):
+        x = cache.get(t) or cache.setdefault(t, detect_v3(t))
+        return bool(x["family"] or x["cousin"]) if tier == "habit" else bool(x[tier])
+
+    def compare(keys, arm, tier="habit"):
+        b = sum(1 for k in keys if hit(pairs[k]["normal"], tier) and not hit(pairs[k][arm], tier))
+        c = sum(1 for k in keys if not hit(pairs[k]["normal"], tier) and hit(pairs[k][arm], tier))
+        base = sum(hit(pairs[k]["normal"], tier) for k in keys)
+        arm_n = sum(hit(pairs[k][arm], tier) for k in keys)
+        return {"n": len(keys), "normal": base, "arm": arm_n, "rel_drop": (1 - arm_n / base) if base else None,
+                "b": b, "c": c, "mid_p": midp(b, c)}
+
+    def boot(keys, arm, n_boot=10_000):
+        by = {}
+        for k in keys:
+            by.setdefault(k[0], []).append((hit(pairs[k]["normal"]), hit(pairs[k][arm])))
+        ids = list(by)
+        rng = random.Random(0)
+        vals = []
+        for _ in range(n_boot):
+            s = [rng.choice(ids) for _ in ids]
+            base = sum(x for i in s for x, _ in by[i])
+            if base:
+                vals.append(1 - sum(y for i in s for _, y in by[i]) / base)
+        vals.sort()
+        return vals[int(0.025 * len(vals))], vals[int(0.975 * len(vals))]
+
+    main_keys = sorted(k for k, v in pairs.items() if v["genre"] != "explicit")
+    explicit_keys = sorted(k for k, v in pairs.items() if v["genre"] == "explicit")
+    h1 = compare(main_keys, "25 off"); h1["ci95"] = boot(main_keys, "25 off")
+    ctrl = compare(main_keys, "matched 25")
+    rd = h1["rel_drop"] or 0.0
+    h1_v = "PASS" if (rd >= g["pass_rel_drop"] and h1["mid_p"] < g["alpha"]) else ("KILL" if (rd < g["kill_rel_drop"] or h1["mid_p"] >= g["alpha"]) else "PARTIAL")
+    h2_v = "PASS" if ((rd - (ctrl["rel_drop"] or 0.0)) >= g["min_gap_over_control"]) else "FAIL"
+
+    labels = {}
+    key = {k["item"]: k for k in json.loads(PAIRS_KEY.read_text())}
+    for line in PAIRS_LABELS.read_text().splitlines():
+        p = line.split("\t")
+        if len(p) >= 2 and p[0].strip().isdigit():
+            labels[int(p[0])] = p[1].strip().upper()[:1]
+    wins = ties = losses = 0
+    for item, lab in labels.items():
+        winner = {"A": key[item]["A"], "B": key[item]["B"]}.get(lab)
+        if lab == "T":
+            ties += 1
+        elif winner == "25 off":
+            wins += 1
+        elif winner == "normal":
+            losses += 1
+    pref_share = (wins + 0.5 * ties) / max(1, wins + ties + losses)
+    a_an = {c: sum(bool(A_AN.search(pairs[k][c])) for k in main_keys) / len(main_keys) for c in CONDS}
+    checks = {
+        "arc": (cost["normal"]["arc_easy"] - cost["25 off"]["arc_easy"]) <= g["max_arc_drop"] + 1e-9,
+        "wikitext": cost["25 off"]["wikitext_ratio"] <= g["max_wikitext_ratio"],
+        "a_an": a_an["25 off"] <= g["max_a_an_rate"],
+        "preference": pref_share >= g["min_preference_share"],
+        "say_no": (cost["normal"]["no_questions_right"] - cost["25 off"]["no_questions_right"]) <= g["max_no_questions_lost"],
+    }
+    h3_v = "PASS" if all(checks.values()) else "FAIL"
+
+    nkey = {k["item"]: k for k in json.loads(NEVER_KEY.read_text())}
+    nw = nt = nl = 0
+    for line in NEVER_LABELS.read_text().splitlines():
+        q = line.split("\t")
+        if len(q) >= 2 and q[0].strip().isdigit():
+            lab = q[1].strip().upper()[:1]
+            winner = {"A": nkey[int(q[0])]["A"], "B": nkey[int(q[0])]["B"]}.get(lab)
+            if lab == "T":
+                nt += 1
+            elif winner == "25 off":
+                nw += 1
+            elif winner == "normal":
+                nl += 1
+    never_share = (nw + 0.5 * nt) / max(1, nw + nt + nl)
+    h4_v = "PASS" if never_share >= g["min_warning_clarity_share"] else "FAIL"
+    neg = re.compile(r"\bnot\b|n't\b|n’t\b|\bno\b|\bnever\b", re.I)
+    neg_rate = {c: 1000 * sum(len(neg.findall(pairs[k][c])) for k in main_keys) / sum(len(pairs[k][c].split()) for k in main_keys) for c in CONDS}
+
+    def ordinary_neg(t):
+        d = cache.get(t) or cache.setdefault(t, detect_v3(t))
+        spans = [h.span for tier in ("family", "cousin", "reversed", "beyond") for h in d[tier]]
+        return sum(1 for m in neg.finditer(t) if not any(s - 2 <= m.start() <= e + 2 for s, e in spans))
+    ord_rate = {c: 1000 * sum(ordinary_neg(pairs[k][c]) for k in main_keys) / sum(len(pairs[k][c].split()) for k in main_keys) for c in CONDS}
+    ord_ratio = ord_rate["25 off"] / ord_rate["normal"] if ord_rate["normal"] else 0.0
+    h5_v = "PASS" if ord_ratio >= g["min_ordinary_negation_ratio"] else "FAIL"
+    genres = sorted({v["genre"] for v in pairs.values() if v["genre"] != "explicit"})
+    per_genre = {gn: compare([k for k in main_keys if pairs[k]["genre"] == gn], "25 off") for gn in genres}
+    explicit = {c: sum(hit(pairs[k][c]) for k in explicit_keys) / max(1, len(explicit_keys)) for c in CONDS}
+    tiers = {t: {"25 off": compare(main_keys, "25 off", t), "matched 25": compare(main_keys, "matched 25", t)}
+             for t in ("family", "cousin", "beyond", "reversed")}
+    but = {c: sum(bool(re.search(r"\bbut\b", pairs[k][c], re.I)) for k in main_keys) / len(main_keys) for c in CONDS}
+    words = {c: float(np.mean([len(pairs[k][c].split()) for k in main_keys])) for c in CONDS}
+    res = {"H1": h1, "H1_verdict": h1_v, "control": ctrl, "H2_verdict": h2_v, "cost": cost, "a_an": a_an,
+           "preference": {"chat25_wins": wins, "ties": ties, "normal_wins": losses, "share": pref_share},
+           "cost_checks": checks, "H3_verdict": h3_v, "per_genre": per_genre, "explicit_rate": explicit,
+           "tiers": tiers, "but_share": but, "words": words,
+           "warning_clarity": {"25off_wins": nw, "ties": nt, "normal_wins": nl, "share": never_share}, "H4_verdict": h4_v,
+           "negations_per_1k_words": neg_rate, "ordinary_negations_per_1k_words": ord_rate,
+           "ordinary_negation_ratio": ord_ratio, "H5_verdict": h5_v}
+    OUT_JSON.write_text(json.dumps(res, indent=2))
+    f = lambda t: f"{t['normal']} → {t['arm']}" + (f" ({100 * t['rel_drop']:+.0f}% drop)" if t['rel_drop'] is not None else "") + f", mid-p {t['mid_p']:.2g}"  # noqa: E731
+    md = [f"# Pre-registered confirmation v5 ({prereg['tag']}): verdict", "",
+          f"Analysed once. {len(main_keys)} triples on 120 everyday prompts (six genres), {len(explicit_keys)} on 20 explicit-request prompts.", "",
+          f"## H1 (primary): habit with the 25 off: **{h1_v}**", "",
+          f"{f(h1)}; 95% prompt-clustered CI {100 * h1['ci95'][0]:.0f}% to {100 * h1['ci95'][1]:.0f}%.", "",
+          f"## H2 (specificity): matched control: **{h2_v}**", "",
+          f"Matched 25 off: {f(ctrl)}. Gate: the 25's drop exceeds control drop by ≥ {100 * g['min_gap_over_control']:.0f} points.", "",
+          f"## H3 (cost): **{h3_v}**", "",
+          f"- ARC-Easy (300): normal {100 * cost['normal']['arc_easy']:.1f}% · 25 off {100 * cost['25 off']['arc_easy']:.1f}% · matched {100 * cost['matched 25']['arc_easy']:.1f}% (gate: drop ≤ {100 * g['max_arc_drop']:.0f} points) {'✓' if checks['arc'] else '✗'}",
+          f"- WikiText-2 perplexity ratio: 25 off {cost['25 off']['wikitext_ratio']:.3f}× · matched {cost['matched 25']['wikitext_ratio']:.3f}× (gate ≤ {g['max_wikitext_ratio']}) {'✓' if checks['wikitext'] else '✗'}",
+          f"- \"a\" before a vowel: normal {100 * a_an['normal']:.1f}% · 25 off {100 * a_an['25 off']:.1f}% (gate ≤ {100 * g['max_a_an_rate']:.0f}%) {'✓' if checks['a_an'] else '✗'}",
+          f"- Blind preference, 25 off vs normal ({wins + ties + losses} pairs): 25 off wins {wins}, ties {ties}, normal wins {losses}; share {100 * pref_share:.0f}% (gate ≥ {100 * g['min_preference_share']:.0f}%) {'✓' if checks['preference'] else '✗'}",
+          f"- 'No' questions right (of 30): normal {cost['normal']['no_questions_right']} · 25 off {cost['25 off']['no_questions_right']} · matched {cost['matched 25']['no_questions_right']} (gate: lose ≤ {g['max_no_questions_lost']}) {'✓' if checks['say_no'] else '✗'}",
+          "", f"## H4 (warnings stay clear): **{h4_v}**", "",
+          f"Blind pairwise on {nw + nt + nl} answers to 30 fresh \"what should you never do\" prompts: 25 off wins {nw}, ties {nt}, normal wins {nl}; share {100 * never_share:.0f}% (gate ≥ {100 * g['min_warning_clarity_share']:.0f}%).", "",
+          f"## H5 (ordinary negation kept): **{h5_v}**", "",
+          f"Negation words outside any construction, per 1,000 words (everyday prompts): normal {ord_rate['normal']:.2f}, 25 off {ord_rate['25 off']:.2f}, matched {ord_rate['matched 25']:.2f}; ratio {ord_ratio:.2f} (gate ≥ {g['min_ordinary_negation_ratio']}). All negation words: normal {neg_rate['normal']:.1f}, 25 off {neg_rate['25 off']:.1f}, matched {neg_rate['matched 25']:.1f}.",
+          "", "## Secondary, non-gating", "", "| genre | habit with 25 off |", "|---|---|"]
+    for gn, t in per_genre.items():
+        md.append(f"| {gn} | {f(t)} |")
+    md += ["", "| tier | 25 off | matched 25 |", "|---|---|---|"]
+    for t, d in tiers.items():
+        md.append(f"| {t} | {f(d['25 off'])} | {f(d['matched 25'])} |")
+    md += ["", f"Explicit requests (\"use the pattern 'It's not X, it's Y'\"): answers using it — normal {100 * explicit['normal']:.0f}%, 25 off {100 * explicit['25 off']:.0f}%, matched {100 * explicit['matched 25']:.0f}%.",
+           f"Answers containing \"but\": normal {100 * but['normal']:.1f}%, 25 off {100 * but['25 off']:.1f}%, matched {100 * but['matched 25']:.1f}%.",
+           f"Mean words: normal {words['normal']:.0f}, 25 off {words['25 off']:.0f}, matched {words['matched 25']:.0f}."]
+    OUT_MD.write_text("\n".join(md) + "\n")
+    print("\n".join(md))
+
+
+def main() -> None:
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--analyze", action="store_true")
+    ap.add_argument("--pairs", action="store_true")
+    ap.add_argument("--prereg", required=True)
+    args = ap.parse_args()
+    prereg = json.loads((REPO / args.prereg).read_text())
+    set_paths(prereg["tag"])
+    check_frozen(prereg)
+    if args.analyze:
+        analyze(prereg)
+    elif args.pairs:
+        write_pairs(prereg)
+    else:
+        generate(prereg)
+
+
+if __name__ == "__main__":
+    main()

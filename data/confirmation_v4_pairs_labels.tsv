@@ -1,0 +1,121 @@
+# item	label	reason  (blind annotator: two instances of the same model, items 1-60 and 61-120, frozen instruction)
+1	B	more coherent points; A includes off-topic generational item
+2	A	more finished listing copy, fewer bare placeholders
+3	A	consistent tense; B has errors and repetition
+4	B	smoother prose; A repeats "air" clumsily
+5	B	clearer categories; A's practical reasons muddled
+6	A	polished email with prompt for specific detail
+7	A	coherent and witty; B has contradictions, "twilight years" at 42
+8	B	more varied, usable reframes
+9	B	more coherent seasonal logic, tighter prose
+10	A	cleaner grammar; B has "but not... but" error
+11	B	stronger essay framing; A repeats orchestra metaphor, fragment
+12	B	more specific encouragement and practical tips
+13	B	references the engagement, more relevant extra tips
+14	A	more practical prep detail: paint type, cleaning, repairs
+15	A	addresses planning the day itself, realistic expectations
+16	A	less egregious errors; B's "sex hormones" claim is wrong
+17	A	solid note plus useful personalisation tips
+18	B	A wrongly suggests adjusting cinema lights and temperature
+19	B	more actionable: diagnose cause, schedule, catch up
+20	A	covers time commitment and nocturnal habits relevant to child
+21	B	tighter, more concise reflection
+22	T	nearly identical one-liners
+23	B	richer, more developed message options
+24	B	genuinely kinder framing; A is diagnostic
+25	A	better sign options; B's "is at home" is odd
+26	A	cleaner copy; B's "view of the world below" overblown
+27	A	fuller blurb; B's "Blackheart's Booty" phrasing confused
+28	A	ready-to-use copy without placeholders
+29	A	grounded and honest; B has tense slips
+30	B	more garden-centre-specific research and questions
+31	A	polished; B has dangling headline, stir-fry oddity
+32	A	includes fermenter and strainer; fewer odd items
+33	B	stronger essay hook with expectation versus reality
+34	A	energetic, includes location/time placeholder
+35	B	tighter; A has logical slips and repetition
+36	A	more genuinely encouraging, as requested
+37	A	more insightful points on authenticity and community
+38	A	specific to street dance, mentions Saturday
+39	B	covers swap rules and invitation guidelines
+40	A	solid description; B has nonsensical roof-in-breeze line
+41	A	clear ad; B's headline addresses the seller
+42	A	addresses comparing with others, still brief
+43	B	consistent reframes; A's jokes are bizarre
+44	A	specific quantities and correct yeast types
+45	B	clearer and kinder; A's reasoning is muddled
+46	B	consistent tense, vivid and coherent
+47	B	fewer harmful errors; A says smoke clears congestion
+48	B	more varied cheer; A has nonsensical lines
+49	B	more vivid structure; A has seasonal colour errors
+50	A	richer, more evocative with emotional range
+51	A	stays focused on the kinder perspective
+52	B	smooth and grammatical; A has broken sentence
+53	B	cleaner options and sensible tips
+54	A	coherent tense and clear narrative
+55	A	warmer with slightly more concrete advice
+56	B	vivid, specific, fits "second home" framing
+57	B	cleaner prose with apt examples
+58	B	coherent and evocative; A's imagery is muddled
+59	A	clean; B has awkward "big shoutout" sentence
+60	T	equally thorough and well organised
+61	B	more concrete safety specifics: anchoring, low-VOC paint, cordless blinds
+62	B	richer, more developed reflection with vivid detail
+63	A	tighter imagery; B's chaos-spilling image is muddled
+64	A	more concise and cheerful; B's sections are muddled
+65	B	punchier, fits short pep talk; A dwells on "loser"
+66	B	covers more distinct dimensions, including self-reflection and loss
+67	B	warmer and slightly more complete encouragement
+68	T	identical answers
+69	A	more varied insight; B's points overlap heavily
+70	B	more genuinely encouraging tone, still practical
+71	A	true short pep talk, warm and focused
+72	A	concrete vivid details, fits brief length better
+73	A	well organised with practical next steps like feedback
+74	B	matches street dance, useful placeholders; A invents "free"
+75	A	consistent tense and clearer; B has tense errors
+76	A	more reflective, childhood bond and adult perspective
+77	A	tighter and more polished prose
+78	B	addresses the toe-treading, practical tips like practising
+79	B	cleaner, matches "next month", notes time unchanged
+80	B	more polished copy; A's "lightweight" claim dubious
+81	B	fuller, more readable announcement versus bracketed template
+82	B	starts with communication; A's rotation options are confused
+83	A	includes health items and nods to December cold
+84	B	cleaner structure, less repetition, tailored to takeaway
+85	B	more encouraging, closes with strong affirmation
+86	A	concise, clear thesis; B has "chaotic chaos"
+87	A	lively, family-friendly feature list; B over-bolded
+88	B	delivers one short card as requested
+89	B	cleaner messages; A says "sorry to hear", uses French
+90	B	concise, concrete inclusions; A's "optional alcohol" odd
+91	B	warmer, more personal card with correct name placeholders
+92	B	sticks to drinks; A invents a BBQ
+93	A	ready-to-use notes; B's tips are odd
+94	A	fuller blurb with occasions list; B adds hashtags
+95	A	validates feelings first; B says "spellchecker"
+96	B	more useful details: activities, what to bring
+97	B	clear and relevant; A's eye-contact point is odd
+98	B	adds useful no-food-waste guidance
+99	B	clean card and sensible tips; A's example nonsensical
+100	B	more specific and vivid, mentions safety and what to bring
+101	B	practical restart steps; A misreads situation
+102	A	clear sequenced first steps; B includes odd point
+103	B	coherent and well structured; A has garbled line
+104	B	better organised, adds physical spaces insight
+105	A	no dubious claims; B's vitamin D point weak
+106	B	grammatical with concrete examples; A has errors
+107	B	clearer seasonal structure and more personal reflection
+108	A	energetic, genuine pep talk tone
+109	A	consistent tense and more coherent
+110	B	more polished, contact info; A lists paper towels
+111	B	more welcoming, includes recipes and no-experience note
+112	A	concise and coherent; B says age restrictions apply
+113	A	more useful fixes like resting before cutting
+114	A	better note, includes commitment to be careful
+115	A	concrete cartoon references, engaging for magazine
+116	T	identical answers
+117	B	more vivid, concrete details of family life
+118	B	gives quantities and fuller equipment list
+119	A	more polished options; B has nonsensical joke
+120	B	coherent reframes; A says "win for the team"

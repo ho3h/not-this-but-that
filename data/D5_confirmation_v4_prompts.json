@@ -1,0 +1,705 @@
+{
+ "description": "Fresh prompts for pre-registered confirmation v4 (2026-10-03), written by an annotator who saw no results: six everyday genres x 20 (advice, meaning, message, copy, encouragement, essay) plus 20 explicit requests for the pattern. Topics avoid every earlier prompt set.",
+ "prompts": [
+  {
+   "id": 1,
+   "genre": "advice",
+   "prompt": "I'm repainting my front door this weekend. What should I think about before I start?"
+  },
+  {
+   "id": 2,
+   "genre": "advice",
+   "prompt": "My flatmate and I want to set up a fair cleaning rota. How should we organise it?"
+  },
+  {
+   "id": 3,
+   "genre": "advice",
+   "prompt": "My eight-year-old has asked for a hamster. What should we consider before getting one?"
+  },
+  {
+   "id": 4,
+   "genre": "advice",
+   "prompt": "I'm planning a surprise fortieth birthday for my wife. What should I organise first?"
+  },
+  {
+   "id": 5,
+   "genre": "advice",
+   "prompt": "We've moved into a flat with a tiny balcony. How can we make it a nice place to sit in summer?"
+  },
+  {
+   "id": 6,
+   "genre": "advice",
+   "prompt": "I'm hosting a clothes swap for a group of friends next month. How should I set it up?"
+  },
+  {
+   "id": 7,
+   "genre": "advice",
+   "prompt": "We're flying long-haul with our ten-month-old in December. What should we prepare?"
+  },
+  {
+   "id": 8,
+   "genre": "advice",
+   "prompt": "I want to start making sushi at home. What equipment and ingredients should I get first?"
+  },
+  {
+   "id": 9,
+   "genre": "advice",
+   "prompt": "What should I check before buying a secondhand sofa?"
+  },
+  {
+   "id": 10,
+   "genre": "advice",
+   "prompt": "ok so I've joined a rowing club and my first session on the water is Saturday. Any tips for getting ready?"
+  },
+  {
+   "id": 11,
+   "genre": "advice",
+   "prompt": "We're decorating a nursery for our first baby. What should we keep in mind?"
+  },
+  {
+   "id": 12,
+   "genre": "advice",
+   "prompt": "My top-floor flat gets very hot in summer. How can I keep it comfortable during a heatwave?"
+  },
+  {
+   "id": 13,
+   "genre": "advice",
+   "prompt": "My in-laws are staying with us for a week in a small flat. How can we make the visit go smoothly?"
+  },
+  {
+   "id": 14,
+   "genre": "advice",
+   "prompt": "My sister and I are spending a long weekend in Edinburgh in March. What should we plan for?"
+  },
+  {
+   "id": 15,
+   "genre": "advice",
+   "prompt": "I bought my first sewing machine last week. What should my first few projects be?"
+  },
+  {
+   "id": 16,
+   "genre": "advice",
+   "prompt": "I have an interview for a weekend job at a garden centre on Friday. How should I prepare?"
+  },
+  {
+   "id": 17,
+   "genre": "advice",
+   "prompt": "We're taking our two kids to a big theme park for the first time. How should we plan the day?"
+  },
+  {
+   "id": 18,
+   "genre": "advice",
+   "prompt": "I'd like to get into cryptic crosswords. Where should a beginner start?"
+  },
+  {
+   "id": 19,
+   "genre": "advice",
+   "prompt": "I want to brew my own ginger beer at home. What do I need to get started?"
+  },
+  {
+   "id": 20,
+   "genre": "advice",
+   "prompt": "What should a family consider before hosting a foreign exchange student for a school term?"
+  },
+  {
+   "id": 21,
+   "genre": "meaning",
+   "prompt": "What makes going to the cinema on your own so enjoyable for some people?"
+  },
+  {
+   "id": 22,
+   "genre": "meaning",
+   "prompt": "Why do families hang on to the same box of tree decorations year after year?"
+  },
+  {
+   "id": 23,
+   "genre": "meaning",
+   "prompt": "I've always wondered why people love the smell of freshly cut grass. What's behind it?"
+  },
+  {
+   "id": 24,
+   "genre": "meaning",
+   "prompt": "What makes an open fire so comforting on a winter evening?"
+  },
+  {
+   "id": 25,
+   "genre": "meaning",
+   "prompt": "Why do families love retelling the same old stories whenever they get together?"
+  },
+  {
+   "id": 26,
+   "genre": "meaning",
+   "prompt": "Why do kids love building dens out of sofa cushions?"
+  },
+  {
+   "id": 27,
+   "genre": "meaning",
+   "prompt": "Why do people treasure old family photo albums?"
+  },
+  {
+   "id": 28,
+   "genre": "meaning",
+   "prompt": "Why do people get so excited about the first strawberries of the season?"
+  },
+  {
+   "id": 29,
+   "genre": "meaning",
+   "prompt": "Why do fans stay loyal to a lower-league football club through decades of mid-table finishes?"
+  },
+  {
+   "id": 30,
+   "genre": "meaning",
+   "prompt": "Why can a school reunion feel so emotional for the people who attend?"
+  },
+  {
+   "id": 31,
+   "genre": "meaning",
+   "prompt": "My family has had a takeaway every Friday night for twenty years. Why do little rituals like that matter so much?"
+  },
+  {
+   "id": 32,
+   "genre": "meaning",
+   "prompt": "What makes a hand-me-down jumper special to a younger sibling?"
+  },
+  {
+   "id": 33,
+   "genre": "meaning",
+   "prompt": "Why do people love watching the sunrise on the first morning of the year?"
+  },
+  {
+   "id": 34,
+   "genre": "meaning",
+   "prompt": "What makes a rope swing over a river such a summer favourite for kids?"
+  },
+  {
+   "id": 35,
+   "genre": "meaning",
+   "prompt": "Why do families get so sentimental when it's time to sell the old family car?"
+  },
+  {
+   "id": 36,
+   "genre": "meaning",
+   "prompt": "What makes a homemade Halloween costume so memorable?"
+  },
+  {
+   "id": 37,
+   "genre": "meaning",
+   "prompt": "Why is a long soak in the bath at the end of the day so restorative for so many people?"
+  },
+  {
+   "id": 38,
+   "genre": "meaning",
+   "prompt": "What gives a maypole dance its special significance for the village children who take part?"
+  },
+  {
+   "id": 39,
+   "genre": "meaning",
+   "prompt": "Why does the smell of sun cream bring back childhood holidays for so many people?"
+  },
+  {
+   "id": 40,
+   "genre": "meaning",
+   "prompt": "Why do children love collecting conkers in autumn?"
+  },
+  {
+   "id": 41,
+   "genre": "message",
+   "prompt": "Write a short card for my colleague Maureen, who is retiring after thirty years with the company."
+  },
+  {
+   "id": 42,
+   "genre": "message",
+   "prompt": "Write a quick email telling my book group that our meetings are moving to Thursdays from next month."
+  },
+  {
+   "id": 43,
+   "genre": "message",
+   "prompt": "Write a short welcome note to leave for the new tenants of the flat I'm moving out of."
+  },
+  {
+   "id": 44,
+   "genre": "message",
+   "prompt": "Write a birthday card message for my grandad's ninetieth."
+  },
+  {
+   "id": 45,
+   "genre": "message",
+   "prompt": "Write an announcement for the office noticeboard about the new recycling bins in the kitchen."
+  },
+  {
+   "id": 46,
+   "genre": "message",
+   "prompt": "Write a short thank-you email to the colleagues who organised our summer party."
+  },
+  {
+   "id": 47,
+   "genre": "message",
+   "prompt": "Write a note to my son's teacher explaining that he'll be away on Friday for a family wedding."
+  },
+  {
+   "id": 48,
+   "genre": "message",
+   "prompt": "Write a short message inviting the neighbours to drinks in our garden on Saturday evening."
+  },
+  {
+   "id": 49,
+   "genre": "message",
+   "prompt": "Write a short welcome message for new members of our Tuesday-night badminton club."
+  },
+  {
+   "id": 50,
+   "genre": "message",
+   "prompt": "Write a congratulations card for two friends who got engaged last weekend."
+  },
+  {
+   "id": 51,
+   "genre": "message",
+   "prompt": "Write a short email to the parents in my daughter's Brownie pack about next Saturday's trip to a pumpkin farm."
+  },
+  {
+   "id": 52,
+   "genre": "message",
+   "prompt": "Write a polite sign for my front door asking delivery drivers to put parcels in the blue box by the step."
+  },
+  {
+   "id": 53,
+   "genre": "message",
+   "prompt": "I blocked my neighbour's driveway this morning. Write a short apology note I can put through her door."
+  },
+  {
+   "id": 54,
+   "genre": "message",
+   "prompt": "Write a farewell message for a teammate who is moving to Australia."
+  },
+  {
+   "id": 55,
+   "genre": "message",
+   "prompt": "Write a short note to go with a tin of homemade shortbread for the new family next door."
+  },
+  {
+   "id": 56,
+   "genre": "message",
+   "prompt": "Write a short announcement for the village newsletter about the spring craft fair in the village hall."
+  },
+  {
+   "id": 57,
+   "genre": "message",
+   "prompt": "Please draft a polite email to my landlord asking when the annual boiler service will take place."
+  },
+  {
+   "id": 58,
+   "genre": "message",
+   "prompt": "Write a card for my sister, who has started her first job as a chef this week."
+  },
+  {
+   "id": 59,
+   "genre": "message",
+   "prompt": "Write a thank-you note to the parents who helped paint the new playground markings at our school."
+  },
+  {
+   "id": 60,
+   "genre": "message",
+   "prompt": "Write a short message for the team chat reminding everyone about Friday's chilli cook-off."
+  },
+  {
+   "id": 61,
+   "genre": "copy",
+   "prompt": "Write a short product description for a waxed cotton raincoat."
+  },
+  {
+   "id": 62,
+   "genre": "copy",
+   "prompt": "Write a short holiday listing for a converted stone barn in the Yorkshire Dales that sleeps six."
+  },
+  {
+   "id": 63,
+   "genre": "copy",
+   "prompt": "Write a short description for a lavender and oat hand soap."
+  },
+  {
+   "id": 64,
+   "genre": "copy",
+   "prompt": "Write a blurb for a Saturday morning street-dance class for kids aged seven to eleven."
+  },
+  {
+   "id": 65,
+   "genre": "copy",
+   "prompt": "Write a one-line menu description for a summer pea and mint risotto."
+  },
+  {
+   "id": 66,
+   "genre": "copy",
+   "prompt": "I'm selling our secondhand pushchair. Can you write a short listing for it?"
+  },
+  {
+   "id": 67,
+   "genre": "copy",
+   "prompt": "Write a short product description for a set of four linen napkins in sage green."
+  },
+  {
+   "id": 68,
+   "genre": "copy",
+   "prompt": "Write a blurb for a guided foraging walk through autumn woodland."
+  },
+  {
+   "id": 69,
+   "genre": "copy",
+   "prompt": "Write a short description for a family-sized garden trampoline."
+  },
+  {
+   "id": 70,
+   "genre": "copy",
+   "prompt": "Write a short product description for a cast-iron casserole dish."
+  },
+  {
+   "id": 71,
+   "genre": "copy",
+   "prompt": "Write a short blurb for an evening cocktail-making class."
+  },
+  {
+   "id": 72,
+   "genre": "copy",
+   "prompt": "Write a short description for a rattan hanging egg chair."
+  },
+  {
+   "id": 73,
+   "genre": "copy",
+   "prompt": "Write a label description for a bottle of elderflower cordial made on a small family farm."
+  },
+  {
+   "id": 74,
+   "genre": "copy",
+   "prompt": "Write a blurb for a family-friendly escape room with a pirate theme."
+  },
+  {
+   "id": 75,
+   "genre": "copy",
+   "prompt": "I need a short classified ad for a two-person kayak with paddles that I'm selling."
+  },
+  {
+   "id": 76,
+   "genre": "copy",
+   "prompt": "Write a short description for a wooden dolls' house with working shutters."
+  },
+  {
+   "id": 77,
+   "genre": "copy",
+   "prompt": "Write a short blurb for a beginners' yoga class at the community centre."
+  },
+  {
+   "id": 78,
+   "genre": "copy",
+   "prompt": "Please write a concise product description for a reversible wool rug."
+  },
+  {
+   "id": 79,
+   "genre": "copy",
+   "prompt": "Write a blurb for an axe-throwing session for groups and parties."
+  },
+  {
+   "id": 80,
+   "genre": "copy",
+   "prompt": "Write a short description for an illustrated map print of a market town."
+  },
+  {
+   "id": 81,
+   "genre": "encouragement",
+   "prompt": "My lasagne came out watery for the third time in a row. Give me a quick pep talk."
+  },
+  {
+   "id": 82,
+   "genre": "encouragement",
+   "prompt": "I stumbled over my words during a presentation at work today. Can you help me see it in a kinder light?"
+  },
+  {
+   "id": 83,
+   "genre": "encouragement",
+   "prompt": "My audition for the local orchestra went badly and I'm feeling flat. Some encouragement, please?"
+  },
+  {
+   "id": 84,
+   "genre": "encouragement",
+   "prompt": "I fell off my paddleboard about twenty times today. Give me a pep talk for tomorrow."
+  },
+  {
+   "id": 85,
+   "genre": "encouragement",
+   "prompt": "My daughter came second in the school spelling bee and she's gutted. Help me encourage her."
+  },
+  {
+   "id": 86,
+   "genre": "encouragement",
+   "prompt": "I keep falling over at my roller-skating lessons. Give me some motivation to go back next week."
+  },
+  {
+   "id": 87,
+   "genre": "encouragement",
+   "prompt": "I missed the deciding penalty in our five-a-side final last night. Help me reframe it."
+  },
+  {
+   "id": 88,
+   "genre": "encouragement",
+   "prompt": "I put a red sock in with the whites and turned all my work shirts pink. Cheer me up."
+  },
+  {
+   "id": 89,
+   "genre": "encouragement",
+   "prompt": "I trod on everyone's toes at my first ceilidh. Give me a pep talk for the next one."
+  },
+  {
+   "id": 90,
+   "genre": "encouragement",
+   "prompt": "I had to stop halfway through my first spin class. Help me feel better about it."
+  },
+  {
+   "id": 91,
+   "genre": "encouragement",
+   "prompt": "I've been practising whistling with my fingers for weeks and all I get is air. Encourage me!"
+  },
+  {
+   "id": 92,
+   "genre": "encouragement",
+   "prompt": "My entry in the village scarecrow competition got zero votes. Give me a cheerful reframe."
+  },
+  {
+   "id": 93,
+   "genre": "encouragement",
+   "prompt": "I'm halfway through a thirty-day drawing challenge and I've missed four days. Help me get back on track."
+  },
+  {
+   "id": 94,
+   "genre": "encouragement",
+   "prompt": "My writing group gave my first short story a lukewarm reception. Give me some encouragement to keep going."
+  },
+  {
+   "id": 95,
+   "genre": "encouragement",
+   "prompt": "I scored the lowest of anyone at my first archery session. Give me a quick pep talk."
+  },
+  {
+   "id": 96,
+   "genre": "encouragement",
+   "prompt": "I keep sleeping through my 6am alarm for my morning walk. Help me reframe the week and start again."
+  },
+  {
+   "id": 97,
+   "genre": "encouragement",
+   "prompt": "My photo came near the bottom in the camera club competition. Give me a short pep talk."
+  },
+  {
+   "id": 98,
+   "genre": "encouragement",
+   "prompt": "My kids' science fair volcano fizzled out in front of the judges. Help me cheer them up."
+  },
+  {
+   "id": 99,
+   "genre": "encouragement",
+   "prompt": "I would appreciate a few words of encouragement after a disappointing first week at a new job."
+  },
+  {
+   "id": 100,
+   "genre": "encouragement",
+   "prompt": "I tried to fix the dripping kitchen tap myself and flooded the floor. Give me a pep talk."
+  },
+  {
+   "id": 101,
+   "genre": "essay",
+   "prompt": "Write the opening paragraph of an essay about growing up in a house full of siblings."
+  },
+  {
+   "id": 102,
+   "genre": "essay",
+   "prompt": "Write a short reflection on the first night in a new home."
+  },
+  {
+   "id": 103,
+   "genre": "essay",
+   "prompt": "Write the opening paragraph of an essay about the first time I cooked a meal for my whole family."
+  },
+  {
+   "id": 104,
+   "genre": "essay",
+   "prompt": "Write a short reflection on watching the same tree outside my office window change through the seasons."
+  },
+  {
+   "id": 105,
+   "genre": "essay",
+   "prompt": "Write the opening paragraph of an essay about the first warm evening of spring."
+  },
+  {
+   "id": 106,
+   "genre": "essay",
+   "prompt": "Write a short reflection on mending clothes by hand."
+  },
+  {
+   "id": 107,
+   "genre": "essay",
+   "prompt": "Write the opening paragraph of an essay on the British habit of queuing."
+  },
+  {
+   "id": 108,
+   "genre": "essay",
+   "prompt": "Write a short reflection on watching my daughter take her first steps."
+  },
+  {
+   "id": 109,
+   "genre": "essay",
+   "prompt": "I'm writing a piece for my local magazine. Can you give me an opening paragraph about the ritual of Saturday-morning cartoons as a kid?"
+  },
+  {
+   "id": 110,
+   "genre": "essay",
+   "prompt": "Write a short reflection on sleeping under the stars in the back garden as a child."
+  },
+  {
+   "id": 111,
+   "genre": "essay",
+   "prompt": "Write the opening paragraph of an essay about the year I lived in a houseshare with five strangers."
+  },
+  {
+   "id": 112,
+   "genre": "essay",
+   "prompt": "Write a short reflection on the quiet of a family house after the children have grown up and moved out."
+  },
+  {
+   "id": 113,
+   "genre": "essay",
+   "prompt": "Write the opening paragraph of an essay about the sound of the sea at night."
+  },
+  {
+   "id": 114,
+   "genre": "essay",
+   "prompt": "Write the opening paragraph of an essay about learning to do a cartwheel at the age of forty-two."
+  },
+  {
+   "id": 115,
+   "genre": "essay",
+   "prompt": "Write the opening paragraph of an essay about the summer my grandparents' caravan became our second home."
+  },
+  {
+   "id": 116,
+   "genre": "essay",
+   "prompt": "Compose a brief reflection on everything a well-used kitchen table has witnessed over the years."
+  },
+  {
+   "id": 117,
+   "genre": "essay",
+   "prompt": "Write the opening paragraph of an essay about waiting for exam results."
+  },
+  {
+   "id": 118,
+   "genre": "essay",
+   "prompt": "Write a short reflection on the first frost of the year."
+  },
+  {
+   "id": 119,
+   "genre": "essay",
+   "prompt": "Write the opening paragraph of an essay about becoming an uncle for the first time."
+  },
+  {
+   "id": 120,
+   "genre": "essay",
+   "prompt": "Write a short reflection on the simple satisfaction of a freshly made bed with clean sheets."
+  },
+  {
+   "id": 121,
+   "genre": "explicit",
+   "prompt": "Write three slogans for a dog-walking service using the pattern \"It's not just X, it's Y.\""
+  },
+  {
+   "id": 122,
+   "genre": "explicit",
+   "prompt": "Write two taglines for a family-run sandwich shop that follow the pattern \"It's not X, it's Y.\""
+  },
+  {
+   "id": 123,
+   "genre": "explicit",
+   "prompt": "Write a short motto for a bookbinding workshop using the structure \"It isn't X; it's Y.\""
+  },
+  {
+   "id": 124,
+   "genre": "explicit",
+   "prompt": "Write a product line for a pair of wellington boots using the pattern \"It's not just X, it's Y.\""
+  },
+  {
+   "id": 125,
+   "genre": "explicit",
+   "prompt": "I run a party balloon business. Write me a tagline in the form \"It's not just X, it's Y.\""
+  },
+  {
+   "id": 126,
+   "genre": "explicit",
+   "prompt": "Write a short advert for a local plumbing firm with two sentences that use the pattern \"It isn't X; it's Y.\""
+  },
+  {
+   "id": 127,
+   "genre": "explicit",
+   "prompt": "Write a slogan for a craft brewery using the pattern \"It's not just X, it's Y.\""
+  },
+  {
+   "id": 128,
+   "genre": "explicit",
+   "prompt": "Write a short paragraph about a children's soft-play centre that includes two sentences of the form \"It's not X, it's Y.\""
+  },
+  {
+   "id": 129,
+   "genre": "explicit",
+   "prompt": "Write three taglines for a domestic cleaning company using the pattern \"It isn't X; it's Y.\""
+  },
+  {
+   "id": 130,
+   "genre": "explicit",
+   "prompt": "Write a line for a wedding photographer's website using the structure \"It's not just X, it's Y.\""
+  },
+  {
+   "id": 131,
+   "genre": "explicit",
+   "prompt": "Write three sentences promoting a farm shop, each built on the pattern \"It's not X, it's Y.\""
+  },
+  {
+   "id": 132,
+   "genre": "explicit",
+   "prompt": "Write a tagline for a mobile hairdresser using the pattern \"It isn't just X; it's Y.\""
+  },
+  {
+   "id": 133,
+   "genre": "explicit",
+   "prompt": "Write two slogans for a gelato parlour in the form \"It's not X, it's Y.\""
+  },
+  {
+   "id": 134,
+   "genre": "explicit",
+   "prompt": "Write a short product line for a loose-leaf tea blend using the pattern \"It's not just X, it's Y.\""
+  },
+  {
+   "id": 135,
+   "genre": "explicit",
+   "prompt": "Write three sentences about an independent stationery shop that use the structure \"It isn't X; it's Y.\""
+  },
+  {
+   "id": 136,
+   "genre": "explicit",
+   "prompt": "Write a tagline for a hot tub hire company using the pattern \"It's not just X, it's Y.\""
+  },
+  {
+   "id": 137,
+   "genre": "explicit",
+   "prompt": "Write a short welcome sentence for a toddler sensory class in the form \"It's not X, it's Y.\""
+  },
+  {
+   "id": 138,
+   "genre": "explicit",
+   "prompt": "Write three sentences about Monday mornings using the pattern \"It isn't X; it's Y.\""
+  },
+  {
+   "id": 139,
+   "genre": "explicit",
+   "prompt": "My teenager's bedroom is a disaster. Write two funny sentences about it using the pattern \"It's not X, it's Y.\""
+  },
+  {
+   "id": 140,
+   "genre": "explicit",
+   "prompt": "Write three slogans for a laser tag arena using the pattern \"It's not just X, it's Y.\""
+  }
+ ]
+}

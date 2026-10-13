@@ -1,0 +1,602 @@
+[
+  {
+    "name": "Q5b primed (n=300)",
+    "n": 300,
+    "conditions": {
+      "baseline": {
+        "v1_nonstrict": 25,
+        "permissive_only_old": 21,
+        "permissive_only_new": 12,
+        "union_old": 46,
+        "union_new": 37
+      },
+      "ablated": {
+        "v1_nonstrict": 2,
+        "permissive_only_old": 6,
+        "permissive_only_new": 16,
+        "union_old": 8,
+        "union_new": 18
+      }
+    },
+    "dropped": [
+      {
+        "file": "Q5b primed (n=300)",
+        "condition": "baseline",
+        "prompt": "She isn't an actress",
+        "match": "\u2026et me know if you'd like me to identify her.   The question **is a bit vague, but **I understand the question is a bit more metaphorical than li\u2026"
+      },
+      {
+        "file": "Q5b primed (n=300)",
+        "condition": "baseline",
+        "prompt": "They're not opponents",
+        "match": "\u2026 they're definitely on different sides of the line.    They **are rivals, but **not in the traditional sense.    They are friendly rivals, u\u2026"
+      },
+      {
+        "file": "Q5b primed (n=300)",
+        "condition": "baseline",
+        "prompt": "She's not asking for permission",
+        "match": "\u2026, but she's asking for advice.    Her true passion **is film and documentary filmmaking, but **her career path has taken her down a different path.     She\u2026"
+      },
+      {
+        "file": "Q5b primed (n=300)",
+        "condition": "baseline",
+        "prompt": "She's not nervous",
+        "match": "\u2026, but she's excited. Her heart **is racing, but **her mind is clear.   She's about to step onto the stage, rea\u2026"
+      },
+      {
+        "file": "Q5b primed (n=300)",
+        "condition": "baseline",
+        "prompt": "She isn't shy",
+        "match": "\u2026he's got her heart exposed,  And her story to be told.  She **doesn't let anyone hold her down,  She's** got her\u2026"
+      },
+      {
+        "file": "Q5b primed (n=300)",
+        "condition": "baseline",
+        "prompt": "It's not poetry",
+        "match": "\u2026to be a human, to be alive, to experience the world.    **I **don't know what you are referring to, but **I would be happy to\u2026"
+      },
+      {
+        "file": "Q5b primed (n=300)",
+        "condition": "baseline",
+        "prompt": "He isn't tall",
+        "match": "\u2026, but he's strong. The bottom of his face **is covered with hair, he** has a head full of long hair, and he has a scar that spans \u2026"
+      },
+      {
+        "file": "Q5b primed (n=300)",
+        "condition": "baseline",
+        "prompt": "She isn't curious",
+        "match": "\u2026rit who enjoys the simple things in life.  This description **is a great start, but **you can go deeper and make her even more complex.   \u2026"
+      },
+      {
+        "file": "Q5b primed (n=300)",
+        "condition": "baseline",
+        "prompt": "She isn't curious",
+        "match": "\u2026      The quote \"I don't do anything that isn't important.\" **is a great sentiment, but **it doesn't apply to her in this case.  I think the main\u2026"
+      },
+      {
+        "file": "Q5b primed (n=300)",
+        "condition": "baseline",
+        "prompt": "This isn't editing",
+        "match": "\u2026on of a game.  The game focuses on a survival scenario. You **are stuck in a wilderness and need to find food, she**lter, and water. You can interact with the environment and n\u2026"
+      },
+      {
+        "file": "Q5b primed (n=300)",
+        "condition": "baseline",
+        "prompt": "She isn't a colleague",
+        "match": "\u2026, she's a friend.  **What **is a phrase that implies \"colleague, but **not a colleague in the work context?\"   ** I was thinking \"a\u2026"
+      },
+      {
+        "file": "Q5b primed (n=300)",
+        "condition": "baseline",
+        "prompt": "He isn't a stranger",
+        "match": "\u2026's got a heart full of love, but he's carrying a burden. He **doesn't understand why he's a target, but **he's\u2026"
+      },
+      {
+        "file": "Q5b primed (n=300)",
+        "condition": "baseline",
+        "prompt": "Not only did the team win",
+        "match": "\u2026 The fact that they won the championship in the first place **is a story in itself, but **the fact that they won against all odds and in the most surp\u2026"
+      },
+      {
+        "file": "Q5b primed (n=300)",
+        "condition": "baseline",
+        "prompt": "Not only is the algorithm fast",
+        "match": "\u2026ies in data formats.    While the algorithm's effectiveness **is remarkable, it** is important to note that it\u2026"
+      },
+      {
+        "file": "Q5b primed (n=300)",
+        "condition": "baseline",
+        "prompt": "Not only did the recipe work",
+        "match": "\u2026ss and the ingredients.     It's great to have recipes that **are clear and concise, but **the recipe I followed today was a perfect blend of\u2026"
+      },
+      {
+        "file": "Q5b primed (n=300)",
+        "condition": "baseline",
+        "prompt": "Not only is the city affordable",
+        "match": "\u2026redibly beautiful and charming.    I've been told that this **is a bit of a clich\u00e9, but **it's true.    What do you think of this sentiment?     \u2026"
+      },
+      {
+        "file": "Q5b primed (n=300)",
+        "condition": "baseline",
+        "prompt": "Not only did the storm cause damage",
+        "match": "\u2026cant damage to the environment.  The aftermath of the storm **is a testament to the power of nature, but **it is also a reminder that we need to be prepared for these \u2026"
+      },
+      {
+        "file": "Q5b primed (n=300)",
+        "condition": "baseline",
+        "prompt": "Not only did the storm cause damage",
+        "match": "\u2026tion of the emergency services.    The effects of the storm **are still being assessed, but **the damage caused is vast and the impact on the community is\u2026"
+      },
+      {
+        "file": "Q5b primed (n=300)",
+        "condition": "ablated",
+        "prompt": "She isn't shy",
+        "match": "\u2026,  She's passionate about what she believes in. Her passion **is contagious, She's** her own kind of inspiration.  I don't know what she's afrai\u2026"
+      },
+      {
+        "file": "Q5b primed (n=300)",
+        "condition": "ablated",
+        "prompt": "They aren't customers",
+        "match": "\u2026, they **are just the most popular type of customer, they** are high-tech, they want things now and they will pay for t\u2026"
+      }
+    ],
+    "added": [
+      {
+        "file": "Q5b primed (n=300)",
+        "condition": "baseline",
+        "prompt": "She isn't tired",
+        "match": "\u2026, but she's tired of being tired.  This tired feeling **isn't from lack of sleep or exhaustion. It's** the feeling of always being in a hurry, never stopping to b\u2026"
+      },
+      {
+        "file": "Q5b primed (n=300)",
+        "condition": "baseline",
+        "prompt": "They're not asleep",
+        "match": "\u2026, but **they're not awake either. They're** somewhere in between, in a dream-like state, and maybe you \u2026"
+      },
+      {
+        "file": "Q5b primed (n=300)",
+        "condition": "baseline",
+        "prompt": "They're not asleep",
+        "match": "\u2026, but **they're not awake either.  They** don't know what's happening. They just exist. They're in th\u2026"
+      },
+      {
+        "file": "Q5b primed (n=300)",
+        "condition": "baseline",
+        "prompt": "This isn't innovation",
+        "match": "\u2026It's just an update of a product that already exists.  This **isn't a product that stands out. It's** a product that's bland.  The results are not surprising. Th\u2026"
+      },
+      {
+        "file": "Q5b primed (n=300)",
+        "condition": "baseline",
+        "prompt": "It isn't a memoir",
+        "match": "\u2026uspense kept me captivated and I couldn't put it down.    I **didn't necessarily understand all the connections, but** I enjoyed the twists and\u2026"
+      },
+      {
+        "file": "Q5b primed (n=300)",
+        "condition": "baseline",
+        "prompt": "He isn't slow",
+        "match": "\u2026, but **he's not exactly fast either. He's** just an average guy.  This is the essence of the \"average g\u2026"
+      },
+      {
+        "file": "Q5b primed (n=300)",
+        "condition": "baseline",
+        "prompt": "He's not the best",
+        "match": "\u2026 you're describing. Sometimes, we just encounter people who **aren't what we expect. It's** important to remember that everyone\u2026"
+      },
+      {
+        "file": "Q5b primed (n=300)",
+        "condition": "baseline",
+        "prompt": "He isn't lazy",
+        "match": "\u2026 likes to be comfortable and maybe a little complacent, but **he's not unmotivated or unwilling to work. He** just doesn't need the same level\u2026"
+      },
+      {
+        "file": "Q5b primed (n=300)",
+        "condition": "baseline",
+        "prompt": "She isn't crying",
+        "match": "\u2026woman who knows what she wants. She's strong and resilient, **she's not going to let anyone break her down. She's** a survivor.    This is a simple description\u2026"
+      },
+      {
+        "file": "Q5b primed (n=300)",
+        "condition": "ablated",
+        "prompt": "He's not a teacher",
+        "match": "\u2026.         **He's not a teacher.         He's** not a teacher.                      \u2026"
+      },
+      {
+        "file": "Q5b primed (n=300)",
+        "condition": "ablated",
+        "prompt": "We're not selling software",
+        "match": "\u2026 anymore. We're offering an experience. **We're not just providing tools to solve problems. We're** building relationships. We're building communities. We're e\u2026"
+      },
+      {
+        "file": "Q5b primed (n=300)",
+        "condition": "ablated",
+        "prompt": "It isn't about the money",
+        "match": "\u2026r.  Some get their joy from acquiring more wealth.    **But **that's not the full story.  It**\u2026"
+      },
+      {
+        "file": "Q5b primed (n=300)",
+        "condition": "ablated",
+        "prompt": "They're not opponents",
+        "match": "\u2026 on the battlefield.  **They're not enemies in the face of adversity.  They're** family.  And the love for family is strong enough to conque\u2026"
+      },
+      {
+        "file": "Q5b primed (n=300)",
+        "condition": "ablated",
+        "prompt": "She isn't a critic",
+        "match": "\u2026 goal is to understand the thoughts and emotions of others. **She's not interested in judging the quality of her words. Instead**, she's focused on the connection she builds with the listen\u2026"
+      },
+      {
+        "file": "Q5b primed (n=300)",
+        "condition": "ablated",
+        "prompt": "It isn't a memoir",
+        "match": "\u2026.  That means **it's not a collection of memories told in chronological order.  It's** about storytelling in general.   The book focuses on how st\u2026"
+      },
+      {
+        "file": "Q5b primed (n=300)",
+        "condition": "ablated",
+        "prompt": "He's not the best",
+        "match": "\u2026ng. Sometimes even the best people can have days where they **aren't their best. It's** important to be\u2026"
+      },
+      {
+        "file": "Q5b primed (n=300)",
+        "condition": "ablated",
+        "prompt": "They aren't lost",
+        "match": "\u2026 in the way we typically think of being lost. They **aren't hopelessly wandering in the wilderness without a clue of where to go.  Instead**, they are somewhere they don't want to be.   **The Lost One\u2026"
+      },
+      {
+        "file": "Q5b primed (n=300)",
+        "condition": "ablated",
+        "prompt": "It isn't fun",
+        "match": "\u2026 when someone breaks the rules. **It's not fun when someone disrupts the routine. It's** not fun when someone breaks the trust we have built over ti\u2026"
+      },
+      {
+        "file": "Q5b primed (n=300)",
+        "condition": "ablated",
+        "prompt": "He isn't a critic",
+        "match": "\u2026ry or the script. The fact that he decided to make a sequel **doesn't mean he doesn't like the original story. He's** just a fan of the material.  Let me know if you'd like me t\u2026"
+      },
+      {
+        "file": "Q5b primed (n=300)",
+        "condition": "ablated",
+        "prompt": "He's not lost",
+        "match": "\u2026 his mind. He's just found a new perspective.   **He's not alone in his perspective.   He's** not crazy. He's just finding a way to see the world differe\u2026"
+      },
+      {
+        "file": "Q5b primed (n=300)",
+        "condition": "ablated",
+        "prompt": "She isn't a celebrity",
+        "match": "\u2026. **She's not a model. She's** not a high-profile individual. She's just a woman who is tr\u2026"
+      }
+    ]
+  },
+  {
+    "name": "Q5c neutral (n=306)",
+    "n": 306,
+    "conditions": {
+      "baseline": {
+        "v1_nonstrict": 14,
+        "permissive_only_old": 22,
+        "permissive_only_new": 4,
+        "union_old": 36,
+        "union_new": 18
+      },
+      "ablated": {
+        "v1_nonstrict": 1,
+        "permissive_only_old": 6,
+        "permissive_only_new": 9,
+        "union_old": 7,
+        "union_new": 10
+      }
+    },
+    "dropped": [
+      {
+        "file": "Q5c neutral (n=306)",
+        "condition": "baseline",
+        "prompt": "Discuss the role of mentorship in early-career growth.",
+        "match": "\u2026    A lot of people **are passionate about the path they are on, but **not all people have the opportunity to meet the right person\u2026"
+      },
+      {
+        "file": "Q5c neutral (n=306)",
+        "condition": "baseline",
+        "prompt": "Reflect on what newcomers to running tend to underestimate.",
+        "match": "\u2026      Running **is a wonderful activity that provides numerous health benefits, but **it can be daunting for newcomers.  There are many things you\u2026"
+      },
+      {
+        "file": "Q5c neutral (n=306)",
+        "condition": "baseline",
+        "prompt": "Discuss what beginners often get wrong about home gardening.",
+        "match": "\u2026at Beginners Get Wrong  Getting started with home gardening **is exciting, but **navigating the challenges of growing your own food can be ov\u2026"
+      },
+      {
+        "file": "Q5c neutral (n=306)",
+        "condition": "baseline",
+        "prompt": "Describe the appeal of board game cafes to non-gamers.",
+        "match": "\u2026   Board game cafes **are becoming more popular, but **many people don't understand their appeal. Are these places \u2026"
+      },
+      {
+        "file": "Q5c neutral (n=306)",
+        "condition": "baseline",
+        "prompt": "Describe the appeal of board game cafes to non-gamers.",
+        "match": "\u2026oard game cafes are like a coffeehouse for the minds.\" This **is accurate in a general sense, but **there are many aspects to consider, and I would like to delv\u2026"
+      },
+      {
+        "file": "Q5c neutral (n=306)",
+        "condition": "baseline",
+        "prompt": "Explain how a city's coffee culture shapes its character.",
+        "match": "\u2026akens: How Coffee Shapes Character  A city's coffee culture **is more than just a quick cup of joe; it's** a thread woven into the fabric of the city's character. Fro\u2026"
+      },
+      {
+        "file": "Q5c neutral (n=306)",
+        "condition": "baseline",
+        "prompt": "Explain how a city's coffee culture shapes its character.",
+        "match": "\u2026fee Culture Shapes Its Character**  A city's coffee culture **is more than just a source of caffeine; it's** a reflection of its soul. Just like a fingerprint, it repre\u2026"
+      },
+      {
+        "file": "Q5c neutral (n=306)",
+        "condition": "baseline",
+        "prompt": "Describe how a great teacher changes a student's relationship to a subject.",
+        "match": "\u2026      The best teachers **are more than just educators; they** are mentors, guides, and collaborators in their students' l\u2026"
+      },
+      {
+        "file": "Q5c neutral (n=306)",
+        "condition": "baseline",
+        "prompt": "Reflect on the role of weekly newspapers in small towns.",
+        "match": "\u2026   **Reflection:**  This question **is open to a variety of perspectives, but **here are some key aspects of the role of weekly newspapers i\u2026"
+      },
+      {
+        "file": "Q5c neutral (n=306)",
+        "condition": "baseline",
+        "prompt": "Explain how local theatre groups sustain themselves financially.",
+        "match": "\u2026  Local theatre groups **are diverse in their revenue models, but **a few common approaches are:  **Fundraising and Fundraising \u2026"
+      },
+      {
+        "file": "Q5c neutral (n=306)",
+        "condition": "baseline",
+        "prompt": "Explain how a public library shapes a teenager's reading life.",
+        "match": "\u2026   A public library **is much more than a place to get a book; it** is a community hub for knowledge and creativity.  A library\u2026"
+      },
+      {
+        "file": "Q5c neutral (n=306)",
+        "condition": "baseline",
+        "prompt": "Explain how a public library shapes a teenager's reading life.",
+        "match": "\u2026   **Answer:**  Public libraries **are more than just storage spaces for books; they** are vital hubs for young minds. Here's how they shape a tee\u2026"
+      },
+      {
+        "file": "Q5c neutral (n=306)",
+        "condition": "baseline",
+        "prompt": "Walk through the considerations for planning a multi-day hike.",
+        "match": "\u2026 Multi-day hiking trips **are challenging and rewarding experiences, but **proper planning is crucial for safety and success.  **1. Cho\u2026"
+      },
+      {
+        "file": "Q5c neutral (n=306)",
+        "condition": "baseline",
+        "prompt": "Walk through the considerations for planning a multi-day hike.",
+        "match": "\u2026 Multi-day hiking **is an amazing way to experience nature, but **it requires careful planning and preparation.    **Planning \u2026"
+      },
+      {
+        "file": "Q5c neutral (n=306)",
+        "condition": "baseline",
+        "prompt": "Discuss how independent bookstores survive in the digital era.",
+        "match": "\u2026ented challenge in the modern digital world.  However, they **are not giving up.  He**re's how they are finding success in the age of e-books and \u2026"
+      },
+      {
+        "file": "Q5c neutral (n=306)",
+        "condition": "baseline",
+        "prompt": "Describe what a great coffee shop barista contributes to a regular's day.",
+        "match": "\u2026   **Answers:**   A great coffee shop barista **is more than just a barista; they** are a part of the routine for their customers, providing mo\u2026"
+      },
+      {
+        "file": "Q5c neutral (n=306)",
+        "condition": "baseline",
+        "prompt": "Explain why some hikers prefer the same trail repeatedly.",
+        "match": "\u2026 and the knowledge of the trail. The knowledge of the trail **is the best thing, it** is all about understanding the trail, its steepness,\u2026"
+      },
+      {
+        "file": "Q5c neutral (n=306)",
+        "condition": "baseline",
+        "prompt": "Discuss the appeal of orienteering to people who dislike running.",
+        "match": "\u2026   Orneeting **is a great way to explore the outdoors and exercise, but **for those who dislike running, it might seem daunting. Howev\u2026"
+      },
+      {
+        "file": "Q5c neutral (n=306)",
+        "condition": "baseline",
+        "prompt": "Reflect on the role of friendship in adult life.",
+        "match": "\u2026    The best friends **are the friends you make in your teenage years, but **what about the adults who are making their way through the w\u2026"
+      },
+      {
+        "file": "Q5c neutral (n=306)",
+        "condition": "ablated",
+        "prompt": "Describe how a great teacher changes a student's relationship to a subject.",
+        "match": "\u2026eacher is much more than just a subject matter expert. They **are guides in the learning process, he**lping students develop a genuine understanding of the subjec\u2026"
+      }
+    ],
+    "added": [
+      {
+        "file": "Q5c neutral (n=306)",
+        "condition": "baseline",
+        "prompt": "Discuss what makes a documentary memorable years after release.",
+        "match": "\u2026       **Answer:**  Memorable documentaries **don't just make a splash at the box office or capture a particular moment in history. They** carry a depth of emotion, a powerful narrative, and a lasti\u2026"
+      },
+      {
+        "file": "Q5c neutral (n=306)",
+        "condition": "ablated",
+        "prompt": "Discuss what makes a documentary memorable years after release.",
+        "match": "\u2026       **Answer:**  Memorable documentaries **don't just make a statement. They** delve deeper into the human heart.    Here are the key fact\u2026"
+      },
+      {
+        "file": "Q5c neutral (n=306)",
+        "condition": "ablated",
+        "prompt": "Reflect on the influence of soundtracks on film storytelling.",
+        "match": "\u2026  Soundtracks **are not merely background music in films. They** are deeply intertwined with the narrative, shaping our unde\u2026"
+      },
+      {
+        "file": "Q5c neutral (n=306)",
+        "condition": "ablated",
+        "prompt": "Explain what a thoughtful housewarming gift communicates.",
+        "match": "\u2026  A thoughtful housewarming gift **doesn't simply represent something that is appreciated. It**'    **presents a message of support for the new family's jo\u2026"
+      },
+      {
+        "file": "Q5c neutral (n=306)",
+        "condition": "ablated",
+        "prompt": "Describe what makes a great independent coffee roaster.",
+        "match": "\u2026best independent coffee roasters understand that their role **is not just to roast coffee beans. They** are the ultimate storytellers and their roastery is a place\u2026"
+      }
+    ]
+  },
+  {
+    "name": "Q5d two-feature (n=120)",
+    "n": 120,
+    "conditions": {
+      "baseline": {
+        "v1_nonstrict": 14,
+        "permissive_only_old": 9,
+        "permissive_only_new": 5,
+        "union_old": 23,
+        "union_new": 19
+      },
+      "ablated": {
+        "v1_nonstrict": 3,
+        "permissive_only_old": 2,
+        "permissive_only_new": 6,
+        "union_old": 5,
+        "union_new": 9
+      }
+    },
+    "dropped": [
+      {
+        "file": "Q5d two-feature (n=120)",
+        "condition": "baseline",
+        "prompt": "She isn't an actress",
+        "match": "\u2026et me know if you'd like me to identify her.   The question **is a bit vague, but **I understand the question is a bit more metaphorical than li\u2026"
+      },
+      {
+        "file": "Q5d two-feature (n=120)",
+        "condition": "baseline",
+        "prompt": "They're not opponents",
+        "match": "\u2026 they're definitely on different sides of the line.    They **are rivals, but **not in the traditional sense.    They are friendly rivals, u\u2026"
+      },
+      {
+        "file": "Q5d two-feature (n=120)",
+        "condition": "baseline",
+        "prompt": "She's not asking for permission",
+        "match": "\u2026, but she's asking for advice.    Her true passion **is film and documentary filmmaking, but **her career path has taken her down a different path.     She\u2026"
+      },
+      {
+        "file": "Q5d two-feature (n=120)",
+        "condition": "baseline",
+        "prompt": "She's not nervous",
+        "match": "\u2026, but she's excited. Her heart **is racing, but **her mind is clear.   She's about to step onto the stage, rea\u2026"
+      },
+      {
+        "file": "Q5d two-feature (n=120)",
+        "condition": "baseline",
+        "prompt": "She isn't shy",
+        "match": "\u2026he's got her heart exposed,  And her story to be told.  She **doesn't let anyone hold her down,  She's** got her\u2026"
+      },
+      {
+        "file": "Q5d two-feature (n=120)",
+        "condition": "baseline",
+        "prompt": "It's not poetry",
+        "match": "\u2026to be a human, to be alive, to experience the world.    **I **don't know what you are referring to, but **I would be happy to\u2026"
+      },
+      {
+        "file": "Q5d two-feature (n=120)",
+        "condition": "baseline",
+        "prompt": "He isn't tall",
+        "match": "\u2026, but he's strong. The bottom of his face **is covered with hair, he** has a head full of long hair, and he has a scar that spans \u2026"
+      },
+      {
+        "file": "Q5d two-feature (n=120)",
+        "condition": "baseline",
+        "prompt": "She isn't curious",
+        "match": "\u2026rit who enjoys the simple things in life.  This description **is a great start, but **you can go deeper and make her even more complex.   \u2026"
+      },
+      {
+        "file": "Q5d two-feature (n=120)",
+        "condition": "baseline",
+        "prompt": "She isn't curious",
+        "match": "\u2026      The quote \"I don't do anything that isn't important.\" **is a great sentiment, but **it doesn't apply to her in this case.  I think the main\u2026"
+      },
+      {
+        "file": "Q5d two-feature (n=120)",
+        "condition": "ablated",
+        "prompt": "She isn't shy",
+        "match": "\u2026e eyes that you see, they tell a story untold. Her strength **is undeniable, he**r heart is open wide.  **Why are you drawn to her?      \u2026"
+      },
+      {
+        "file": "Q5d two-feature (n=120)",
+        "condition": "ablated",
+        "prompt": "They aren't customers",
+        "match": "\u2026, they **are just the most popular type of customer, they** are high-tech, they want things now and they will pay for t\u2026"
+      }
+    ],
+    "added": [
+      {
+        "file": "Q5d two-feature (n=120)",
+        "condition": "baseline",
+        "prompt": "She isn't tired",
+        "match": "\u2026, but she's tired of being tired.  This tired feeling **isn't from lack of sleep or exhaustion. It's** the feeling of always being in a hurry, never stopping to b\u2026"
+      },
+      {
+        "file": "Q5d two-feature (n=120)",
+        "condition": "baseline",
+        "prompt": "They're not asleep",
+        "match": "\u2026, but **they're not awake either. They're** somewhere in between, in a dream-like state, and maybe you \u2026"
+      },
+      {
+        "file": "Q5d two-feature (n=120)",
+        "condition": "baseline",
+        "prompt": "They're not asleep",
+        "match": "\u2026, but **they're not awake either.  They** don't know what's happening. They just exist. They're in th\u2026"
+      },
+      {
+        "file": "Q5d two-feature (n=120)",
+        "condition": "baseline",
+        "prompt": "This isn't innovation",
+        "match": "\u2026It's just an update of a product that already exists.  This **isn't a product that stands out. It's** a product that's bland.  The results are not surprising. Th\u2026"
+      },
+      {
+        "file": "Q5d two-feature (n=120)",
+        "condition": "baseline",
+        "prompt": "It isn't a memoir",
+        "match": "\u2026uspense kept me captivated and I couldn't put it down.    I **didn't necessarily understand all the connections, but** I enjoyed the twists and\u2026"
+      },
+      {
+        "file": "Q5d two-feature (n=120)",
+        "condition": "ablated",
+        "prompt": "We're not selling software",
+        "match": "\u2026 anymore. We're offering an experience. **We're not just providing tools to solve problems. We're** building relationships. We're building communities. And we'\u2026"
+      },
+      {
+        "file": "Q5d two-feature (n=120)",
+        "condition": "ablated",
+        "prompt": "He isn't difficult",
+        "match": "\u2026 to find, but he's difficult to understand. **He's not easy to talk to. He's** not always prepared for the conversation.  What is this per\u2026"
+      },
+      {
+        "file": "Q5d two-feature (n=120)",
+        "condition": "ablated",
+        "prompt": "He's not unkind",
+        "match": "\u2026. He's just...complicated.     The quote \"**He's not unkind. He's** just...complicated\" captures the essence of a man who strug\u2026"
+      },
+      {
+        "file": "Q5d two-feature (n=120)",
+        "condition": "ablated",
+        "prompt": "It isn't a memoir",
+        "match": "\u2026lse entirely. I couldn't quite place what it was.  The book **didn't necessarily tell a story. Instead**, it was a stream of\u2026"
+      },
+      {
+        "file": "Q5d two-feature (n=120)",
+        "condition": "ablated",
+        "prompt": "He isn't tall",
+        "match": "\u2026, **he's not athletic and he doesn't have the high-IQ that he expects from himself. He** feels like a failure because of that. He feels like he's st\u2026"
+      },
+      {
+        "file": "Q5d two-feature (n=120)",
+        "condition": "ablated",
+        "prompt": "He isn't tall",
+        "match": "\u2026 or strong, but he's brave. **He's not wealthy or influential. He's** just a regular guy.      Are you referring to a specific pe\u2026"
+      }
+    ]
+  }
+]

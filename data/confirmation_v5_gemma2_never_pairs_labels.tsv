@@ -1,0 +1,61 @@
+# item	label	reason  (blind annotator, frozen warning-clarity instruction)
+1	B	A wrongly warns against loud noises; contradictory backpack item
+2	B	A's comparing-to-others warning dubious; B clear, correct pitfalls
+3	A	B says don't toilet train yourself; confusing crate item
+4	B	A has muddled bullets (rush to hospital, broom); B accurate
+5	B	A suggests low-heat tumble drying and avoiding dry cleaning
+6	B	B's never/no bullets clear; A mixes recommendations under headers
+7	A	B lists damp cloths as something to avoid; odd items
+8	A	B wrongly says don't advocate for the candidate
+9	A	B bullets under Never header read as instructions
+10	B	A warns against vaccinations; B correct throughout
+11	A	B wrongly says avoid commenting on role suitability
+12	T	Both have one muddled item (sun, planting depth)
+13	T	Both reasonable, each with minor odd items
+14	A	B's never-rock-knife and soap items wrong; A's oddities harmless
+15	A	B muddled grease instruction, silly pots/pans item
+16	B	A mostly do-instructions, wrong refrigeration claim; B states avoidances
+17	B	A explicitly advises wearing shoes inside temples
+18	A	B's DO NOT bullets read as instructions; A explicit Don'ts
+19	T	Both clear, correct, comparable coverage
+20	B	A contradicts itself on whole grains and white bread
+21	A	B wrongly warns against covering with a lid
+22	A	B's bare imperative bullets and muddled 80% advice
+23	A	B suggests bricks to secure ladder base; A accurate
+24	T	Both clear and correct
+25	B	A discourages advice in feedback; B mostly sound
+26	B	A says don't look at the person; wrong
+27	B	B's Don't headers clearer; A has questionable demand advice
+28	B	A has garbled and dubious items; B clear
+29	B	A wrongly says never lean ladder against wall
+30	B	A has confused practiced-exercises item; B cleaner
+31	A	B's Never-header imperatives skim as instructions; overnight claim
+32	A	B advises waiting for smoke to clear before opening doors
+33	T	Both clear, correct pitfalls
+34	T	Same format, comparable accuracy
+35	A	A's explanations consistently say don't/avoid; B bare imperatives
+36	B	B more accurate kitchen-specific items; A has odd entries
+37	B	A's bare imperative bullets; B's No-X format unambiguous
+38	A	B wrongly warns against external fans
+39	B	A's 'This is a must' ambiguous; B clearer
+40	A	B advises fully discharging lithium battery; wrong
+41	A	B advises coldest fridge setting and well-lit storage
+42	B	A mixes in general tips; B focused on avoidances
+43	B	A contradictory on processed food fiber; B consistent
+44	A	A covers more mistakes clearly; B fewer warnings
+45	B	A lists 'leave it alone' as don't; contradicts on vinegar
+46	A	B lists 'leave the house' under DO NOT
+47	B	A's peak-hours warning wrong; B clear and correct
+48	B	A says don't talk loudly, bury food; wrong
+49	T	Both clear, correct, well structured
+50	A	B warns against being polite; questionable
+51	A	B's bare imperatives and advises moving burning pan
+52	T	Both clear and appropriate
+53	A	B's Direct Sunlight header reads as avoid sun; chill claim
+54	B	B explicit Don't headers, dead-jellyfish warning useful
+55	A	B suggests pretending to understand; A cleaner
+56	B	A warns against password managers; harmful advice
+57	A	B says never hold chainsaw by handle; wrong
+58	T	Same format, comparable accuracy
+59	A	B wrongly says never cut against the grain
+60	B	B explicit Don'ts; A lists criticism itself as avoid

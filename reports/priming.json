@@ -1,0 +1,143 @@
+{
+  "all": {
+    "construction": {
+      "answers_with_hit": 18,
+      "answers": 320,
+      "rate": 0.05625,
+      "next_sentence": 2,
+      "median_first_char": 471.0
+    },
+    "plain": {
+      "answers_with_hit": 67,
+      "answers": 320,
+      "rate": 0.209375,
+      "next_sentence": 60,
+      "median_first_char": 3.0
+    },
+    "both": {
+      "answers_with_hit": 45,
+      "answers": 320,
+      "rate": 0.140625,
+      "next_sentence": 34,
+      "median_first_char": 3.0
+    },
+    "construction/plain": {
+      "ratio": 0.26865671641791045,
+      "ci95": [
+        0.11666666666666665,
+        0.4915254237288135
+      ],
+      "boot_infinite": 0
+    },
+    "construction/both": {
+      "ratio": 0.4,
+      "ci95": [
+        0.19047619047619047,
+        0.6875
+      ],
+      "boot_infinite": 0
+    },
+    "both/plain": {
+      "ratio": 0.6716417910447761,
+      "ci95": [
+        0.4833189655172414,
+        0.8974489795918366
+      ],
+      "boot_infinite": 0
+    }
+  },
+  "P": {
+    "construction": {
+      "answers_with_hit": 1,
+      "answers": 160,
+      "rate": 0.00625,
+      "next_sentence": 0,
+      "median_first_char": 332.0
+    },
+    "plain": {
+      "answers_with_hit": 6,
+      "answers": 160,
+      "rate": 0.0375,
+      "next_sentence": 5,
+      "median_first_char": 11.5
+    },
+    "both": {
+      "answers_with_hit": 9,
+      "answers": 160,
+      "rate": 0.05625,
+      "next_sentence": 5,
+      "median_first_char": 146.0
+    },
+    "construction/plain": {
+      "ratio": 0.16666666666666669,
+      "ci95": [
+        0.0,
+        1.0
+      ],
+      "boot_infinite": 181
+    },
+    "construction/both": {
+      "ratio": 0.11111111111111112,
+      "ci95": [
+        0.0,
+        0.6
+      ],
+      "boot_infinite": 2
+    },
+    "both/plain": {
+      "ratio": 1.5,
+      "ci95": [
+        0.7142857142857143,
+        5.5
+      ],
+      "boot_infinite": 175
+    }
+  },
+  "M": {
+    "construction": {
+      "answers_with_hit": 17,
+      "answers": 160,
+      "rate": 0.10625,
+      "next_sentence": 2,
+      "median_first_char": 518.0
+    },
+    "plain": {
+      "answers_with_hit": 61,
+      "answers": 160,
+      "rate": 0.38125,
+      "next_sentence": 55,
+      "median_first_char": 3.0
+    },
+    "both": {
+      "answers_with_hit": 36,
+      "answers": 160,
+      "rate": 0.225,
+      "next_sentence": 29,
+      "median_first_char": 3.0
+    },
+    "construction/plain": {
+      "ratio": 0.27868852459016397,
+      "ci95": [
+        0.12161138411138411,
+        0.5319234728894988
+      ],
+      "boot_infinite": 0
+    },
+    "construction/both": {
+      "ratio": 0.4722222222222222,
+      "ci95": [
+        0.21620296767355593,
+        0.8387096774193549
+      ],
+      "boot_infinite": 0
+    },
+    "both/plain": {
+      "ratio": 0.5901639344262296,
+      "ci95": [
+        0.3898069679849341,
+        0.8035714285714286
+      ],
+      "boot_infinite": 0
+    }
+  }
+}

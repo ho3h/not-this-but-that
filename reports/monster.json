@@ -1,0 +1,27 @@
+{
+  "normal": {
+    "answers": 40,
+    "not_x_but_y": 0,
+    "degenerate": 3
+  },
+  "x3": {
+    "answers": 40,
+    "not_x_but_y": 6,
+    "degenerate": 0
+  },
+  "x5": {
+    "answers": 40,
+    "not_x_but_y": 6,
+    "degenerate": 0
+  },
+  "x8": {
+    "answers": 40,
+    "not_x_but_y": 9,
+    "degenerate": 1
+  },
+  "x12": {
+    "answers": 40,
+    "not_x_but_y": 11,
+    "degenerate": 6
+  }
+}

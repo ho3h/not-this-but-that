@@ -1,0 +1,218 @@
+{
+  "0": {
+    "cid": 0,
+    "size": 1206,
+    "name": "references to specific characters",
+    "exemplar_labels": [
+      "references to specific characters, particularly related to shows or narratives involving Dinah and Cassidy",
+      "references to specific items, individuals, or characteristics within a narrative",
+      "terms related to family structures and health initiatives",
+      "text related to charitable actions and community support",
+      "concepts related to building and strengthening interpersonal relationships"
+    ]
+  },
+  "1": {
+    "cid": 1,
+    "size": 683,
+    "name": "scientific methodologies and experimental techniques",
+    "exemplar_labels": [
+      "terms related to scientific methodologies and experimental techniques",
+      "terms and phrases related to scientific or technical specifications",
+      "terms related to academic fields, particularly in the sciences and social sciences",
+      "specific names or terms related to various fields and concepts",
+      "occurrences of asterisks or similar characters"
+    ]
+  },
+  "2": {
+    "cid": 2,
+    "size": 694,
+    "name": "ability and functions associated with equipment or machinery",
+    "exemplar_labels": [
+      "technical details related to ability and functions associated with equipment or machinery",
+      "technical terminology related to computer networks and probabilistic models",
+      "information related to services and products, particularly in finance and app development",
+      "details about physical objects and their descriptions",
+      "scientific terminology related to procedures and properties of biological materials"
+    ]
+  },
+  "3": {
+    "cid": 3,
+    "size": 125,
+    "name": "relative pronouns and their associated clauses",
+    "exemplar_labels": [
+      "relative pronouns and their associated clauses",
+      "references to the word \"we\"",
+      "French connective and referential pronouns",
+      "terms related to ownership and possession",
+      "multi-word phrases indicating possession or ownership"
+    ]
+  },
+  "4": {
+    "cid": 4,
+    "size": 1426,
+    "name": "medical and biological testing and analysis",
+    "exemplar_labels": [
+      "terms related to medical and biological testing and analysis",
+      "technical and scientific terms related to cellular biology and histology",
+      "words related to warnings, disclaimers, and formal instructional language (such as \"do not,\" \"errors,\" \"yet,\" and \"All\").",
+      "terms related to medical diagnostics and treatments",
+      "terms related to clinical trials and medical research methodologies"
+    ]
+  },
+  "6": {
+    "cid": 6,
+    "size": 438,
+    "name": "e-commerce platforms and their features",
+    "exemplar_labels": [
+      "phrases related to e-commerce platforms and their features",
+      "terms related to local search marketing and SEO strategies",
+      "statements about financial implications and consequences",
+      "forward-looking statements related to financial projections and potential risks",
+      "terms related to oil prices and their economic implications"
+    ]
+  },
+  "8": {
+    "cid": 8,
+    "size": 3170,
+    "name": "technical jargon and programming-related terms",
+    "exemplar_labels": [
+      "technical jargon and programming-related terms",
+      "keywords and terms related to functionality and usability in various contexts",
+      "phrases and code snippets related to programming errors and exceptions",
+      "concepts related to technical implementations and structures in programming",
+      "programming language keywords and import statements"
+    ]
+  },
+  "9": {
+    "cid": 9,
+    "size": 864,
+    "name": "scientific methodologies and measurements",
+    "exemplar_labels": [
+      "technical terms and key phrases related to scientific methodologies and measurements",
+      "instances of numeric data or figures",
+      "numeric representations in a structured format",
+      "numerical values and related coding structures",
+      "numerical data and references related to highways and routes"
+    ]
+  },
+  "11": {
+    "cid": 11,
+    "size": 703,
+    "name": "people or entities",
+    "exemplar_labels": [
+      "proper nouns and specific terms related to people or entities",
+      "names of individuals and their titles or positions in various contexts",
+      "references to individuals, groups, or collective actions and their implications",
+      "specific details related to job positions and contract information",
+      "references to influential figures in personal development and self-help"
+    ]
+  },
+  "12": {
+    "cid": 12,
+    "size": 2059,
+    "name": "references to user instructions and personalization",
+    "exemplar_labels": [
+      "references to user instructions and personalization in guidance",
+      "elements related to guidance and recommendations in a procedural context",
+      "instances where terms or phrases denote actions, events, or entities occurring in specific contexts",
+      "references to comparisons or contrasts between different groups or individuals",
+      "comparative adjectives and expressions of comparison"
+    ]
+  },
+  "14": {
+    "cid": 14,
+    "size": 514,
+    "name": "accommodation capacity",
+    "exemplar_labels": [
+      "quantitative data related to accommodation capacity in various settings",
+      "references to specific cities or locations",
+      "names of trails, paths, or routes, particularly those related to recreation or transportation.",
+      "street names and addresses",
+      "names of people and places"
+    ]
+  },
+  "15": {
+    "cid": 15,
+    "size": 305,
+    "name": "sports outcomes",
+    "exemplar_labels": [
+      "numerical statistics and data points related to sports outcomes",
+      "numerical statistics and player performance metrics connected to sports",
+      "references to game expansion content and unique gameplay features",
+      "technical elements and instructions related to gaming or software functionalities",
+      "metrics related to player performance statistics in sports"
+    ]
+  },
+  "16": {
+    "cid": 16,
+    "size": 1252,
+    "name": "statutes and inventions",
+    "exemplar_labels": [
+      "legal and technical terminology related to statutes and inventions",
+      "terms related to control and authority, particularly in political or systemic contexts",
+      "technical and legal terminology related to claims and evidence in discussions or arguments",
+      "specific terms related to legal and governmental contexts",
+      "technical terms and phrases related to legal and procedural contexts"
+    ]
+  },
+  "17": {
+    "cid": 17,
+    "size": 544,
+    "name": "mathematical properties and conditions",
+    "exemplar_labels": [
+      "concepts and terms related to mathematical properties and conditions in theoretical contexts",
+      "mathematical symbols and structures related to equations or expressions",
+      "mathematical expressions and formulas",
+      "mathematical expressions and operations in the context of equations and algebraic relationships",
+      "mathematical terms and expressions related to physics or scientific equations"
+    ]
+  },
+  "18": {
+    "cid": 18,
+    "size": 436,
+    "name": "user interface interactions",
+    "exemplar_labels": [
+      "components related to user interface interactions in programming",
+      "CSS properties and selectors related to form inputs and their styles",
+      "elements and components related to a user interface layout and structure",
+      "technical specifications and coding elements related to Android development",
+      "links and scripts in HTML documents"
+    ]
+  },
+  "19": {
+    "cid": 19,
+    "size": 432,
+    "name": "references to specific days",
+    "exemplar_labels": [
+      "references to specific days of the week and notable figures",
+      "phrases indicating conditions or considerations in various contexts, particularly focused on timing and planning",
+      "instances of the word \"Today\" and its variations",
+      "numerical values or references to time and duration",
+      "references to special events and awareness months related to mental health and Native American culture"
+    ]
+  },
+  "20": {
+    "cid": 20,
+    "size": 772,
+    "name": "the beginning",
+    "exemplar_labels": [
+      "the beginning of a document or section, likely signaling the start of significant content",
+      "elements of structured formatting or organization in text, particularly in tables or lists",
+      "tokens that signify the beginning of a document or section",
+      "elements related to the structure and formatting of text",
+      "occurrences of the special token indicating the start of a new context or document"
+    ]
+  },
+  "22": {
+    "cid": 22,
+    "size": 761,
+    "name": "references to authors and their work",
+    "exemplar_labels": [
+      "references to authors and their work",
+      "references to scientific journals and articles",
+      "URLs and image paths",
+      "references to academic publications and citations",
+      "references to scientific papers and publications"
+    ]
+  }
+}

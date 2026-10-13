@@ -1,0 +1,36 @@
+{
+  "UltraFeedback (GPT-4 ratings)": {
+    "pairs": 60917,
+    "chosen_share": 0.07229509004054697,
+    "rejected_share": 0.05674934747279085,
+    "one_sided_pairs": 6515,
+    "construction_chosen": 0.5726784343821949,
+    "ci95": [
+      0.56039907904835,
+      0.5854182655410591
+    ],
+    "construction_chosen_equal_length": 0.5106602749159819,
+    "ci95_equal_length": [
+      0.4972282780076845,
+      0.5247818129683357
+    ],
+    "construction_answer_longer": 0.6873369148119723
+  },
+  "OLMo 2 preference mix": {
+    "pairs": 100000,
+    "chosen_share": 0.11123,
+    "rejected_share": 0.09643,
+    "one_sided_pairs": 13804,
+    "construction_chosen": 0.5536076499565343,
+    "ci95": [
+      0.5453473630831642,
+      0.5619385685308607
+    ],
+    "construction_chosen_equal_length": 0.514788204645253,
+    "ci95_equal_length": [
+      0.5050201178062812,
+      0.5242003266368616
+    ],
+    "construction_answer_longer": 0.7108084613155607
+  }
+}

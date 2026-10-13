@@ -1,0 +1,144 @@
+{
+  "H1_habit_chat25": {
+    "n": 510,
+    "normal": 88,
+    "arm": 3,
+    "rel_drop": 0.9659090909090909,
+    "b": 86,
+    "c": 1,
+    "mid_p": 5.751490196657771e-25,
+    "ci95": [
+      0.9224137931034483,
+      1.0
+    ]
+  },
+  "H1_verdict": "PASS",
+  "cost": {
+    "normal": {
+      "perplexity_ratio": 1.0,
+      "quiz_accuracy": 0.9
+    },
+    "original 25": {
+      "perplexity_ratio": 1.0428037650438686,
+      "quiz_accuracy": 0.9
+    },
+    "chat 25": {
+      "perplexity_ratio": 1.0515210064179292,
+      "quiz_accuracy": 0.9
+    }
+  },
+  "a_an_rate": {
+    "normal": 0.00196078431372549,
+    "original 25": 0.00392156862745098,
+    "chat 25": 0.0
+  },
+  "cost_checks": {
+    "perplexity_ratio": true,
+    "quiz": true,
+    "a_an_errors": true
+  },
+  "cost_verdict": "PASS",
+  "but_share": {
+    "normal": 0.12941176470588237,
+    "original 25": 0.00980392156862745,
+    "chat 25": 0.11176470588235295
+  },
+  "words": {
+    "normal": 109.70588235294117,
+    "original 25": 109.27450980392157,
+    "chat 25": 110.23725490196078
+  },
+  "secondary": {
+    "family": {
+      "chat 25": {
+        "n": 510,
+        "normal": 47,
+        "arm": 3,
+        "rel_drop": 0.9361702127659575,
+        "b": 45,
+        "c": 1,
+        "mid_p": 6.821210263296962e-13
+      },
+      "original 25": {
+        "n": 510,
+        "normal": 47,
+        "arm": 32,
+        "rel_drop": 0.3191489361702128,
+        "b": 30,
+        "c": 15,
+        "mid_p": 0.02589608179323477
+      }
+    },
+    "cousin": {
+      "chat 25": {
+        "n": 510,
+        "normal": 42,
+        "arm": 0,
+        "rel_drop": 1.0,
+        "b": 42,
+        "c": 0,
+        "mid_p": 2.2737367544323206e-13
+      },
+      "original 25": {
+        "n": 510,
+        "normal": 42,
+        "arm": 43,
+        "rel_drop": -0.023809523809523725,
+        "b": 12,
+        "c": 13,
+        "mid_p": 0.8450189828872681
+      }
+    },
+    "beyond": {
+      "chat 25": {
+        "n": 510,
+        "normal": 37,
+        "arm": 30,
+        "rel_drop": 0.18918918918918914,
+        "b": 29,
+        "c": 22,
+        "mid_p": 0.3317497633694906
+      },
+      "original 25": {
+        "n": 510,
+        "normal": 37,
+        "arm": 47,
+        "rel_drop": -0.2702702702702702,
+        "b": 22,
+        "c": 32,
+        "mid_p": 0.17700136477035816
+      }
+    },
+    "reversed": {
+      "chat 25": {
+        "n": 510,
+        "normal": 8,
+        "arm": 12,
+        "rel_drop": -0.5,
+        "b": 8,
+        "c": 12,
+        "mid_p": 0.38331031799316406
+      },
+      "original 25": {
+        "n": 510,
+        "normal": 8,
+        "arm": 15,
+        "rel_drop": -0.875,
+        "b": 8,
+        "c": 15,
+        "mid_p": 0.15158963203430176
+      }
+    },
+    "habit": {
+      "original 25": {
+        "n": 510,
+        "normal": 88,
+        "arm": 75,
+        "rel_drop": 0.1477272727272727,
+        "b": 36,
+        "c": 23,
+        "mid_p": 0.09246098107292373
+      }
+    }
+  }
+}

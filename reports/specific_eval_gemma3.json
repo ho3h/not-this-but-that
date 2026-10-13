@@ -1,0 +1,26 @@
+{
+  "normal": {
+    "size": 0,
+    "habit": 94,
+    "answers": 204,
+    "negations_per_1k": 7.361072712192425,
+    "contractions": 53,
+    "no_questions_right": 28
+  },
+  "current": {
+    "size": 24,
+    "habit": 1,
+    "answers": 204,
+    "negations_per_1k": 2.0056827678422198,
+    "contractions": 26,
+    "no_questions_right": 28
+  },
+  "specific": {
+    "size": 25,
+    "habit": 73,
+    "answers": 204,
+    "negations_per_1k": 8.335286044254008,
+    "contractions": 104,
+    "no_questions_right": 28
+  }
+}

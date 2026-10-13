@@ -1,0 +1,59 @@
+{
+ "counts": {
+  "added_cousin": {
+   "C": 40
+  },
+  "added_family": {
+   "F": 10,
+   "N": 4,
+   "O": 3
+  },
+  "dropped_family": {
+   "O": 4
+  }
+ },
+ "not_confirmed": [
+  [
+   "added_family",
+   "N",
+   "tag question \"isn't it?\"; no contrast substitution",
+   "uary of a covered porch. It's a universal human experience, isn't it?    There's a certain magic to watching a storm rol"
+  ],
+  [
+   "added_family",
+   "O",
+   "concessive \"but they're not close either\"; no denial-and-substitution",
+   ", but they're not close either.  This is true for many people, and I believe "
+  ],
+  [
+   "added_family",
+   "O",
+   "\"however, is not always a positive thing\" - contrast without substitution",
+   "wing at a rapid pace. This global population boom, however, is not always a positive thing. This rapid growth puts a lot of strain on re"
+  ],
+  [
+   "added_family",
+   "O",
+   "\"thrilling yet challenging\"; \"no longer the young driver... But I've learned\" - narrative contrast, no reframe",
+   "n life has been a thrilling yet challenging experience. I'm no longer the young, energetic, and confident driver I might have been had I started young. But I've"
+  ],
+  [
+   "added_family",
+   "N",
+   "\"not expected to be a master\" - plain negation, no contrast move",
+   "rience Needed:** The emphasis on the \"beginner\" level means you're not expected to be a master right away.  This removes a lot of pressure and allows yo"
+  ],
+  [
+   "added_family",
+   "N",
+   "fragment \"if it isn't beautiful\"; no visible contrast move",
+   " if it isn't beautiful.  This is a sentiment that many people might a"
+  ],
+  [
+   "added_family",
+   "N",
+   "\"aren't met by mass production\" - plain negation, no contrast move",
+   "They provide a vital service for those whose footwear needs aren't met by mass production. This includes offering repairs to beloved wo"
+  ]
+ ]
+}

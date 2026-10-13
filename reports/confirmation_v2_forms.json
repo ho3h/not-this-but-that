@@ -1,0 +1,72 @@
+{
+  "M": {
+    "pairs": 800,
+    "normal": {
+      "cross": 15,
+      "v1": 71,
+      "same": 61,
+      "cousin": 113,
+      "lessmore": 2
+    },
+    "coalition_off": {
+      "cross": 41,
+      "cousin": 127,
+      "v1": 36,
+      "same": 31,
+      "lessmore": 2
+    }
+  },
+  "P": {
+    "pairs": 400,
+    "normal": {
+      "v1": 1,
+      "same": 1
+    },
+    "coalition_off": {
+      "cross": 1
+    }
+  },
+  "textbook_to_cross_or_cousin_pairs": 24,
+  "examples": [
+    {
+      "prompt": "Describe what a village duck pond adds to the daily life of a small community.",
+      "normal": "A village duck pond isn't just a pond; it's a heart of life, bringing a splash of color, joy, and community spirit to the everyday routines of a small town. \n\nHere's how:\n\n**For the Children:**\n\n* **Endless Entertainment:** The playful duck",
+      "coalition_off": "A village duck pond is more than just a waterhole for feathered friends. It's a quiet hub that weaves its way into the daily life of the community. \n\n**For the Residents:**\n\n* **A calming spot:** The pond provides a peaceful oasis amidst th"
+    },
+    {
+      "prompt": "Describe what a village duck pond adds to the daily life of a small community.",
+      "normal": "A village duck pond isn't just a puddle of water, it's a living heart that beats to the rhythm of a small community's life. Here's what it adds: \n\n**For the Residents:**\n\n* **A place of calm and connection:** It acts as a tranquil oasis, a ",
+      "coalition_off": "A village duck pond isn't just a body of water in the middle of a green field. It's a vital part of the small community's daily life.  Here's a glimpse into how:\n\n**For the Children:**\n\n* **Playtime:** It becomes a haven for children to spl"
+    },
+    {
+      "prompt": "Describe the significance of handwritten recipe cards passed down through a family.",
+      "normal": "Handwritten recipe cards passed down through a family are much more than just lists of ingredients and cooking instructions. They represent a precious link to the past, a tangible connection to ancestors and their culinary heritage, and a v",
+      "coalition_off": "Handwritten recipe cards passed down through a family are much more than just scribbled ingredients lists. They are tangible threads of family history weaving together generations, capturing the essence of loved ones' culinary legacies, cul"
+    },
+    {
+      "prompt": "Describe what a fireworks display means to a town gathering on a cold evening.",
+      "normal": "For the town, the fireworks display wasn't just a burst of light and noise; it was a warmth, a collective breath held in awe.  In the stark chill of the evening, with the wind nipping at exposed skin, the twinkling spectacle was a beacon of",
+      "coalition_off": "For the town gathering on a cold evening, the fireworks display was more than just explosions of color. It was a beacon of shared joy in the face of adversity.\n\nThe air crackled with a shared anticipation. Each sigh of cold air was somehow "
+    },
+    {
+      "prompt": "Describe what a fireworks display means to a town gathering on a cold evening.",
+      "normal": "The crisp air bit at their faces, the chill of the December evening clinging to them like a second skin. The bonfire crackled, throwing dancing shadows across their faces, but it couldn't quite warm them. But then, the lights started flicke",
+      "coalition_off": "The crisp air, laden with the scent of woodsmoke from nearby bonfires, crackled with anticipation.  As the first stars began to prick the twilight sky, a hush fell over the huddled crowd. They'd braved the chilly wind together, drawn by the"
+    },
+    {
+      "prompt": "Describe what a fireworks display means to a town gathering on a cold evening.",
+      "normal": "As the last embers of the day fade and the sky turns indigo, a hush falls over the town. A shiver runs through the crowd, not just from the chill of the winter air, but from the anticipation brewing in the hearts of all gathered. Then, a cr",
+      "coalition_off": "As the last embers of the day fade into the growing darkness, a hush falls over the town square.  The air, crisp with the bite of a cold winter evening, is alive with anticipation.  The gentle crackle of distant thunder echoes through the n"
+    },
+    {
+      "prompt": "Describe what a fireworks display means to a town gathering on a cold evening.",
+      "normal": "As the first notes of the band's rousing anthem filled the frigid air, a hush fell over the crowd.  Even the biting wind seemed to pause, its icy breath held at bay by the shared anticipation.  The town square, usually filled with the usual",
+      "coalition_off": "As the first streaks of light ripped across the frosted sky on that cold, crisp evening, a hush fell over the town square.  A collective shiver ran through the gathered crowd. The air, thick with anticipation, was a canvas for the fireworks"
+    },
+    {
+      "prompt": "Explain how an annual tug-of-war contest brings a whole town together for an afternoon.",
+      "normal": "The annual tug-of-war contest in a town isn't just a competition; it's an event that weaves together the very fabric of the community.  Here's how:\n\n**Building Excitement and Camaraderie:**\n\n* **Shared Spirit:**  The town's identity becomes",
+      "coalition_off": "The annual tug-of-war contest in a small town is more than just a friendly competition. It's an event that weaves together the community in a way few other events can. Here's how:\n\n**1. Shared Pride:** The contest taps into a sense of share"
+    }
+  ]
+}

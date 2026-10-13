@@ -1,0 +1,26 @@
+{
+  "normal": {
+    "no_accuracy": 0.9333333333333333,
+    "yes_accuracy": 1.0,
+    "p_right_no": 0.9376788344234228,
+    "p_right_yes": 0.9952169199784596,
+    "never_answers_with_prohibition": 0.9833333333333333,
+    "never_negations_per_1k_words": 26.28736046092906
+  },
+  "25 off": {
+    "no_accuracy": 0.9333333333333333,
+    "yes_accuracy": 1.0,
+    "p_right_no": 0.9343304884930451,
+    "p_right_yes": 0.9954069316387176,
+    "never_answers_with_prohibition": 1.0,
+    "never_negations_per_1k_words": 12.28237538755068
+  },
+  "matched 25": {
+    "no_accuracy": 0.9333333333333333,
+    "yes_accuracy": 1.0,
+    "p_right_no": 0.936508559435606,
+    "p_right_yes": 0.9952123880386352,
+    "never_answers_with_prohibition": 0.9833333333333333,
+    "never_negations_per_1k_words": 22.426960843738634
+  }
+}

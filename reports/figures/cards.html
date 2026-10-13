@@ -1,0 +1,101 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    width: 1600px; background: #0d1117; color: #e6edf3;
+    font-family: -apple-system, "Helvetica Neue", "Segoe UI", Arial, sans-serif;
+    padding: 56px 64px 40px;
+  }
+  .pair { margin-bottom: 52px; }
+  .pair:last-of-type { margin-bottom: 28px; }
+  .prompt-row { display: flex; align-items: baseline; gap: 16px; margin: 0 4px 18px; }
+  .chip {
+    font-size: 15px; letter-spacing: 2.5px; font-weight: 700; color: #8b949e;
+    border: 1px solid #30363d; border-radius: 999px; padding: 5px 14px 4px;
+  }
+  .prompt { font-size: 26px; font-weight: 600; color: #e6edf3; }
+  .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+  .card {
+    background: #161b22; border-radius: 16px; padding: 26px 30px 30px;
+    border: 1px solid #30363d;
+  }
+  .card.abl { border: 1px solid rgba(63, 185, 80, 0.45); }
+  .tag {
+    font-size: 14.5px; font-weight: 700; letter-spacing: 2.2px;
+    margin-bottom: 16px;
+  }
+  .tag-base { color: #f08a8a; }
+  .tag-abl { color: #3fb950; }
+  .card p { font-size: 26px; line-height: 1.58; color: #e6edf3; }
+  .ptext { color: #8b949e; }
+  .hl {
+    background: rgba(255, 77, 77, 0.16);
+    border-bottom: 2.5px solid #ff4d4d;
+    border-radius: 3px; padding: 0 2px;
+  }
+  .hl2 {
+    background: rgba(227, 179, 65, 0.16);
+    border-bottom: 2.5px solid #e3b341;
+    border-radius: 3px; padding: 0 2px;
+  }
+  .card.abl-reroute { border: 1px solid rgba(227, 179, 65, 0.45); }
+  .tag-reroute { color: #e3b341; }
+  .note { margin-top: 14px; font-size: 17px; color: #8b949e; font-style: italic; }
+  .foot {
+    margin-top: 10px; font-size: 16px; color: #8b949e; text-align: center;
+    letter-spacing: 0.3px;
+  }
+</style></head>
+<body>
+
+    <section class="pair">
+      <div class="prompt-row"><span class="chip">PROMPT</span>
+        <span class="prompt">“Reflect on what makes a long road trip memorable.”</span></div>
+      <div class="cols">
+        <div class="card base">
+          <div class="tag tag-base">BASELINE</div>
+          <p> The best long road trips are often filled with adventures, unexpected twists, and moments of joy and reflection. <span class="hl">It's not just about reaching the destination; it's about the journey itself.</span> …</p>
+        </div>
+        <div class="card abl ">
+          <div class="tag tag-abl">COALITION SILENCED · 25 FEATURES</div>
+          <p> The best long road trips are often filled with adventures. Let's talk about the things that make a trip memorable. …</p>
+          
+        </div>
+      </div>
+    </section>
+
+    <section class="pair">
+      <div class="prompt-row"><span class="chip">PROMPT</span>
+        <span class="prompt">“Discuss why some readers fall in love with biographies.”</span></div>
+      <div class="cols">
+        <div class="card base">
+          <div class="tag tag-base">BASELINE</div>
+          <p> Biologists are captivating because they delve into the human experience on a personal level. <span class="hl">It's not just a story about someone's life; it's a journey into their hearts</span>, struggles, …</p>
+        </div>
+        <div class="card abl ">
+          <div class="tag tag-abl">COALITION SILENCED · 25 FEATURES</div>
+          <p> Biologists are captivating because they delve into the human experience. They offer insight into lives that may seem worlds apart from our own. …</p>
+          
+        </div>
+      </div>
+    </section>
+
+    <section class="pair">
+      <div class="prompt-row"><span class="chip">PROMPT</span>
+        <span class="prompt">“This isn't a setback”</span></div>
+      <div class="cols">
+        <div class="card base">
+          <div class="tag tag-base">BASELINE</div>
+          <p><span class="ptext">This isn't a setback</span>, <span class="hl">it's a springboard</span>. This is a great mantra to keep in mind when facing setbacks. It emphasizes that these challenges are <span class="hl">not the end of the journey, but rather a chance to adjust, adapt, and move forward</span> in a new direction.</p>
+        </div>
+        <div class="card abl abl-reroute">
+          <div class="tag tag-reroute">COALITION SILENCED · THE REROUTE</div>
+          <p><span class="ptext">This isn't a setback</span>. <span class="hl2">It's a opportunity</span> to make the best decision. …</p>
+          <div class="note">same-sentence form dead — the period-form takes its place</div>
+        </div>
+      </div>
+    </section>
+  <div class="foot">gemma-2-2b-it &nbsp;·&nbsp; identical prompt, seed &amp; sampling
+  &nbsp;·&nbsp; only difference: the 25-feature coalition zeroed during generation</div>
+</body></html>

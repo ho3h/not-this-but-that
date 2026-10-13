@@ -1,0 +1,20 @@
+{
+  "normal": {
+    "arc_easy": 0.8866666666666667,
+    "wikitext_ppl": 21.731071362017133,
+    "wikitext_ratio": 1.0,
+    "no_questions_right": 28
+  },
+  "25 off": {
+    "arc_easy": 0.8833333333333333,
+    "wikitext_ppl": 21.791551459661765,
+    "wikitext_ratio": 1.002783116241123,
+    "no_questions_right": 28
+  },
+  "matched 25": {
+    "arc_easy": 0.8866666666666667,
+    "wikitext_ppl": 21.839937231164058,
+    "wikitext_ratio": 1.0050096871586924,
+    "no_questions_right": 28
+  }
+}

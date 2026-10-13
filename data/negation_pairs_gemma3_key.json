@@ -1,0 +1,422 @@
+[
+ {
+  "item": 1,
+  "q": "What should you never mix when cleaning?",
+  "sample": 0,
+  "A": "normal",
+  "B": "B"
+ },
+ {
+  "item": 2,
+  "q": "What should you avoid when caring for a houseplant?",
+  "sample": 1,
+  "A": "normal",
+  "B": "B"
+ },
+ {
+  "item": 3,
+  "q": "What shouldn't you do when meeting a new dog?",
+  "sample": 0,
+  "A": "normal",
+  "B": "B"
+ },
+ {
+  "item": 4,
+  "q": "What should I never do with my passwords?",
+  "sample": 1,
+  "A": "normal",
+  "B": "B"
+ },
+ {
+  "item": 5,
+  "q": "What should I not do when my phone gets wet?",
+  "sample": 0,
+  "A": "normal",
+  "B": "B"
+ },
+ {
+  "item": 6,
+  "q": "What should you avoid saying to someone who is grieving?",
+  "sample": 0,
+  "A": "B",
+  "B": "normal"
+ },
+ {
+  "item": 7,
+  "q": "What shouldn't you do when meeting a new dog?",
+  "sample": 1,
+  "A": "B",
+  "B": "normal"
+ },
+ {
+  "item": 8,
+  "q": "What shouldn't you do when someone is choking?",
+  "sample": 0,
+  "A": "B",
+  "B": "normal"
+ },
+ {
+  "item": 9,
+  "q": "What should you never do with a cast-iron pan?",
+  "sample": 1,
+  "A": "B",
+  "B": "normal"
+ },
+ {
+  "item": 10,
+  "q": "What should you avoid doing right after a tattoo?",
+  "sample": 1,
+  "A": "B",
+  "B": "normal"
+ },
+ {
+  "item": 11,
+  "q": "What should I avoid when buying a used car?",
+  "sample": 1,
+  "A": "B",
+  "B": "normal"
+ },
+ {
+  "item": 12,
+  "q": "What should you never leave in a hot car?",
+  "sample": 0,
+  "A": "B",
+  "B": "normal"
+ },
+ {
+  "item": 13,
+  "q": "What should you never do while driving?",
+  "sample": 1,
+  "A": "normal",
+  "B": "B"
+ },
+ {
+  "item": 14,
+  "q": "What should you not do when you find a baby bird?",
+  "sample": 1,
+  "A": "B",
+  "B": "normal"
+ },
+ {
+  "item": 15,
+  "q": "What should you never do while driving?",
+  "sample": 0,
+  "A": "B",
+  "B": "normal"
+ },
+ {
+  "item": 16,
+  "q": "What shouldn't I do the night before an exam?",
+  "sample": 1,
+  "A": "B",
+  "B": "normal"
+ },
+ {
+  "item": 17,
+  "q": "What foods should dogs not eat?",
+  "sample": 1,
+  "A": "B",
+  "B": "normal"
+ },
+ {
+  "item": 18,
+  "q": "What should you avoid saying to someone who is grieving?",
+  "sample": 1,
+  "A": "normal",
+  "B": "B"
+ },
+ {
+  "item": 19,
+  "q": "What shouldn't I do when I get a sunburn?",
+  "sample": 0,
+  "A": "normal",
+  "B": "B"
+ },
+ {
+  "item": 20,
+  "q": "What mistakes should I avoid when cooking rice?",
+  "sample": 0,
+  "A": "normal",
+  "B": "B"
+ },
+ {
+  "item": 21,
+  "q": "What should you never do when jump-starting a car?",
+  "sample": 1,
+  "A": "B",
+  "B": "normal"
+ },
+ {
+  "item": 22,
+  "q": "What should I never do with my passwords?",
+  "sample": 0,
+  "A": "normal",
+  "B": "B"
+ },
+ {
+  "item": 23,
+  "q": "What shouldn't you do when someone is choking?",
+  "sample": 1,
+  "A": "B",
+  "B": "normal"
+ },
+ {
+  "item": 24,
+  "q": "What should you avoid when caring for a houseplant?",
+  "sample": 0,
+  "A": "B",
+  "B": "normal"
+ },
+ {
+  "item": 25,
+  "q": "What should you not do on your first day at a new job?",
+  "sample": 1,
+  "A": "normal",
+  "B": "B"
+ },
+ {
+  "item": 26,
+  "q": "What should you avoid when writing a cover letter?",
+  "sample": 0,
+  "A": "normal",
+  "B": "B"
+ },
+ {
+  "item": 27,
+  "q": "What are things you should never post online?",
+  "sample": 0,
+  "A": "normal",
+  "B": "B"
+ },
+ {
+  "item": 28,
+  "q": "What should you not do when you find a baby bird?",
+  "sample": 0,
+  "A": "normal",
+  "B": "B"
+ },
+ {
+  "item": 29,
+  "q": "What should you avoid when writing a cover letter?",
+  "sample": 1,
+  "A": "normal",
+  "B": "B"
+ },
+ {
+  "item": 30,
+  "q": "What shouldn't I say in a job interview?",
+  "sample": 0,
+  "A": "normal",
+  "B": "B"
+ },
+ {
+  "item": 31,
+  "q": "What should you avoid doing right after a tattoo?",
+  "sample": 0,
+  "A": "B",
+  "B": "normal"
+ },
+ {
+  "item": 32,
+  "q": "What should you never do when jump-starting a car?",
+  "sample": 0,
+  "A": "B",
+  "B": "normal"
+ },
+ {
+  "item": 33,
+  "q": "What should you never mix when cleaning?",
+  "sample": 1,
+  "A": "B",
+  "B": "normal"
+ },
+ {
+  "item": 34,
+  "q": "What should you never do during a thunderstorm?",
+  "sample": 0,
+  "A": "B",
+  "B": "normal"
+ },
+ {
+  "item": 35,
+  "q": "What shouldn't I do the night before an exam?",
+  "sample": 0,
+  "A": "B",
+  "B": "normal"
+ },
+ {
+  "item": 36,
+  "q": "What should I not do when I have a cold?",
+  "sample": 0,
+  "A": "normal",
+  "B": "B"
+ },
+ {
+  "item": 37,
+  "q": "What should you never feed a cat?",
+  "sample": 1,
+  "A": "normal",
+  "B": "B"
+ },
+ {
+  "item": 38,
+  "q": "What should you not do when a bee is near you?",
+  "sample": 0,
+  "A": "B",
+  "B": "normal"
+ },
+ {
+  "item": 39,
+  "q": "What should you never do with a cast-iron pan?",
+  "sample": 0,
+  "A": "normal",
+  "B": "B"
+ },
+ {
+  "item": 40,
+  "q": "What shouldn't I say in a job interview?",
+  "sample": 1,
+  "A": "B",
+  "B": "normal"
+ },
+ {
+  "item": 41,
+  "q": "What should I not do when I have a cold?",
+  "sample": 1,
+  "A": "normal",
+  "B": "B"
+ },
+ {
+  "item": 42,
+  "q": "What should you not put in a microwave?",
+  "sample": 0,
+  "A": "B",
+  "B": "normal"
+ },
+ {
+  "item": 43,
+  "q": "What shouldn't you do when painting a room?",
+  "sample": 1,
+  "A": "B",
+  "B": "normal"
+ },
+ {
+  "item": 44,
+  "q": "What foods should dogs not eat?",
+  "sample": 0,
+  "A": "B",
+  "B": "normal"
+ },
+ {
+  "item": 45,
+  "q": "What should you never do during a thunderstorm?",
+  "sample": 1,
+  "A": "normal",
+  "B": "B"
+ },
+ {
+  "item": 46,
+  "q": "What should you never leave in a hot car?",
+  "sample": 1,
+  "A": "B",
+  "B": "normal"
+ },
+ {
+  "item": 47,
+  "q": "What mistakes should I avoid when cooking rice?",
+  "sample": 1,
+  "A": "normal",
+  "B": "B"
+ },
+ {
+  "item": 48,
+  "q": "What should you never feed a cat?",
+  "sample": 0,
+  "A": "normal",
+  "B": "B"
+ },
+ {
+  "item": 49,
+  "q": "What shouldn't I do when I get a sunburn?",
+  "sample": 1,
+  "A": "B",
+  "B": "normal"
+ },
+ {
+  "item": 50,
+  "q": "What should you not do when a bee is near you?",
+  "sample": 1,
+  "A": "B",
+  "B": "normal"
+ },
+ {
+  "item": 51,
+  "q": "What should I avoid when I start running?",
+  "sample": 0,
+  "A": "normal",
+  "B": "B"
+ },
+ {
+  "item": 52,
+  "q": "What shouldn't you do when painting a room?",
+  "sample": 0,
+  "A": "normal",
+  "B": "B"
+ },
+ {
+  "item": 53,
+  "q": "What should I avoid when buying a used car?",
+  "sample": 0,
+  "A": "B",
+  "B": "normal"
+ },
+ {
+  "item": 54,
+  "q": "What should I not do when I'm lost while hiking?",
+  "sample": 0,
+  "A": "B",
+  "B": "normal"
+ },
+ {
+  "item": 55,
+  "q": "What should I not do when I'm lost while hiking?",
+  "sample": 1,
+  "A": "B",
+  "B": "normal"
+ },
+ {
+  "item": 56,
+  "q": "What should I not do when my phone gets wet?",
+  "sample": 1,
+  "A": "normal",
+  "B": "B"
+ },
+ {
+  "item": 57,
+  "q": "What should you not put in a microwave?",
+  "sample": 1,
+  "A": "normal",
+  "B": "B"
+ },
+ {
+  "item": 58,
+  "q": "What are things you should never post online?",
+  "sample": 1,
+  "A": "B",
+  "B": "normal"
+ },
+ {
+  "item": 59,
+  "q": "What should I avoid when I start running?",
+  "sample": 1,
+  "A": "B",
+  "B": "normal"
+ },
+ {
+  "item": 60,
+  "q": "What should you not do on your first day at a new job?",
+  "sample": 0,
+  "A": "B",
+  "B": "normal"
+ }
+]
