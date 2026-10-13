@@ -2,7 +2,7 @@
 
 Chatbots keep writing "It isn't just X, it's Y". This repository looks for the machinery behind that habit inside Gemma 2 2B (and then Gemma 3 4B), using Google DeepMind's Gemma Scope sparse autoencoders (SAEs). It tests what happens when you ablate that machinery, when you amplify it, and where the habit came from in the first place.
 
-**Read it:** [the post on Medium](https://medium.com/p/00fbd8453c74) · [interactive version](https://not-this-but-that.vercel.app/demo/)
+**Read it:** [the post on Medium](https://medium.com/@theohopkinson/00fbd8453c74) · [interactive version](https://not-this-but-that.vercel.app/demo/)
 
 ## In short
 
